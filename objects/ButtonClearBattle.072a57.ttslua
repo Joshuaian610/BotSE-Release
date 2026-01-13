@@ -1,0 +1,418 @@
+function onLoad()
+    create_all()
+end
+
+function create_all()
+    self.createButton({
+        label          = "",
+        click_function = "clear_battle",
+        function_owner = self,
+        position       = {0.00, 0.31, 0.00},
+        height         = 1000,
+        width          = 2600,
+        scale          = {x=1.00, y=1.00, z=1.00},
+        color          = {1, 1, 1, 0},
+        hover_color    = {1, 1, 1, .6},
+        tooltip        = "Clicking this button will clean up any battle hex tiles and return all defeated enemies to their respective bags.\n\n*** Ensure that you have first removed any companions that will persist after the battle before using this button, as otherwise it will be returned to it's respective bag."
+    })
+end
+
+
+function animate_button()
+    self.clearButtons()
+    Wait.time(function() create_all() end, 1)
+    local pos = self.getPosition()
+    pos.y = pos.y - .29
+    self.setPosition(pos)
+    pos.y = pos.y + .29
+    self.setPositionSmooth(pos, false, false)
+end
+
+
+function clear_battle()
+    animate_button()
+    local table_objs = getAllObjects()
+    -- associate player chips with race cards, place player chips back to cards (not smoothly) if found
+    local race_card = nil -- lolol
+    local race_tag  = nil
+    for _, obj in pairs(table_objs) do
+        if obj.hasTag('player_chip') then
+            if obj.hasTag('argonian_a') then -- argonian 1
+                race_tag = "argonian_a"
+            elseif obj.hasTag('argonian_b') then -- argonian 2
+                race_tag = "argonian_b"
+            elseif obj.hasTag('breton_a') then -- breton 1
+                race_tag = "breton_a"
+            elseif obj.hasTag('breton_b') then -- breton 2
+                race_tag = "breton_b"
+            elseif obj.hasTag('d_elf_a') then -- dark elf 1
+                race_tag = "d_elf_a"
+            elseif obj.hasTag('d_elf_b') then -- dark elf 2
+                race_tag = "d_elf_b"
+            elseif obj.hasTag('h_elf_a') then -- high elf 1
+                race_tag = "h_elf_a"
+            elseif obj.hasTag('h_elf_b') then -- high elf 2
+                race_tag = "h_elf_b"
+            elseif obj.hasTag('imperial_a') then -- imperial
+                race_tag = "imperial_a"
+            elseif obj.hasTag('imperial_b') then -- imperial 2
+                race_tag = "imperial_b"
+            elseif obj.hasTag('khajiit_a') then -- khajiit 1
+                race_tag = "khajiit_a"
+            elseif obj.hasTag('khajiit_b') then -- khajiit 2
+                race_tag = "khajiit_b"
+            elseif obj.hasTag('nord_a') then -- nord 1
+                race_tag = "nord_a"
+            elseif obj.hasTag('nord_b') then -- nord 2
+                race_tag = "nord_b"
+            elseif obj.hasTag('orc_a') then -- orc 1
+                race_tag = "orc_a"
+            elseif obj.hasTag('orc_b') then -- orc 2
+                race_tag = "orc_b"
+            elseif obj.hasTag('redguard_a') then -- redguard 1
+                race_tag = "redguard_a"
+            elseif obj.hasTag('redguard_b') then -- redguard2
+                race_tag = "redguard_b"
+            elseif obj.hasTag('w_elf_a') then -- wood elf 1
+                race_tag = "w_elf_a"
+            elseif obj.hasTag('w_elf_b') then -- wood elf 2
+                race_tag = "w_elf_b"
+            end
+            local check_zones = {"2dc97f", "57cafb", "aebe2d", "9708d1"}
+            for i = 1, 4 do
+                for _, object in pairs(getObjectFromGUID(check_zones[i]).getObjects()) do
+                    if object.hasTag(race_tag) and object.type == "Card" then race_card = object break end
+                end
+            end
+            if race_card ~= nil then
+                local pos = race_card.getPosition()
+                pos.y     = pos.y + 2
+                pos.z     = pos.z + 3
+                getObjectFromGUID("e71040").call('clear_old_chips_remote', {chip_obj=obj})
+                obj.setPosition(pos, false, false)
+                Wait.frames(function() getObjectFromGUID("e71040").call('update_tile_stack_remote', {chip_obj=obj, val=obj.getVar('val')}) end)
+            else
+                broadcastToAll("Race Card not found to replace " .. obj.getName() .. " Player Chip, please return manually.", "Orange")
+            end
+        end
+    end    
+    -- check for enemies, return to bags
+    -- also check for generic counters, destruct those
+    local deployed_enemies = {}
+    for _, object in pairs(getObjectFromGUID("b5dd6d").getObjects()) do
+        if object ~= nil and object.hasTag('enemy_chip') then
+            table.insert(deployed_enemies, object)
+        end
+        if object.getName() == "Generic Counter" then
+            object.destruct()
+        end
+    end
+    for _, object in pairs(deployed_enemies) do
+        Wait.frames(function()
+        if object ~= nil then return_enemy({obj=object, cleanup=false}) end
+        end, 5)
+    end
+    -- clear out defeated monsters bag, return to bags
+    local defeat_bag      = getObjectFromGUID("e71040")
+    local defeat_bag_objs = defeat_bag.getObjects()
+    if defeat_bag_objs ~= nil then
+        wait_timer = 0
+        for i = 1, #defeat_bag_objs do
+            wait_timer = wait_timer + .10
+            Wait.time(function()
+            local replace_obj = defeat_bag.takeObject({rotation={0, 180, 0}})
+            Wait.frames(function()
+            if replace_obj ~= nil then return_enemy({obj=replace_obj, cleanup=false}) end
+            end, 1)
+            end, wait_timer)
+        end
+    end
+    for _, object in pairs(getObjectFromGUID("b5dd6d").getObjects()) do
+        -- return cache chips
+        if object.hasTag('cache_chip') then
+            object.setRotation({0, 180, 0})
+            getObjectFromGUID("e1214f").putObject(object)
+        end
+        -- return any hex tiles (destruct entrance)
+        if object.hasTag('hex_entrance') and object ~= nil then object.destruct() end
+        if object.hasTag('hex_clash') and object ~= nil then object.setLock(false) getObjectFromGUID("ac6ade").putObject(object) end
+        if object.hasTag('hex_19') and object ~= nil then object.setLock(false) getObjectFromGUID("6e0c03").putObject(object) end
+        if object.hasTag('hex_7') and object ~= nil then object.setLock(false) getObjectFromGUID("653ab4").putObject(object) end
+        if object.hasTag('hex_6') and object ~= nil then object.setLock(false) getObjectFromGUID("655ebe").putObject(object) end
+        if object.hasTag('hex_3') and object ~= nil then object.setLock(false) getObjectFromGUID("609125").putObject(object) end
+        if object.hasTag('hex_obstacle') and object ~= nil then object.setLock(false) getObjectFromGUID("b005db").putObject(object) end
+        -- destruct any remaining loose HP chips
+        Wait.time(function() if object.hasTag('hp_chip') and object ~= nil then object.destruct() end end, 1)
+    end
+    -- reshuffle bags after a period of time
+    local bags = {"ac6ade", "653ab4", "655ebe", "609125"}
+    for i = 1, 4 do
+        Wait.time(function() getObjectFromGUID(bags[i]).shuffle() end, 2)
+    end
+    -- refresh any in play encounter skill, turn skill trackers,return delve cards
+    for _, object in pairs(getAllObjects()) do
+        if object.getName() == "Per Encounter Skill Tracker" or object.getName() == "Per Turn Skill Tracker" then
+            if object.is_face_down then
+                object.flip()
+            end
+        end
+        if string.find(object.getName(), "Per Turn Skill Tracker") and object.type == "Tile" then
+            if object.is_face_down then
+                object.flip()
+            end
+        end
+        local delve_cards_found = false
+        if object.hasTag('delve_card') then
+            delve_cards_found = true
+            object.removeTag('delve_card')
+            object.setRotation({0, 180, 180})
+            object.setPosition({53.32, 1.60, -8.24})
+        end
+        Wait.time(function()
+        if delve_cards_found then
+            local delve_deck = getObjectFromGUID("18949b")
+            if delve_deck == nil then
+                for _, object in pairs(getObjectFromGUID("fbe340").getObjects()) do
+                    if object.type == "Deck" then
+                        delve_deck = object
+                    end
+                end
+            end
+            if delve_deck ~= nil then
+                delve_deck.shuffle()
+            end
+        end
+        end, 3)
+    end
+    -- return enemy skill, status dice
+    for _, object in pairs(getObjectFromGUID("b5dd6d").getObjects()) do
+        if object.type == "Dice" and object.getName() == "Enemy Combat" then
+            Global.call('return_enemy_die_clear_battle', {die_obj=object})
+        end
+        if object.type == "Dice" and object.getName() == "Status Effect" then
+            Global.call('return_enemy_die_clear_battle', {die_obj=object})
+        end
+    end
+    -- reset round counter
+    getObjectFromGUID("f1cfea").setRotationValue(1)
+    if getObjectFromGUID("ec80e6") ~= nil then
+        getObjectFromGUID("ec80e6").call('set_val', 1)
+    else
+        getObjectFromGUID("2003c6").setState(1)
+    end
+    Wait.frames(function()
+        getObjectFromGUID("f1cfea").setRotation({270, 0, 0})
+        getObjectFromGUID("f1cfea").setPosition({-51.52, 2.00, -1.80})
+    end)
+    -- remove bonus HP
+    local counter_guids = {"74cd20", "301788", "556975", "1cd796"}
+    for i = 1, 4 do
+        if getObjectFromGUID(counter_guids[i]) ~= nil then
+            getObjectFromGUID(counter_guids[i]).call('set_val', 0)
+        end
+    end
+    -- handle active, drained dice
+    local colors = {"Red", "Orange", "Blue", "Green"}
+    local zones = {
+        ["Red"] = {
+            getObjectFromGUID("3a8b40"), -- cooldown
+            getObjectFromGUID("c6fdfc"), -- active 1
+            getObjectFromGUID("d4f0ba"), -- active 2
+            getObjectFromGUID("b9af24"), -- active 3
+            getObjectFromGUID("815769"), -- active 4
+            getObjectFromGUID("b68e00"), -- drain
+        },
+        ["Orange"] = {
+            getObjectFromGUID("4fae72"), -- cooldown
+            getObjectFromGUID("3a129b"), -- active 1
+            getObjectFromGUID("07bb9d"), -- active 2
+            getObjectFromGUID("d27252"), -- active 3
+            getObjectFromGUID("e3ab53"), -- active 4
+            getObjectFromGUID("7516a3"), -- drain
+        },
+        ["Blue"] = {
+            getObjectFromGUID("d6184c"), -- cooldown
+            getObjectFromGUID("22f4bb"), -- active 1
+            getObjectFromGUID("9870ce"), -- active 2
+            getObjectFromGUID("bcadbd"), -- active 3
+            getObjectFromGUID("9f4960"), -- active 4
+            getObjectFromGUID("805890"), -- drain
+        },
+        ["Green"] = {
+            getObjectFromGUID("0cc81c"), -- cooldown
+            getObjectFromGUID("53c9ad"), -- active 1
+            getObjectFromGUID("9bd918"), -- active 2
+            getObjectFromGUID("8b01c2"), -- active 3
+            getObjectFromGUID("b9f0b6"), -- active 4
+            getObjectFromGUID("517c9e"), -- drain
+        },
+    }
+    local track_count = {}
+    local to_add      = {["Red"]=0,["Orange"]=0,["Blue"]=0,["Green"]=0}
+    local active_dice  = {["Red"]={},["Orange"]={},["Blue"]={},["Green"]={}}
+    for i = 1, 4  do -- color iteration
+        track_count[colors[i]] = 0
+        for _, object in pairs(zones[colors[i]][1].getObjects()) do
+            if object.type == "Dice" then
+                track_count[colors[i]] = track_count[colors[i]] + 1
+            end
+        end
+        for j = 2, 5 do -- active slot iteration
+            for _, object in pairs(zones[colors[i]][j].getObjects()) do
+                if object.type == "Dice" then
+                    to_add[colors[i]] = to_add[colors[i]] + 1
+                    table.insert(active_dice[colors[i]], object)
+                end
+            end
+        end
+    end
+    for i = 1, 4 do -- color iteration
+        if #active_dice[colors[i]] <= 13 - track_count[colors[i]] then
+            local wait_timer = 0
+            for j = 1, 4 do
+                Wait.time(function()
+                -- if active_dice[colors[i]][j] ~= nil and not (string.find(active_dice[colors[i]][j].getName(), "Light Armor") or string.find(active_dice[colors[i]][j].getName(), "Quintessence")) then
+                --     Global.call('clear_battle_cooldown', {playercolor=colors[i], die_obj=active_dice[colors[i]][j]})
+                -- end
+                end, wait_timer)
+                wait_timer = wait_timer + .5
+            end
+        else
+            if Player[colors[i]].steam_name ~= nil and colors[i] ~= nil then
+                broadcastToAll("[" .. Color.fromString(colors[i]):toHex() .."]" .. Player[colors[i]].steam_name .. "[-]: Not Enough Room to Place Active Slot Dice to Cooldown Track - Handle Manually.", "Orange")
+            else
+                broadcastToAll("[" .. Color.fromString(colors[i]):toHex() .."]" .. colors[i] .. " Player[-]: Not Enough Room to Place Active Slot Dice to Cooldown Track - Handle Manually.", "Orange")
+            end
+        end
+        for _, object in pairs(zones[colors[i]][6].getObjects()) do
+            if object.type == "Dice" then
+                if object.getName() == "Fatigue" or object.getName() == "Overfatigue" or object.getName() == "Unstable" or
+                object.getName() == "Enemy Combat" or object.getName() == "Locksmith" or object.getName() == "Status Effect" then
+                    return_supply_die_remote({die_obj=object,color=colors[i]})
+                end
+                if object.getGMNotes() ~= "" then
+                    Global.call('return_home_die_remote', {die_obj=object,color=colors[i]})
+                end
+            end
+        end
+    end
+end
+
+
+function return_enemy(args)
+    if args == nil or args.obj == nil then return end
+    local obj     = args.obj     -- obj reference of enemy chip
+    local cleanup = args.cleanup -- boolean to send province specific enemies to province bags instead
+    if obj == nil then return end
+    local name = obj.getName()
+    lvl_1_5_enemies = {
+        "Argonian Bandit", "Argonian Marauder / Argonian Bandit", "Argonian Marauder",
+        "Bear", "Bear / Wolf", "Wolf",
+        "Bog Dog", "Bog Dog / Voriplasm", "Voriplasm",
+        "Breton Bandit", "Breton Marauder / Breton Bandit", "Breton Marauder",
+        "Bristleback", "Bristleback / Chaurus", "Chaurus",
+        "Cliff Racer", "Cliff Racer / Cliff Strider", "Cliff Strider",
+        "Crocodile", "Crocodile / Guar", "Guar",
+        "Dark Elf Bandit", "Dark Elf Marauder / Dark Elf Bandit", "Dark Elf Marauder",
+        "Draugr", "Draugr / Falmer", "Falmer",
+        "Ghost", "Ghost / Zombie", "Zombie",
+        "Hackwing", "Hackwing / Hackwing Swarm", "Hackwing Swarm",
+        "High Elf Bandit", "High Elf Marauder / High Elf Bandit", "High Elf Marauder",
+        "Hoarvor", "Hoarvor / Thunderbug", "Thunderbug",
+        "Horker", "Horker / Riekr", "Riekr",
+        "Imp", "Imp / Will-O-The-Wisp", "Will-O-The-Wisp",
+        "Imperial Bandit", "Imperial Marauder / Imperial Bandit", "Imperial Marauder",
+        "Khajiit Bandit", "Khajiit Marauder / Khajiit Bandit", "Khajiit Marauder",
+        "Kwama Warrior", "Kwama Warrior / Scrib", "Scrib",
+        "Lurcher", "Lurcher / Spriggan", "Spriggan",
+        "Mountain Lion", "Mountain Lion / Boar", "Boar",
+        "Mudcrab", "Spider / Mudcrab", "Spider",
+        "Nord Bandit", "Nord Marauder / Nord Bandit", "Nord Marauder",
+        "Orc Bandit", "Orc Marauder / Orc Bandit", "Orc Marauder",
+        "Redguard Bandit", "Redguard Marauder / Redguard Bandit", "Redguard Marauder",
+        "Skeever", "Skeever / Skeever Pup", "Skeever Pup",
+        "Skeleton", "Skeleton Mage / Skeleton", "Skeleton Mage",
+        "Wisp", "Wispmother / Wisp", "Wispmother",
+        "Wood Elf Bandit", "Wood Elf Marauder / Wood Elf Bandit", "Wood Elf Marauder",
+        "Wood Orc Bandit", "Wood Orc Marauder / Wood Ord Bandit", "Wood Ord Marauder",
+    }
+    lvl_10_20_enemies = {
+        "Argonian Behemoth", "Argonian Behemoth / Argonian Stalker", "Argonian Stalker",
+        "Argonian Warlord", "Argonian Warlord / Redguard Mercenary", "Redguard Mercenary",
+        "Banekin", "Storm Atronach / Banekin", "Storm Atronach",
+        "Bone Colossus", "Bone Colossus / Bonelord", "Bonelord",
+        "Breton Archmage", "Breton Archmage / Khajiit Cultist", "Khajiit Cultist",
+        "Breton Usurper", "Breton Usurper / Orc Warlord", "Orc Warlord",
+        "Briarheart", "Briarheart / Reachman", "Reachman",
+        "Bull Mammoth", "Bull Mammoth / Mammoth", "Mammoth",
+        "Dark Elf Pillager", "Dark Elf Pillager / Dark Elf Raider", "Dark Elf Raider",
+        "Dark Elf Sentry", "Khajiit Cutthroat / Dark Elf Sentry", "Khajiit Cutthroat",
+        "Dremora", "Dremora / Troll", "Troll",
+        "Dreugh", "Lamia / Dreugh", "Lamia",
+        "Flame Atronach", "Flame Atronach / Scamps", "Scamps",
+        "Frost Atronach", "Frost Atronach / Wraith Of Crows", "Wraith Of Crows",
+        "Giant", "Giant / Nord Swordmaster", "Nord Swordmaster",
+        "Giant Bat", "Harpy / Giant Bat", "Harpy",
+        "Giant Snake", "Haj Mota / Giant Snake", "Haj Mota",
+        "Goblin Butcher", "Goblin Butcher / Goblin Shaman", "Goblin Shaman",
+        "High Elf Necromancer", "Lich / High Elf Necromancer", "Lich",
+        "Hollow Guardian", "Hollow Guardian / Hollow Predator", "Hollow Predator",
+        "Imperial Enforcer", "Wood Elf Deadeye / Imperial Enforcer", "Wood Elf Deadeye",
+        "Minotaur", "Minotaur / Minotaur Lord", "Minotaur Lord",
+        "Miregaunt", "Miregaunt / Wamasu", "Wamasu",
+        "Nix-Hound", "Nix-Hound / Nix-Hound Pack", "Nix-Hound Pack",
+        "Nord Pyromancer", "Nord Pyromancer / Orc Wizard", "Orc Wizard",
+        "Titan", "Titan / Ogre", "Ogre",
+        "Vampire", "Vampire / Hagraven", "Hagraven",
+        "Wood Elf Ranger", "Wood Elf Ranger / Wood Elf Stalker", "Wood Elf Stalker",
+        "Worm Anchorite", "Worm Anchorite / Worm Warrior", "Worm Warrior",
+    }
+    unique_enemies = {
+        "Anchorite Deslandra", "Anchorite Deslandra / Kharzug Gra-Magul", "Kharzug Gra-Magul",
+        "Arvan", "Arvan / Chief Dushkul", "Chief Dushkul",
+        "Ayleid Spirit Hunter", "Ayleid Spirit Hunter / Void Centurion Torso", "Void Centurion Torso",
+        "Big Bad Bazri", "Big Bad Bazri / Imbued Deslandra", "Imbued Deslandra",
+        "Bodean", "Bodean / Xivilai Moath", "Xivilai Moath",
+        "Braig The Bloody", "Morag Tong Assassin / Braig The Bloody", "Morag Tong Assassin",
+        "Clannfear", "Clannfear / Atronach", "Atronach",
+        "Corrupted Creature", "Dream Weaver Fedryn / Corrupted Creature", "Dream Weaver Fedryn",
+        "Cursebreaker Deslandra", "Cursebreaker Deslandra / Xenesthissa", "Xenesthissa",
+        "Diving Cliff Racer", "Feral Guardian / Diving Cliff Racer", "Feral Guardian",
+        "Empowered Deslandra", "Enraged Deslandra / Empowered Deslandra", "Enraged Deslandra",
+        "Eveli Sharp Arrow", "Eveli Sharp Arrow / Razum-Dar", "Razum-Dar",
+        "General Deslandra", "Watcher / General Deslandra", "Watcher",
+        "Iudex Ovidius", "Iudex Ovidius / Vampiric Deslandra", "Vampiric Deslandra",
+        "Lich Deslandra", "Shadowscale Akisha / Lich Deslandra", "Shadowscale Akisha",
+        "Mechanist Deslandra", "Wandering Argonian / Mechanist Deslandra", "Wandering Argonian",
+        "Paradax Verus", "Void Centurion Left Arm / Paradax Verus", "Void Centurion Left Arm",
+        "Pale Fingers", "Void Centurion Right Arm / Pale Fingers", "Void Centurion Right Arm",
+        "Zirik", "Zirik / Zazita-Do", "Zazita-Do",
+    }
+    local return_bag = nil
+    for _, enemy_name in ipairs(lvl_1_5_enemies) do
+        if name == enemy_name then
+            if obj ~= nil then
+                return_bag = getObjectFromGUID("904b55")
+            end
+        end
+    end
+    for _, enemy_name in ipairs(lvl_10_20_enemies) do
+        if name == enemy_name then
+            if obj ~= nil then
+                return_bag = getObjectFromGUID("65d32f")
+            end
+        end
+    end
+    for _, enemy_name in ipairs(unique_enemies) do
+        if name == enemy_name then
+            if obj ~= nil then
+                return_bag = getObjectFromGUID("bd6c1b")
+            end
+        end
+    end
+    if obj ~= nil and return_bag ~= nil then
+        getObjectFromGUID("e71040").call('clear_old_chips_remote', {chip_obj=obj})
+        obj.setRotation({0, 180, 0})
+        return_bag.putObject(obj)
+    end
+end

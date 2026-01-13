@@ -1,0 +1,89 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.199,
+        "y": 4.468,
+        "z": 0.362
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "WispmotherWisp.824c0a",
+    "WoodElfMarauderWoodElfBandit.aee4cc",
+    "SpiderMudcrab.3a8f0b",
+    "SkeletonMageSkeleton.64a1cf",
+    "SkeeverSkeeverPup.105705",
+    "RedguardMarauderRedguardBandit.7a772d",
+    "OrcMarauderOrcBandit.752d8a",
+    "NordMarauderNordBandit.bbbfbb",
+    "LurcherSpriggan.687f60",
+    "KhajiitMarauderKhajiitBandit.1f1aae",
+    "ImperialMarauderImperialBandit.cb57aa",
+    "HighElfMarauderHighElfBandit.b9e01f",
+    "DarkElfMarauderDarkElfBandit.3f0211",
+    "CrocodileGuar.4b5a00",
+    "BretonMarauderBretonBandit.e1c0fb",
+    "BearWolf.39cbd8",
+    "ArgonianMarauderArgonianBandit.587507"
+  ],
+  "ContainedObjects_path": "Level15Enemies.904b55",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396410854/5942D821674475F8FAFC955B604A9D1F56A1EE80/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396410224/6094A8EDBD93D805AC560F4427C8602ED37817A5/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "Note: Returning objects to this bag via \"Search\" window, or setting this bag to \"Random\" order will break scripting!",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "904b55",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "Level15Enemies.904b55.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Level 1 / 5 Enemies",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 36.429,
+    "posY": -0.33,
+    "posZ": 11.973,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.7,
+    "scaleY": 0.7,
+    "scaleZ": 0.7
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

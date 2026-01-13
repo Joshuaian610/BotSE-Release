@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.09409,
+    "g": 0.09801,
+    "r": 0.8549
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000048,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/11120791387266350110/E5AA7DF8F0422F6FF0F48141447C1D0E765CB7E0/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/11120791387266350110/E5AA7DF8F0422F6FF0F48141447C1D0E765CB7E0/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "12870c",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "[4]",
+  "LuaScript_path": "HPCounterRed.12870c.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "HP Counter Red",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_red"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -63.94,
+    "posY": 1.138,
+    "posZ": -21.6,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.51,
+    "scaleY": 1,
+    "scaleZ": 0.51
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

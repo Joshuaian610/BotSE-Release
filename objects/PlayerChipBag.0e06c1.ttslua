@@ -1,0 +1,333 @@
+function onObjectLeaveContainer(bag, obj)
+    if bag == self and obj.hasTag('player_chip') then
+        Wait.frames(function()
+        obj.setVar("fresh_out_of_bag", true)
+        obj.clearButtons()
+        end)
+    end
+end
+
+
+function chip_onload(args)
+    local saved_data   = args.saved_data
+    local chip_obj     = args.chip_obj
+    local val          = 0
+    chip_obj.setVar('fresh_out_of_bag', false)
+    chip_obj.setVar('just_flipped', false)
+    chip_obj.setVar('val', val)
+    if saved_data ~= "" then
+        local loaded_data = JSON.decode(saved_data)
+        if loaded_data ~= nil then
+            chip_obj.setVar('val', loaded_data[1])
+            val = loaded_data[1]
+        end
+    end
+    local chip_rotation = chip_obj.getRotation()
+    local position, rotation
+    if chip_rotation.z > 330 or chip_rotation.z < 30 then
+        position = {0.00, 1.00, -1.20}
+        rotation = {250.00, 180.00, 180.00}
+    else
+        position = {0.00, -1.00, -1.20}
+        rotation = {290.00, 0.00, 180.00}
+    end
+    Wait.time(function()
+    if not chip_obj.getVar('fresh_out_of_bag') then
+        chip_obj.clearButtons()
+        create_counter(position, rotation, chip_obj)
+        clear_old_chips(chip_obj)
+        update_tile_stack(chip_obj, val)
+    end
+    end, .5)
+end
+
+
+function update_save(chip_obj, val)
+    local data_to_save = {val}
+    local saved_data         = JSON.encode(data_to_save)
+    chip_obj.script_state  = saved_data
+end
+
+
+function chip_rotate(args)
+    local chip_obj = args.chip_obj
+    local flip     = args.flip
+    chip_obj.clearButtons()
+    clear_old_chips(chip_obj)
+    local val = chip_obj.getVar('max_health_val')
+    chip_obj.setVar('val', val)
+    update_save(chip_obj, val)
+end
+
+
+function create_counter_remote(args)
+    local position = args.position
+    local rotation = args.rotation
+    local chip_obj = args.chip_obj
+    create_counter(position, rotation, chip_obj)
+end
+
+
+function create_counter(position, rotation, chip_obj)
+    local is_color     = false
+    if chip_obj.hasTag('player_red') or chip_obj.hasTag('player_orange') or
+    chip_obj.hasTag('player_blue') or chip_obj.hasTag('player_green') or chip_obj.hasTag('party_companion') then
+        create_color_counter(position, rotation, chip_obj)
+        return
+    end
+    local h_color      = {116/255, 39/255, 26/255, .4}
+    local f_color      = {1, 1, 1, 255}
+    local val          = chip_obj.getVar('val')
+    chip_obj.createButton({
+        label          = tostring(val),
+        click_function = "add_subtract",
+        function_owner = chip_obj,
+        position       = position,
+        rotation       = rotation,
+        height         = 600,
+        width          = 400,
+        font_size      = 350,
+        scale          = {x=1, y=1, z=1},
+        font_color     = f_color,
+        hover_color    = h_color,
+        color          = {116/255, 39/255, 26/255, 255}
+    })
+    chip_obj.setVar('just_flipped', false)
+    chip_obj.setVar('fresh_out_of_bag',false)
+    update_save(chip_obj, val)
+end
+
+
+-- function create_color_counter_remote(args)
+--     local position    = args.position
+--     local rotation    = args.rotation
+--     local chip_obj    = args.chip_obj
+--     local color       = args.color
+--     local hover_color = args.hover_color
+--     create_color_counter(position, rotation, chip_obj, color, hover_color)
+-- end
+
+
+function create_color_counter(position, rotation, chip_obj)
+    local val          = chip_obj.getVar('val')
+    local color        = nil
+    local hover_color  = nil
+    if chip_obj.hasTag('player_red') then
+        color          = {219/255, 26/255, 24/255, 255}
+        hover_color    = {255/255, 77/255, 77/255, 255}
+    elseif chip_obj.hasTag('player_orange') then
+        color          = {244/255, 100/255, 29/255, 255}
+        hover_color    = {255/255, 140/255, 85/255, 255}
+    elseif chip_obj.hasTag('player_blue') then
+        color          = {31/255, 136/255, 255/255, 255}
+        hover_color    = {100/255, 170/255, 255/255, 255}
+    elseif chip_obj.hasTag('player_green') then
+        color          = {49/255, 179/255, 43/255, 255}
+        hover_color    = {110/255, 205/255, 105/255, 255}
+    elseif chip_obj.hasTag('party_companion') then
+        color          = {33/255, 177/255, 155/255, 255}
+        hover_color    = {90/255, 210/255, 190/255, 255}
+    end
+    chip_obj.createButton({
+        label          = tostring(val),
+        click_function = "add_subtract",
+        function_owner = chip_obj,
+        position       = position,
+        rotation       = rotation,
+        height         = 600,
+        width          = 400,
+        font_size      = 350,
+        scale          = {x=1, y=1, z=1},
+        font_color     = "White",
+        hover_color    = hover_color,
+        color          = color
+    })
+    chip_obj.setVar('just_flipped', false)
+    chip_obj.setVar('fresh_out_of_bag',false)
+    update_save(chip_obj, val)
+end
+
+
+function add_subtract(args)
+    local chip_obj  = args.chip_obj
+    local alt_click = args.alt_click
+    local val       = chip_obj.getVar('val')
+    local MIN_VALUE = 0
+    local MAX_VALUE = 999
+    mod = alt_click and -1 or 1
+    new_value = math.min(math.max(val + mod, MIN_VALUE), MAX_VALUE)
+    if val ~= new_value then
+        val = new_value
+        chip_obj.setVar('val', val)
+        update_val(chip_obj, val)
+        update_save(chip_obj, val)
+    end
+    if val == 0 then
+        clear_old_chips(chip_obj)
+        broadcastToAll(chip_obj.getName() .. " Adventurer has been defeated!", "White")
+    else
+        clear_old_chips(chip_obj)
+        update_tile_stack(chip_obj, val)
+    end
+    refresh_counter(chip_obj, val)
+end
+
+
+function update_val(chip_obj, val)
+    chip_obj.editButton({
+        index = 0,
+        label = tostring(val),
+    })
+end
+
+
+function set_val_remote(args)
+    local chip_obj = args.chip_obj
+    local value    = args.val
+    set_val(chip_obj, value)
+end
+
+
+function set_val(chip_obj, value)
+    val = value
+    update_val(chip_obj, val)
+    update_save(chip_obj, val)
+    clear_old_chips(chip_obj)
+    update_tile_stack(chip_obj, val)
+    chip_obj.setVar('val', val)
+end
+
+
+function update_tile_stack_remote(args)
+    local chip_obj = args.chip_obj
+    local val = args.val
+    update_tile_stack(chip_obj, val)
+end
+
+
+function update_tile_stack(chip_obj, val)
+    local maxHP = 60
+    local redBagGUID = "218b6b"
+    local whiteBagGUID = "e1cb0c"
+    local chipHeight = 0.1
+    local pos = chip_obj.getPosition()
+    if val < 0 then val = 0 end
+    if val > maxHP then val = maxHP end
+    clear_old_chips(chip_obj)
+    local lift_height = .75
+    local cast_origin = {pos[1], pos[2] + 0.6, pos[3]}
+    local cast_size = {0.9, 1.25, 0.9}
+    local hits = Physics.cast({
+        origin = cast_origin,
+        direction = {0, 1, 0},
+        type = 3,
+        size = cast_size,
+        max_distance = 0,
+        debug = false,
+    })
+    local lifted = {}
+    for _, hit in ipairs(hits) do
+        if hit.hit_object and hit.hit_object ~= self then
+            local obj = hit.hit_object
+            local orig_pos = obj.getPosition()
+            obj.setPositionSmooth({orig_pos[1], orig_pos[2] + lift_height, orig_pos[3]}, false, true)
+            table.insert(lifted, {obj = obj, pos = orig_pos})
+        end
+    end
+    local whiteCount = math.floor(val / 5)
+    local redCount = val % 5
+    local totalChips = whiteCount + redCount
+    local stackHeight = totalChips * chipHeight
+    local baseY = pos.y - chipHeight / 2
+    local y = baseY
+    local spawnedChips = {}
+    for i = 1, whiteCount do
+        local chip = spawn_chip(whiteBagGUID, {pos[1], y, pos[3]})
+        if chip then
+            table.insert(spawnedChips, chip)
+        end
+        y = y + chipHeight
+    end
+    for i = 1, redCount do
+        local chip = spawn_chip(redBagGUID, {pos[1], y, pos[3]})
+        if chip then
+            table.insert(spawnedChips, chip)
+        end
+        y = y + chipHeight
+    end
+    chip_obj.setPosition({pos[1], baseY + stackHeight + chipHeight / 2 + 0.001, pos[3]})
+    chip_obj.setLock(true)
+    if #spawnedChips == 1 then
+        local chip = spawnedChips[1]
+        local p = chip.getPosition()
+        chip.setPosition({p[1], p[2] - 0.02, p[3]})
+    end
+    Wait.frames(function()
+    if #spawnedChips > 0 then
+        local topChip = spawnedChips[#spawnedChips]
+        topChip.jointTo(chip_obj, {
+            type = "Fixed",
+            collision = true,
+            break_force = 50000.0,
+            break_torque = 50000.0,
+        })
+        for i = #spawnedChips - 1, 1, -1 do
+            local chip = spawnedChips[i]
+            local belowChip = spawnedChips[i + 1]
+            chip.jointTo(belowChip, {
+                type = "Fixed",
+                collision = true,
+                break_force = 50000.0,
+                break_torque = 50000.0,
+            })
+        end
+    end
+    end, 5)
+    chip_obj.setLock(false)
+end
+
+
+function clear_old_chips_remote(args)
+    local chip_obj = args.chip_obj
+    clear_old_chips(chip_obj)
+end
+
+
+function clear_old_chips(chip_obj)
+    local modelPos = chip_obj.getPosition()
+    local hitList = Physics.cast({
+        origin       = modelPos,
+        direction    = {0, -1, 0},
+        type         = 2,
+        size         = {0.5, 0.5, 0.5},
+        max_distance = 5,
+        debug        = false,
+    })
+    for _, hit in ipairs(hitList) do
+        local hitObject = hit.hit_object
+        if hitObject and string.find(hitObject.getName(), "HP Chip") and hitObject ~= chip_obj then
+            hitObject.jointTo()
+            hitObject.destruct()
+        end
+    end
+end
+
+
+function spawn_chip(bagGUID, position)
+    local bag = getObjectFromGUID(bagGUID)
+    if not bag then
+        return
+    end
+    local chip = bag.takeObject({
+        position = position,
+        smooth = false,
+    })
+    return chip
+end
+
+
+function refresh_counter(chip_obj, val)
+    local counter = (chip_obj.hasTag('player_red') and getObjectFromGUID("12870c")) or (chip_obj.hasTag('player_orange') and getObjectFromGUID("a6b220")) or
+    (chip_obj.hasTag('player_blue') and getObjectFromGUID("68b5c6")) or (chip_obj.hasTag('player_green') and getObjectFromGUID("a8ecfa"))
+    if counter then counter.call('set_val', val) end
+end

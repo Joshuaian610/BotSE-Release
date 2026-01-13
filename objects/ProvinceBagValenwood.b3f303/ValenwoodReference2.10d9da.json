@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 10912,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "109": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14147321131299159145/90079658D030D085023079157E8F478F4533DBFB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/17643899066616733277/D907EE0B2DCB41D671D6344D1CCFFE5ECA5ADD79/",
+      "NumHeight": 2,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "10d9da",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Valenwood Reference 2",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "obj_vw",
+    "reference"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 101.675,
+    "posY": 11.845,
+    "posZ": 53.756,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.94,
+    "scaleY": 1,
+    "scaleZ": 1.94
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

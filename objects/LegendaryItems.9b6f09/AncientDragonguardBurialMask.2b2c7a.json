@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 7814,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "78": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/17190504054543539437/E925761F047807861A89F3CB968B8EA51364AA5B/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/11659999705239146704/885604D16533842F6B2728306D64015B7CA57CDF/",
+      "NumHeight": 7,
+      "NumWidth": 10,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2b2c7a",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Ancient Dragonguard Burial Mask",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -10.233,
+    "posY": 1.69,
+    "posZ": -3.025,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

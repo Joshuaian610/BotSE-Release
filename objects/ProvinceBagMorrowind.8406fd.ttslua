@@ -1,0 +1,61 @@
+local namePairs = {
+    ["Kwama Warrior"] = "Scrib",
+    ["Cliff Strider"] = "Cliff Racer",
+    ["Nix-Hound Pack"] = "Nix-Hound",
+    ["Dark Elf Pillager"] = "Dark Elf Raider"
+}
+
+
+local function getCombinedName(name1, name2)
+    return name1 .. " / " .. name2
+end
+
+
+local function getNameByRotation(name1, name2, zrot)
+    if zrot > 330 or zrot < 30 then
+        return name1
+    else
+        return name2
+    end
+end
+
+
+function onObjectLeaveContainer(bag, obj)
+    if bag == self and obj.hasTag('enemy_chip') then
+        Wait.frames(function()
+        obj.setGMNotes("e71040")
+        obj.clearButtons()
+        obj.setVar("fresh_out_of_bag", true)
+        obj.setVar("first_rest_check", true)
+
+        local rot = obj.getRotation()
+        local name = obj.getName()
+        for name1, name2 in pairs(namePairs) do
+            local combined = getCombinedName(name1, name2)
+            if (name == name1 or name == name2 or name == combined) and obj ~= nil then
+                obj.setName(getNameByRotation(name1, name2, rot.z))
+                break
+            end
+        end
+        end)
+    end
+end
+
+
+function onObjectEnterContainer(container, enter_object)
+    if container ~= self then return end
+
+    local name = enter_object.getName()
+    for name1, name2 in pairs(namePairs) do
+        if name == name1 or name == name2 then
+            local rename_obj = container.takeObject()
+            if rename_obj ~= nil then
+                Wait.frames(function()
+                rename_obj.setName(getCombinedName(name1, name2))
+                self.putObject(rename_obj)
+                end, 5)
+                break
+            end
+        end
+    end
+end

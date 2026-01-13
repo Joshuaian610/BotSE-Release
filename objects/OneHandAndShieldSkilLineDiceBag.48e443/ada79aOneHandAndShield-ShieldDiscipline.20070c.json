@@ -1,0 +1,108 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomDice": {
+      "Type": 1
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/19809857110813118/FD0A2287DC1D8B1A3A19E6F444ADBA0DAB479E54/",
+    "WidthScale": 0
+  },
+  "Description": "[006835]■[-] Active [006835]■[-]\nWhen you place this die in an active slot, deal X damage to your target. When you are dealt damage by an enemy, you may exhaust this die to prevent 1 damage.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "20070c",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Dice",
+  "Nickname": "[ada79a]One Hand And Shield[-]: Shield Discipline",
+  "RotationValues": [
+    {
+      "Rotation": {
+        "x": -90,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "1"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "2"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": -90
+      },
+      "Value": "3"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 90
+      },
+      "Value": "4"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": -180
+      },
+      "Value": "5"
+    },
+    {
+      "Rotation": {
+        "x": 90,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "6"
+    }
+  ],
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "active_zone",
+    "dice_zone"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -69.501,
+    "posY": 1.693,
+    "posZ": 13.101,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

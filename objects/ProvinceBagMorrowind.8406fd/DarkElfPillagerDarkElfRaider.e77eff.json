@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673621633/F0F891B818FC748996D79A402BA2E6352F626106/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673621633/F0F891B818FC748996D79A402BA2E6352F626106/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Dodge:\nWhen this unit is engaged by an opposing unit, prevent damage dealt to this unit equal to the number of rolled skill dice that do not deal damage.\n\nRally:\nAfter this unit is defeated, if it is not the last enemy in play, deploy an enemy of the next lowest level to the hex where this unit was defeated. Then, return this unit to its enemy bag.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "e77eff",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[6]",
+  "LuaScript_path": "ProvinceBagMorrowind.8406fd/DarkElfPillagerDarkElfRaider.e77eff.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Dark Elf Pillager / Dark Elf Raider",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman",
+    "obj_mw",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 32.812,
+    "posY": 3.1,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

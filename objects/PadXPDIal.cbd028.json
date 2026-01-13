@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/11116310382797392764/D8C94E3F539DDA22AC98DB19D105364F67D76E4A/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/11116310382797392764/D8C94E3F539DDA22AC98DB19D105364F67D76E4A/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "cbd028",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Pad XP DIal",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -49.122,
+    "posY": 1.338,
+    "posZ": -1.77,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.4,
+    "scaleY": 1,
+    "scaleZ": 1.4
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

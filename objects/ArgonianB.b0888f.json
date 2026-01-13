@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674111915/9DD02CA4517D32FDB21773C682B331D9EE87EB3D/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "disabled",
+  "GUID": "b0888f",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "[0]",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Argonian B",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "argonian_a",
+    "btn_race_selection",
+    "player_green"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 44.09,
+    "posY": 1.413,
+    "posZ": -25.122,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 0.36,
+    "scaleY": 0.75,
+    "scaleZ": 0.36
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

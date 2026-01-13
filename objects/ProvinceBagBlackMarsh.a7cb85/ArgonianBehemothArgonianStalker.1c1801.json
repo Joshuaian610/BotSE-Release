@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673614454/784341C5A50AD32BB5C544773079A2C81853A2E7/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673614454/784341C5A50AD32BB5C544773079A2C81853A2E7/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Daze:\nAfter this unit’s engage, apply a Daze status die to this unit’s target.\n\nDivert:\nThis unit cannot lose its last HP unless it is already at 1 HP prior to taking damage.\n\nEnfeeble 3:\nAfter this unit’s engage, its target gains 3 light fatigue.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "1c1801",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[8]",
+  "LuaScript_path": "ProvinceBagBlackMarsh.a7cb85/ArgonianBehemothArgonianStalker.1c1801.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Argonian Behemoth / Argonian Stalker",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman",
+    "obj_bm",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -62.188,
+    "posY": 3.1,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

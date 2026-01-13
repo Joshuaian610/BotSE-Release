@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 7513,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "75": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/16923839817872583418/E7087105C5BD58976F3A61EF19FCC5933B8B592D/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/11311581143947813722/B631EBA2EC2310027DFC506167CF424B4294CB6A/",
+      "NumHeight": 4,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "447885",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Timber Mammoth Overripe Cheese",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -20.453,
+    "posY": 1.324,
+    "posZ": -2.181,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 15215,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "95": {
+      "BackIsHidden": false,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14134174520571536185/1132B3A82A663501223C70378E1B2AAB8A38F8EA/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/17439593102085677454/86A7C36BDBB58123F12FE8A113EA6B0885B44219/",
+      "NumHeight": 2,
+      "NumWidth": 10,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "f50f30",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Orc",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "orc_b"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 23.086,
+    "posY": 1.694,
+    "posZ": -4.973,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 3.38,
+    "scaleY": 1,
+    "scaleZ": 3.38
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

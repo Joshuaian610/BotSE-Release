@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.22745,
+    "g": 0.30588,
+    "r": 0.38039
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.30263564,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/12906407619858710512/9D7C17D3341FB6F69003586CDB091CDA24805959/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/12906407619858710512/9D7C17D3341FB6F69003586CDB091CDA24805959/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "21d708",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "BagButtonSideQuest.cdb313/ButtonQuestAction.21d708.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Quest Action",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "button_quest",
+    "non_int"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -33.506,
+    "posY": -0.887,
+    "posZ": 56.834,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 8,
+    "scaleX": 1.79,
+    "scaleY": 1,
+    "scaleZ": 2.01
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

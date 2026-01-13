@@ -1,0 +1,135 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.485,
+        "y": 0.776,
+        "z": 0.033
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.519,
+        "y": 0.776,
+        "z": 0.026
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.575,
+        "y": 0.776,
+        "z": 0.066
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.653,
+        "y": 0.776,
+        "z": 0.073
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "WoodElf.b3e5e0",
+    "WoodElf.a49e33",
+    "Orc.003c18",
+    "Orc.da2221",
+    "Redguard.bd07e6",
+    "Redguard.4f2e96",
+    "Nord.69b338",
+    "Nord.48361b",
+    "Khajiit.9bb114",
+    "Khajiit.61e861",
+    "Imperial.616696",
+    "Imperial.d2f1a8",
+    "HighElf.f9beb9",
+    "HighElf.3fa0c4",
+    "DarkElf.030d21",
+    "DarkElf.d585c1",
+    "Breton.729755",
+    "Breton.c81683",
+    "Argonian.98e8e9",
+    "Argonian.b04060"
+  ],
+  "ContainedObjects_path": "PlayerChipBag.18de0f",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396519216/135E7DDE780B36819A155EDE4ED76F2690743B92/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "Tip - While searching, hold Alt to zoom in on a chip portrait in the bag. Hold Shift+Alt to zoom in on the reverse side.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "18de0f",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "PlayerChipBag.18de0f.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Player Chip Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 36.373,
+    "posY": 2.019,
+    "posZ": 1.011,
+    "rotX": 0,
+    "rotY": 270,
+    "rotZ": 0,
+    "scaleX": 0.9,
+    "scaleY": 0.9,
+    "scaleZ": 0.9
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

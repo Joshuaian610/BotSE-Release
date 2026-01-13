@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 10002,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "100": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/16826218065801254954/5987197BEBA20F5C8705A048982AD88FCAF97670/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/11116523238038407701/A61A10614AB111ABAA97D6AA19C68A24C689D8E2/",
+      "NumHeight": 4,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "4b7007",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Heeding the Call",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_conflict",
+    "obj_vw"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -10.523,
+    "posY": 1.704,
+    "posZ": 13.417,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

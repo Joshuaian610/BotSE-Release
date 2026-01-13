@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.206132635
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234558975766/A72A366CCB01E3F8F93F9711C158C3439AAD7D44/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c9d6bf",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Illusion Skill Line Token",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "skill_token_mage"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 26.378,
+    "posY": 2.699,
+    "posZ": 16.79,
+    "rotX": 0,
+    "rotY": 330,
+    "rotZ": 0,
+    "scaleX": 0.24,
+    "scaleY": 1,
+    "scaleZ": 0.24
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

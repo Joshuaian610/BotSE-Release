@@ -1,0 +1,56 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "ReferenceRight.b1ea49",
+    "CampaignJournal.eda22b",
+    "ReferenceLeft.259384"
+  ],
+  "ContainedObjects_path": "UnusedObjectBag.4da6b0",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "4da6b0",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Unused Object Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 6.645,
+    "posY": 1.935,
+    "posZ": 49.59,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.3,
+    "scaleY": 0.3,
+    "scaleZ": 0.3
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

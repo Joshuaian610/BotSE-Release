@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23528,
+    "g": 0.23528,
+    "r": 0.23528
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000033,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/17900236042742520406/6AEEDB5B6B941F7849B86B2555A032208BD63ED6/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/17900236042742520406/6AEEDB5B6B941F7849B86B2555A032208BD63ED6/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "disabled",
+  "GUID": "7ba15c",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Healer",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "btn_class",
+    "non_int",
+    "player_red"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -46.75,
+    "posY": 1.338,
+    "posZ": -27.636,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.16,
+    "scaleY": 1,
+    "scaleZ": 0.16
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

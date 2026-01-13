@@ -1,0 +1,266 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 11.627,
+        "y": 0.113,
+        "z": -8.153
+      }
+    },
+    {
+      "Position": {
+        "x": 11.152,
+        "y": 0.113,
+        "z": -9.461
+      }
+    },
+    {
+      "Position": {
+        "x": 9.923,
+        "y": 0.113,
+        "z": -9.812
+      }
+    },
+    {
+      "Position": {
+        "x": 8.685,
+        "y": 0.113,
+        "z": -9.376
+      }
+    },
+    {
+      "Position": {
+        "x": 8.122,
+        "y": 0.113,
+        "z": -8.067
+      }
+    },
+    {
+      "Position": {
+        "x": -7.334,
+        "y": 0.113,
+        "z": -8.929
+      }
+    },
+    {
+      "Position": {
+        "x": -9.162,
+        "y": 0.113,
+        "z": -9.009
+      }
+    },
+    {
+      "Position": {
+        "x": -10.558,
+        "y": 0.113,
+        "z": -8.997
+      }
+    },
+    {
+      "Position": {
+        "x": -11.919,
+        "y": 0.113,
+        "z": -9.021
+      }
+    },
+    {
+      "Position": {
+        "x": 11.096,
+        "y": 0.113,
+        "z": 6.66
+      }
+    },
+    {
+      "Position": {
+        "x": 9.123,
+        "y": 0.113,
+        "z": 6.658
+      }
+    },
+    {
+      "Position": {
+        "x": 7.144,
+        "y": 0.113,
+        "z": 6.656
+      }
+    },
+    {
+      "Position": {
+        "x": 5.235,
+        "y": 0.113,
+        "z": 6.695
+      }
+    },
+    {
+      "Position": {
+        "x": 3.23,
+        "y": 0.113,
+        "z": 6.694
+      }
+    },
+    {
+      "Position": {
+        "x": 1.267,
+        "y": 0.113,
+        "z": 6.712
+      }
+    },
+    {
+      "Position": {
+        "x": -3.616,
+        "y": 0.261,
+        "z": 6.772
+      }
+    },
+    {
+      "Position": {
+        "x": -5.529,
+        "y": 0.261,
+        "z": 6.822
+      }
+    },
+    {
+      "Position": {
+        "x": -6.954,
+        "y": 0.113,
+        "z": 6.736
+      }
+    },
+    {
+      "Position": {
+        "x": -8.491,
+        "y": 0.113,
+        "z": 6.789
+      }
+    },
+    {
+      "Position": {
+        "x": -9.96,
+        "y": 0.113,
+        "z": 6.768
+      }
+    },
+    {
+      "Position": {
+        "x": -11.467,
+        "y": 0.261,
+        "z": 6.784
+      }
+    },
+    {
+      "Position": {
+        "x": 4.659,
+        "y": 0.113,
+        "z": 1.679
+      }
+    },
+    {
+      "Position": {
+        "x": 1.553,
+        "y": 0.113,
+        "z": 1.679
+      }
+    },
+    {
+      "Position": {
+        "x": 1.553,
+        "y": 0.113,
+        "z": 4.518
+      }
+    },
+    {
+      "Position": {
+        "x": -4.682,
+        "y": 0.113,
+        "z": -1.248
+      }
+    },
+    {
+      "Position": {
+        "x": -4.682,
+        "y": 0.113,
+        "z": 1.68
+      }
+    },
+    {
+      "Position": {
+        "x": -7.735,
+        "y": -0.261,
+        "z": 4.511
+      }
+    },
+    {
+      "Position": {
+        "x": -7.835,
+        "y": 0.113,
+        "z": -1.248
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/15116306309697017101/4C9DD080C170CC2A3B962255D1DA0A99BEA50FDB/",
+    "Convex": false,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17458294081295899850/3788A412234A12BEF50B4A0C129B682D019A4CCB/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/15116306309697017101/4C9DD080C170CC2A3B962255D1DA0A99BEA50FDB/",
+    "NormalURL": "",
+    "TypeIndex": 4
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a1c5f4",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Red Adventurer Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "player_red"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -54.97,
+    "posY": 1.249,
+    "posZ": -28,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.43,
+    "scaleY": 0.43,
+    "scaleZ": 0.43
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

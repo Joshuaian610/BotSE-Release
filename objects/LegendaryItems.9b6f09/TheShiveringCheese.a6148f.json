@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 7900,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "79": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/9967040568967677208/A8C609D88DF94892ACEFB34F9A2C4544C4F8FCB3/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/17347136304897805706/E00FB04C9CBAEE445DFBDAE00E06E11D5A517CDD/",
+      "NumHeight": 1,
+      "NumWidth": 1,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a6148f",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "CardCustom",
+  "Nickname": "The Shivering Cheese",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 61.635,
+    "posY": 1.835,
+    "posZ": -10.548,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

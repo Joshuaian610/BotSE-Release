@@ -1,0 +1,8 @@
+function onLoad()
+    self.addContextMenuItem("Return Cache Chip", return_chip)
+end
+
+function return_chip(player_color, position, object)
+    object.setRotation({0, 180, 0})
+    getObjectFromGUID("e1214f").putObject(object)
+end

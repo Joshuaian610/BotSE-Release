@@ -1,0 +1,80 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "CircleOfChampions.9c62b2",
+    "DarkBrotherhood.b8b42c",
+    "EyesOfTheQueen.38c9ff",
+    "FightersGuild.df6960",
+    "MagesGuild.db1f2a",
+    "OuterWatch.9fce72",
+    "PsijicOrder.2d8368",
+    "ThievesGuild.37a319",
+    "Undaunted.94b146"
+  ],
+  "ContainedObjects_path": "Guilds.590950",
+  "CustomDeck": {
+    "80": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14437421132079169419/DACA33FE927778574AA521C0F071E95ECC77EB9E/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9826104293155195480/9E3BD745B4746854890644772392AD12857FEADD/",
+      "NumHeight": 2,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    8005,
+    8006,
+    8007,
+    8008
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "590950",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Guilds",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 65.81,
+    "posY": 1.402,
+    "posZ": -2.828,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,49 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0.5098,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "78ad8b",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "ScriptingTrigger",
+  "Nickname": "Zone Player Adv Mat Green C5R4",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "dice_zone"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 54.73,
+    "posY": 0.95,
+    "posZ": -29.955,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.59,
+    "scaleY": 0.5,
+    "scaleZ": 0.61
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

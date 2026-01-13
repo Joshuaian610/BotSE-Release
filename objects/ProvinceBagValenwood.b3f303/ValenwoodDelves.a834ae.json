@@ -1,0 +1,86 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "BlightedParadise.b074e3",
+    "ElevatedOutpost.9945e3",
+    "OvergrownThicket.d1edc0",
+    "Graht-OakClearing.139a84",
+    "SwirlingLeaves.614538",
+    "BurrowersPath.7fe929",
+    "WindingBranches.32cb3f",
+    "SpitefulRoots.ec2891",
+    "TracklessForest.e56d9b",
+    "MoonlitGlade.3b2f5c"
+  ],
+  "ContainedObjects_path": "ValenwoodDelves.a834ae",
+  "CustomDeck": {
+    "84": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14147321131299159145/90079658D030D085023079157E8F478F4533DBFB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9540384890053205689/88FD39959046C9AC34162B1DA814ECEEF4602835/",
+      "NumHeight": 2,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    8409,
+    8408,
+    8407,
+    8406,
+    8405,
+    8404,
+    8403,
+    8402,
+    8401,
+    8400
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a834ae",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Valenwood Delves",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "delve",
+    "obj_vw"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 102.696,
+    "posY": 36.253,
+    "posZ": 14.693,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

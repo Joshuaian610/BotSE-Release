@@ -1,0 +1,381 @@
+require("HandleEncounters")
+
+
+
+function initButtonsEnemyType(obj)
+
+  obj.clearButtons()
+
+  local enemyType = obj.getGMNotes()
+
+  if enemyType == "None" then
+    obj.createButton({
+      click_function = "enableHuman",
+      function_owner = self,
+      label          = "",
+      position       = { -0.87, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Humanoid type.",
+    })
+    obj.createButton({
+      click_function = "enableBeast",
+      function_owner = self,
+      label          = "",
+      position       = { -0.01, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Beast type.",
+    })
+    obj.createButton({
+      click_function = "enableDaedra",
+      function_owner = self,
+      label          = "",
+      position       = { 0.83, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Daedra type.",
+    })
+    
+  elseif enemyType == "Human" then
+    obj.createButton({
+      click_function = "enableNone",
+      function_owner = self,
+      label          = "✔",
+      position       = { -0.87, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to uncheck.\n\nWhile checked, enemy deployment draws will be Humanoid type.",
+    })
+    obj.createButton({
+      click_function = "enableBeast",
+      function_owner = self,
+      label          = "",
+      position       = { -0.01, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Beast type.",
+    })
+    obj.createButton({
+      click_function = "enableDaedra",
+      function_owner = self,
+      label          = "",
+      position       = { 0.83, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Daedra type.",
+    })
+  
+  elseif enemyType == "Beast" then
+    obj.createButton({
+      click_function = "enableHuman",
+      function_owner = self,
+      label          = "",
+      position       = { -0.87, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Humanoid type.",
+    })
+    obj.createButton({
+      click_function = "enableNone",
+      function_owner = self,
+      label          = "✔",
+      position       = { -0.01, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to uncheck.\n\nWhile checked, enemy deployment draws will be Beast type.",
+    })
+    obj.createButton({
+      click_function = "enableDaedra",
+      function_owner = self,
+      label          = "",
+      position       = { 0.83, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Daedra type.",
+    })
+  
+  elseif enemyType == "Daedra" then
+    obj.createButton({
+      click_function = "enableHuman",
+      function_owner = self,
+      label          = "",
+      position       = { -0.87, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Humanoid type.",
+    })
+    obj.createButton({
+      click_function = "enableBeast",
+      function_owner = self,
+      label          = "",
+      position       = { -0.01, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to check.\n\nWhile checked, enemy deployment draws will be Beast type.",
+    })
+    obj.createButton({
+      click_function = "enableNone",
+      function_owner = self,
+      label          = "✔",
+      position       = { 0.83, .11, 0.50 },
+      width          = 600,
+      height         = 600,
+      font_size      = 600,
+      scale          = { 0.5, 0.5, 0.5 },
+      color          = { 34/255, 40/255, 64/255 },
+      font_color     = "White",
+      tooltip        = "Click to uncheck.\n\nWhile checked, enemy deployment draws will be Daedra type.",
+    })
+  end
+
+end
+
+
+function initButtonDeployEnemy(obj)
+
+  obj.clearButtons()
+
+  local enemyLevel = obj.getName():match("Level%s+(%d+)")
+  obj.createButton({
+    label          = "",
+    click_function = "deployEnemy",
+    function_owner = self,
+    position       = {0.00, 0.31, 0.00},
+    height         = 1000,
+    width          = 2600,
+    scale          = {x=1.00, y=1.00, z=1.00},
+    color          = {1, 1, 1, 0},
+    hover_color    = {1, 1, 1, .6},
+    tooltip        = "Click this button to Deploy a level " .. enemyLevel .. " enemy."
+  })
+end
+
+
+function enableNone()
+  local obj = getObjectbyName("Button Enemy Type Selector")
+  obj.setGMNotes("None")
+  initButtonsEnemyType(obj)
+end
+
+
+function enableHuman()
+  local obj = getObjectbyName("Button Enemy Type Selector")
+  obj.setGMNotes("Human")
+  initButtonsEnemyType(obj)
+end
+
+
+function enableBeast()
+  local obj = getObjectbyName("Button Enemy Type Selector")
+  obj.setGMNotes("Beast")
+  initButtonsEnemyType(obj)
+end
+
+
+function enableDaedra()
+  local obj = getObjectbyName("Button Enemy Type Selector")
+  obj.setGMNotes("Daedra")
+  initButtonsEnemyType(obj)
+end
+
+
+function animateButtonDeployEnemy(obj)
+  obj.clearButtons()
+  Wait.time(function() initButtonDeployEnemy(obj) end, .5)
+  local pos = obj.getPosition()
+  pos.y = pos.y - .29
+  obj.setPosition(pos)
+  pos.y = pos.y + .29
+  obj.setPositionSmooth(pos, false, false)
+end
+
+
+function deployEnemy(button, _, _)
+
+  -- this function handles the button click and deployment of enemy chips
+
+  animateButtonDeployEnemy(button)
+
+  local posDeploy = {
+    { -28.00, 2.00, -13.00 },
+    { -24.00, 2.00, -13.00 },
+    { -20.00, 2.00, -13.00 },
+    { -16.00, 2.00, -13.00 },
+    { -12.00, 2.00, -13.00 },
+    { -8.00, 2.00, -13.00 },
+    { -4.00, 2.00, -13.00 },
+    { 0.00, 2.00, -13.00 },
+    { 4.00, 2.00, -13.00 },
+    { 8.00, 2.00, -13.00 },
+    { 12.00, 2.00, -13.00 },
+    { 16.00, 2.00, -13.00 },
+    { -28.00, 2.00, -8.00 },
+    { -24.00, 2.00, -8.00 },
+    { -20.00, 2.00, -8.00 },
+    { -16.00, 2.00, -8.00 },
+    { -12.00, 2.00, -8.00 },
+    { -8.00, 2.00, -8.00 },
+    { -4.00, 2.00, -8.00 },
+    { 0.00, 2.00, -8.00 },
+    { 4.00, 2.00, -8.00 },
+    { 8.00, 2.00, -8.00 },
+    { 12.00, 2.00, -8.00 },
+    { 16.00, 2.00, -8.00 },
+  }
+
+  local enemyLevel = tonumber(button.getName():match("Level%s+(%d+)"))
+
+  local buttonEnemyType = getObjectbyName("Button Enemy Type Selector")
+  local enemyType = "None"
+  if buttonEnemyType then
+    enemyType = buttonEnemyType.getGMNotes()
+  end
+
+  local nameDrawBag = (enemyLevel == 1 or enemyLevel == 5) and "Level 1 / 5 Enemies" or "Level 10 / 20 Enemies"
+  local bagEnemyDraw = getObjectbyName(nameDrawBag)
+  if not bagEnemyDraw then log("deployEnemy(): bagEnemyDraw not found") return end
+
+ local bagObjects = bagEnemyDraw.getObjects()
+  if #bagObjects == 0 or bagObjects == nil then broadcastToAll("Draw bag is empty!", "Orange") return end
+
+  function isNear(pos, slot, tol)
+    return math.abs(pos.x - slot[1]) <= tol and math.abs(pos.z - slot[3]) <= tol
+  end
+
+  -- initialize position check table
+  local slotsFilled = {}
+  for i = 1, #posDeploy do
+    slotsFilled[i] = false
+  end
+
+  -- check zone, get positions to find next available placement position
+  local tolerance = 1
+  local zone = getObjectFromGUID("fecaa4")
+  if zone then
+    for _, obj in pairs(zone.getObjects()) do
+      if obj.hasTag('enemy_chip') then
+        local pos = obj.getPosition()
+        for i, slot in ipairs(posDeploy) do
+          if isNear(pos, slot, tolerance) then
+            slotsFilled[i] = true
+            break
+          end
+        end
+      end
+    end
+  end
+
+  local firstFreeSlot = nil
+  for i = 1, #slotsFilled do
+    if not slotsFilled[i] then
+      firstFreeSlot = i
+      break
+    end
+  end
+
+  if firstFreeSlot then
+    local enemyChipSide = (enemyLevel == 1 or enemyLevel == 10) and "Low" or "High"
+    local rotDrawnEnemy  = enemyChipSide == "Low" and { 0, 180, 180 } or { 0, 180, 0 }
+    local posDrawnEnemy  = posDeploy[firstFreeSlot]
+    local drawnEnemy     = nil
+    local validTags      = { enemyHuman = true, enemyBeast = true, enemyDaedra = true }
+
+    if enemyType ~= "None" then
+      for _, object in pairs(bagEnemyDraw.getObjects()) do
+        local objTags = object.tags
+
+        for _, tag in ipairs(objTags) do
+            local tagLeft, tagRight = tag:match("([^_]+)_([^_]+)")
+            local primaryTag
+
+            if tagLeft and tagRight then
+                if validTags[tagLeft] and validTags[tagRight] then
+                    primaryTag = (enemyChipSide == "Low") and tagLeft or tagRight
+                else
+                    primaryTag = nil
+                end
+            else
+                primaryTag = validTags[tag] and tag or nil
+            end
+
+            if primaryTag
+            and ((primaryTag == "enemyHuman"  and enemyType == "Human")
+              or (primaryTag == "enemyBeast"  and enemyType == "Beast")
+              or (primaryTag == "enemyDaedra" and enemyType == "Daedra"))
+            then
+                drawnEnemy = bagEnemyDraw.takeObject({rotation = rotDrawnEnemy, guid = object.guid})
+                break
+            end
+        end
+
+        if drawnEnemy then break end
+      end
+
+    else
+      drawnEnemy = bagEnemyDraw.takeObject({rotation = rotDrawnEnemy})
+    end
+
+    if drawnEnemy == nil then
+      broadcastToAll("No enemies of selected type and level left in draw bag.", "Orange")
+      return
+    end
+
+    Wait.frames(function()
+      drawnEnemy.clearButtons()
+      drawnEnemy.setPosition(posDrawnEnemy, false, true)
+
+      Wait.time(function()
+        drawnEnemy.clearButtons()
+        broadcastToAll("Level " .. enemyLevel .. " Enemy Deployed: " .. drawnEnemy.getName(), "White")
+      end, .25)
+    end)
+  end
+
+end
+
+

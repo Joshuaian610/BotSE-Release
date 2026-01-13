@@ -1,0 +1,80 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "ThroneRoom.0ed116",
+    "Armory.25323c",
+    "DungeonCache.7ee0b7",
+    "ArmedGuards.98fb44",
+    "DarkenedHall.c24d67",
+    "DustyCorner.c7a311",
+    "TreasureCache.6aabb3"
+  ],
+  "ContainedObjects_path": "GeneralDelves.18949b",
+  "CustomDeck": {
+    "90": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14147321131299159145/90079658D030D085023079157E8F478F4533DBFB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/15092184773386729193/85B402D16A6C8FC224E5F546EA444094E154370D/",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    9006,
+    9005,
+    9004,
+    9003,
+    9002,
+    9001,
+    9000
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "18949b",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "GeneralDelves.18949b.ttslua",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "General Delves",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "delve",
+    "obj_ge"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 53.318,
+    "posY": 1.393,
+    "posZ": -8.252,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

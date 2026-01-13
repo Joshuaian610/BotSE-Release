@@ -1,0 +1,63 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 0.53,
+    "r": 0.11799
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000018,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/15249142680520073629/6F07B11B24DD19D5720D157232FCA3AD150A8C8F/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/15249142680520073629/6F07B11B24DD19D5720D157232FCA3AD150A8C8F/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "test",
+  "GUID": "e7bbcc",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Banner",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "banner",
+    "btn_race_selection",
+    "non_int",
+    "player_blue"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 8.85,
+    "posY": 1.338,
+    "posZ": -23.75,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.65,
+    "scaleY": 1,
+    "scaleZ": 0.65
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

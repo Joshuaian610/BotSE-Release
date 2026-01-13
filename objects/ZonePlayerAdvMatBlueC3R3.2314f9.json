@@ -1,0 +1,49 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0.5098,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2314f9",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "ScriptingTrigger",
+  "Nickname": "Zone Player Adv Mat Blue C3R3",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "dice_zone"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 16.385,
+    "posY": 0.95,
+    "posZ": -28.73,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.59,
+    "scaleY": 0.5,
+    "scaleZ": 0.61
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

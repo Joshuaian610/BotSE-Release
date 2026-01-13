@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.206132486
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234558973044/4DB67EC26AFFAFBC84AECFD2B9E663ED250B294D/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e5de69",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Destruction Staff Skill Line Token",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "skill_token_mage"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 21.517,
+    "posY": 2.699,
+    "posZ": 16.592,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 0.24,
+    "scaleY": 1,
+    "scaleZ": 0.24
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

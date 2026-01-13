@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23528,
+    "g": 0.23528,
+    "r": 0.23528
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000033,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/15972142854240084072/3183567B42EC57BD3C62EAB4942988C4D82B244F/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/9391302824971277820/750D5995D098EE1B95B172A97E8B1C93656A3F8F/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "disabled",
+  "GUID": "b7373d",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Bard",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "btn_class",
+    "non_int",
+    "player_red"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -46.75,
+    "posY": 1.338,
+    "posZ": -26.383,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.16,
+    "scaleY": 1,
+    "scaleZ": 0.16
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

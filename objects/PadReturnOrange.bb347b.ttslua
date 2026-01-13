@@ -1,0 +1,1 @@
+function onObjectCollisionEnter(info) _G['collision_handler']('Orange', info) end

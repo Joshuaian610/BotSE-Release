@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 4019,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "40": {
+      "BackIsHidden": false,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/28817515671990566/8DC68CB2380897EEC852468E9DEF6AD6E264CAAF/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/28817515671989736/E4EB3AE61ABF669DBA1F3C418BF1EB4DD51CBAD8/",
+      "NumHeight": 3,
+      "NumWidth": 10,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6966ad",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Province Poacher",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "side_quest"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 78.191,
+    "posY": 1.711,
+    "posZ": -1.19,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 2.05,
+    "scaleY": 1,
+    "scaleZ": 2.05
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

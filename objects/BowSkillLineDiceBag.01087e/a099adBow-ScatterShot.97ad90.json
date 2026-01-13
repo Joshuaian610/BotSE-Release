@@ -1,0 +1,108 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomDice": {
+      "Type": 1
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/19809857110809480/917C68D09447E2000163121F390E3A1C0BDEC79A/",
+    "WidthScale": 0
+  },
+  "Description": "[c86d01]★[-] Instant [c86d01]★[-]\nAll damage dealt to your target this engage may also be dealt to another targetable enemy. Defense ignored as a result of Snipe dice may also be ignored for this enemy.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "97ad90",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Dice",
+  "Nickname": "[a099ad]Bow[-]: Scatter Shot",
+  "RotationValues": [
+    {
+      "Rotation": {
+        "x": -90,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "1"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "2"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": -90
+      },
+      "Value": "3"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 90
+      },
+      "Value": "4"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": -180
+      },
+      "Value": "5"
+    },
+    {
+      "Rotation": {
+        "x": 90,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "6"
+    }
+  ],
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "active_zone",
+    "dice_zone"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -65.544,
+    "posY": 1.693,
+    "posZ": 21.101,
+    "rotX": 270,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

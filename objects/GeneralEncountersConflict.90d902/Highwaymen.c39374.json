@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 10803,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "108": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15909500411437600158/A6A064E436A67F7B88CC65C144D2D52E823077ED/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10855492560291937561/D0D89EF86E19E6C413C27841FD94DE1205C6EB04/",
+      "NumHeight": 5,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c39374",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Highwaymen",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_conflict",
+    "obj_ge"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -6.932,
+    "posY": 1.714,
+    "posZ": 4.508,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

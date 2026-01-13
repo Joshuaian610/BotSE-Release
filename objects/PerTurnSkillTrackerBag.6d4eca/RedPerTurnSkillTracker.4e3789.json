@@ -1,0 +1,57 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.32941,
+    "r": 0
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/9312679278036835004/F17779512D223D3D2C6F4298481E704011B24E17/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/15559412696461735913/C9C1BF55AC8048811E971488762B3323EC128451/",
+    "WidthScale": 0
+  },
+  "Description": "READY\n\nFlip to mark nearby Per Turn Skill or Ability as Exhausted.\n(Will be marked as ready on Turn Start Cooldown)",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "4e3789",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "PerTurnSkillTrackerBag.6d4eca/RedPerTurnSkillTracker.4e3789.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Red Per Turn Skill Tracker",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -45.629,
+    "posY": 1.249,
+    "posZ": -33.802,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.25,
+    "scaleY": 1,
+    "scaleZ": 0.25
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

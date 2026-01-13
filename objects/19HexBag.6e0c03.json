@@ -1,0 +1,274 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.011,
+        "y": 0.5,
+        "z": 0.001
+      },
+      "Tags": [
+        "hex_19"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "AttachedSnapPoints": [
+        {
+          "Position": {
+            "x": -1.52841854,
+            "y": 0.05281291,
+            "z": -0.0247535389
+          }
+        },
+        {
+          "Position": {
+            "x": -1.15351462,
+            "y": 0.05162787,
+            "z": 0.6588758
+          }
+        },
+        {
+          "Position": {
+            "x": -0.7717528,
+            "y": 0.0499774255,
+            "z": 1.3210392
+          }
+        },
+        {
+          "Position": {
+            "x": 0.000955308,
+            "y": 0.04978075,
+            "z": 1.30985332
+          }
+        },
+        {
+          "Position": {
+            "x": -0.362304717,
+            "y": 0.05004118,
+            "z": 0.6538575
+          }
+        },
+        {
+          "Position": {
+            "x": -0.7698509,
+            "y": 0.0501518324,
+            "z": -0.00325523014
+          }
+        },
+        {
+          "Position": {
+            "x": -1.14387274,
+            "y": 0.0503066257,
+            "z": -0.6674964
+          }
+        },
+        {
+          "Position": {
+            "x": -0.7725253,
+            "y": 0.05004006,
+            "z": -1.335046
+          }
+        },
+        {
+          "Position": {
+            "x": -0.385641336,
+            "y": 0.05002945,
+            "z": -0.6840883
+          }
+        },
+        {
+          "Position": {
+            "x": 0.3744862,
+            "y": 0.0494401678,
+            "z": 0.6476496
+          }
+        },
+        {
+          "Position": {
+            "x": 0.7539991,
+            "y": 0.0498577319,
+            "z": 1.31405926
+          }
+        },
+        {
+          "Position": {
+            "x": 1.13847983,
+            "y": 0.0497397445,
+            "z": 0.6539245
+          }
+        },
+        {
+          "Position": {
+            "x": 0.770130038,
+            "y": 0.04959653,
+            "z": -0.000202523515
+          }
+        },
+        {
+          "Position": {
+            "x": 0.38578555,
+            "y": 0.0503354445,
+            "z": -0.6750137
+          }
+        },
+        {
+          "Position": {
+            "x": 0.008177206,
+            "y": 0.0504288524,
+            "z": -1.33574891
+          }
+        },
+        {
+          "Position": {
+            "x": 0.756921351,
+            "y": 0.05027809,
+            "z": -1.33051074
+          }
+        },
+        {
+          "Position": {
+            "x": 1.16484964,
+            "y": 0.04994084,
+            "z": -0.7027139
+          }
+        },
+        {
+          "Position": {
+            "x": 1.53498042,
+            "y": 0.04998284,
+            "z": -0.004264855
+          }
+        },
+        {
+          "Position": {
+            "x": 0.0211608522,
+            "y": 0.05051785,
+            "z": -0.009032218
+          }
+        }
+      ],
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomImage": {
+        "CustomToken": {
+          "MergeDistancePixels": 5,
+          "Stackable": false,
+          "StandUp": false,
+          "Thickness": 0.6017743
+        },
+        "ImageScalar": 1,
+        "ImageSecondaryURL": "",
+        "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/17266049444455013331/028CA8109193A5F999196EE5D6930037106DB05E/",
+        "WidthScale": 0
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "d2d6ca",
+      "Grid": true,
+      "GridProjection": false,
+      "Hands": false,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": true,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Token",
+      "Nickname": "19 Hex",
+      "Snap": true,
+      "Sticky": true,
+      "Tags": [
+        "hex_19"
+      ],
+      "Tooltip": true,
+      "Transform": {
+        "posX": -0.00373216579,
+        "posY": 1.884634e-9,
+        "posZ": 0.133471951,
+        "rotX": 1.272222e-13,
+        "rotY": 5.64980035e-29,
+        "rotZ": 5.08888755e-14,
+        "scaleX": 0.2929743,
+        "scaleY": 1.66175091,
+        "scaleZ": 0.3307774
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
+  "ColorDiffuse": {
+    "a": 0,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "19Hex.fbd5c6"
+  ],
+  "ContainedObjects_path": "19HexBag.6e0c03",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "DiffuseURL": "",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/1666858152071990826/9AD455F2CBAEC01B2CBCDDB8B6DC4CE48D14B545/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6e0c03",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "19 Hex Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -3.396,
+    "posY": 1.439,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 210,
+    "rotZ": 0,
+    "scaleX": 5.96,
+    "scaleY": 0.6,
+    "scaleZ": 5.33
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

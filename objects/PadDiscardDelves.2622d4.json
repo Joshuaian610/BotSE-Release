@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/13151234003976976401/FA1D9C3A1B1BC69615AB525493F9C7273961469E/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/13151234003976976401/FA1D9C3A1B1BC69615AB525493F9C7273961469E/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2622d4",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Pad Discard Delves",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 53.32,
+    "posY": 1.138,
+    "posZ": -2.829,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 3.25,
+    "scaleY": 1,
+    "scaleZ": 2.37
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

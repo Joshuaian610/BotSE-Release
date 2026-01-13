@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": true,
+      "Thickness": 0.2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234563979814/475AD49D6AA237AE86A2F89E46F51B2080705207/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6fb568",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Tenacity Tracker Green",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "mat_marker",
+    "player_green"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 54.278,
+    "posY": 1.995,
+    "posZ": -30.916,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.65,
+    "scaleY": 0.65,
+    "scaleZ": 0.65
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

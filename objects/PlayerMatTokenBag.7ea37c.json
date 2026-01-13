@@ -1,0 +1,93 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "4HP.ad2ba9",
+    "4HP.7b0c50",
+    "4HP.2cedba",
+    "4HP.96252b",
+    "5HP.1708b6",
+    "5HP.1708b6",
+    "5HP.1708b6",
+    "5HP.1708b6",
+    "CombatSkillLineToken.798f02",
+    "CombatSkillLineToken.13e315",
+    "CombatSkillLineToken.6874bf",
+    "CombatSkillLineToken.4c6a81",
+    "MagickaStatToken.c27c56",
+    "MagickaStatToken.05998f",
+    "MagickaStatToken.93b4b4",
+    "MagickaStatToken.7b781f",
+    "StaminaStatToken.8e8fc2",
+    "StaminaStatToken.f45fa0",
+    "StaminaStatToken.f11528",
+    "StaminaStatToken.bc0bf7"
+  ],
+  "ContainedObjects_path": "PlayerMatTokenBag.7ea37c",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.25,
+      "SpecularSharpness": 7
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418406256675/3DFD05985185DE4F363AB0807569E864C249D914/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418406256399/EE3C51254A8E872A22DD2656CA978DE0C0B6DFC8/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "7ea37c",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Player Mat Token Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.724,
+    "posY": 1.55,
+    "posZ": -14.665,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

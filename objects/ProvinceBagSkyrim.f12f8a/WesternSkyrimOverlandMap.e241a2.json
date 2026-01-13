@@ -1,0 +1,1262 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 1.698,
+        "y": 0.05,
+        "z": 1.732
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.475,
+        "y": 0.05,
+        "z": 1.732
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.254,
+        "y": 0.05,
+        "z": 1.731
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.629,
+        "y": 0.05,
+        "z": 0.614
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.624,
+        "y": 0.05,
+        "z": 0.362
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.629,
+        "y": 0.05,
+        "z": 0.104
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.407,
+        "y": 0.05,
+        "z": 0.998
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.412,
+        "y": 0.05,
+        "z": 0.738
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.41,
+        "y": 0.05,
+        "z": 0.49
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.413,
+        "y": 0.05,
+        "z": 0.235
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.407,
+        "y": 0.05,
+        "z": -0.017
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.402,
+        "y": 0.05,
+        "z": -0.272
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.193,
+        "y": 0.05,
+        "z": 1.131
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.193,
+        "y": 0.05,
+        "z": 0.869
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.199,
+        "y": 0.05,
+        "z": 0.629
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.191,
+        "y": 0.05,
+        "z": 0.371
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.194,
+        "y": 0.05,
+        "z": 0.103
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.194,
+        "y": 0.05,
+        "z": -0.143
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.194,
+        "y": 0.05,
+        "z": -0.397
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.186,
+        "y": 0.05,
+        "z": -0.649
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.186,
+        "y": 0.05,
+        "z": -0.91
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.97,
+        "y": 0.05,
+        "z": -1.279
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.96,
+        "y": 0.05,
+        "z": -1.019
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.965,
+        "y": 0.05,
+        "z": -0.758
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.973,
+        "y": 0.05,
+        "z": -0.519
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.962,
+        "y": 0.05,
+        "z": -0.263
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.972,
+        "y": 0.05,
+        "z": -0.004
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.978,
+        "y": 0.05,
+        "z": 0.244
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.972,
+        "y": 0.05,
+        "z": 0.489
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.975,
+        "y": 0.05,
+        "z": 0.747
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.969,
+        "y": 0.05,
+        "z": 0.999
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.751,
+        "y": 0.05,
+        "z": 0.878
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.757,
+        "y": 0.05,
+        "z": 0.62
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.757,
+        "y": 0.05,
+        "z": 0.365
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.747,
+        "y": 0.05,
+        "z": 0.108
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.745,
+        "y": 0.05,
+        "z": -0.141
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.745,
+        "y": 0.05,
+        "z": -0.383
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.745,
+        "y": 0.05,
+        "z": -0.651
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.747,
+        "y": 0.05,
+        "z": -0.895
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.745,
+        "y": 0.05,
+        "z": -1.155
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.518,
+        "y": 0.05,
+        "z": -1.522
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.523,
+        "y": 0.05,
+        "z": -1.28
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.52,
+        "y": 0.05,
+        "z": -1.02
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.521,
+        "y": 0.05,
+        "z": -0.767
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.526,
+        "y": 0.05,
+        "z": -0.517
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.533,
+        "y": 0.05,
+        "z": -0.262
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.531,
+        "y": 0.05,
+        "z": -0.015
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.528,
+        "y": 0.05,
+        "z": 0.246
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.533,
+        "y": 0.05,
+        "z": 0.494
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.526,
+        "y": 0.05,
+        "z": 0.752
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.533,
+        "y": 0.05,
+        "z": 0.995
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.309,
+        "y": 0.05,
+        "z": 0.881
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.312,
+        "y": 0.05,
+        "z": 0.617
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.31,
+        "y": 0.05,
+        "z": 0.119
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.31,
+        "y": 0.05,
+        "z": -0.143
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.31,
+        "y": 0.05,
+        "z": -0.394
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.314,
+        "y": 0.05,
+        "z": -0.646
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.314,
+        "y": 0.05,
+        "z": -0.904
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.314,
+        "y": 0.05,
+        "z": -1.161
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.301,
+        "y": 0.05,
+        "z": -1.405
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.083,
+        "y": 0.05,
+        "z": -1.528
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.079,
+        "y": 0.05,
+        "z": -1.27
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.091,
+        "y": 0.05,
+        "z": -1.022
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.086,
+        "y": 0.05,
+        "z": -0.762
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.083,
+        "y": 0.05,
+        "z": -0.514
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.087,
+        "y": 0.05,
+        "z": -0.283
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.087,
+        "y": 0.05,
+        "z": 0
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.094,
+        "y": 0.05,
+        "z": 0.247
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.136,
+        "y": 0.05,
+        "z": 0.114
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.127,
+        "y": 0.05,
+        "z": -0.149
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.127,
+        "y": 0.05,
+        "z": -0.381
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.136,
+        "y": 0.05,
+        "z": -0.643
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.139,
+        "y": 0.05,
+        "z": -0.892
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.136,
+        "y": 0.05,
+        "z": -1.142
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.133,
+        "y": 0.05,
+        "z": -1.408
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.355,
+        "y": 0.05,
+        "z": -1.53
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.356,
+        "y": 0.05,
+        "z": -1.269
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.353,
+        "y": 0.05,
+        "z": -1.025
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.35,
+        "y": 0.05,
+        "z": -0.776
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.344,
+        "y": 0.05,
+        "z": -0.532
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.35,
+        "y": 0.05,
+        "z": -0.284
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.35,
+        "y": 0.05,
+        "z": -0.019
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.577,
+        "y": 0.05,
+        "z": -0.143
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.568,
+        "y": 0.05,
+        "z": -0.394
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.564,
+        "y": 0.05,
+        "z": -0.662
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.573,
+        "y": 0.05,
+        "z": -0.892
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.568,
+        "y": 0.05,
+        "z": -1.135
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.577,
+        "y": 0.05,
+        "z": -1.408
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.572,
+        "y": 0.05,
+        "z": -1.65
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.8,
+        "y": 0.05,
+        "z": -1.014
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.796,
+        "y": 0.05,
+        "z": -0.772
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.793,
+        "y": 0.05,
+        "z": -0.268
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.796,
+        "y": 0.05,
+        "z": -0.518
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.785,
+        "y": 0.05,
+        "z": -0.025
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.016,
+        "y": 0.05,
+        "z": -0.141
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.02,
+        "y": 0.05,
+        "z": -0.387
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.02,
+        "y": 0.05,
+        "z": -0.645
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.012,
+        "y": 0.05,
+        "z": -0.902
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.012,
+        "y": 0.05,
+        "z": -1.156
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.232,
+        "y": 0.05,
+        "z": -1.276
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.225,
+        "y": 0.05,
+        "z": -1.033
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.229,
+        "y": 0.05,
+        "z": -0.776
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.232,
+        "y": 0.05,
+        "z": -0.526
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.225,
+        "y": 0.05,
+        "z": -0.268
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.221,
+        "y": 0.05,
+        "z": -0.014
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.441,
+        "y": 0.05,
+        "z": -0.149
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.445,
+        "y": 0.05,
+        "z": -0.391
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.445,
+        "y": 0.05,
+        "z": -0.641
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.445,
+        "y": 0.05,
+        "z": -0.884
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.449,
+        "y": 0.05,
+        "z": -1.153
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.669,
+        "y": 0.05,
+        "z": -1.276
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.669,
+        "y": 0.05,
+        "z": -1.03
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.669,
+        "y": 0.05,
+        "z": -0.514
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.669,
+        "y": 0.05,
+        "z": -0.768
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.669,
+        "y": 0.05,
+        "z": -0.268
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.09,
+        "y": 0.05,
+        "z": 0.754
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.096,
+        "y": 0.05,
+        "z": 1.005
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.13,
+        "y": 0.05,
+        "z": 0.868
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.13,
+        "y": 0.05,
+        "z": 1.116
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.344,
+        "y": 0.05,
+        "z": 1
+      },
+      "Tags": [
+        "snap_overland"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.1
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28817515672130764/4B8B0F25EC1608AF46E2842D09461667430DCD96/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e241a2",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Western Skyrim Overland Map",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "snap_map"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 42.5,
+    "posY": 3.016,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 5.9,
+    "scaleY": 1,
+    "scaleZ": 5.9
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Haggravated.35ceb5",
+    "AntiquityIniquity.76fe59",
+    "HomeRemedies.7e5780",
+    "AxeMarkstheSpot.775b41",
+    "Solitudarity.f6df4a",
+    "YowloftheJarl.ba8105",
+    "ExiledHealer.80ae95",
+    "ViciousVines.257598"
+  ],
+  "ContainedObjects_path": "SkyrimEncountersPeaceful.98ea74",
+  "CustomDeck": {
+    "99": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/11260863950803286905/5091961AB1E0FDF6CBF00270AA0F112B4A9F632B/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16426218121781352516/218F6F090E09750098D638B0198BF07B7662CB99/",
+      "NumHeight": 4,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    9915,
+    9912,
+    9913,
+    9914,
+    9911,
+    9910,
+    9909,
+    9908
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "98ea74",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Skyrim Encounters Peaceful",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_peaceful",
+    "obj_sk"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 76.292,
+    "posY": 2.767,
+    "posZ": 38.007,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

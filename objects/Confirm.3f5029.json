@@ -1,0 +1,63 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23528,
+    "g": 0.23528,
+    "r": 0.23528
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000018,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/12287623322678178138/1F8762B2CCC17A3979A6B3AF1D85D2F230D3F9DA/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/12287623322678178138/1F8762B2CCC17A3979A6B3AF1D85D2F230D3F9DA/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "3f5029",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Confirm",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "btn_confirm",
+    "btn_race_selection",
+    "non_int",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -27.51,
+    "posY": -1,
+    "posZ": -33.75,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.43,
+    "scaleY": 1,
+    "scaleZ": 0.43
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

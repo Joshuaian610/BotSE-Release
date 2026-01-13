@@ -1,0 +1,21 @@
+{
+  "BothSnapping": true,
+  "Color": {
+    "b": 0.5,
+    "g": 0.5,
+    "r": 0.5
+  },
+  "Lines": false,
+  "Offset": false,
+  "Opacity": 0.773229539,
+  "PosOffset": {
+    "x": 4.099971,
+    "y": 1,
+    "z": 2.412042
+  },
+  "Snapping": false,
+  "ThickLines": true,
+  "Type": 1,
+  "xSize": 4.1,
+  "ySize": 4.1
+}

@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673484899/81A79EE669B77EA8526737ECD091E01078AFC7CD/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673484899/81A79EE669B77EA8526737ECD091E01078AFC7CD/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Divert:\nThis unit cannot lose its last HP unless it is already at 1 HP prior to taking damage.\n\nRecover:\nAt the start of this unit’s turn, it heals for player count HP.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "64a1cf",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "Level15Enemies.904b55/SkeletonMageSkeleton.64a1cf.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Skeleton Mage / Skeleton",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyDaedra",
+    "enemyLow",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 36.741,
+    "posY": 0.008,
+    "posZ": 11.973,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

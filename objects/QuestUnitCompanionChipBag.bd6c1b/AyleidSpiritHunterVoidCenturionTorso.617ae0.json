@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673368167/B9128C8BBE7FB001A86CCC77AD4D23F4E4AAFF7C/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673368167/B9128C8BBE7FB001A86CCC77AD4D23F4E4AAFF7C/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Reward:\nAfter this unit defeated, each adventurer chooses and gains 1 of the following:\n• 1 legendary item • 5 tenacity • Advance Health stat by 1, if possible.\n\nSubdue:\nBefore this unit deals damage, its target loses tenacity equal to the amount of damage dealt.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "617ae0",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/AyleidSpiritHunterVoidCenturionTorso.617ae0.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Ayleid Spirit Hunter / Void Centurion Torso",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyDaedra_enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.881,
+    "posY": 2.205,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 176,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

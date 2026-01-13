@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673452435/61B7977F44D2AE5EF9A32D5C7E6C0F0500A8AF3C/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673452435/61B7977F44D2AE5EF9A32D5C7E6C0F0500A8AF3C/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Disrupt:\nWhen this unit determines a target, its target must exhaust 1 die from its active slots.\n\nNative:\nThis unit has the skill specific to the current province.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "786e68",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "ProvinceBagMorrowind.8406fd/CliffStriderCliffRacer.786e68.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Cliff Strider / Cliff Racer",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast",
+    "enemyLow",
+    "obj_mw",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 32.812,
+    "posY": 3.1,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

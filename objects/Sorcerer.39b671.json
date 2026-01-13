@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23528,
+    "g": 0.23528,
+    "r": 0.23528
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000033,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/9281148068217940267/8D208237DEFDBFCB91E1EC1401699B4671D82C8A/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/9281148068217940267/8D208237DEFDBFCB91E1EC1401699B4671D82C8A/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "disabled",
+  "GUID": "39b671",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Sorcerer",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "btn_class",
+    "non_int",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -10.99,
+    "posY": 1.338,
+    "posZ": -30.98,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.16,
+    "scaleY": 1,
+    "scaleZ": 0.16
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

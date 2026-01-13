@@ -1,0 +1,112 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.833,
+        "y": 0,
+        "z": 1.373
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.591,
+        "y": 0,
+        "z": 0.003
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.765,
+        "y": 0,
+        "z": -1.358
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/12561450818680118990/13CE965EDB13BA6F8B67F79B4064F15DAAE20088/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/9862137502968783881/5E9D5E706B8B882BF36D692FFE882975486CDFB9/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/12561450818680118990/13CE965EDB13BA6F8B67F79B4064F15DAAE20088/",
+    "NormalURL": "",
+    "TypeIndex": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "8d7b3a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "3 Hex",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "hex_3"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 17.238,
+    "posY": 2.042,
+    "posZ": 27.244,
+    "rotX": 0,
+    "rotY": 300,
+    "rotZ": 0,
+    "scaleX": 1.25,
+    "scaleY": 1.25,
+    "scaleZ": 1.25
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

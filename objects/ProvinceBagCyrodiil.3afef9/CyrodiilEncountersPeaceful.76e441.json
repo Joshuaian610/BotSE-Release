@@ -1,0 +1,83 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "SeekingRefuge.7c1192",
+    "BorderCheckpoint.844a8d",
+    "ItsTimetoPickaSide.845f4c",
+    "ListentothePast.675176",
+    "High-SpeedTransitus.11c931",
+    "Off-ColorTales.013745",
+    "SnaredEnmity.8c0541",
+    "NationontheBrink.c9f9e0"
+  ],
+  "ContainedObjects_path": "CyrodiilEncountersPeaceful.76e441",
+  "CustomDeck": {
+    "96": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
+      "NumHeight": 4,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    9615,
+    9614,
+    9613,
+    9612,
+    9611,
+    9610,
+    9609,
+    9608
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "76e441",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Cyrodiil Encounters Peaceful",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_peaceful",
+    "obj_cy",
+    "symbol0"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 8.013,
+    "posY": 2.966,
+    "posZ": 37.019,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

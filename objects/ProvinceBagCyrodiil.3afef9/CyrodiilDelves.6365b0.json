@@ -1,0 +1,92 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "UndeadPursuit.79bf7a",
+    "SavagePursuit.741391",
+    "RelentlessPursuit.b9b54a",
+    "ProvingGorunds.0c79be",
+    "DesertersCamp.73ce3e",
+    "ScoundrelsLair.901fad",
+    "ShroudedCourtyard.a60aea",
+    "ChallengersHall.4f9443",
+    "HuntingGrounds.605090",
+    "CutthroatsDen.70a359",
+    "DuelistsCove.98c16e",
+    "ThiefsJunction.1b9c7c",
+    "UnlitAlley.1b05cb"
+  ],
+  "ContainedObjects_path": "CyrodiilDelves.6365b0",
+  "CustomDeck": {
+    "91": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14147321131299159145/90079658D030D085023079157E8F478F4533DBFB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12833369014607889694/5CC66960DAB0EEC0509F51F3DB91E3AA175AA921/",
+      "NumHeight": 2,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    9112,
+    9111,
+    9110,
+    9109,
+    9108,
+    9107,
+    9106,
+    9105,
+    9104,
+    9103,
+    9102,
+    9101,
+    9100
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6365b0",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Cyrodiil Delves",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "delve",
+    "obj_cy"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 101.616,
+    "posY": 9.637,
+    "posZ": 32.037,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

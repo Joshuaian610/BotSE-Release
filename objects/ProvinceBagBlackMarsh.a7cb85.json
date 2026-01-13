@@ -1,0 +1,84 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "BlackMarshReference.02660c",
+    "SubmergedChamber.41f769",
+    "BlackMarshDelves.96b4ea",
+    "BlackMarshEncountersConflict.800426",
+    "BlackMarshEncountersPeaceful.a115c9",
+    "BlackMarshGazetteer.890e99",
+    "BlackMarshOverlandMap.36aaac",
+    "VoriplasmBogDog.cfa331",
+    "HackwingSwarmHackwing.d05a8f",
+    "MiregauntWamasu.ed523d",
+    "ArgonianBehemothArgonianStalker.1c1801"
+  ],
+  "ContainedObjects_path": "ProvinceBagBlackMarsh.a7cb85",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396471102/D6F6E8E1BC66879174C4E5FE4E3305AA39E777DA/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396480023/E4474791D19D5ABA702DC74886175731462C2709/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a7cb85",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "ProvinceBagBlackMarsh.a7cb85.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Province Bag Black Marsh",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -62.5,
+    "posY": 3.016,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

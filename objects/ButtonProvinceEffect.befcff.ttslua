@@ -1,0 +1,652 @@
+local SearchLib = require("util/SearchLib")
+
+function onLoad()
+    create_all()
+end
+
+function create_all()
+    self.createButton({
+        label          = "",
+        click_function = "activate_province_effect",
+        function_owner = self,
+        position       = {0.00, 0.31, 0.00},
+        height         = 990,
+        width          = 1890,
+        scale          = {x=1.00, y=1.00, z=1.00},
+        color          = {1, 1, 1, 0},
+        hover_color    = {1, 1, 1, .6},
+        tooltip        = "Activate Province Effect\n\nThis button will activate the current province's province effect.\n\nIf there was no Peaceful Encounter previously drawn for the day, one will be drawn for the province effect, and then, returned shortly thereafter."
+    })
+end
+
+
+function animate_button()    
+    self.clearButtons()
+    local pos = self.getPosition()
+    pos.y = pos.y - .29
+    self.setPosition(pos)
+    pos.y = pos.y + .29
+    self.setPositionSmooth(pos, false, false)
+    Wait.time(function() create_all() end, .5)
+end
+
+
+function activate_province_effect()
+    animate_button()
+
+    -- get current province
+    local province = nil
+    local zone = getObjectFromGUID("64c0a4")
+    for _, obj in ipairs(zone.getObjects()) do
+        local name = obj.getName()
+        local match = string.match(name, "^(.-) Overland Map$")
+        if match then            
+            province = match
+            break
+        end
+    end    
+    if not province then
+        broadcastToAll("No Province Map Found. Set up province effect manually.", "Orange")
+        return
+    end
+
+    local pe_display = get_pe_display()     
+    if pe_display ~= nil then
+        local previously_drawn_pe = pe_display.hasTag('day_locked') and true or false                
+
+        -- handle previously drawn (via peaceful encounter) PE        
+        if previously_drawn_pe then
+            local symbols = get_symbol_count()            
+            run_effect(province, symbols)
+
+        -- handle no previous PE
+        else            
+            -- ensure cleanup encounter doesn't need to happen first - broadcast warn
+            local pos_button_cleanup = getObjectFromGUID("9ae015").getPosition()
+            if pos_button_cleanup.y > 0.5 then
+                broadcastToAll("Please Cleanup Encounter before Activating the Province Effect.", "Orange")
+                return nil
+            end
+
+            -- get peaceful encounter deck
+            local deck = nil
+            -- first check for deck by name
+            for _, object in ipairs(getObjects()) do
+                if object.getName() == province .. " Encounters Peaceful" and object.type == "Deck" then
+                    deck = object                    
+                end
+            end
+            -- check zone as backup
+            if deck == nil then
+                for _, object in ipairs(getObjectFromGUID("623063").getObjects()) do
+                    if object.type == "Deck" then
+                        deck = object
+                    end
+                end
+            end
+            if deck == nil then broadcastToAll("Peaceful Encounter deck not found, please Activate Province Effect manually.", "Orange") end
+
+            -- draw peaceful facedown, get tag
+            local card = deck.takeObject()
+            Wait.frames(function()
+
+                -- place card to display pad
+                card.setRotation({0, 180, 180})
+                card.setPositionSmooth({-38.89, 1.40, -2.53}, false, true)
+
+                -- update PE, get symbol count
+                update_pe_display(card)
+                Wait.frames(function() 
+                    local symbols = get_symbol_count() 
+                    run_effect(province, symbols)
+                end, 5)
+
+                -- return card to bottom of deck
+                local card_name = card.getName()
+                local pos_return = deck.getPosition()
+                pos_return.y = -1.00
+                Wait.time(function()
+                    card.setPosition(pos_return)
+                    deck.putObject(card)
+                    broadcastToAll("(Card: " .. card_name .. " has been returned to the bottom of the Peaceful Encounters deck.)", "White")
+                end, 5)
+            end)
+        end
+
+    end
+end
+
+
+function get_pe_display()
+    -- get pe_display
+    local pe_display = nil
+    for _, object in ipairs(getObjects()) do
+        if object.hasTag('pe_display') then            
+            return object
+        end
+    end
+end
+
+function get_symbol_count()    
+    local symbols = {
+        ["symbol0"] = 0,
+        ["symbol1"] = 0,
+        ["symbol2"] = 0,
+        ["symbol3"] = 0,
+    }    
+    -- check state, add to symbol count accordingly
+    local pe_display = get_pe_display()    
+    if pe_display ~= nil then
+        local current_display_state = pe_display.getStateId()        
+        if current_display_state == 1 then
+            symbols["symbol0"] = 1
+        elseif current_display_state == 2 then
+            symbols["symbol1"] = 1
+        elseif current_display_state == 3 then
+            symbols["symbol2"] = 1
+        elseif current_display_state == 4 then
+            symbols["symbol3"] = 1
+        elseif current_display_state == 5 then
+            symbols["symbol1"] = 1
+            symbols["symbol2"] = 1
+        elseif current_display_state == 6 then
+            symbols["symbol1"] = 1
+            symbols["symbol3"] = 1
+        elseif current_display_state == 7 then
+            symbols["symbol2"] = 1
+            symbols["symbol3"] = 1
+        elseif current_display_state == 8 then
+            symbols["symbol3"] = 2
+        end
+    end
+
+    return symbols
+end
+
+function get_province_map(province)
+    -- get province map
+    local province_map = nil
+    for _, object in pairs(getObjects()) do
+        if province ~= "Skyrim" then
+            if object.getName() == province .. " Overland Map" then
+                return object
+            end
+        else
+            if object.getName() == "Eastern Skyrim Overland Map" or object.getName() == "Western Skyrim Overland Map" then
+                return object
+            end
+        end
+    end
+    return nil
+end
+
+function run_effect(province, symbols)      
+    
+    -- BM - weather
+    if province == "Black Marsh" then
+       handle_black_marsh(symbols)
+
+    -- CY - alliance stuff
+    elseif province == "Cyrodiil" then
+        handle_cyrodiil(symbols)
+
+    -- HR - unrest
+    elseif province == "High Rock" then
+        handle_high_rock(symbols)
+
+    -- MW -- dig track
+    elseif province == "Morrowind" then
+        handle_morrowind(symbols)
+
+    -- SK -- under siege
+    elseif string.find(province, "Skyrim") then
+        handle_skyrim(symbols)
+
+    -- VW -- influence
+    elseif province == "Valenwood" then
+        handle_valenwood(symbols)
+    end
+
+    -- broadcast when finished, alert to use day counter to proceed to next day after Adventurer's Rest step
+    local day_number = getObjectFromGUID("2b0c66").getVar('val')
+    if day_number < 13 then
+        Wait.time(function() broadcastToAll("When ready to proceed to the next day, use the Day Counter to advance to day " .. day_number + 1 .. ".", "White") end, 2)
+    end
+end
+
+function handle_black_marsh(symbols)
+    -- identify book overland token
+    local book_token = nil
+    -- get token objects on map (none will be over day markers)
+    local province_map = get_province_map("Black Marsh")
+    local scale = Vector(0.95, 1, 0.95)
+    local province_map_objs = SearchLib.onObject(province_map, "isTileOrToken", scale, false)
+    for _, object in ipairs(province_map_objs) do
+        if object.getName() == "Book Overland Token" then
+            book_token = object
+        end
+    end
+    if book_token == nil then return end
+
+    -- determine new placement position of book token
+    local weather_y = 1.75
+    local weather_z = 1.13
+    local weather_x  = {
+        ["Sunny"]    = -37.40,
+        ["Rainy"]    = -36.10,
+        ["Flooding"] = -34.79,
+    }
+    local weather = nil
+    weather = symbols["symbol1"] == 1 and "Sunny" or symbols["symbol2"] == 1 and "Rainy" or symbols["symbol3"] == 1 and "Flooding" or "No Change"
+    
+    if weather ~= "No Change" then
+        book_token.setPositionSmooth({weather_x[weather], weather_y, weather_z}, false, false)
+    end
+    
+    local day_number = getObjectFromGUID("2b0c66").getVar('val')        
+    Wait.time(function()
+        if weather == "No Change" then
+            broadcastToAll("There will be no change in weather in Black Marsh at the end of day " .. tostring(day_number) .. ".", "White")
+        else
+            local broadcast_color = weather == "Sunny" and "Yellow" or weather == "Rainy" and "Grey" or weather == "Flooding" and "Blue"                
+            broadcastToAll("The Weather in Black Marsh is [" .. Color.fromString(broadcast_color):toHex() .. "]" .. weather .. "[-] at the end of day " .. day_number .. ".", "White")
+        end
+    end, 1)
+end
+
+function handle_cyrodiil(symbols)
+    local battlefront_token, dominant_token
+    for _, o in ipairs(getObjects()) do
+        if o.getDescription() == "Battlefront Token" then battlefront_token = o end
+        if o.getDescription() == "Dominant Faction Token" then dominant_token = o end
+    end
+    if not battlefront_token or not dominant_token then return end
+
+    local token_slots = {
+        Empire = {-54.43, 1.69, 0.72},
+        DC_1   = {-54.46, 1.69, 3.61},
+        DC_2   = {-54.40, 1.69, 5.70},
+        EP_1   = {-52.40, 1.69, 2.76},
+        EP_2   = {-50.90, 1.69, 4.22},
+        AD_1   = {-51.58, 1.69, 0.74},
+        AD_2   = {-49.46, 1.69, 0.71},
+    }
+
+    local tolerance = 0.5
+    local function find_slot_for_token(token)
+        local pos = token.getPosition()
+        for name, slot in pairs(token_slots) do
+            local dx = math.abs(pos.x - slot[1])
+            local dz = math.abs(pos.z - slot[3])
+            if dx <= tolerance and dz <= tolerance then return name end
+        end
+        return nil
+    end
+
+    local battlefront_slot = find_slot_for_token(battlefront_token)
+    local dominant_slot = find_slot_for_token(dominant_token)
+    if not battlefront_slot or not dominant_slot then
+        broadcastToAll("Battlefront or Dominant Token not in valid slot, please handle manually.", "Orange")
+        return
+    end
+
+    -- define faction paths
+    local paths = {
+        AD = {"Empire", "AD_1", "AD_2"},
+        EP = {"Empire", "EP_1", "EP_2"},
+        DC = {"Empire", "DC_1", "DC_2"}
+    }
+
+    -- determine which symbol is active
+    local active_symbol = nil
+    for i = 0, 3 do
+        if symbols["symbol" .. i] == 1 then active_symbol = i break end
+    end
+    if not active_symbol then return end
+
+    -- movement helper
+    local function move_token(obj, target)
+        obj.setLock(false)
+        obj.setPositionSmooth(target, false, false)
+    end
+
+    -- symbol0: reset to Empire
+    if active_symbol == 0 then
+        move_token(dominant_token, {-54.43, 1.7, 0.72})
+        move_token(battlefront_token, {-54.43, 2.3, 0.72})
+        broadcastToAll("The Empire has gained Dominant status!", "White")
+        return
+    end
+
+    -- determine faction path from symbol number
+    local faction = (active_symbol == 1 and "AD") or (active_symbol == 2 and "EP") or (active_symbol == 3 and "DC")
+    local full_faction = faction == "AD" and "Aldmeri Dominion" or faction == "EP" and "Ebonheart Pact" or faction == "DC" and "Daggerfall Covenant"
+
+    -- find current index of battlefront token
+    local current_path
+    for f, path in pairs(paths) do
+        for i, slot in ipairs(path) do
+            if battlefront_slot == slot then current_path = {f, i} end
+        end
+    end
+    if not current_path then current_path = {"Empire", 1} end
+    local current_faction, current_index = current_path[1], current_path[2]
+    local new_path = paths[faction]
+
+    -- if switching faction and not at Empire, go to Empire first
+    if current_faction ~= faction and battlefront_slot ~= "Empire" then
+        move_token(battlefront_token, {token_slots["Empire"][1], 2.3, token_slots["Empire"][3]})
+        return
+    end
+
+    -- move along path
+    local next_index = current_index + 1
+    if next_index > #new_path then next_index = #new_path end
+    local next_slot = new_path[next_index]
+
+    -- rule: moving from _1 -> _2 moves Dominant instead
+    if string.find(battlefront_slot, "_1") and string.find(next_slot, "_2") then
+        move_token(dominant_token, {token_slots[next_slot][1], 1.7, token_slots[next_slot][3]})
+        broadcastToAll("The " .. full_faction .. " has gained Dominant status!", "White")
+    else
+        move_token(battlefront_token, {token_slots[next_slot][1], 2.3, token_slots[next_slot][3]})
+        broadcastToAll("Day: " .. getObjectFromGUID("2b0c66").getVar('val') .. " - The Battlefront has shifted in the direction of the " .. full_faction .. ".", "White")
+    end
+end
+
+function handle_high_rock(symbols)
+
+    local province_map = get_province_map("High Rock")
+
+    -- identify book overland token
+    local book_token = nil    
+    local scale = Vector(0.95, 1, 0.95)    
+    local province_map_objs = SearchLib.onObject(province_map, "isTileOrToken", scale, false)
+    for _, object in ipairs(province_map_objs) do
+        if object.getName() == "Book Overland Token" then
+            book_token = object            
+            break
+        end
+    end
+    if not book_token then return end
+
+    local unrest_slots = {
+        {-47.29, 1.69, 0.75},
+        {-45.97, 1.69, 0.75},
+        {-44.65, 1.69, 0.75},
+        {-43.09, 1.69, 0.75},
+        {-41.75, 1.69, 0.75},
+        {-40.20, 1.69, 0.72},
+        {-38.88, 1.69, 0.72},
+        {-37.30, 1.69, 0.73},
+        {-35.99, 1.69, 0.72},
+        {-34.65, 1.69, 0.72},
+    }
+
+    local tolerance = 0.5
+    local function get_current_index(token)
+        local pos = token.getPosition()
+        for i, slot in ipairs(unrest_slots) do
+            local dx = math.abs(pos.x - slot[1])
+            local dz = math.abs(pos.z - slot[3])
+            if dx <= tolerance and dz <= tolerance then return i end
+        end
+        return nil
+    end
+
+    local current_index = get_current_index(book_token) or 1
+    local delta = 0
+    if symbols["symbol1"] == 1 then delta = 1 end
+    if symbols["symbol2"] == 1 then delta = 2 end
+    if symbols["symbol3"] == 1 then delta = -1 end
+
+    if delta == 0 then return end
+
+    local new_index = math.max(1, math.min(#unrest_slots, current_index + delta))
+    if new_index == current_index then return end
+
+    local target = unrest_slots[new_index]
+    book_token.setLock(false)
+    book_token.setPositionSmooth({target[1], 2.3, target[3]}, false, false)    
+    broadcastToAll("High Rock Unrest Token moved from slot " .. current_index .. " to slot " .. new_index .. ".", "White")
+end
+
+function handle_morrowind(symbols)
+    local pos_dig = {
+        {-46.92, 1.69, 0.72},
+        {-45.62, 1.69, 0.73},
+        {-44.30, 1.69, 0.73},
+        {-42.97, 1.69, 0.72},
+    }
+    local pos_excavation = {
+        {-41.36, 1.69, 0.72},
+        {-40.04, 1.69, 0.72},
+        {-38.72, 1.69, 0.72},
+        {-37.40, 1.69, 0.72},
+        {-36.08, 1.69, 0.72},
+        {-34.76, 1.69, 0.72},
+    }
+
+    local province_map = get_province_map("Morrowind")
+    local dig_marker, excavation_marker
+    local scale = Vector(0.95, 1, 0.95)    
+    local province_map_objs = SearchLib.onObject(province_map, "isTileOrToken", scale, false)
+    for _, obj in ipairs(province_map_objs) do
+        if obj.getDescription() == "Dig Token" then dig_marker = obj end
+        if obj.getDescription() == "Excavation Token" then excavation_marker = obj end
+    end
+    if not dig_marker or not excavation_marker then  return end
+
+    local tolerance = 0.5
+    local function get_index(token, slots)
+        local pos = token.getPosition()
+        for i, s in ipairs(slots) do
+            if math.abs(pos.x - s[1]) <= tolerance and math.abs(pos.z - s[3]) <= tolerance then
+                return i - 1
+            end
+        end
+        return 0
+    end
+
+    local dig_index = get_index(dig_marker, pos_dig)
+    local excavation_index = get_index(excavation_marker, pos_excavation)
+    
+    local advance = 0
+    local sym1, sym2, sym3 = symbols["symbol1"], symbols["symbol2"], symbols["symbol3"]
+
+    if sym1 == 1 and sym2 == 1 then
+        advance = 3
+    elseif sym1 == 1 then
+        advance = 1
+    elseif sym2 == 1 then
+        advance = 2
+    elseif sym3 == 1 then
+        broadcastToAll("Day: " .. getObjectFromGUID("2b0c66").getVar('val') .. " - No change in Morrowind Dig or Excavation tracks.", "White")
+        return
+    end
+
+    if advance == 0 then return end
+
+    local old_dig = dig_index
+    local new_dig = dig_index + advance
+
+    if new_dig >= 4 then
+        new_dig = 0
+        local old_exc = excavation_index
+        local new_exc = math.min(#pos_excavation - 1, excavation_index + 1)
+        excavation_marker.setPositionSmooth({pos_excavation[new_exc + 1][1], 2.3, pos_excavation[new_exc + 1][3]}, false, false)
+        dig_marker.setPositionSmooth({pos_dig[new_dig + 1][1], 2.3, pos_dig[new_dig + 1][3]}, false, false)
+        broadcastToAll("Excavation marker moved from slot " .. old_exc .. " on the excavation track to slot " .. new_exc .. ".", "White")
+        return
+    end
+
+    dig_marker.setPositionSmooth({pos_dig[new_dig + 1][1], 2.3, pos_dig[new_dig + 1][3]}, false, false)
+    broadcastToAll("Dig marker moved from slot " .. old_dig .. " on the dig track to slot " .. new_dig .. ".", "White")
+end
+
+function handle_skyrim(symbols)
+
+    local province_map = get_province_map("Skyrim")
+    local scale = Vector(0.95, 1, 0.95)
+    local province_map_objs = SearchLib.onObject(province_map, "isTileOrToken", scale, false)
+
+    local siege_token = nil
+    for _, obj in ipairs(province_map_objs) do
+        if obj.getDescription() == "Under Siege Token" then
+            siege_token = obj
+            break
+        end
+    end
+    if not siege_token then return end
+
+    local pos = {
+        {-54.51, 1.69, 0.64}, -- left
+        {-53.22, 1.69, 0.76}, -- middle
+        {-51.92, 1.69, 0.77}, -- right
+    }
+
+    if symbols["symbol0"] == 1 then
+        broadcastToAll("The Skyrim Siege Marker has not moved.", "White")
+    elseif symbols["symbol1"] == 1 then
+        siege_token.setPositionSmooth({pos[1][1], 2.3, pos[1][3]}, false, false)
+        broadcastToAll("The Skyrim Siege Marker has moved to the Left Symbol!", "White")
+    elseif symbols["symbol2"] == 1 then
+        siege_token.setPositionSmooth({pos[2][1], 2.3, pos[2][3]}, false, false)
+        broadcastToAll("The Skyrim Siege Marker has moved to the Middle Symbol!", "White")
+    elseif symbols["symbol3"] == 1 then
+        siege_token.setPositionSmooth({pos[3][1], 2.3, pos[3][3]}, false, false)
+        broadcastToAll("The Skyrim Siege Marker has moved to the Right Symbol!", "White")
+    end
+end
+
+function handle_valenwood(symbols)
+    local province_map = get_province_map("Valenwood")
+    local scale = Vector(0.95, 1, 0.95)
+    local province_map_objs = SearchLib.onObject(province_map, "isTileOrToken", scale, false)
+
+    local posX = { -52.52, -51.13, -49.72, -48.33, -46.93 }
+    local posY = 1.69
+    local posZ = {
+        ["top"]    = 20.72,
+        ["middle"] = 19.40,
+        ["bottom"] = 18.17,
+    }
+
+    local tracks = { top = nil, middle = nil, bottom = nil }
+    for _, obj in ipairs(province_map_objs) do
+        if obj.getDescription() == "Influence Token" then
+            local z = obj.getPosition().z
+            local function closest_track(z)
+                local best, best_diff = nil, math.huge
+                for k, v in pairs(posZ) do
+                    local diff = math.abs(z - v)
+                    if diff < best_diff then best, best_diff = k, diff end
+                end
+                return best
+            end
+            local t = closest_track(z)
+            tracks[t] = obj
+        end
+    end
+
+    local tolerance = 0.3
+    local function get_index(token)
+        if not token then return nil end
+        local x = token.getPosition().x
+        for i, px in ipairs(posX) do
+            if math.abs(x - px) <= tolerance then return i - 1 end
+        end
+        return 0
+    end
+
+    local function move_track(track_label, track_key, token)
+        local old_i = get_index(token)
+        if old_i == nil then return end
+        local new_i = math.min(#posX - 1, old_i + 1)
+        if new_i ~= old_i then
+            token.setPositionSmooth({posX[new_i + 1], 2.3, posZ[track_key]}, false, false)
+            broadcastToAll(track_label .. " moved from slot " .. old_i .. " to slot " .. new_i .. ".", "White")
+        end
+    end
+
+    if symbols["symbol0"] == 1 then
+        broadcastToAll("Please manually reduce an Influence Track by 1.", "White")
+    end
+    if symbols["symbol1"] == 1 and tracks["top"] then
+        move_track("Town Influence Track", "top", tracks["top"])
+    end
+    if symbols["symbol2"] == 1 and tracks["middle"] then
+        move_track("Peaceful Influence Track", "middle", tracks["middle"])
+    end
+    if symbols["symbol3"] == 1 and tracks["bottom"] then
+        move_track("Conflict Influence Track", "bottom", tracks["bottom"])
+    end
+end
+
+function update_pe_display(card)    
+    local pe_display = nil
+    for _, object in ipairs(getObjects()) do
+        if object.hasTag('pe_display') then
+            pe_display = object
+        end
+    end
+
+    local current_state = pe_display.getStateId()
+
+    if pe_display ~= nil and pe_display.getStateId() == 1 then
+        
+        if card.hasTag("symbol0") and current_state ~= 1 then -- state 1
+            pe_display = pe_display.setState(1)
+        elseif card.hasTag("symbol1") and not card.hasTag('symbol2') and not card.hasTag('symbol3') and current_state ~= 2 then -- state 2
+            pe_display = pe_display.setState(2)
+        elseif card.hasTag("symbol2") and not card.hasTag('symbol1') and not card.hasTag('symbol3') and current_state ~= 3 then -- state 3
+            pe_display = pe_display.setState(3)
+        elseif card.hasTag("symbol3") and not card.hasTag('symbol1') and not card.hasTag('symbol2') and current_state ~= 4 then -- state 4
+            pe_display = pe_display.setState(4)
+
+        -- double province effect icon handling                
+            
+        -- one for the wilderqueen: symbol1, symbol2            
+        -- the love of mother morrowind: symbol1, symbol2
+        -- money tree: symbol1, symbol2
+        elseif card.hasTag("symbol1") and card.hasTag('symbol2') and current_state ~= 5 then -- state 5  
+            pe_display = pe_display.setState(5)
+        
+        -- jungle jumble: symbol1, symbol3
+        elseif card.hasTag("symbol1") and card.hasTag('symbol3') and current_state ~= 6 then -- state 6
+            pe_display = pe_display.setState(6)
+        
+        -- share the woods: symbol2, symbol3
+        elseif card.hasTag("symbol2") and card.hasTag('symbol3') and current_state ~= 7 then -- state 7
+            pe_display = pe_display.setState(7)
+        
+        -- introducing arvan: symbol3, symbol3
+        elseif card.hasTag("symbol3X2") and current_state ~= 8 then -- state 8
+            pe_display = pe_display.setState(8)        
+        end
+        Wait.frames(function() 
+            pe_display.interactable = false 
+
+            -- add a day indicator
+            local current_day_number = getObjectFromGUID("2b0c66").getVar('val')
+            if current_day_number then            
+                pe_display.createButton({
+                    click_function = "null_func",
+                    function_owner = self,
+                    label          = current_day_number,
+                    position       = {0.70, 0.31, 0.70},
+                    rotation       = {0, 0, 0},
+                    width          = 300,
+                    height         = 300,
+                    font_size      = 250,
+                    color          = {20/255, 48/255, 59/255},
+                    font_color     = {1, 1, 1},
+                    tooltip        = "Province Effect in effect for Current Day: " .. current_day_number .. ".\n\nProvided by Peaceful Encounter Card: " .. card.getName()
+                })
+            end
+
+            -- add tag to detect if set for current day or not
+            pe_display.addTag('day_locked')
+        end)
+    end
+end

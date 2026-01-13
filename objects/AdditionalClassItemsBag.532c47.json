@@ -1,0 +1,76 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "CruxTokenArcanistClass.388586",
+    "CruxTokenArcanistClass.823f61",
+    "CruxTokenArcanistClass.0e6f90"
+  ],
+  "ContainedObjects_path": "AdditionalClassItemsBag.532c47",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/18400212932324256884/D211C8FA8635C375D827186282671319974A77CA/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.25,
+      "SpecularSharpness": 7
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559036636/FBCF7527FE01FC28158B66489077D13CEB24A899/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/18400212932324256884/D211C8FA8635C375D827186282671319974A77CA/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "532c47",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Additional Class Items Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.596,
+    "posY": 1.55,
+    "posZ": -12.601,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

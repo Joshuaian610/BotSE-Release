@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673618306/7D0D937E56DEFCB39E97BA8C35A750CC8A13D12B/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673618306/7D0D937E56DEFCB39E97BA8C35A750CC8A13D12B/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Arcane:\nThe damage dealt by this unit is true damage.\n\nSiphon:\nAt the end of this unit’s turn, remove 1 HP from each non-quest unit within range. Place all HP removed under this unit’s chip (may exceed Health stat).\n\nNecromancy:\nAt the end of this unit’s turn, deploy the top unit of the defeated stack to the closest unoccupied hex to this unit with player count HP. This new enemy does not take a turn this round.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "f8ae81",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[6]",
+  "LuaScript_path": "Level1020Enemies.65d32f/BretonArchmageKhajiitCultist.f8ae81.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Breton Archmage / Khajiit Cultist",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.96,
+    "posY": 0.008,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

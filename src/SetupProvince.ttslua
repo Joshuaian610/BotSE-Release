@@ -1,0 +1,1899 @@
+
+
+function initButtonSetupProvince(obj)
+  obj.clearButtons()
+  local provinceName = obj.getName():match("Button Setup (.+)")
+  obj.createButton({
+    label          = "",
+    click_function = "setupProvince",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Clicking this button will irreversibly set up this session for Province: " .. provinceName
+  })
+end
+
+
+function initButtonCleanupSession(obj)
+  obj.createButton({
+    label          = "",
+    click_function = "cleanupProvince",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Clicking this button will irreversibly clean this session up, refreshing the play area for a new session while keeping adventurer states intact.\n\nPlayers will still need to manage their items manually at end of session, for example manually discarding Pet cards with health chips on them."
+  })
+end
+
+function initButtonSelectGuild(obj)
+  local provinceName = getObjectbyName("Pad Province Map").getGMNotes()
+  local tints       = {
+    ["Default"]     = { 255/255, 255/255, 255/255 },
+    ["Black Marsh"] = { 101/255, 100/255, 102/255 },
+    ["Cyrodiil"]    = {  96/255,  89/255,  82/255 },
+    ["High Rock"]   = { 117/255, 103/255,  86/255 },
+    ["Morrowind"]   = { 107/255,  93/255,  85/255 },
+    ["Skyrim"]      = { 109/255, 110/255, 117/255 },
+    ["Valenwood"]   = { 118/255, 109/255, 108/255 }
+  }
+  local ttip = provinceName and 
+               "Select " .. obj.getName() .. " Quest for " .. provinceName .. "." or
+               "Select " .. obj.getName() .. " Quest for this province."
+  local color = provinceName and tints[provinceName] or tints["Default"]
+
+  obj.createButton({
+    click_function = "selectGuild",
+    function_owner = self,
+    label          = "Select",
+    position       = { 0, .3, 2 },
+    rotation       = { 0, 0, 0 },
+    width          = 700,
+    height         = 300,
+    font_size      = 200,
+    color          = color,
+    font_color     = { 1, 1, 1 },
+    tooltip        = ttip,
+  })
+end
+
+
+function initButtonTrueSolo(obj)
+
+  local buttonState = obj.getGMNotes()
+
+  obj.clearButtons()
+
+  if buttonState == "disabled" then
+    obj.createButton({
+        click_function = "enableTrueSolo",
+        function_owner = self,
+        label          = "",
+        position       = { -2.60, .11, 0.00 },
+        width          = 600,
+        height         = 600,
+        font_size      = 600,
+        scale          = { 1, 1, 1 },
+        color          = { 34/255, 40/255, 64/255 },
+        font_color     = "White",
+        tooltip        = "Click to check.\n\nWhile checked, clicking a Province Setup button to start the game will additionally set the Skill Token draw bag up for True Solo play, removing one copy of each skill.",
+      })
+  elseif buttonState == "enabled" then
+    obj.createButton({
+        click_function = "disableTrueSolo",
+        function_owner = self,
+        label          = "✔",
+        position       = { -2.60, .11, 0.00 },
+        width          = 600,
+        height         = 600,
+        font_size      = 600,
+        scale          = { 1, 1, 1 },
+        color          = { 34/255, 40/255, 64/255 },
+        font_color     = "White",
+        tooltip        = "Click to uncheck.\n\nWhile checked, clicking a Province Setup button to start the game will additionally set the Skill Token draw bag up for True Solo play, removing one copy of each skill.",
+      })
+  end
+end
+
+
+function getButtonsProvinceSetup()
+  local buttons = {}
+  for _, object in pairs(getObjects()) do
+    if object.getName():find("Button Setup ") and object.getName() ~= "Button Setup Encounter" then
+      table.insert(buttons, object)
+    end
+  end
+  if buttons ~= {} then
+    return buttons
+  end
+  return nil
+end
+
+
+function animateButtonProvince(button)
+  -- handles physical button depression on click briefly before dropping buttons
+  button.clearButtons()
+  local pos = button.getPosition()
+  pos.y = pos.y - .29
+  button.setPosition(pos)
+  pos.y = pos.y + .29
+  initButtonCleanupSession(button)
+  Wait.time(function() dropButtons() end, .5)
+end
+
+
+function animateButtonCleanupSession(button)
+  button.clearButtons()
+
+  local pos = button.getPosition()
+  pos.y = pos.y - .29
+  button.setPosition(pos)
+
+  Wait.time(function()
+
+    pos.y = -2.00
+    button.setPosition(pos)    
+
+  end, .5)
+  Wait.time(function()
+
+    local buttons = getButtonsProvinceSetup()
+    for i = 1, #buttons do
+      local obj = buttons[i]
+      if obj then
+        local pos = obj.getPosition()
+        pos.y = 1.44
+        obj.setPositionSmooth(pos, false, false)
+        initButtonSetupProvince(obj)
+      end
+    end
+
+  end, 6)
+end
+
+
+function dropButtons()
+  -- drops all Province Setup buttons under the table to hide during play session
+  -- also pulls up and sets Cleanup Session button to show during play session
+
+  -- get Province Setup buttons
+  local buttons = getButtonsProvinceSetup()
+
+  -- drop Province Setup buttons
+  for i = 1, #buttons do
+    local obj = buttons[i]
+    if obj then
+      local pos = obj.getPosition()
+      pos.y = -1
+      obj.setPosition(pos)
+      obj.clearButtons()
+    end
+  end
+end
+
+
+function getCurrentProvince()
+  
+  local padMap = getObjectbyName("Pad Province Map")
+  local currentProvince = padMap.getGMNotes()
+  if currentProvince ~= "" then
+    return currentProvince
+  else
+    return nil
+  end
+end
+
+
+function setupProvince(button, _, _)
+  -- this wrapper function consolidates the run of all province setup related scripting
+
+  -- animate button click, hide province setup buttons, show cleanup session button
+  animateButtonProvince(button)
+
+  -- get important province related vars
+  local provinceName = button.getName():match("Button Setup (.+)")
+  local provinceBag = getObjectbyName("Province Bag " .. provinceName)
+  if provinceBag == nil then log("animateButtonProvince(): Province Bag not found") return end
+
+  -- tag province map pad GMNotes with current province name for easy detection later
+  local padMap = getObjectbyName("Pad Province Map")
+  padMap.setGMNotes(provinceName)
+
+  -- handle setup of encounters and delves
+  setupEncountersDelves(provinceName, provinceBag)
+
+  -- pull, place, lock province reference cards
+  placeProvinceReferences(provinceName, provinceBag)
+
+  -- pull lvl 1/5s, 10/20s to bag, shuffle bags
+  pullProvinceEnemies(provinceName, provinceBag)
+
+  -- pull, place province specific items
+  placeProvinceExtras(provinceName, provinceBag)
+
+  -- pull & place province gazetteer, reposition rulebooks & campaign journals etc
+  setupBackdrop(provinceName, provinceBag)
+
+  -- place lockpick dice
+  moveLockpickDice("Setup")
+
+  -- get guild deck, deal out guild quests
+  dealGuildQuests()
+
+  -- set table background
+  setProvinceBackground(provinceName)
+
+  -- tint non player area pads to province color, set lighting ambiance
+  setProvinceAmbiance(provinceName)
+
+  -- check if true solo button even exists, and if so, if it's true solo. if so, run skill token bag fix
+  local isTrueSolo = false
+  local buttonTrueSolo = getObjectbyName("Button True Solo")
+  if buttonTrueSolo then
+    isTrueSolo = buttonTrueSolo.getGMNotes() == "enabled" and true or false
+    if isTrueSolo then
+      setSkillTokenBagForSolo()
+    end
+  end
+
+  -- destruct true solo button (should only ever be there for initial campaign setup)
+  local buttonTS = getObjectbyName("Button True Solo")
+  if buttonTS then buttonTS.destruct() end
+end
+
+
+function cleanupProvince(button, _, _)
+
+  animateButtonCleanupSession(button)
+
+  -- get important province related vars
+  local provinceName = getObjectbyName("Pad Province Map").getGMNotes()
+  if not provinceName then log("cleanupProvince(): provinceName not found") return end
+  local provinceBag = getObjectbyName("Province Bag " .. provinceName)
+  if provinceBag == nil then log("cleanupProvince(): Province Bag not found") return end
+  local provinceTags = {
+    ["Black Marsh"] = "obj_bm",
+    ["Cyrodiil"]    = "obj_cy",
+    ["High Rock"]   = "obj_hr",
+    ["Morrowind"]   = "obj_mw",
+    ["Skyrim"]      = "obj_sk",
+    ["Valenwood"]   = "obj_vw",
+  }
+  local provinceTag = provinceTags[provinceName]
+
+  -- discard all side quests
+  rotDiscardSideQuest = { 0, 180, 0 }
+  rotDeckSideQuest = { 0, 180, 180 }
+  posDiscardSideQuest = { 63.78, 1.60, 3.31 }
+  posDeckSideQuest = { 59.62, 1.60, 3.31 }
+
+  for _, object in pairs(getObjects()) do
+    if object.type == "Card" and object.hasTag('side_quest') then      
+      object.setRotation(rotDiscardSideQuest)
+      object.setPosition(posDiscardSideQuest)
+    end
+  end
+
+  -- reform, shuffle side quest deck
+  local zoneDeckSideQuest    = getObjectFromGUID("819f35")
+  local zoneDiscardSideQuest = getObjectFromGUID("209c07")
+  Wait.time(function()
+    
+    for _, object in pairs(zoneDiscardSideQuest.getObjects()) do
+      if object.type == "Deck" or object.type == "Card" then
+        object.setRotation(rotDeckSideQuest)
+        object.setPositionSmooth(posDeckSideQuest, false, true)
+      end
+    end
+
+  end, 1)
+  Wait.time(function()
+
+    for _, object in pairs(zoneDeckSideQuest.getObjects()) do
+      if object.type == "Deck" then object.shuffle() end
+    end
+
+  end, 3)
+
+
+
+
+  -- run battle, encounter clean up  
+  getObjectFromGUID("072a57").call('clear_battle')
+  cleanupEncounter(getObjectbyName("Button Cleanup Encounter"), _, _)
+
+  -- remove enemies to province bags per province
+  local bagEnemyLow = getObjectFromGUID("904b55")
+  local bagEnemyHigh = getObjectFromGUID("65d32f")
+  local enemyBags = {bagEnemyLow, bagEnemyHigh}
+  for i = 1, 2 do
+    for _, object in pairs(enemyBags[i].getObjects()) do
+      local tags = object.tags
+      if tags then
+        for _, tag in pairs(tags) do
+          if tag == provinceTag then
+            local replaceTarget = enemyBags[i].takeObject({guid = object.guid})
+            Wait.frames(function()              
+              if replaceTarget then provinceBag.putObject(replaceTarget) end
+            end)
+          end
+        end
+      end
+    end
+  end
+
+  -- remove overland map, return map tokens / day markers
+  for _, object in pairs(getObjects()) do
+    if object.getName():find(" Overland Map") then
+      if object then provinceBag.putObject(object) end
+    end
+  end
+  local bagOverlandMapToken = getObjectbyName("Overland Token Bag")
+  for _, object in pairs(getObjects()) do
+    if string.find(object.getName(), "Overland Token") and object ~= bagOverlandMapToken then
+      if object then bagOverlandMapToken.putObject(object) end
+    end
+  end
+  local bagDayMarkerToken = getObjectbyName("Overland Map Day Tracker Bag")
+  for i = 12, 1, -1 do
+    for _, object in pairs(getObjects()) do
+      if object.getName() == "Day " .. i .. " Marker" then
+        object.setLock(false)
+        if object then bagDayMarkerToken.putObject(object) end
+      end
+    end
+  end
+
+  -- for each mix deck: (general, encounters, delves)
+  ---- get discards, combine with decks, then get decks
+  local encPeacefulDeck = nil
+  local encConflictDeck = nil
+  local delveDeck = nil
+  local rotEncounters = { 0, 180, 0 }
+  local rotDelves = { 0, 180, 180 }
+  local posPeacefulDeck = { 44.98, 1.50, -8.24 }
+  local posConflictDeck = { 49.16, 1.40, -8.24 }
+  local posDelveDeck = { 53.32, 1.40, -8.24 }
+  local posPeacefulDiscard = { 44.96, 1.30, -2.85 }
+  local posConflictDiscard = { 49.14, 1.30, -2.85 }
+  local posDelveDiscard = { 53.30, 1.30, -2.85 }
+  local posDelveExtra = { 53.32, 1.21, -13.38 }
+  local posCommons = { 57.52, 2.25, -8.24 }
+  local posLegendaries = { 61.66, 1.75, -8.24 }
+  local zoneDiscardPeaceful = getObjectFromGUID("503dae")
+  local zoneDiscardConflict = getObjectFromGUID("035f7b")
+  local zoneDiscardDelve = getObjectFromGUID("3383df")
+  local zoneDiscardCommons = getObjectFromGUID("39bd0c")
+  local zoneDeckCommons = getObjectFromGUID("0ec927")
+  local zoneDiscardLegendaries = getObjectFromGUID("75ecba")
+  local zoneDeckLegendaries = getObjectFromGUID("254628")
+  local zoneDeckPeaceful = getObjectFromGUID("623063")
+  local zoneDeckConflict = getObjectFromGUID("11495d")
+  local zoneDeckDelve = getObjectFromGUID("fbe340")
+  local zoneDelveExtra = getObjectFromGUID("cc0e47")
+  for _, object in pairs(zoneDiscardPeaceful.getObjects()) do
+    if object.type == "Deck" or object.type == "Card" then
+      object.setRotation(rotEncounters)
+      object.setPosition(posPeacefulDeck)
+    end
+  end
+  for _, object in pairs(zoneDiscardConflict.getObjects()) do
+    if object.type == "Deck" or object.type == "Card" then
+      object.setRotation(rotEncounters)
+      object.setPosition(posConflictDeck)
+    end
+  end
+  for _, object in pairs(zoneDiscardDelve.getObjects()) do
+    if object.type == "Deck" or object.type == "Card" then
+      object.setRotation(rotDelves)
+      object.setPosition(posDelveDeck)
+    end
+  end
+
+  Wait.time(function()
+
+    for _, object in pairs(zoneDeckPeaceful.getObjects()) do
+      if object.type == "Deck" then
+        encPeacefulDeck = object
+      end
+    end
+    for _, object in pairs(zoneDeckConflict.getObjects()) do
+      if object.type == "Deck" then
+        encConflictDeck = object
+      end
+    end
+    for _, object in pairs(zoneDeckDelve.getObjects()) do
+      if object.type == "Deck" then
+        delveDeck = object
+      end
+    end
+
+  end, .5)
+
+  -- check decks for province specific cards
+  Wait.time(function()
+
+    if encPeacefulDeck then
+      for _, object in pairs(encPeacefulDeck.getObjects()) do
+        local tags = object.tags
+        if tags then
+          for _, tag in pairs(tags) do
+            if tag == provinceTag then
+              local replaceTarget = encPeacefulDeck.takeObject({guid = object.guid})
+              if replaceTarget then
+                Wait.frames(function() replaceTarget.setPosition(posPeacefulDiscard) end)
+              end
+            end
+          end
+        end
+      end
+    end
+
+    if encConflictDeck then
+      for _, object in pairs(encConflictDeck.getObjects()) do
+        local tags = object.tags
+        if tags then
+          for _, tag in pairs(tags) do
+            if tag == provinceTag then
+              local replaceTarget = encConflictDeck.takeObject({guid = object.guid})
+              if replaceTarget then
+                Wait.frames(function() replaceTarget.setPosition(posConflictDiscard) end)
+              end
+            end
+          end
+        end
+      end
+    end
+
+    if delveDeck then
+      for _, object in pairs(delveDeck.getObjects()) do
+        local tags = object.tags
+        if tags then
+          local replaceTarget = nil
+          for _, tag in pairs(tags) do
+            if tag == provinceTag then
+              replaceTarget = delveDeck.takeObject({guid = object.guid})
+              if replaceTarget then
+                Wait.frames(function() replaceTarget.setPosition(replaceTarget.hasTag("de_patrol") and posDelveExtra or posDelveDiscard) end)
+              end
+            end
+          end
+        end
+      end
+    end
+
+  end, 1)
+
+
+  -- check table for loosies, send em home
+  local tags = {"obj_bm", "obj_cy", "obj_hr", "obj_mw", "obj_sk", "obj_vw", "obj_ge"}
+
+  local function matchesTypeandName(o, tagCheck)
+      return (o.type == "Deck" or o.type == "Card") and not string.find(o.getName(), tagCheck)
+  end
+  
+  -- Reference
+  local referenceName = provinceName .. " Reference"
+  for _, obj in pairs(getObjects()) do    
+    if obj.getName() == referenceName or obj.getName() == referenceName .. " 1" or
+    obj.getName() == referenceName .. " 2" then
+      if obj then provinceBag.putObject(obj) end
+    end
+  end
+  
+  for _, obj in ipairs(getObjects()) do
+    for _, tag in ipairs(tags) do
+      -- Peaceful
+      if obj.hasTag("enc_peaceful") and obj.hasTag(tag) and matchesTypeandName(obj, "Encounters Peaceful") then
+        obj.setRotation(rotEncounters)
+        obj.setPosition(tag == "obj_ge" and posPeacefulDeck or posPeacefulDiscard)
+        break
+      end
+
+      -- Conflict
+      if obj.hasTag("enc_conflict") and obj.hasTag(tag) and matchesTypeandName(obj, "Encounters Conflict") then
+        obj.setRotation(rotEncounters)
+        obj.setPosition(tag == "obj_ge" and posConflictDeck or posConflictDiscard)
+        break
+      end
+
+      -- Delve
+      if obj.hasTag("delve") and obj.hasTag(tag) and matchesTypeandName(obj, "Delves") then
+        obj.setRotation(rotDelves)
+        obj.setPosition(tag == "obj_ge" and posDelveDeck or posDelveDiscard)
+        break
+      end
+
+      -- dark elf patrols (if MW)
+      if provinceName == "Morrowind" then
+        if obj.hasTag("de_patrol") and obj.hasTag(tag) and matchesTypeandName(obj, "Dark Elf Patrols") then
+          obj.setRotation(rotEncounters)
+          obj.setPosition(posDelveExtra)
+          break
+        end
+        
+      -- forest blight
+      elseif provinceName == "Valenwood" then
+        if obj.hasTag("forest_blight") and obj.hasTag(tag) and matchesTypeandName(obj, "Forest Blight") then
+          obj.setRotation(rotDelves)
+          obj.setPosition(posDelveExtra)
+          break
+        end
+      end
+    end
+  end
+
+  -- replace province specific extras
+  if provinceName == "Black Marsh" then
+    for _, object in pairs(getObjects()) do
+      -- if Labyrinthine Marsh is loose, re-add to BM delves
+      if object.getName() == "Labyrinthine Marsh" then
+        object.setRotation(rotDelves)
+        object.setPosition(posDelveDiscard)
+      end
+      if object.getName() == "Submerged Chamber" then
+        object.setRotation(rotEncounters)
+        if object then provinceBag.putObject(object) end
+      end
+    end
+
+  elseif provinceName == "Cyrodiil" then
+    
+    for _, object in pairs(getObjects()) do
+      if object.getName() == "Ayleid Spirit Hunter / Void Centurion Torso" or object.getName() == "Ayleid Spirit Hunter" or object.getName() == "Void Centurion Torso" or
+      object.getName() == "Void Centurion Left Arm / Paradax Verus" or object.getName() == "Void Centurion Left Arm" or object.getName() == "Paradax Verus" or
+      object.getName() == "Zirik / Zazita-Do" or object.getName() == "Zirik" or object.getName() == "Zazita-Do" then
+        local bagDefeatedMonsters = getObjectbyName("Defeated Monsters Bag")
+        bagDefeatedMonsters.call('clear_old_chips_remote', {chip_obj = object})
+        local bagUniqueChips = getObjectbyName("Quest Unit / Companion Chip Bag")
+        local posBagUniqueChips = bagUniqueChips.getPosition()
+        posBagUniqueChips.y = 2.25
+        object.setPositionSmooth(posBagUniqueChips, false, true)
+        Wait.frames(function() if object then bagUniqueChips.putObject(object) end end)
+      end
+    end
+
+  -- High Rock requires nothing!
+
+  elseif provinceName == "Morrowind" then
+    Wait.time(function() -- wait allows time for loose dark elf patrols to gather      
+      
+      for _, object in pairs(zoneDelveExtra.getObjects()) do
+        if object.type == "Deck" then
+          local deckObjects = object.getObjects()
+          local count = #deckObjects
+          if count == 3 then
+            object.setName("Dark Elf Patrols")
+            object.setRotation(rotDelves)
+            if object then provinceBag.putObject(object) end
+          end
+        end
+      end
+
+    end, 1.5)
+
+  elseif provinceName == "Skyrim" then
+    for _, object in pairs(getObjects()) do
+      if object.getName() == "Icy Buildup" then
+        object.setRotation(rotEncounters)
+        if object then provinceBag.putObject(object) end
+      end
+      if object.getName() == "Icy Buildup Counter" then object.destruct() end
+    end
+
+  elseif provinceName == "Valenwood" then
+    Wait.time(function() -- wait allows time for loose forest blight to gather
+    
+      for _, object in pairs(zoneDelveExtra.getObjects()) do
+        if object.type == "Deck" then
+          local deckObjects = object.getObjects()
+          local count = #deckObjects
+          if count == 8 then
+            object.setName("Forest Blight")
+            object.setRotation(rotDelves)
+            provinceBag.putObject(object)
+          end
+        end
+      end
+
+    end, 1.5)
+  end
+
+  --3 second wait before starting encounter/delve/item deck refreshes,
+  -- to allow for cleanup of town encounter if required
+  Wait.time(function()
+
+    -- rename newly re-separated province decks (do this after checking for loosies)
+    Wait.time(function()
+
+      for _, object in pairs(zoneDiscardPeaceful.getObjects()) do
+        if object.type == "Deck" then
+          object.setName(provinceName .. " Encounters Peaceful")
+          if object then provinceBag.putObject(object) end
+        end
+      end
+      for _, object in pairs(zoneDiscardConflict.getObjects()) do
+        if object.type == "Deck" then
+          object.setName(provinceName .. " Encounters Conflict")
+          if object then provinceBag.putObject(object) end
+        end
+      end
+      for _, object in pairs(zoneDiscardDelve.getObjects()) do
+        if object.type == "Deck" then
+          object.setName(provinceName .. " Delves")
+          if object then  provinceBag.putObject(object) end
+        end
+      end
+      for _, object in pairs(zoneDeckPeaceful.getObjects()) do
+        if object.type == "Deck" then
+          object.setName("General Encounters Peaceful")
+        end
+      end
+      for _, object in pairs(zoneDeckConflict.getObjects()) do
+        if object.type == "Deck" then
+          object.setName("General Encounters Conflict")
+        end
+      end
+      for _, object in pairs(zoneDeckDelve.getObjects()) do
+        if object.type == "Deck" then
+          object.setName("General Delves")
+        end
+      end
+
+    end, 1.5)
+
+    ---- pull unused generals, replace to decks
+    Wait.time(function()
+
+      local unusedPeacefuls = nil
+      local unusedConflicts = nil
+      local bagUnusedObjects = getObjectbyName("Unused Object Bag")
+      for _, object in pairs(bagUnusedObjects.getObjects()) do
+        if object.name == "General Encounters Peaceful" then        
+          unusedPeacefuls = bagUnusedObjects.takeObject({guid = object.guid})
+        end
+        if object.name == "General Encounters Conflict" then        
+          unusedConflicts = bagUnusedObjects.takeObject({guid = object.guid})
+        end
+      end
+      if unusedPeacefuls == nil or unusedConflicts == nil then
+        broadcastToAll("Unable to find a previously unused General Encounter deck. Perform session cleanup manually.", "Orange")
+        return nil
+      end
+      if unusedPeacefuls then
+        unusedPeacefuls.setRotation(rotEncounters)
+        unusedPeacefuls.setPosition(posPeacefulDeck)
+      end
+      if unusedConflicts then
+        unusedConflicts.setRotation(rotEncounters)
+        unusedConflicts.setPosition(posConflictDeck)
+      end
+
+    end, 2)
+
+    Wait.time(function()
+    
+      if encPeacefulDeck then encPeacefulDeck.shuffle() end
+      if encConflictDeck then encConflictDeck.shuffle() end
+      if delveDeck then delveDeck.shuffle() end
+
+    end, 3)
+
+    -- combine common/legendaries into main decks
+    
+    for _, object in pairs(zoneDiscardCommons.getObjects()) do
+      if object.type == "Deck" or object.type == "Card" then
+        object.setRotation(rotDelves)
+        object.setPosition(posCommons)
+      end
+    end
+    for _, object in pairs(zoneDiscardLegendaries.getObjects()) do
+      if object.type == "Deck" or object.type == "Card" then
+        object.setRotation(rotDelves)
+        object.setPosition(posLegendaries)
+      end
+    end
+
+    Wait.time(function()
+
+      for _, object in pairs(zoneDeckCommons.getObjects()) do
+        if object.type == "Deck"  then
+          object.shuffle()
+          object.setName("Common Items")
+        end
+      end
+      for _, object in pairs(zoneDeckLegendaries.getObjects()) do
+        if object.type == "Deck" then
+          object.shuffle()
+          object.setName("Legendary Items")
+        end
+      end
+
+    end, 3)
+
+  end, 3)
+
+  -- delete guild gazatteer copy
+  local guildGazetteer = getObjectbyName("Guild Info Gazatteer Copy")
+  if guildGazetteer then guildGazetteer.destruct() end
+
+  -- return lockpick dice
+  moveLockpickDice("Cleanup")
+
+  -- put selected guild back into deck
+  local zoneActiveGuild = getObjectFromGUID("69a51c")
+  local posGuildDeck = { 65.81, 1.40, -2.83 }
+  for _, object in pairs(zoneActiveGuild.getObjects()) do
+    if object.hasTag('guild') then
+      object.setRotation(rotEncounters)
+      object.setPosition(posGuildDeck)
+    end
+  end
+  -- wait a sec, ensure guilds deck is renamed  
+  Wait.time(function()
+    for _, object in pairs(zoneActiveGuild.getObjects()) do
+      if object.type == "Deck" then object.setName("Guilds") end
+    end
+  end, 1)
+
+  -- reset day counter
+  local dayCounter = getObjectFromGUID("2b0c66")
+  local dayWheel = getObjectFromGUID("435f0a")
+  local rotDayWheelInit = { 0, 270, 0 }
+  dayCounter.call('set_val', 1)
+  dayWheel.setRotation(rotDayWheelInit)
+
+  -- set Province Background
+  setProvinceBackground("Default")
+
+  -- return province gazetteer
+  local gazName = provinceName .. " Gazetteer"
+  local provinceGazetteer = getObjectbyName(gazName)
+  if provinceGazetteer == nil then
+    log("cleanupProvince(): Gazetteer not found: " .. gazName)
+    return
+  end
+  Wait.time(function()
+    if provinceBag and provinceGazetteer then
+      local rotReturn = { 0, 180, 0 }
+      local posReturn = provinceBag.getPosition()
+      posReturn.y = 5.90      
+      provinceGazetteer.setLock(false)
+      provinceGazetteer.setRotation(rotReturn)
+      provinceGazetteer.setPosition(posReturn)
+      Wait.frames(function() provinceBag.putObject(provinceGazetteer) end)
+    end
+    Wait.time(function()
+      if provinceGazetteer then provinceBag.putObject(provinceGazetteer) end
+    end, 1)
+  end, 2.5)
+
+  -- tint non player area pads to default white
+  setProvinceAmbiance("Default")
+
+end
+
+
+function placePartyToken(bagOverlandTokens, provinceName, guildName)
+  -- this function handles the pulling and placement of the party token and day 1 marker during province setup
+
+  local posStart = posGuildStarts[provinceName][guildName]
+
+  local posDayMarker = posStart
+  posDayMarker.y = 1.74
+
+  -- day 1 marker handle
+  local bagDayMarkers = getObjectbyName("Overland Map Day Tracker Bag")
+  if not bagDayMarkers then log("placePartyToken(): bagDayMarkers not found") return end
+  for _, object in pairs(bagDayMarkers.getObjects()) do
+    if object.name == "Day 1 Marker" then
+      local day1marker = bagDayMarkers.takeObject({guid = object.guid})
+      Wait.frames(function()
+
+        posStart.y = 1.74
+        day1marker.setPosition(posDayMarker, false, true)
+
+      end)
+      break
+    end
+  end
+
+  -- party token handle
+  Wait.time(function()
+    local tokenParty = nil
+    local posTokenParty = posStart
+    posTokenParty.y = 3.00
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Party Overland Token" then
+        tokenParty = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end
+    end
+    if tokenParty == nil then log("placePartyToken(): tokenParty not found in bagOverlandTokens") return end
+    local rotTokenParty = { 0, 180, 0 }
+  
+    tokenParty.setRotation(rotTokenParty)
+    posStart.y = 3.00
+    tokenParty.setPositionSmooth(posTokenParty, false, true)
+    tokenParty.highlightOn("White")
+    tokenParty.setLock(true)
+    Wait.time(function() tokenParty.setLock(false) end, .5)
+  end, 1)
+end
+
+
+function placeOverlandMapTokens(provinceName, bagOverlandTokens)
+  -- this function handles the pulling and placement of the non party overland map tokens during province setup
+
+  if provinceName == "Black Marsh" then
+    -- Black Marsh: Book token to symbol1 Sunny
+    local tokenBook = nil
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenBook = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end
+    end
+    if tokenBook == nil then log("placeOverlandMapTokens(): tokenBook not found") return end
+    local rotTokenBook = { 0, 180, 0 }
+    local posTokenBook = { -37.40, 1.90, 1.14 }
+    Wait.frames(function()
+      tokenBook.setRotation(rotTokenBook)
+      tokenBook.setPositionSmooth(posTokenBook, false, true)
+      tokenBook.highlightOn("Grey")
+      tokenBook.setDescription("Weather Gauge")
+    end)
+
+  elseif provinceName == "Cyrodiil" then
+    -- Cyrodiil: Scroll Token to Empire Remnant Space, then Book Token to same space on top of Scroll Token
+    local tokenScroll = nil    
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Scroll Overland Token" then
+        tokenScroll = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end            
+    end
+    if tokenScroll == nil then log("placeOverlandMapTokens(): tokenScroll not found") return end
+    local tokenBook = nil
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenBook = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end      
+    end
+    if tokenBook == nil then log("placeOverlandMapTokens(): tokenBook not found") return end
+    local rotTokens = { 0, 180, 0 }
+    local posTokens = { -54.43, 1.7, 0.72 }
+    Wait.frames(function()
+      tokenScroll.setRotation(rotTokens)
+      tokenScroll.setPositionSmooth(posTokens, false, true)
+      tokenScroll.highlightOn("Grey")
+      tokenScroll.setDescription("Dominant Faction Token")
+      posTokens = { -54.43, 2.3, 0.72 }
+      tokenBook.setRotation(rotTokens)
+      tokenBook.setPositionSmooth(posTokens, false, true)
+      tokenBook.highlightOn("Grey")
+      tokenBook.setDescription("Battlefront Token")
+    end)
+
+  elseif provinceName == "High Rock" then
+    -- High Rock: Book Token to unrest track
+    local tokenBook = nil
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenBook = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end
+    end
+    if tokenBook == nil then log("placeOverlandMapTokens(): tokenBook not found") return end
+    local rotTokenBook = { 0, 180, 0 }
+    local posTokenBook = { -47.29, 1.70, 0.75 }
+    Wait.frames(function()
+      tokenBook.setRotation(rotTokenBook)
+      tokenBook.setPositionSmooth(posTokenBook, false, true)
+      tokenBook.highlightOn("Grey")
+      tokenBook.setDescription("Unrest Token")
+    end)
+
+  elseif provinceName == "Morrowind" then
+    -- Morrowind: Place Dig, Excavation Book Tokens to respective tracks
+    local tokenDig = nil    
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenDig = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end            
+    end
+    if tokenDig == nil then log("placeOverlandMapTokens(): tokenDig not found") return end
+    local tokenExcavate = nil
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenExcavate = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end
+    end
+    if tokenExcavate == nil then log("placeOverlandMapTokens(): tokenExcavate not found") return end
+    local rotTokens = { 0, 180, 0 }
+    local posTokenDig = { -46.92, 1.70, 0.72 }
+    local posTokenExcavate = { -41.36, 1.70, 0.72 }
+    Wait.frames(function()
+      tokenDig.setRotation(rotTokens)
+      tokenDig.setPositionSmooth(posTokenDig, false, true)
+      tokenDig.highlightOn("Grey")
+      tokenDig.setDescription("Dig Token")
+      tokenExcavate.setRotation(rotTokens)
+      tokenExcavate.setPositionSmooth(posTokenExcavate, false, true)
+      tokenExcavate.highlightOn("Grey")
+      tokenExcavate.setDescription("Excavation Token")
+    end)
+
+  elseif provinceName == "Skyrim" then -- this will actually work when this bit is switched to guild selection
+    -- Skyrim: Place Siege Book Token
+    local tokenBook = nil
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenBook = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end
+    end
+    if tokenBook == nil then log("placeOverlandMapTokens(): tokenBook not found") return end
+    local rotTokenBook = { 0, 180, 0 }
+    local posTokenBook = { -50.34, 1.70, 0.78 }
+    Wait.frames(function()
+      tokenBook.setRotation(rotTokenBook)
+      tokenBook.setPositionSmooth(posTokenBook, false, true)
+      tokenBook.highlightOn("Grey")
+      tokenBook.setDescription("Under Siege Token")
+    end)
+
+  elseif provinceName == "Valenwood" then
+    -- Valenwood: Book Token to all 3 Tracks (town, peaceful, conflict)
+    local tokenTown = nil    
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenTown = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end            
+    end
+    if tokenTown == nil then log("placeOverlandMapTokens(): tokenTown not found") return end
+    local tokenPeaceful = nil    
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenPeaceful = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end            
+    end
+    if tokenPeaceful == nil then log("placeOverlandMapTokens(): tokenPeaceful not found") return end
+    local tokenConflict = nil
+    for _, object in pairs(bagOverlandTokens.getObjects()) do
+      if object.name == "Book Overland Token" then
+        tokenConflict = bagOverlandTokens.takeObject({guid = object.guid})
+        break
+      end
+    end
+    if tokenConflict == nil then log("placeOverlandMapTokens(): tokenExcavate not found") return end
+    local rotTokens = { 0, 180, 0 }
+    local posTokenTown = { -52.52, 1.70, 20.72 }
+    local posTokenPeaceful = { -52.52, 1.70, 19.40 }
+    local posTokenConflict = { -52.51, 1.70, 18.17 }
+    Wait.frames(function()
+      tokenTown.setRotation(rotTokens)
+      tokenTown.setPositionSmooth(posTokenTown, false, true)
+      tokenTown.highlightOn("Grey")
+      tokenTown.setDescription("Town Influence Token")
+      tokenPeaceful.setRotation(rotTokens)
+      tokenPeaceful.setPositionSmooth(posTokenPeaceful, false, true)
+      tokenPeaceful.highlightOn("Grey")
+      tokenPeaceful.setDescription("Peaceful Influence Token")
+      tokenConflict.setRotation(rotTokens)
+      tokenConflict.setPositionSmooth(posTokenConflict, false, true)
+      tokenConflict.highlightOn("Grey")
+      tokenConflict.setDescription("Conflict Influence Token")
+    end)
+  end
+end
+
+
+function placeProvinceExtras(provinceName, provinceBag)
+  -- this function handles the pulling and placement of province extra items (ie: BM submerged chamber, CY enemies, etc)
+
+  local posDelve = { 53.30, 1.50, -8.24 } -- position of general delves deck
+  local posExtraDelve = { 53.30, 1.50, -13.38 } -- position underneath general delves deck
+
+  if provinceName == "Black Marsh" then
+    -- Black Marsh: place special delve card Submerged Chamber, handle loose card Labyrinthine Marsh if needed
+    local cardSubmergedChamber = nil
+    for _, object in pairs(provinceBag.getObjects()) do
+      if object.name == "Submerged Chamber" then
+        cardSubmergedChamber = provinceBag.takeObject({guid = object.guid})
+      end
+    end
+    -- no Sumberged Chamber found in bag means no further progress, error out
+    if cardSubmergedChamber == nil then log("placeProvinceExtras(): cardSubmergedChamber not found") return end
+    -- place Submerged Chamber
+    local rotSubmergedChamber = { 0, 180, 0 }
+    cardSubmergedChamber.setRotation(rotSubmergedChamber)
+    cardSubmergedChamber.setPositionSmooth(posExtraDelve, false, true)
+    -- check province bag for loose Labyrinthine Marsh, drop into general delve deck if found
+    for _, object in pairs(provinceBag.getObjects()) do
+      if string.find(object.name, "Submerged") then
+        submerged = provinceBag.takeObject({guid = object.guid})
+      end
+      if string.find(object.name, "Labyrinthine") then
+        local labyrinthine = provinceBag.takeObject({ guid = object.guid})
+        local rotLabyrinthine = { 0, 180, 180 }
+        labyrinthine.setRotation(rotLabyrinthine)
+        labyrinthine.setPosition(posDelve)
+      end
+    end
+
+  elseif provinceName == "Cyrodiil" then
+    -- Cyrodiil: set aside specified enemy chips
+    local bagQuest = getObjectbyName("Quest Unit / Companion Chip Bag")
+    if not bagQuest then log("placeProvinceExtras(): bagQuest not found") return end
+    local ayleid = nil
+    local paradax = nil
+    local zazita = nil
+    for _, object in pairs(bagQuest.getObjects()) do
+      if object.name:find("Ayleid") then
+        ayleid = bagQuest.takeObject({guid = object.guid})
+      end
+      if object.name:find("Paradax") then
+        paradax = bagQuest.takeObject({guid = object.guid})
+      end
+      if object.name:find("Zazita") then
+        zazita = bagQuest.takeObject({guid = object.guid})
+      end
+    end
+    if not ayleid then log("placeProvinceExtras(): ayleid not found") return end
+    if not paradax then log("placeProvinceExtras(): paradax not found") return end
+    if not zazita then log("placeProvinceExtras(): zazita not found") return end
+    local rotAyleid = { 0, 180, 0 }
+    local rotParadax = { 0, 180, 180 }
+    local rotZazita = { 0, 180, 180 }
+    local posAyleid = { 35.94, 1.50, 6.00 }
+    local posParadax = { 38.40, 1.50, 6.00 }
+    local posZazita = { 40.86, 1.50, 6.00 }
+    ayleid.setRotation(rotAyleid)
+    ayleid.setPositionSmooth(posAyleid, false, true)
+    paradax.setRotation(rotParadax)
+    paradax.setPositionSmooth(posParadax, false, true)
+    zazita.setRotation(rotZazita)
+    zazita.setPositionSmooth(posZazita, false, true)
+  
+  -- elseif provinceName == "High Rock" then * High Rock requires no additional setup
+
+  elseif provinceName == "Morrowind" then
+    -- Morrowind: place Dark Elf Patrols
+    local deckPatrols = nil
+    for _, object in pairs(provinceBag.getObjects()) do
+      if string.find(object.name, "Patrols") then
+        deckPatrols = provinceBag.takeObject({guid = object.guid})
+      end
+    end
+    if not deckPatrols then log("placeProvinceExtras(): deckPatrols not found") return end
+    local rotPatrols = { 0, 180, 0 }
+    Wait.frames(function() deckPatrols.setPositionSmooth(posExtraDelve, false, true) end)
+
+  elseif provinceName == "Skyrim" then
+    -- Skyrim: pull, place Icy Buildup card
+    local cardIcyBuildup = nil
+    for _, object in pairs(provinceBag.getObjects()) do
+      if object.name == "Icy Buildup" then
+        cardIcyBuildup = provinceBag.takeObject({guid = object.guid})
+      end
+    end
+    -- no Icy Buildup found in bag means no further progress, error out
+    if cardIcyBuildup == nil then log("placeProvinceExtras(): cardIcyBuildup not found") return end
+    -- place Icy Buildup
+    local rotIcyBuildup = { 0, 180, 0 }
+    cardIcyBuildup.setRotation(rotIcyBuildup)
+    cardIcyBuildup.setPositionSmooth(posExtraDelve, false, true)
+    -- pull generic counter, place to Icy Buildup
+    local bagGenericCounter = getObjectbyName("Generic Counter Bag")
+    if bagGenericCounter == nil then log("placeProvinceExtras(): bagGenericCounter not found") return end
+    local genericCounter = bagGenericCounter.takeObject()
+    local rotGenericCounter = { 0, 180, 0 }
+    local posGenericCounter = { 53.30, 1.14, -17.00 }
+    Wait.frames(function()
+      genericCounter.setRotation(rotGenericCounter)
+      genericCounter.setPosition(posGenericCounter)
+      genericCounter.setLock(true)
+      genericCounter.setName("Icy Buildup Counter")
+      genericCounter.call('set_val', 0)
+    end)
+    
+
+
+
+  elseif provinceName == "Valenwood" then
+    -- Valenwood: pull, place, and shuffle Forest Blight deck
+    local deckForestBlight = nil
+    for _, object in pairs(provinceBag.getObjects()) do
+      if object.name == "Forest Blight" then
+        deckForestBlight = provinceBag.takeObject({guid = object.guid})
+      end
+    end
+    -- no Forest Blight == no further progress, error out
+    if deckForestBlight == nil then log("placeProvinceExtras(): deckForestBlight not found") return end
+    local rotDeckForestBlight = { 0, 180, 180 } 
+    deckForestBlight.setRotation(rotDeckForestBlight)
+    deckForestBlight.setPositionSmooth(posExtraDelve, false, true)
+    -- 1 second wait so players can visually see shuffle
+    Wait.time(function() deckForestBlight.shuffle() end, 1)
+  end
+end
+
+
+function placeProvinceReferences(provinceName, provinceBag)
+  -- this function handles the pulling, placement, and locking of province reference cards
+  -- Cyrodiil & Valenwood will have 2 reference cards, all others only 1
+
+  local rotReference = { 0, 180, 0}
+  local posReference1 = { -59.79, 1.15, 19.04 }
+  local posReference2 = { -64.22, 1.15, 19.04 }
+
+  -- .5 second wait to time appearance with province map
+  Wait.time(function()
+
+    if provinceName == "Cyrodiil" or provinceName == "Valenwood" then
+      local reference1 = nil
+      local reference2 = nil
+      for _, object in pairs(provinceBag.getObjects()) do
+        if object.name == provinceName .. " Reference 1" then
+          reference1 = provinceBag.takeObject({guid = object.guid})
+          break
+        end
+      end
+      for _, object in pairs(provinceBag.getObjects()) do
+        if object.name == provinceName .. " Reference 2" then
+          reference2 = provinceBag.takeObject({ guid = object.guid})
+          break
+        end
+      end
+      if reference1 == nil then log("placeProfinceReferences(): reference1 not found") return end
+      if reference2 == nil then log("placeProfinceReferences(): reference2 not found") return end
+      reference1.setRotation(rotReference)
+      reference1.setPosition(posReference1)
+      reference1.setLock(true)    
+      reference2.setRotation(rotReference)
+      reference2.setPosition(posReference2)
+      reference2.setLock(true)    
+      
+    else
+      local reference = nil
+      for _, object in pairs(provinceBag.getObjects()) do
+        if object.name == provinceName .. " Reference" then
+          reference = provinceBag.takeObject({guid = object.guid})
+          break
+        end
+      end
+      if reference == nil then log("placeProfinceReferences(): reference not found") return end      
+      reference.setRotation(rotReference)
+      reference.setPosition(posReference1)
+      reference.setLock(true)
+      
+    end
+
+  end, .5)
+end
+
+
+function setupEncountersDelves(provinceName, provinceBag)
+  -- this function handles the setup of Encounters and Delves during province setup
+
+  local rotEncounter = { 0, 180, 0 }
+  local rotDelve = { 0, 180, 180 }
+  local posEncPeacefulTop = { 44.98, 1.50, -2.83 }
+  local posEncPeacefulBottom = { 44.98, 1.50, -8.24 }
+  local posEncConflictTop = { 49.16, 1.50, -2.83 }
+  local posEncConflictBottom = { 49.16, 1.50, -8.24 }
+  local posDelveTop = { 53.32, 1.50, -2.83 }
+  local posDelveBottom = { 53.32, 1.50, -8.24 }
+
+
+  -- get, move general encounters and decks
+  local genEncPeaceful, genEncConflict, genDelve = nil, nil, nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "General Encounters Peaceful" then
+      genEncPeaceful = object
+    elseif object.getName() == "General Encounters Conflict" then
+        genEncConflict = object
+    elseif object.getName() == "General Delves" then
+      genDelve = object
+    end
+  end
+  if genEncPeaceful == nil then log("setupEncountersDelves(): genEncPeaceful not found") return end
+  if genEncConflict == nil then log("setupEncountersDelves(): genEncConflict not found") return end
+  if genDelve == nil then log("setupEncountersDelves(): genDelve not found") return end
+  genEncPeaceful.setPosition(posEncPeacefulTop)
+  genEncPeaceful.shuffle()
+  genEncConflict.setPosition(posEncConflictTop)
+  genEncConflict.shuffle()
+  genDelve.setPosition(posDelveTop)
+
+  -- pull, place, shuffle province encounters and delves
+  local provinceEncPeaceful, provinceEncConflict, provinceDelve = nil, nil, nil
+  for _, object in pairs(provinceBag.getObjects()) do
+    if object.name == provinceName .. " Encounters Peaceful" then
+      provinceEncPeaceful = provinceBag.takeObject({guid = object.guid})
+      break
+    end
+  end
+  for _, object in pairs(provinceBag.getObjects()) do
+    if object.name == provinceName .. " Encounters Conflict" then
+      provinceEncConflict = provinceBag.takeObject({guid = object.guid})
+      break
+    end
+  end
+  for _, object in pairs(provinceBag.getObjects()) do
+    if object.name == provinceName .. " Delves" then
+      provinceDelve =  provinceBag.takeObject({guid = object.guid})
+      break
+    end
+  end
+  if provinceEncPeaceful == nil then log("setupEncountersDelves(): provinceEncPeaceful not found") return end
+  if provinceEncConflict == nil then log("setupEncountersDelves(): provinceEncConflict not found") return end
+  if provinceDelve == nil then log("setupEncountersDelves(): provinceDelve not found") return end
+  Wait.frames(function()
+    provinceEncPeaceful.setRotation(rotEncounter)
+    provinceEncPeaceful.shuffle()
+    provinceEncPeaceful.setPositionSmooth(posEncPeacefulBottom, false, true)
+    provinceEncConflict.setRotation(rotEncounter)
+    provinceEncConflict.shuffle()
+    provinceEncConflict.setPositionSmooth(posEncConflictBottom, false, true)
+    provinceDelve.setRotation(rotDelve)
+    provinceDelve.shuffle()
+    provinceDelve.setPositionSmooth(posDelveBottom, false, true)
+  end)  
+
+  -- wait a sec, deal 4 encounters apiece for both encounter types
+  Wait.time(function()
+    for i = 1, 4 do
+      local peaceful = genEncPeaceful.takeObject()
+      local conflict = genEncConflict.takeObject()
+      Wait.frames(function()
+      provinceEncPeaceful.putObject(peaceful)
+      provinceEncConflict.putObject(conflict)
+      end)
+    end
+    -- stack general delves onto province delve deck
+    provinceDelve.putObject(genDelve)
+    
+  end, 1)  
+
+  -- get remaining setup decks to be shuffled
+  local sideQuests, commonItems, legendaryItems, guilds = nil, nil, nil, nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Side Quests" and object.type == "Deck" then
+      sideQuests = object
+      break
+    end
+  end
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Common Items" and object.type == "Deck" then
+      commonItems = object
+      break
+    end
+  end
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Legendary Items" and object.type == "Deck" then
+      legendaryItems = object
+      break
+    end
+  end
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Guilds" and object.type == "Deck" then
+      guilds = object
+      break
+    end
+  end
+  if sideQuests == nil then log("setupEncountersDelves(): sideQuests not found") return end
+  if commonItems == nil then log("setupEncountersDelves(): commonItems not found") return end
+  if legendaryItems == nil then log("setupEncountersDelves(): legendaryItems not found") return end
+  if guilds == nil then log("setupEncountersDelves(): guilds not found") return end
+  
+  -- wait another sec, shuffle all requiring decks
+  Wait.time(function()
+    provinceEncPeaceful.shuffle()
+    provinceEncConflict.shuffle()
+    provinceDelve.shuffle()
+    sideQuests.shuffle()
+    commonItems.shuffle()
+    legendaryItems.shuffle()
+    guilds.shuffle()
+
+    -- return remaining general encounters/delves to unused bag
+    local bagUnusedObject = getObjectbyName("Unused Object Bag")
+    if not bagUnusedObject then log("setupEncountersDelves(): bagUnusedObject not found") return end
+    bagUnusedObject.putObject(genEncPeaceful)
+    bagUnusedObject.putObject(genEncConflict)
+  end, 2)
+end
+
+
+function pullProvinceEnemies(provinceName, provinceBag)
+  -- this function handles pulling the province specific enemy chips out of province bag,
+  -- and places them into their respective enemy draw bags
+
+  local enemyNames  = {
+    ["Black Marsh"] = {
+      ["Low"]       = {
+        "Hackwing Swarm / Hackwing",
+        "Voriplasm / Bog Dog",
+      },
+      ["High"]      = {
+        "Argonian Behemoth / Argonian Stalker",
+        "Miregaunt / Wamasu",
+      },
+    },
+    ["Cyrodiil"]    = {
+      ["Low"]       = {
+        "Mountain Lion / Boar",
+        "Will-O-The-Wisp / Imp",
+      },
+      ["High"]      = {
+        "Minotaur Lord / Minotaur",
+        "Worm Anchorite / Worm Warrior",
+      },
+    },
+    ["High Rock"]   = {
+      ["Low"]       = {
+        "Ghost / Zombie",
+        "Riekr / Horker",
+      },
+      ["High"]       = {
+        "Bone Colossus / Bone Lord",
+        "Orc Warlord / Breton Usurper",
+      },
+    },
+    ["Morrowind"]   = {
+      ["Low"]       = {
+        "Cliff Strider / Cliff Racer",
+        "Kwama Warrior / Scrib",
+      },
+      ["High"]       = {
+        "Dark Elf Pillager / Dark Elf Raider",
+        "Nix-Hound Pack / Nix-Hound",
+      },
+    },
+    ["Skyrim"]      = {
+      ["Low"]       = {
+        "Chaurus / Bristleback",
+        "Falmer / Draugr",
+      },
+      ["High"]       = {
+        "Briarheart / Reachman",
+        "Vampire / Hagraven",
+      },
+    },
+    ["Valenwood"]   = {
+      ["Low"]       = {
+        "Thunderbug / Hoarver",
+        "Wood Orc Marauder / Wood Orc Bandit",
+      },
+      ["High"]      = {
+        "Hollow Guardian / Hollow Predator",
+        "Wood Elf Stalker / Wood Elf Ranger",
+      },
+    },
+  }
+
+  -- get enemy draw bags
+  local bagEnemyDrawLow = getObjectbyName("Level 1 / 5 Enemies")
+  if bagEnemyDrawLow == nil then log("pullProvinceEnemies(): bagEnemyDrawLow not found") return end
+  local bagEnemyDrawHigh = getObjectbyName("Level 10 / 20 Enemies")
+  if bagEnemyDrawHigh == nil then log("pullProvinceEnemies(): bagEnemyDrawHigh not found") return end
+  
+
+  local lowNames = enemyNames[provinceName]["Low"]  
+  local highNames = enemyNames[provinceName]["High"]
+
+  -- pull enemies from province bag, place to respective enemy draw bags
+  for _, object in pairs(provinceBag.getObjects()) do 
+    if object.name == lowNames[1] or object.name == lowNames[2] then
+      local chip = provinceBag.takeObject({guid = object.guid})
+      Wait.frames(function() bagEnemyDrawLow.putObject(chip) end)
+    elseif object.name == highNames[1] or object.name == highNames[2] then
+      local chip = provinceBag.takeObject({guid = object.guid})
+      Wait.frames(function() bagEnemyDrawHigh.putObject(chip) end)
+    end
+  end
+
+  -- shuffle enemy bags (add wait)
+  Wait.time(function()
+    bagEnemyDrawLow.shuffle()
+    bagEnemyDrawHigh.shuffle()
+  end, 1)
+end
+
+
+function setupBackdrop(provinceName, provinceBag)
+
+  -- this function handles the setup of the table backdrop
+  -- ie: rulebook, campaign journal, reference gazetteer, etc
+
+  -- get required always present on table items
+  local ruleBook = nil
+  local tutorialBook = nil
+  local bagUnusedObjects = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Rulebook" then
+      ruleBook = object
+    end
+    if object.getName() == "Tutorial Guide" then
+      tutorialBook = object
+    end
+    if object.getName() == "Unused Object Bag" then
+      bagUnusedObjects = object
+    end
+  end
+  if ruleBook == nil then log("setupBackdrop(): ruleBook not found") end
+  if tutorialBook == nil then log("setupBackdrop(): tutorialBook not found") end
+  if bagUnusedObjects == nil then log("setupBackdrop(): bagUnusedObjects not found") end
+
+  -- resposition Rulebook, Tutorial Guide (always on table)
+  local posRuleBook = { -29.48, 12.47, 54.30 }
+  local posTutorialBook = { -50.08, 12.47, 54.30 }
+  ruleBook.setPositionSmooth(posRuleBook, false, true)
+  tutorialBook.setPositionSmooth(posTutorialBook, false, true)
+
+  -- check if campaign journal, references exist on table. if not, pull from bag, then place
+  local campaignJournal = getObjectbyName("Campaign Journal")
+  local referenceLeft = getObjectbyName("Reference Left")
+  local referenceRight = getObjectbyName("Reference Right")
+  local provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+
+  -- one by one, if not already existing, pull these from their respective bags
+  if not campaignJournal then
+    for _, object in pairs(bagUnusedObjects.getObjects()) do
+      if object.name == "Campaign Journal" then
+        campaignJournal = bagUnusedObjects.takeObject({guid = object.guid})
+      end
+    end
+  end
+  if not referenceLeft then
+    for _, object in pairs(bagUnusedObjects.getObjects()) do
+      if object.name == "Reference Left" then
+        referenceLeft = bagUnusedObjects.takeObject({guid = object.guid})
+      end
+    end
+  end
+  if not referenceRight then
+    for _, object in pairs(bagUnusedObjects.getObjects()) do
+      if object.name == "Reference Right" then
+        referenceRight = bagUnusedObjects.takeObject({guid = object.guid})
+      end
+    end
+  end
+  if not provinceGazetteer then
+    for _, object in pairs(provinceBag.getObjects()) do
+      if object.name == provinceName .. " Gazetteer" then
+        provinceGazetteer = provinceBag.takeObject({guid = object.guid})
+      end
+    end
+  end
+  
+  local extraBackdropItems = {
+    campaignJournal,
+    referenceLeft,
+    referenceRight,
+    provinceGazetteer,
+  }
+  local rotBackdrop = { 60, 180, 0 }
+  local posCampaignJournal = { 10.96, 12.47, 54.30 }
+  local posReferenceLeft = { 31.86, 12.47, 54.30 }
+  local posReferenceRight = { 53.00, 12.47, 54.30 }
+  local posProvinceGazetteer = { -9.14, 12.47, 54.30 }
+  local posBackdropItems = {
+    posCampaignJournal,
+    posReferenceLeft,
+    posReferenceRight,
+    posProvinceGazetteer,
+  }
+
+  -- frame Wait to allow objects to spawn after being pulled from bag, then position by repositioning and locking gaz
+  Wait.frames(function()
+
+    for i = 1, 4 do
+      extraBackdropItems[i].setLock(true)
+      extraBackdropItems[i].setRotation(rotBackdrop)
+      extraBackdropItems[i].setPositionSmooth(posBackdropItems[i], false, true)
+    end
+
+    -- handle stupid gazetteers taking longer to load
+    Wait.time(function()
+      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+      if provinceGazetteer then          
+        provinceGazetteer.setRotation(rotBackdrop)
+        provinceGazetteer.setPosition( posProvinceGazetteer)
+        Wait.frames(function() provinceGazetteer.lock() end, 5)
+      end
+    end, 1)
+    Wait.time(function()
+      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+      if provinceGazetteer then          
+        provinceGazetteer.setRotation(rotBackdrop)
+        provinceGazetteer.setPosition( posProvinceGazetteer)
+        Wait.frames(function() provinceGazetteer.lock() end, 5)
+      end
+    end, 5)
+    Wait.time(function()
+      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+      if provinceGazetteer then          
+        provinceGazetteer.setRotation(rotBackdrop)
+        provinceGazetteer.setPosition(posProvinceGazetteer)
+        Wait.frames(function() provinceGazetteer.lock() end, 5)
+      end
+    end, 10)
+    Wait.time(function()
+      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+      if provinceGazetteer then          
+        provinceGazetteer.setRotation(rotBackdrop)
+        provinceGazetteer.setPosition(posProvinceGazetteer)
+        Wait.frames(function() provinceGazetteer.lock() end, 5)
+      end
+    end, 15)
+    Wait.time(function()
+      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+      if provinceGazetteer then          
+        provinceGazetteer.setRotation(rotBackdrop)
+        provinceGazetteer.setPosition(posProvinceGazetteer)
+        Wait.frames(function() provinceGazetteer.lock() end, 5)
+      end
+    end, 20)
+    
+  end)
+end
+
+
+function moveLockpickDice(action)
+  -- this function sets up (moves dice near item decks), or, returns lockpick dice to home positions
+  -- actions: "Setup", "Cleanup"
+  
+  local rotations = {
+    { 270, 0, 0 },
+    { 0, 0, 0 },
+    { 0, 0, 270 },
+  }
+  local positions = action == "Setup" and {
+    { 58.10, 1.60, -13.82 },
+    { 59.60, 1.60, -13.82 },
+    { 61.11, 1.60, -13.82 },
+  } or action == "Cleanup" and {
+    {-59.50, 1.60, -5.00},
+    {-58.50, 1.60, -5.00},
+    {-57.50, 1.60, -5.00},
+  }
+  
+  -- get dice, move dice  
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Lockpick Die" then
+      local slot = tonumber(object.getGMNotes())
+      object.setRotation(rotations[slot])
+      object.setPositionSmooth(positions[slot], false, true)
+    end
+  end
+end
+
+
+function dealGuildQuests()
+  local deckGuild = getObjectbyName("Guilds")
+  if not deckGuild or deckGuild.type ~= "Deck" then log("dealGuildQuests(): deckGuild not found") return end
+  deckGuild.setGMNotes("enabled")
+  deckGuild.shuffle()
+  local posDeals = {{ -51.54, 1.70, 8.00 }, { -44.52, 1.70, 8.00 }, { -37.50, 1.70, 8.00 }}
+  for i = 1, 3 do
+    local dealGuild = deckGuild.takeObject()
+    dealGuild.setScale({3, 1, 3})
+    dealGuild.setRotation({0, 180, 0})
+    dealGuild.setPositionSmooth(posDeals[i], false, true)
+  end
+  Wait.time(function() broadcastToAll("If a different guild quest is desired, simply pull the desired quest from the deck, and then use the Select Button on the card.", "White") end, 2)
+end
+
+
+function selectGuild(button, _, _)
+
+  -- this function handles the pull and setup of the overland map and tokens,
+  -- setup of guild quest items ie: guild quest gazetteer reference,
+  -- placement of guild cards/reforming of guilds deck
+
+  local padProvince = getObjectbyName("Pad Province Map")
+  if not padProvince then log("selectGuid(): padProvince not found") return end
+  local provinceName = getCurrentProvince()
+  if provinceName == nil then log("selectGuild(): provinceName not found") return end
+  local provinceBag = getObjectbyName("Province Bag " .. provinceName)
+  if provinceBag == nil then log("selectGuild(): Province Bag not found") return end
+  local guildName = button.getName()
+
+  -- if skyrim, determine if western or eastern
+  local skyrimProvince = nil
+  if provinceName == "Skyrim" then
+   skyrimProvince = (guildName == "Thieves Guild" or guildName == "Undaunted" or
+                     guildName == "Outer Watch" or guildName == "Psijic Order") and "Eastern Skyrim" or "Western Skyrim"
+  end
+
+  -- pull & place overland map, related tokens
+  local overlandMap = nil
+  Wait.time(function()
+
+    -- account for eastern/western skyrim if needed
+    if provinceName ~= "Skyrim" then
+      for _, object in pairs(provinceBag.getObjects()) do
+        if object.name == provinceName .. " Overland Map" then
+          overlandMap = provinceBag.takeObject({guid = object.guid})
+          break
+        end
+      end
+    else
+      for _, object in pairs(provinceBag.getObjects()) do
+        if object.name == skyrimProvince .. " Overland Map" then
+          overlandMap = provinceBag.takeObject({guid = object.guid})
+          break
+        end
+      end
+    end
+    if overlandMap == nil then log("selectGuild(): overlandMap not found") return end
+
+    local rotOverlandMap = { 0, 180, 0 }
+    local posOverlandMap = { -44.52, 1.54, 10.98 }
+    Wait.frames(function()
+      overlandMap.setLock(true)
+      overlandMap.setRotation(rotOverlandMap)
+      overlandMap.setPosition(posOverlandMap)
+    end)
+
+    -- get overland map token bag
+    local bagOverlandTokens = getObjectbyName("Overland Token Bag")
+    if bagOverlandTokens == nil then log("selectGuild(): bagOverlandTokens not found") return end
+
+    -- another .5 second wait after map deploys so tokens have a place to land
+    Wait.time(function()
+      
+      -- pull & place party token
+      placePartyToken(bagOverlandTokens, provinceName, guildName)
+      
+      -- pull & place province specific overland map tokens
+      placeOverlandMapTokens(provinceName, bagOverlandTokens)
+
+    end, .5)
+
+  end, .5)
+
+  local scaleGuild = { 1.53, 1.00, 1.53 }
+  local rotGuildInfo = { 0, 180, 0 }
+  local rotGuildAction = { 0, 180, 180 }
+  local posDeckGuild = { 65.81, 1.40, -2.83 }
+  local posActiveGuild = { -42.63, 1.50, -2.53 }
+  
+  -- gather, scale loose unselected guild cards, reform guild deck
+  for _, obj in ipairs(getObjects()) do
+    if obj.hasTag("guild") and obj.getName() ~= guildName then
+      obj.clearButtons()
+      obj.setScale(scaleGuild)
+      obj.setRotation(rotGuildInfo)
+      obj.setPosition(posDeckGuild)
+    end
+  end
+
+  -- wait a tick, then, place guild deck
+  Wait.time(function()
+
+    -- place selected guild card to slot
+    for _, obj in ipairs(getObjects()) do
+      if obj.getName() == guildName then
+        obj.clearButtons()
+        obj.setScale(scaleGuild)
+        obj.setRotation(rotGuildAction)
+        obj.setPosition(posActiveGuild)
+        break
+      end
+    end
+
+  end, .5)
+
+  -- clone mini gazatteer, place, open to page 
+  Wait.time(function()    
+
+    local gazetteer = getObjectbyName(provinceName .. " Gazetteer")
+    if not gazetteer then log("guildSelect(): gazetteer not found") end
+
+    local guildDisplay = gazetteer.clone()
+    local scaleGuildDisplay = { 3.84, 1.00, 3.84 }
+    local rotGuildDisplay = { 0, 180, 0 }
+    local posGuildDisplay = { 63.79, 1.14, 14.68 }
+    Wait.frames(function()
+
+      guildDisplay.setScale(scaleGuildDisplay)
+      guildDisplay.setName("Guild Info Gazatteer Copy")
+      guildDisplay.setRotation(rotGuildDisplay)
+      guildDisplay.setPosition(posGuildDisplay)
+      local pdfPage = guildPDFpages[provinceName][guildName]
+      guildDisplay.Book.setPage(pdfPage)
+
+    end)
+
+    -- set main gazatteer to overland mechanics page
+    gazetteer.Book.setPage(overland_mechanic_pages[provinceName])   
+    
+  end, 1)
+
+  Wait.time(function()
+
+    broadcastToAll(guildName .. " Quest has begun. Good luck, have fun!", "White")    
+    getEncounterLocation(getObjectbyName("Button Setup Encounter"))
+
+  end, 5)
+
+  -- disable spawning of guild select button on guild cards
+  getObjectbyName("Guilds").setGMNotes("")
+
+  -- get, show Cleanup Session button after 8 second wait, to allow for all actions to happen
+  Wait.time(function()
+  
+    local buttonCleanup = getObjectbyName("Button Cleanup Session")
+    local rotButtonCleanup = { 0, 180, 0 }
+    local posButtonCleanup = { -65.55, 1.73, 41.31 }
+    if buttonCleanup == nil then log("dropButtons(): Button Cleanup not found") return end
+    buttonCleanup.setRotation(rotButtonCleanup)
+    buttonCleanup.setPositionSmooth(posButtonCleanup, false, false)
+    initButtonCleanupSession(buttonCleanup)
+
+  end, 8)
+end
+
+
+function setProvinceBackground(provinceName)
+  -- this function handles the swapping of the table wraparound background image per province
+  local provinceBackgrounds = {
+        ["Black Marsh"] = "https://steamusercontent-a.akamaihd.net/ugc/12274678734948966248/F4816F582B06FEAE754A67A061D09315D4F9A047/",
+        ["Cyrodiil"]    = "https://steamusercontent-a.akamaihd.net/ugc/14502982550678075500/F17DBDBAB6078F98D1B4C6F416A2B70E4428237E/",
+        ["High Rock"]   = "https://steamusercontent-a.akamaihd.net/ugc/9841847568162517878/EFCF7D521BC9C8015BCCCE277CF55CE8EB2B8833/",
+        ["Morrowind"]   = "https://steamusercontent-a.akamaihd.net/ugc/18324553311625051905/3A554F36551E5067E3A90966A7BB4F3385CD0852/",
+        ["Skyrim"]      = "https://steamusercontent-a.akamaihd.net/ugc/14989367145301458478/602440338B6D41187B287862B3E16B4074D0704E/",
+        ["Valenwood"]   = "https://steamusercontent-a.akamaihd.net/ugc/15325556147018500952/A685EE6698F0B6614C52FF8C9CB62A35C5656DA7/",
+        ["Default"]     = "https://steamusercontent-a.akamaihd.net/ugc/9596878021277190969/A14278158CF59AEC9C4D4FD8A28B4565380317D2/",
+    }
+    local backgroundURL = provinceBackgrounds[provinceName] or provinceBackgrounds["Default"]
+    Backgrounds.setBackground("Museum")
+    Wait.frames(function() Backgrounds.setCustomURL(backgroundURL) end)
+end
+
+
+function setProvinceAmbiance(provinceName)
+  -- this function modifies the white tinted pads in the player area to a color per the province's gazetteer
+  -- it will also slightly modify the lighting per province
+
+  local tints       = {
+    ["Default"]     = { 255/255, 255/255, 255/255 },
+    ["Black Marsh"] = { 101/255, 100/255, 102/255 },
+    ["Cyrodiil"]    = {  96/255,  89/255,  82/255 },
+    ["High Rock"]   = { 117/255, 103/255,  86/255 },
+    ["Morrowind"]   = { 107/255,  93/255,  85/255 },
+    ["Skyrim"]      = { 109/255, 110/255, 117/255 },
+    ["Valenwood"]   = { 118/255, 109/255, 108/255 }
+  }
+  local lighting    = {
+    ["Default"]     = { r=1, g=0.9804, b=0.8902, a=1 },
+    ["Black Marsh"] = { r=0.8638833, g=0.9270934, b=0.8311076, a=1 },
+    ["Cyrodiil"]    = { r=1, g=0.9982977, b=0.8408367, a=1 },
+    ["High Rock"]   = { r=1, g=0.9804, b=0.8902, a=1 },
+    ["Morrowind"]   = { r=0.69663, g=0.6521857, b=0.6521857, a=1 },
+    ["Skyrim"]      = { r=0.9138485, g=0.9138485, b=0.9138485, a=1 },
+    ["Valenwood"]   = { r=0.8901961, g=1, b=0.9148729, a=1 },
+  }
+  local ambientIntensity = {
+    ["Default"]          = 1.30,
+    ["Black Marsh"]      = 1.30,
+    ["Cyrodiil"]         = 1.335,
+    ["High Rock"]        = 1.40,
+    ["Morrowind"]        = 1.264,
+    ["Skyrim"]           = 1.375,
+    ["Valenwood"]        = 1.375,
+  }
+  local lightIntensity = {
+    ["Default"]        = 0.58,
+    ["Black Marsh"]    = 0.50,
+    ["Cyrodiil"]       = 0.60,
+    ["High Rock"]      = 0.60,
+    ["Morrowind"]      = 0.90,
+    ["Skyrim"]         = 0.65,
+    ["Valenwood"]      = 0.65,
+  }
+  local reflectionIntensity = {
+    ["Default"]             = 1,
+    ["Black Marsh"]         = 0.20,
+    ["Cyrodiil"]            = 0.50,
+    ["High Rock"]           = 0.55,
+    ["Morrowind"]           = 0.30,
+    ["Skyrim"]              = 0.75,
+    ["Valenwood"]           = 0.45,
+  }
+  local provinceTint = tints[provinceName]
+  local tintTargets = {
+    "Pad Province Map",
+    "Pad Day Dial",
+    "Pad XP DIal",
+    "Pad Day XP",
+    "Pad Active Guild",
+    "Pad Active Encounter",
+    "Main Board",
+    "Pad Skills",
+    "Pad Classes",
+    "Pad Races",
+    "Pad Deck Side Quests",
+    "Pad Discard Side Quests",
+    "Pad Discard Peaceful Encounters",
+    "Pad Discard Conflict Encounters",
+    "Pad Discard Delves",
+    "Pad Discard Common Items",
+    "Pad Discard Legendary Items",
+    "Pad Deck Guilds",
+    "Pad Deck Peaceful Encounters",
+    "Pad Deck Conflict Encounters",
+    "Pad Deck Delves",
+    "Pad Deck Common Items",
+    "Pad Deck Legendary Items",
+    "Chip Tray Player Unique",
+    "Chip Tray HP Cache",
+    "Chip Tray AdvMat Overland",
+  }
+  for i = 1, #tintTargets do
+    local item = getObjectbyName(tintTargets[i])
+    if item then item.setColorTint(provinceTint) end
+  end
+
+  Lighting.setLightColor(lighting[provinceName])
+  Lighting.ambient_intensity = ambientIntensity[provinceName]
+  Lighting.light_intensity = lightIntensity[provinceName]
+  Lighting.reflection_intensity = reflectionIntensity[provinceName]
+  Lighting.apply()
+
+end
+
+
+function enableTrueSolo()
+  obj = getObjectbyName("Button True Solo")
+  obj.setGMNotes("enabled")
+  initButtonTrueSolo(obj)
+end
+
+
+function disableTrueSolo()
+  obj = getObjectbyName("Button True Solo")
+  obj.setGMNotes("disabled")
+  initButtonTrueSolo(obj)
+end
+
+
+function setSkillTokenBagForSolo()
+
+  -- this function handles the removal of 1 skill token per skill line from the bag
+  -- for true solo setup purposes
+
+  local removedTokens = {}
+  local bagSkillTokens = getObjectbyName("Skill Tokens Bag")
+  local bagUnusedObjects = getObjectbyName("Unused Object Bag")
+  for _, object in pairs(bagSkillTokens.getObjects()) do
+    tokenHasBeenRemoved = false
+    for _, name in pairs(removedTokens) do
+      if object.name == name then
+        tokenHasBeenRemoved = true
+      end
+    end
+    if not tokenHasBeenRemoved then
+      table.insert(removedTokens, object.name)
+      local removeTarget = bagSkillTokens.takeObject({guid = object.guid})
+      log("removing skill token: " .. removeTarget.getName())
+      Wait.frames(function() bagUnusedObjects.putObject(removeTarget) end)
+    end
+  end
+end

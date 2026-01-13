@@ -1,0 +1,10 @@
+function setDialValue(args)
+    local val = args.val
+    if val < 1 or val > 12 then        
+        return
+    end
+    local yAngle = (270 - (val - 1) * 30) % 360
+    local rotation = { x = 0, y = yAngle, z = 0 }
+    local pos = self.getPosition()
+    self.setRotation(rotation)
+end

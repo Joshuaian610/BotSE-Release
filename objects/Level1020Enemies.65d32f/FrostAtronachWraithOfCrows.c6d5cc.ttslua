@@ -1,0 +1,64 @@
+function onLoad(saved_data)
+    fresh_out_of_bag = false
+    just_flipped     = false
+    chip_bag         = getObjectFromGUID("e71040")
+    val_0            = 7
+    val_180          = 6
+    str_0            = "Frost Atronach"
+    str_180          = "Wraith Of Crows"
+    skill_keywords_0   = {"Chilblain", "Native"}
+    skill_keywords_180 = {"Elusive", "Rot"}
+    chip_bag.call('chip_onload', {saved_data=saved_data, chip_obj=self})
+end
+
+
+function onUpdate()
+    if not self.resting then return end
+    if just_flipped or fresh_out_of_bag then
+        fresh_out_of_bag = false
+        just_flipped     = false
+        local rot = self.getRotation()
+        self.clearButtons()
+        local position, rotation, skill_keywords
+        if rot.z > 330 or rot.z < 30 then
+            val            = val_0
+            skill_keywords = skill_keywords_0
+            position       = {0.00, 1.00, -1.20}
+            rotation       = {250.00, 180.00, 180.00}
+        else
+            val            = val_180
+            skill_keywords = skill_keywords_180
+            position       = {0.00, -1.00, -1.20}
+            rotation       = {290.00, 0.00, 180.00}
+        end
+        chip_bag.call('create_counter_remote', {position=position, rotation=rotation, chip_obj=self})
+        chip_bag.call('update_tile_stack_remote', {chip_obj=self, val=val})
+        chip_bag.call('update_skill_keywords_remote', {chip_obj=self, skill_keywords=skill_keywords})
+    end
+end
+
+
+function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
+    if object == self then
+        just_flipped = true
+        local position, rotation
+        if flip == 0 then
+            self.setName(str_0)
+            val = val_0
+            position = {0.00, 1.00, -1.20}
+            rotation = {250.00, 180.00, 180.00}
+        else
+            self.setName(str_180)
+            val = val_180
+            position = {0.00, -1.00, -1.20}
+            rotation = {290.00, 0.00, 180.00}
+        end
+        chip_bag.call('clear_old_chips_remote', {chip_obj=self})
+        chip_bag.call('chip_rotate', {chip_obj=self, flip=flip})
+    end
+end
+
+
+function add_subtract(_obj, _color, alt_click)
+    chip_bag.call('add_subtract', {chip_obj=self, alt_click=alt_click})
+end

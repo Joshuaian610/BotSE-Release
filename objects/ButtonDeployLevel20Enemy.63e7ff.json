@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23523,
+    "g": 0.23523,
+    "r": 0.23523
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.302635342,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/16324402583592427789/E3B3810640D628FA9899BD83E4CA78C6553118ED/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/16324402583592427789/E3B3810640D628FA9899BD83E4CA78C6553118ED/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "63e7ff",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Deploy Level 20 Enemy",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -35.859,
+    "posY": 1.138,
+    "posZ": -8.95,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.4,
+    "scaleY": 1,
+    "scaleZ": 0.4
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

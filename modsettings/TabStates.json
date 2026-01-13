@@ -1,0 +1,57 @@
+{
+  "0": {
+    "body": "Dice Manipulation Tips and Pointers:\n\nIf desired, there are several different methods of managing dice in this mod:\n\n- via Pad: Each player area has a pad to the top left of it's Adventurer Mat, with an X for every associated dice manipulation action. Simply drop the die onto the X associated with your desired action.\n\n\n\n\n\n- via Hotkey: By default, the following numPad buttons are hotkeys that are associated with the various dice manipulation actions. Hover over the die you wish to manipulate (or in the case of summoning an enemy combat, or status die hover over a blank table area), and press the numPad hotkey. \n\n* Important - these hotkeys assume you are your currently seated color. For this reason, when playing multi handed solo, Hotseat mode is suggested for easier play.\n\nnumPad 0: Place hovered over die to your Roll Pad\n\nnumPad 1: Place hovered over die to your Cooldown Track\n\nnumPad 2: Place hovered over die to your Drained Dice area\n\nnumPad 3: Place hovered over die to an available Active Slot on your Adventurer Mat\n\nnumPad 4: Return hovered over die to the General Supply\n\nnumPad 5: Place hovered over die to it's associated slot on your Adventurer Mat\n* Note - dice will \"remember\" the last slot they occupy on a player mat, which means they will need to be dropped into an available slot, manually, before this functionality will work\n\nnumPad 6: Summon an Enemy Combat die to the pointer's location (may be later returned with numPad 4 if needed)\n\nnumPad 7: Summon an available Status Die to the pointer's location (may be later returned with numPad 4 if needed)\n\n\n\n\n\n- Manually: Dice may be manipulated and moved manually, of course\n\n",
+    "color": "Grey",
+    "id": 0,
+    "title": "Dice Manipulation Tips",
+    "visibleColor": {
+      "b": 0.5,
+      "g": 0.5,
+      "r": 0.5
+    }
+  },
+  "3": {
+    "body": "",
+    "color": "Red",
+    "id": 3,
+    "title": "Red",
+    "visibleColor": {
+      "b": 0.094,
+      "g": 0.1,
+      "r": 0.856
+    }
+  },
+  "4": {
+    "body": "",
+    "color": "Orange",
+    "id": 4,
+    "title": "Orange",
+    "visibleColor": {
+      "b": 0.113,
+      "g": 0.392,
+      "r": 0.956
+    }
+  },
+  "6": {
+    "body": "",
+    "color": "Green",
+    "id": 6,
+    "title": "Green",
+    "visibleColor": {
+      "b": 0.168,
+      "g": 0.701,
+      "r": 0.192
+    }
+  },
+  "7": {
+    "body": "",
+    "color": "Blue",
+    "id": 7,
+    "title": "Blue",
+    "visibleColor": {
+      "b": 1,
+      "g": 0.53,
+      "r": 0.118
+    }
+  }
+}

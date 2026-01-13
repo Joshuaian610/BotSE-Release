@@ -1,0 +1,84 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "MorrowindReference.45e816",
+    "DarkElfPatrols.687321",
+    "MorrowindDelves.97681a",
+    "MorrowindEncountersPeaceful.1e603c",
+    "MorrowindEncountersConflict.58f598",
+    "MorrowindGazetteer.dad49c",
+    "MorrowindOverlandMap.9ecbe2",
+    "KwamaWarriorScrib.ae0c30",
+    "CliffStriderCliffRacer.786e68",
+    "Nix-HoundPackNix-Hound.703916",
+    "DarkElfPillagerDarkElfRaider.e77eff"
+  ],
+  "ContainedObjects_path": "ProvinceBagMorrowind.8406fd",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397037562/0EDC72919E4F15A53CB00E22C819A70FF6E07301/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397037170/9EA9A4F4F01C056DD7F23DC3A39F0CFD4BE54A0A/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "8406fd",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "ProvinceBagMorrowind.8406fd.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Province Bag Morrowind",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 32.5,
+    "posY": 3.016,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

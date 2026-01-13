@@ -1,0 +1,134 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 1.845,
+        "y": 0.804,
+        "z": -0.081
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.812,
+        "y": 0.804,
+        "z": -0.058
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.325,
+        "y": 0.804,
+        "z": -0.062
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.383,
+        "y": 0.804,
+        "z": -0.066
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "ZirikZazita-Do.db74ee",
+    "WatcherGeneralDeslandra.af026b",
+    "WanderingArgonianMechanistDeslandra.b4402c",
+    "VoidCenturionRightArmPaleFingers.998eef",
+    "VoidCenturionLeftArmParadaxVerus.41d3fa",
+    "ShadowscaleAkishaLichDeslandra.ae4995",
+    "MoragTongAssassinBraigTheBloody.5b8e1a",
+    "IudexOvidiusVampiricDeslandra.2c8676",
+    "EveliSharpArrowRazum-Dar.b174c9",
+    "EnragedDeslandraEmpoweredDeslandra.d8d0c5",
+    "DreamWeaverFedrynCorruptedCreature.5beafa",
+    "CursebreakerDeslandraXenesthissa.8ed057",
+    "BodeanXivilaiMoath.620f8a",
+    "BigBadBazriImbuedDeslandra.48537a",
+    "AyleidSpiritHunterVoidCenturionTorso.617ae0",
+    "ArvanChiefDushkul.99ed5e",
+    "AnchoriteDeslandraKharzugGra-Magul.250efd",
+    "FeralGuardianDivingCliffRacer.fe5b54",
+    "ClannfearAtronach.a87f6c"
+  ],
+  "ContainedObjects_path": "QuestUnitCompanionChipBag.bd6c1b",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28818227112140657/452BD66B4AD623165CB43BE2A613622B34A963CE/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396518306/09162587A93CAC665F2617252C83C1296BFA9CD1/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "Note: Returning objects to this bag via \"Search\" window, or setting this bag to \"Random\" order will break scripting!",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "bd6c1b",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Quest Unit / Companion Chip Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.569,
+    "posY": 2.019,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 270,
+    "rotZ": 0,
+    "scaleX": 0.88,
+    "scaleY": 0.88,
+    "scaleZ": 0.88
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

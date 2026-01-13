@@ -1,0 +1,15 @@
+-- function onObjectEnterContainer(container, enter_object)
+--     if enter_object == self then
+--         local obj = container.takeObject()
+--         obj.destruct()
+--     end
+-- end
+
+function onObjectEnterZone(zone, enter_object)
+    if enter_object == self and
+    (zone == getObjectFromGUID("13d925") or zone == getObjectFromGUID("793916") or zone == getObjectFromGUID("e7a940") or
+    zone == getObjectFromGUID("20cb9a") or zone == getObjectFromGUID("040f8e")) then
+        self.destruct()
+    end
+end
+

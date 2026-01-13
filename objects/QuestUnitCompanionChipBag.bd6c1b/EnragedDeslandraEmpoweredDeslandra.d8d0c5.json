@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673394623/383855D3A8E526C5BCA55ECD88BCCA5AE158ED61/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673394623/383855D3A8E526C5BCA55ECD88BCCA5AE158ED61/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Aggressive:\nAfter rolling enemy Combat dice, this unit rerolls all misses 1 time before dealing damage to its target.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "d8d0c5",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/EnragedDeslandraEmpoweredDeslandra.d8d0c5.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Enraged Deslandra / Empowered Deslandra",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.81,
+    "posY": 2.212,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 170,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

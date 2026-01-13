@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23131,
+    "g": 0.18817,
+    "r": 0.07838
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000033,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718679688445/1F64832B015DFE22F423628B0427039AFCD34017/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718679688445/1F64832B015DFE22F423628B0427039AFCD34017/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2b0c66",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "[1]",
+  "LuaScript_path": "DayTrackerCounter.2b0c66.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Day Tracker Counter",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -53.962,
+    "posY": 1.338,
+    "posZ": -4.733,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23525,
+    "g": 0.23525,
+    "r": 0.23525
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.302635819,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/11489087926363924446/9F3F7948E3146DA211EDB9588AF172BAF1F56457/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/11489087926363924446/9F3F7948E3146DA211EDB9588AF172BAF1F56457/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "Orange",
+  "GUID": "e59216",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Fatigue",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -17.947,
+    "posY": 1.138,
+    "posZ": -35.17,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.45,
+    "scaleY": 1,
+    "scaleZ": 0.45
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

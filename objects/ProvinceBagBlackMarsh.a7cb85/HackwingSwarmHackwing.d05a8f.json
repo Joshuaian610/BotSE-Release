@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673459347/37BC15718A1FF20420A89FD99F29C75EA046F03E/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673459347/37BC15718A1FF20420A89FD99F29C75EA046F03E/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Elusive:\nThis unit prevents all damage (including true damage) dealt by units that were not adjacent to it at the start of the current turn.\n\nNative:\nThis unit has the skill specific to the current province.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "d05a8f",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "ProvinceBagBlackMarsh.a7cb85/HackwingSwarmHackwing.d05a8f.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Hackwing Swarm / Hackwing",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast",
+    "enemyLow",
+    "obj_bm",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -62.188,
+    "posY": 3.1,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673486389/0B71C79C19B6A757B2A86006461CAD9698615C86/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673486389/0B71C79C19B6A757B2A86006461CAD9698615C86/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Native:\nThis unit has the skill specific to the current province.\n\nStalwart:\nThis unit cannot lose more than 1 HP in a single turn.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "3a8f0b",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "Level15Enemies.904b55/SpiderMudcrab.3a8f0b.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Spider / Mudcrab",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast",
+    "enemyLow",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 36.724,
+    "posY": 0.011,
+    "posZ": 11.973,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.24,
+    "scaleY": 0.92,
+    "scaleZ": 1.24
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

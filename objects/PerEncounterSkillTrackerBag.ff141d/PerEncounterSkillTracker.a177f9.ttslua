@@ -1,0 +1,11 @@
+function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
+    if object == self then
+        if flip == 0 then -- ready
+            self.setColorTint({0/255, 84/255, 0/255})
+            self.setDescription("READY\n\nFlip to mark nearby Per Encounter Skill or Ability as Exhausted.\n(Will be marked as ready on Clear Battle)")
+        elseif flip == 180 then -- exhausted
+            self.setColorTint({223/255, 69/255, 24/255})
+            self.setDescription("EXHAUSTED\n\nFlip to mark nearby Per Encounter Skill or Ability as Ready.\n(Will be marked as ready on Clear Battle)")
+        end
+    end
+end

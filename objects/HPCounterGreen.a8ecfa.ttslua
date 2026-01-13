@@ -1,0 +1,121 @@
+MIN_VALUE        = 0
+MAX_VALUE        = 99
+
+
+function onload(saved_data)
+    val = 0
+    if saved_data ~= "" then
+        local loaded_data = JSON.decode(saved_data)
+        if loaded_data ~= nil then
+            val = loaded_data[1]
+        end
+    end
+    color       = {49/255, 179/255, 43/255, 255}
+    hover_color = {110/255, 205/255, 105/255, 255}
+    press_color = {170/255, 230/255, 165/255, 255}
+    create_all()
+end -- end function onload()
+
+
+function update_save()
+    local data_to_save = {val}
+    saved_data = JSON.encode(data_to_save)
+    self.script_state = saved_data
+end -- end function update_save()
+
+
+function create_all()
+    self.createButton({
+        label          = tostring(val),
+        click_function = "add_subtract",
+        function_owner = self,
+        position       = {0.00, 0.21, 0.00},
+        height         = 1000,
+        width          = 1000,
+        font_size      = 1100,
+        scale          = {x=1.00, y=1.00, z=1.00},
+        font_color     = {1, 1, 1},
+        color          = color,
+        hover_color    = hover_color,
+        press_color    = press_color,
+        tooltip        = "HP Counter\n\nLeft Click to Increment\nRight Click to Decrement"
+    })
+end -- end function create_all()
+
+function remove_all()
+      self.removeButton(0)
+end -- end function remove_all()
+
+function reload_all()
+      remove_all()
+      create_all()
+      update_save()
+end -- end function reload_all()
+
+function update_chip(val)
+    -- check race card zone to determine which race card, rotation, associate with chip icon/rotation
+    local zone = getObjectFromGUID("9708d1")
+    local chip = nil
+    for _, object in pairs(zone.getObjects()) do
+        if object.type == "Card" and
+        (object.getName() == "Argonian" or object.getName() == "Breton"  or object.getName() == "Dark Elf" or
+        object.getName() == "High Elf" or object.getName() == "Imperial" or object.getName() == "Khajiit" or
+        object.getName() == "Nord" or object.getName() == "Orc" or object.getName() == "Redguard" or object.getName() == "Wood Elf") then
+            for _, all_object in pairs(getAllObjects()) do
+                if all_object.getName() == object.getName() and all_object.hasTag('player_green') then
+                    chip = all_object
+                end
+            end
+            if chip == nil then
+                return
+            else
+                getObjectFromGUID("e71040").call('set_val_remote', {chip_obj=chip, val=val})
+            end
+        end
+    end
+end
+
+
+function add_subtract(_obj, playercolor, alt_click)
+    mod = alt_click and -1 or 1
+    original_value = val
+    new_value      = math.min(math.max(val + mod, MIN_VALUE), MAX_VALUE)
+    if val ~= new_value then
+        val = new_value
+        update_val()
+        update_save()
+    end
+    update_chip(val)
+end -- end function add_subtract()
+
+
+function subtract()
+    new_value = math.min(math.max(val -1, MIN_VALUE), MAX_VALUE)
+    if val ~= new_value then
+        val = new_value
+        update_val()
+        update_save()
+    end
+end -- end function subtract()
+
+
+function update_val()
+    self.editButton({
+        index = 0,
+        label = tostring(val),
+    })
+end -- end function update_val()
+
+
+function set_val(value)
+    val = value
+    update_val()
+    update_save()
+end -- send function set_val()
+
+
+function reset_val()
+    val = 0
+    update_val()
+    update_save()
+end -- end function set_val()

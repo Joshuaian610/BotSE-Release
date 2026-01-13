@@ -1,0 +1,57 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.20613265
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559036636/FBCF7527FE01FC28158B66489077D13CEB24A899/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "0e6f90",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Crux Token (Arcanist Class)",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 43.326,
+    "posY": 2.593,
+    "posZ": 0.022,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.18,
+    "scaleY": 1,
+    "scaleZ": 0.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

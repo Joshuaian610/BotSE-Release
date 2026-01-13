@@ -1,0 +1,93 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 1.258,
+        "y": 0.915,
+        "z": 0.056
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.331,
+        "y": 0.915,
+        "z": 0.025
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "HPChip.1b1557"
+  ],
+  "ContainedObjects_path": "5HPChipBag.e1cb0c",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396460760/4A524B180D4880D12E296D17A059F846811F7EA7/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396512906/995EC0C3867830D0B9DA6FBAB2831BC4C31FA9CD/",
+    "NormalURL": "",
+    "TypeIndex": 7
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e1cb0c",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Infinite_Bag",
+  "Nickname": "5 HP Chip Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.559,
+    "posY": 2.068,
+    "posZ": -4.061,
+    "rotX": 358,
+    "rotY": 270,
+    "rotZ": 0,
+    "scaleX": 0.93,
+    "scaleY": 0.93,
+    "scaleZ": 0.93
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

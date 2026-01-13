@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "TribeasTheyMight.af9ce6",
+    "MendingFences.e986ee",
+    "Egg-straCredit.465860",
+    "AThiefintheNight.96edf6",
+    "ConArt-Hist.cee7b1",
+    "Swamped.19652a",
+    "SwampFever.9db7ca",
+    "MysteriousRain.24d8fc"
+  ],
+  "ContainedObjects_path": "BlackMarshEncountersPeaceful.a115c9",
+  "CustomDeck": {
+    "101": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/18209422950023887614/3AA8171D8C73F1BA604614D16857EDBFBFDA4473/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12814993984067075888/398F3B4ABE878183BAC9CBF0AB2E285B72803774/",
+      "NumHeight": 4,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    10115,
+    10114,
+    10113,
+    10112,
+    10111,
+    10110,
+    10109,
+    10108
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a115c9",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Black Marsh Encounters Peaceful",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_peaceful",
+    "obj_bm"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -62.5,
+    "posY": 3.016,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

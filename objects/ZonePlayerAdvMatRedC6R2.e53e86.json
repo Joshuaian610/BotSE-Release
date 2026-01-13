@@ -1,0 +1,50 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0.5098,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e53e86",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "ScriptingTrigger",
+  "Nickname": "Zone Player Adv Mat Red C6R2",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "dice_zone",
+    "slot_marker"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -51.64,
+    "posY": 0.95,
+    "posZ": -27.47,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.59,
+    "scaleY": 0.5,
+    "scaleZ": 0.61
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

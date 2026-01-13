@@ -1,0 +1,64 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.17643,
+    "g": 0.19996,
+    "r": 0.21564
+  },
+  "ContainedObjects_path": "BattleRoundCounter.ec80e6",
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.199999571,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/10964585748688976486/B29B4BBA97ED9049688DEC4E650B0F6F02B6D44F/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/10964585748688976486/B29B4BBA97ED9049688DEC4E650B0F6F02B6D44F/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ec80e6",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "[1]",
+  "LuaScript_path": "BattleRoundCounter.ec80e6.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Battle Round Counter",
+  "Snap": true,
+  "States_path": {
+    "2": "BattleRoundCounterFatigue.2003c6"
+  },
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -51.522,
+    "posY": 1.338,
+    "posZ": -4.733,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.8,
+    "scaleY": 1,
+    "scaleZ": 0.8
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,143 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 2.03,
+        "y": 0.843,
+        "z": 0.036
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.244,
+        "y": 0.843,
+        "z": 0.028
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.496,
+        "y": 0.843,
+        "z": 0.021
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.218,
+        "y": 0.843,
+        "z": 0.015
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.856,
+        "y": 0.843,
+        "z": -0.013
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.537,
+        "y": 0.843,
+        "z": -0.019
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -2.083,
+        "y": 0.843,
+        "z": -0.019
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "HPChip.95e902"
+  ],
+  "ContainedObjects_path": "1HPChipBag.218b6b",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582865174/A52E7748EE3C307114297E39DDA46984F30DE03F/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396511086/CD524D4B9CB720F25754D7DB0F42BCD85421214D/",
+    "NormalURL": "",
+    "TypeIndex": 7
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "218b6b",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Infinite_Bag",
+  "Nickname": "1 HP Chip Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 36.373,
+    "posY": 2.063,
+    "posZ": -5.172,
+    "rotX": 0,
+    "rotY": 270,
+    "rotZ": 0,
+    "scaleX": 0.93,
+    "scaleY": 0.93,
+    "scaleZ": 0.93
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

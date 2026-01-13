@@ -1,0 +1,108 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomDice": {
+      "Type": 1
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/19809857110810819/12AC0C8718435592D9AD59AE5E2C5D2636F7E02D/",
+    "WidthScale": 0
+  },
+  "Description": "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "7751c8",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Dice",
+  "Nickname": "[768ccd]Destruction Staff[-]: Force Shock",
+  "RotationValues": [
+    {
+      "Rotation": {
+        "x": -90,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "1"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "2"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": -90
+      },
+      "Value": "3"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 90
+      },
+      "Value": "4"
+    },
+    {
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": -180
+      },
+      "Value": "5"
+    },
+    {
+      "Rotation": {
+        "x": 90,
+        "y": 0,
+        "z": 0
+      },
+      "Value": "6"
+    }
+  ],
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "active_zone",
+    "dice_zone"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -57.611,
+    "posY": 1.693,
+    "posZ": 21.101,
+    "rotX": 270,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.206132635
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234558965736/E7D4B37C64C914F835C4B1726336FCD1C4078AFD/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "745193",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Acrobatics Skill Line Token",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "skill_token_rogue"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 25.074,
+    "posY": 2.699,
+    "posZ": 20.174,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.24,
+    "scaleY": 1,
+    "scaleZ": 0.24
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

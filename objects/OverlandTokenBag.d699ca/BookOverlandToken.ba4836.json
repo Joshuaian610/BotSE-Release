@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559236722/9F21E309400A2173C14CA0336BAB4E5B293BF4EF/",
+    "WidthScale": 0
+  },
+  "Description": "Battlefront Token",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ba4836",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Book Overland Token",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "snap_overland"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.7,
+    "posY": 1.551,
+    "posZ": -10.513,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.31,
+    "scaleY": 1,
+    "scaleZ": 0.31
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

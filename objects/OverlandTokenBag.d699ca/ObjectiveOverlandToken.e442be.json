@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559238234/E2720811CE37FA1F7200D6788FAA55A5852E3F01/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e442be",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Objective Overland Token",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "snap_overland"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 31.914,
+    "posY": 1.762,
+    "posZ": -11.339,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 350,
+    "scaleX": 0.31,
+    "scaleY": 1,
+    "scaleZ": 0.31
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

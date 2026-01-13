@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedDecals": [
+    {
+      "CustomDecal": {
+        "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/9239990841752222214/B18D80D685A148D116EB33FD684B56ED973AD277/",
+        "Name": "Day 8",
+        "Size": 1
+      },
+      "OwnerSteamID": 0,
+      "Transform": {
+        "posX": -0.0407212824,
+        "posY": 0.060000062,
+        "posZ": 0.05108567,
+        "rotX": 90,
+        "rotY": 179.999741,
+        "rotZ": 0,
+        "scaleX": 3.16182327,
+        "scaleY": 1.01416993,
+        "scaleZ": 1
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.1
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559240736/6070A2A83B8B67F11225A4A2F3F1DA11F12113FE/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "00b35c",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Day 8 Marker",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "snap_overland"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -19.741,
+    "posY": 1.299,
+    "posZ": -0.206,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.31,
+    "scaleY": 1,
+    "scaleZ": 0.31
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

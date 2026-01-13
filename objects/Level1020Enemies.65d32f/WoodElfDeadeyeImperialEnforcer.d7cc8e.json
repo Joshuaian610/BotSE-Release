@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674059098/5D1983E7035BFC674130995FC28ACB0D0FB0A37F/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674059098/5D1983E7035BFC674130995FC28ACB0D0FB0A37F/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Detection:\nThis unit ignores Stealth status dice when targeting.\n\nVinesnare:\nAfter this unit’s engage, its target must drain 1 available Combat skill die.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "d7cc8e",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "Level1020Enemies.65d32f/WoodElfDeadeyeImperialEnforcer.d7cc8e.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Wood Elf Deadeye / Imperial Enforcer",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.889,
+    "posY": 0.022,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

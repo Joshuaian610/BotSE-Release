@@ -1,0 +1,113 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 1.604,
+        "y": 0.2,
+        "z": -0.747
+      },
+      "Tags": [
+        "dice_zone"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.605,
+        "y": 0.2,
+        "z": -0.044
+      },
+      "Tags": [
+        "dice_zone"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.61,
+        "y": 0.2,
+        "z": 0.655
+      },
+      "Tags": [
+        "dice_zone"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.622,
+        "y": 0.2,
+        "z": -0.392
+      },
+      "Tags": [
+        "dice_zone"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.626,
+        "y": 0.2,
+        "z": 0.306
+      },
+      "Tags": [
+        "dice_zone"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.09399,
+    "g": 0.09999,
+    "r": 0.856
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.3041666,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/17026316401585904120/1F268A910AA9292079633F5696F0392E9F68C587/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/17026316401585904120/1F268A910AA9292079633F5696F0392E9F68C587/",
+    "WidthScale": 0
+  },
+  "Description": "Drop a die onto an X to automatically handle sending it to it's selected destination.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "660d40",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "PadReturnRed.660d40.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Pad Return Red",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_red"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -45.52,
+    "posY": 1.138,
+    "posZ": -20.8,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

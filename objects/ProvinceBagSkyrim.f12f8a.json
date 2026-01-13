@@ -1,0 +1,85 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "SkyrimReference.a3c672",
+    "IcyBuildup.652269",
+    "SkyrimDelves.bd61fe",
+    "SkyrimEncountersPeaceful.98ea74",
+    "SkyrimEncountersConflict.b6077a",
+    "SkyrimGazetteer.efaaaa",
+    "EasternSkyrimOverlandMap.a1048e",
+    "WesternSkyrimOverlandMap.e241a2",
+    "FalmerDraugr.85ab73",
+    "ChaurusBristleback.dc61b3",
+    "VampireHagraven.a88d4d",
+    "BriarheartReachman.def74a"
+  ],
+  "ContainedObjects_path": "ProvinceBagSkyrim.f12f8a",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397038728/E2D0A79F7759B35B5132AC44E8CCDAEE6F347BE6/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397038369/246228ACB2CD254D711CD3CD66F39011EFE4BFF0/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "f12f8a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "ProvinceBagSkyrim.f12f8a.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Province Bag Skyrim",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 47.5,
+    "posY": 3.02,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

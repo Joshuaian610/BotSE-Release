@@ -1,0 +1,86 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "MarshallingYard.e0cfab",
+    "Rampart.abb594",
+    "SecludedGlade.56b3d7",
+    "Crossroads.fe3d5d",
+    "Wind-SweptPlateau.f3608c",
+    "Overpass.9d444b",
+    "RicketyBridge.aa9f59",
+    "SacredPeak.687a21",
+    "SummitPost.ddb776",
+    "WindyOverlook.1f6f4e"
+  ],
+  "ContainedObjects_path": "HighRockDelves.543151",
+  "CustomDeck": {
+    "88": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14147321131299159145/90079658D030D085023079157E8F478F4533DBFB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10671952524656260810/5BE6C16660C37445DD47270B30BCF14A3595CFC9/",
+      "NumHeight": 2,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    8809,
+    8808,
+    8807,
+    8806,
+    8805,
+    8804,
+    8803,
+    8802,
+    8801,
+    8800
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "543151",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "High Rock Delves",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "delve",
+    "obj_hr"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -33.999,
+    "posY": 3.016,
+    "posZ": 27.002,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23523,
+    "g": 0.23523,
+    "r": 0.23523
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.302635342,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/16630593440154299839/F1470C2C1CA2DE448B81BA25434DA22A0A3F4BD7/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/16630593440154299839/F1470C2C1CA2DE448B81BA25434DA22A0A3F4BD7/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "abf810",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Cleanup Session",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -65.55,
+    "posY": -2,
+    "posZ": 41.31,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 2,
+    "scaleY": 1,
+    "scaleZ": 2
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

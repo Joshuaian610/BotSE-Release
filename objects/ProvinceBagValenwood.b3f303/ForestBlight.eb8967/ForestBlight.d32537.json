@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 8205,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "82": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/10615052271067803496/5324A3E66675F90765B8975E95F81892168A78FB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13127475527087605207/71B5EEC6EE76B6A9BA1C73E53921990E8D3D2D3A/",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "d32537",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Forest Blight",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "forest_blight",
+    "obj_vw"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 8.148,
+    "posY": 1.228,
+    "posZ": -1.016,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23523,
+    "g": 0.23523,
+    "r": 0.23523
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.302635342,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/16578964648738984020/0B14446951B3E3513B1E3C0E0642A83BDABB1CF5/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/16578964648738984020/0B14446951B3E3513B1E3C0E0642A83BDABB1CF5/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "072a57",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "ButtonClearBattle.072a57.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Clear Battle",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -36.97,
+    "posY": 1.14,
+    "posZ": -7.929,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.5,
+    "scaleY": 1,
+    "scaleZ": 0.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718669790597/6C585DFFB0870F014256288B21CD895171C40B11/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718669790597/6C585DFFB0870F014256288B21CD895171C40B11/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Aggressive:\nAfter rolling enemy Combat dice, this unit rerolls all misses 1 time before dealing damage to its target.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "a87f6c",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[3]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/ClannfearAtronach.a87f6c.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Clannfear / Atronach",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyDaedra",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.881,
+    "posY": 2.205,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 176,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

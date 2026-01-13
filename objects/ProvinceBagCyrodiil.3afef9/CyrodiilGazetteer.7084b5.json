@@ -1,0 +1,51 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23523,
+    "g": 0.23523,
+    "r": 0.23523
+  },
+  "CustomPDF": {
+    "PDFPage": 0,
+    "PDFPageOffset": 0,
+    "PDFPassword": "",
+    "PDFUrl": "https://steamusercontent-a.akamaihd.net/ugc/28818234564417449/1EDC2BD6617CB2E2FB922B4A48D6303B8AA164F1/"
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "7084b5",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_PDF",
+  "Nickname": "Cyrodiil Gazetteer",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "Transform": {
+    "posX": 100.089,
+    "posY": 17.206,
+    "posZ": 73.786,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 6.5,
+    "scaleY": 1,
+    "scaleZ": 6.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,388 @@
+{
+  "labels": [
+    {
+      "displayed": "non_int",
+      "normalized": "non_int"
+    },
+    {
+      "displayed": "enemy_chip",
+      "normalized": "enemy_chip"
+    },
+    {
+      "displayed": "player_chip",
+      "normalized": "player_chip"
+    },
+    {
+      "displayed": "de_patrol",
+      "normalized": "de_patrol"
+    },
+    {
+      "displayed": "obj_cy",
+      "normalized": "obj_cy"
+    },
+    {
+      "displayed": "obj_hr",
+      "normalized": "obj_hr"
+    },
+    {
+      "displayed": "obj_mw",
+      "normalized": "obj_mw"
+    },
+    {
+      "displayed": "obj_sk",
+      "normalized": "obj_sk"
+    },
+    {
+      "displayed": "obj_vw",
+      "normalized": "obj_vw"
+    },
+    {
+      "displayed": "skill_token_rogue",
+      "normalized": "skill_token_rogue"
+    },
+    {
+      "displayed": "skill_token_warrior",
+      "normalized": "skill_token_warrior"
+    },
+    {
+      "displayed": "skill_token_mage",
+      "normalized": "skill_token_mage"
+    },
+    {
+      "displayed": "hp_chip",
+      "normalized": "hp_chip"
+    },
+    {
+      "displayed": "cache_chip",
+      "normalized": "cache_chip"
+    },
+    {
+      "displayed": "hex_entrance",
+      "normalized": "hex_entrance"
+    },
+    {
+      "displayed": "hex_clash",
+      "normalized": "hex_clash"
+    },
+    {
+      "displayed": "hex_19",
+      "normalized": "hex_19"
+    },
+    {
+      "displayed": "hex_7",
+      "normalized": "hex_7"
+    },
+    {
+      "displayed": "hex_6",
+      "normalized": "hex_6"
+    },
+    {
+      "displayed": "hex_3",
+      "normalized": "hex_3"
+    },
+    {
+      "displayed": "dice_zone",
+      "normalized": "dice_zone"
+    },
+    {
+      "displayed": "slot_marker",
+      "normalized": "slot_marker"
+    },
+    {
+      "displayed": "mat_marker",
+      "normalized": "mat_marker"
+    },
+    {
+      "displayed": "snap_hex",
+      "normalized": "snap_hex"
+    },
+    {
+      "displayed": "snap_map",
+      "normalized": "snap_map"
+    },
+    {
+      "displayed": "no_slot_tile",
+      "normalized": "no_slot_tile"
+    },
+    {
+      "displayed": "hex_obstacle",
+      "normalized": "hex_obstacle"
+    },
+    {
+      "displayed": "snap_overland",
+      "normalized": "snap_overland"
+    },
+    {
+      "displayed": "skill_token_combat",
+      "normalized": "skill_token_combat"
+    },
+    {
+      "displayed": "area_red",
+      "normalized": "area_red"
+    },
+    {
+      "displayed": "area_orange",
+      "normalized": "area_orange"
+    },
+    {
+      "displayed": "area_green",
+      "normalized": "area_green"
+    },
+    {
+      "displayed": "area_blue",
+      "normalized": "area_blue"
+    },
+    {
+      "displayed": "active_zone",
+      "normalized": "active_zone"
+    },
+    {
+      "displayed": "side_quest",
+      "normalized": "side_quest"
+    },
+    {
+      "displayed": "generic_counter",
+      "normalized": "generic_counter"
+    },
+    {
+      "displayed": "enc_peaceful",
+      "normalized": "enc_peaceful"
+    },
+    {
+      "displayed": "delve",
+      "normalized": "delve"
+    },
+    {
+      "displayed": "enc_conflict",
+      "normalized": "enc_conflict"
+    },
+    {
+      "displayed": "obj_ge",
+      "normalized": "obj_ge"
+    },
+    {
+      "displayed": "obj_bm",
+      "normalized": "obj_bm"
+    },
+    {
+      "displayed": "guild",
+      "normalized": "guild"
+    },
+    {
+      "displayed": "forest_blight",
+      "normalized": "forest_blight"
+    },
+    {
+      "displayed": "argonian_a",
+      "normalized": "argonian_a"
+    },
+    {
+      "displayed": "argonian_b",
+      "normalized": "argonian_b"
+    },
+    {
+      "displayed": "breton_a",
+      "normalized": "breton_a"
+    },
+    {
+      "displayed": "breton_b",
+      "normalized": "breton_b"
+    },
+    {
+      "displayed": "d_elf_a",
+      "normalized": "d_elf_a"
+    },
+    {
+      "displayed": "h_elf_b",
+      "normalized": "h_elf_b"
+    },
+    {
+      "displayed": "h_elf_a",
+      "normalized": "h_elf_a"
+    },
+    {
+      "displayed": "d_elf_b",
+      "normalized": "d_elf_b"
+    },
+    {
+      "displayed": "imperial_a",
+      "normalized": "imperial_a"
+    },
+    {
+      "displayed": "imperial_b",
+      "normalized": "imperial_b"
+    },
+    {
+      "displayed": "khajiit_a",
+      "normalized": "khajiit_a"
+    },
+    {
+      "displayed": "khajiit_b",
+      "normalized": "khajiit_b"
+    },
+    {
+      "displayed": "nord_a",
+      "normalized": "nord_a"
+    },
+    {
+      "displayed": "nord_b",
+      "normalized": "nord_b"
+    },
+    {
+      "displayed": "orc_a",
+      "normalized": "orc_a"
+    },
+    {
+      "displayed": "orc_b",
+      "normalized": "orc_b"
+    },
+    {
+      "displayed": "redguard_a",
+      "normalized": "redguard_a"
+    },
+    {
+      "displayed": "redguard_b",
+      "normalized": "redguard_b"
+    },
+    {
+      "displayed": "common_item",
+      "normalized": "common_item"
+    },
+    {
+      "displayed": "w_elf_b",
+      "normalized": "w_elf_b"
+    },
+    {
+      "displayed": "w_elf_a",
+      "normalized": "w_elf_a"
+    },
+    {
+      "displayed": "symbol3X2",
+      "normalized": "symbol3x2"
+    },
+    {
+      "displayed": "combat_taken",
+      "normalized": "combat_taken"
+    },
+    {
+      "displayed": "symbol3",
+      "normalized": "symbol3"
+    },
+    {
+      "displayed": "button_inn",
+      "normalized": "button_inn"
+    },
+    {
+      "displayed": "button_quest",
+      "normalized": "button_quest"
+    },
+    {
+      "displayed": "legend_item",
+      "normalized": "legend_item"
+    },
+    {
+      "displayed": "btn_race_selection",
+      "normalized": "btn_race_selection"
+    },
+    {
+      "displayed": "player_red",
+      "normalized": "player_red"
+    },
+    {
+      "displayed": "player_orange",
+      "normalized": "player_orange"
+    },
+    {
+      "displayed": "player_blue",
+      "normalized": "player_blue"
+    },
+    {
+      "displayed": "player_green",
+      "normalized": "player_green"
+    },
+    {
+      "displayed": "btn_skill_selection",
+      "normalized": "btn_skill_selection"
+    },
+    {
+      "displayed": "btn_confirm",
+      "normalized": "btn_confirm"
+    },
+    {
+      "displayed": "btn_class",
+      "normalized": "btn_class"
+    },
+    {
+      "displayed": "btn_clear_playerarea",
+      "normalized": "btn_clear_playerarea"
+    },
+    {
+      "displayed": "banner",
+      "normalized": "banner"
+    },
+    {
+      "displayed": "round_dice_bag",
+      "normalized": "round_dice_bag"
+    },
+    {
+      "displayed": "square_dice_bag",
+      "normalized": "square_dice_bag"
+    },
+    {
+      "displayed": "symbol2",
+      "normalized": "symbol2"
+    },
+    {
+      "displayed": "symbol1",
+      "normalized": "symbol1"
+    },
+    {
+      "displayed": "symbol0",
+      "normalized": "symbol0"
+    },
+    {
+      "displayed": "pe_display",
+      "normalized": "pe_display"
+    },
+    {
+      "displayed": "pe_display4",
+      "normalized": "pe_display4"
+    },
+    {
+      "displayed": "reference",
+      "normalized": "reference"
+    },
+    {
+      "displayed": "enemyHuman",
+      "normalized": "enemyhuman"
+    },
+    {
+      "displayed": "enemyBeast",
+      "normalized": "enemybeast"
+    },
+    {
+      "displayed": "enemyDaedra",
+      "normalized": "enemydaedra"
+    },
+    {
+      "displayed": "enemyHuman_enemyDaedra",
+      "normalized": "enemyhuman_enemydaedra"
+    },
+    {
+      "displayed": "enemyBeast_enemyHuman",
+      "normalized": "enemybeast_enemyhuman"
+    },
+    {
+      "displayed": "enemyDaedra_enemyHuman",
+      "normalized": "enemydaedra_enemyhuman"
+    },
+    {
+      "displayed": "enemyLow",
+      "normalized": "enemylow"
+    },
+    {
+      "displayed": "enemyHigh",
+      "normalized": "enemyhigh"
+    }
+  ]
+}

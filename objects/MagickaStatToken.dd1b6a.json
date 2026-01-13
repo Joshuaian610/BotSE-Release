@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.206132635
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559018469/B8A61D9529A58EEC28074B8A8C40294553301A6E/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "dd1b6a",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Magicka Stat Token",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "player_orange"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -18.657,
+    "posY": 1.453,
+    "posZ": -23.158,
+    "rotX": 4,
+    "rotY": 120,
+    "rotZ": 354,
+    "scaleX": 0.22,
+    "scaleY": 1,
+    "scaleZ": 0.22
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

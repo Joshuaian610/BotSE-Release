@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23528,
+    "g": 0.23528,
+    "r": 0.23528
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.200000033,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/12043171267473178974/E6EC5FC98CF950C197F1E3AD645E403C560A94C8/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/12043171267473178974/E6EC5FC98CF950C197F1E3AD645E403C560A94C8/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "disabled",
+  "GUID": "3d7810",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Scout",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "btn_class",
+    "non_int",
+    "player_blue"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 25.36,
+    "posY": 1.338,
+    "posZ": -30.565,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.16,
+    "scaleY": 1,
+    "scaleZ": 0.16
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

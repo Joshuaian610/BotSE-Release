@@ -1,0 +1,140 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -3.187,
+        "y": 0,
+        "z": -0.065
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.802,
+        "y": 0,
+        "z": 1.285
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.639,
+        "y": 0,
+        "z": 2.753
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.615,
+        "y": 0,
+        "z": 0.017
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.806,
+        "y": 0,
+        "z": -1.382
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/9415949136527429201/BA8B9D568E8BC418798660DA86B0692C1BF9DAA7/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17243799316545852656/85EE8ADD04FAC9A879E3A5C797ABC089A3C1E6C7/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/9415949136527429201/BA8B9D568E8BC418798660DA86B0692C1BF9DAA7/",
+    "NormalURL": "",
+    "TypeIndex": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a0e446",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Entrance Tile",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "hex_entrance"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -22.947,
+    "posY": 2.2,
+    "posZ": 26.71,
+    "rotX": 0,
+    "rotY": 30,
+    "rotZ": 0,
+    "scaleX": 1.25,
+    "scaleY": 1.25,
+    "scaleZ": 1.25
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,57 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23529,
+    "g": 0.23529,
+    "r": 0.23529
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/10061631127043545824/4E7E53DD09A0A799979E092963B736790C877D15/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/10061631127043545824/4E7E53DD09A0A799979E092963B736790C877D15/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "None",
+  "GUID": "95964e",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Enemy Type Selector",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "Transform": {
+    "posX": -36.97,
+    "posY": 1.138,
+    "posZ": -11.437,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.04,
+    "scaleY": 1,
+    "scaleZ": 1.04
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

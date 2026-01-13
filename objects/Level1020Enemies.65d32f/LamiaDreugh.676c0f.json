@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674051964/C73B886EFD0C01B8DCD38E47B0C1C73DF2BC58F6/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674051964/C73B886EFD0C01B8DCD38E47B0C1C73DF2BC58F6/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Enfeeble 5:\nAfter this unit’s engage, its target gains 5 light fatigue.\n\nVinesnare:\nAfter this unit’s engage, its target must drain 1 available Combat skill die.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "676c0f",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[8]",
+  "LuaScript_path": "Level1020Enemies.65d32f/LamiaDreugh.676c0f.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Lamia / Dreugh",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast",
+    "enemyHigh",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.889,
+    "posY": 0.022,
+    "posZ": 11.974,
+    "rotX": 9,
+    "rotY": 181,
+    "rotZ": 10,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.218,
+        "y": 0.304,
+        "z": -0.209
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.3041666,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/13151234003976976401/FA1D9C3A1B1BC69615AB525493F9C7273961469E/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/13151234003976976401/FA1D9C3A1B1BC69615AB525493F9C7273961469E/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "9d3e7a",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Pad Province Map",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -44.52,
+    "posY": 1.138,
+    "posZ": 10.976,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 21.54,
+    "scaleY": 1,
+    "scaleZ": 10.92
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,264 @@
+MIN_VALUE        = 1
+MAX_VALUE        = 6
+
+function onload(saved_data)
+    val = 0
+    if saved_data ~= "" then
+        local loaded_data = JSON.decode(saved_data)
+        if loaded_data ~= nil then
+            val = loaded_data[1]
+        end
+    end
+    Wait.frames(function() create_all() end)
+end -- end function onload()
+
+
+function update_save()
+    local data_to_save = {val}
+    saved_data = JSON.encode(data_to_save)
+    self.script_state = saved_data
+end -- end function update_save()
+
+
+function create_all()
+    self.createButton({
+        label          = tostring(val),
+        click_function = "add_subtract",
+        function_owner = self,
+        position       = {0.00, 0.21, 0.00},
+        height         = 1000,
+        width          = 1000,
+        font_size      = 1100,
+        scale          = {x=1.00, y=1.00, z=1.00},
+        font_color     = {133/255, 116/255, 77/255},
+        color          = {55/255, 51/255, 45/255, 255},
+        tooltip        = "Battle Round Counter\n\nLeft Click to Increment\nRight Click to Decrement"
+    })
+end -- end function create_all()
+
+function remove_all()
+      self.removeButton(0)
+end -- end function remove_all()
+
+function reload_all()
+      remove_all()
+      create_all()
+      update_save()
+end -- end function reload_all()
+
+function add_subtract(_obj, playercolor, alt_click)
+    mod = alt_click and -1 or 1
+    original_value = val
+    new_value      = math.min(math.max(val + mod, MIN_VALUE), MAX_VALUE)
+    if val ~= new_value then
+        val = new_value
+        update_val()
+        update_save()
+    end
+    -- check if Wabbajack Attack clash is active, run effect if so
+    local zoneActiveEncounter = getObjectFromGUID("8347e9")
+    for _, object in pairs(zoneActiveEncounter.getObjects()) do
+        if object.getName() == "Wabbajack Attack" then
+            wabbajackChangePlaces()
+        end
+    end
+    -- set die to matching rotation
+    local die = getObjectFromGUID("f1cfea")
+    die.setRotationSmooth((val == 1 and {270,0,0}) or (val == 2 and {0,0,0}) or (val == 3 and {0,0,270}) or
+    (val == 4 and {0,0,90}) or (val == 5 and {0,0,180}) or (val == 6 and {90,0,0}))
+    -- if not alt_click, reset turn skill trackers
+    if not alt_click then
+        for _, object in pairs(getAllObjects()) do
+            if string.find(object.getName(), "Per Turn Skill Tracker") and object.type == "Tile" then
+                object.setRotationSmooth({0, 180, 0})
+            end
+        end
+    end
+    -- if val == 6, change state
+    if val == 6 then
+        val = 1
+        update_val()
+        update_save()
+        if Player[playercolor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. Player[playercolor].steam_name .. "[-] has triggered a Fatigue Round.", "White")
+        else
+            broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. playercolor .. " Player[-] has has triggered a Fatigue Round.", "White")
+        end
+        local fatigue_buttons = {
+            Red = "43215c",
+            Orange = "79667c",
+            Blue = "aa9374",
+            Green = "5beae6"
+        }
+        local cooldown_zones = {
+            Red = "3a8b40",
+            Orange = "4fae72",
+            Blue = "d6184c",
+            Green = "0cc81c"
+        }
+        for _, color in ipairs(getSeatedPlayers()) do
+            local buttonGUID = fatigue_buttons[color]
+            if buttonGUID then
+                getObjectFromGUID(buttonGUID).call('add_fatigue_remote', {playercolor = color})
+            end
+            Wait.time(function()
+            local zoneGUID = cooldown_zones[color]
+            local zone = getObjectFromGUID(zoneGUID)
+            local count = 0
+            if zone then
+                local objs = zone.getObjects()
+                for _, obj in ipairs(objs) do
+                    if obj.getName() == "Overfatigue" then
+                        count = count + 1
+                    end
+                end
+            end
+            if Player[playercolor].steam_name ~= nil then
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. Player[playercolor].steam_name .. "[-] takes " .. count .. " True Damage from Overfatigue!", "White")
+            else
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. playercolor .. " Player[-] takes " .. count .. " True Damage from Overfatigue!", "White")
+            end
+            end, 2)
+        end
+        self.setState(2)
+    else
+        if not alt_click then
+            if Player[playercolor].steam_name ~= nil then
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. Player[playercolor].steam_name .. "[-] has marked the start of Battle Round " .. val .. ".", "White")
+            else
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. playercolor .. " Player[-] has marked the start of Battle Round " .. val .. ".", "White")
+            end
+        else
+            if Player[playercolor].steam_name ~= nil then
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. Player[playercolor].steam_name .. "[-] has rolled back to Battle Round " .. val .. ".", "White")
+            else
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. playercolor .. " Player[-] has rolled back to Battle Round " .. val .. ".", "White")
+            end
+        end
+    end
+end -- end function add_subtract()
+
+function subtract()
+    new_value = math.min(math.max(val -1, MIN_VALUE), MAX_VALUE)
+    if val ~= new_value then
+        val = new_value
+        update_val()
+        update_save()
+    end
+end -- end function subtract()
+
+function update_val()
+    self.editButton({
+        index = 0,
+        label = tostring(val),
+    })
+end -- end function update_val()
+
+function set_val(value)
+    val = value
+    update_val()
+    update_save()
+end -- send function set_val()
+
+function reset_val()
+    val = 0
+    update_val()
+    update_save()
+end -- end function set_val()
+
+
+function wabbajackChangePlaces()
+  -- this function is called at end of round during wabbajack clash
+  -- it will get every non khajiit bandit/cultist enemy in the battle area zone, get it's position, level, and HP
+  local zoneBattle = getObjectFromGUID("b5dd6d")
+  local foundEnemies = {}
+  local wabbajackAttacker = getObjectbyName("Button Player Count").getVar('val') < 3 and "Khajiit Bandit" or "Khajiit Cultist"
+  for _, object in pairs(zoneBattle.getObjects()) do
+    if object.hasTag('enemy_chip') and object.getName() ~= wabbajackAttacker then
+      -- get enemy name
+      local chipReturnName = object.getName()
+      -- get enemy HP
+      local chipReturnHP = object.getVar('val')
+      -- get enemy level, return bag
+      local rotChip = object.getRotation()
+      local posChip = object.getPosition()
+      posChip.y = 2.75
+      local chipLevel = nil
+      local returnBag = nil
+      if object.hasTag('enemyLow') then
+        returnBag = getObjectbyName("Level 1 / 5 Enemies")
+        chipLevel = (rotChip.z > 330 or rotChip.z < 30) and 20 or 10
+
+      elseif object.hasTag('enemyHigh') then
+        returnBag = getObjectbyName("Level 10 / 20 Enemies")
+        chipLevel = (rotChip.z > 330 or rotChip.z < 30) and 20 or 10
+      end
+      
+      
+      -- clear chips on it, place to staging next to bag on right of battle area (do not clear buttons)
+      -- I do not need to check slots free because I'm placing all at the same time
+      local posStaging = {
+        { 29.09, 2.75, 18.45 },
+        { 29.09, 2.75, 15.48 },
+        { 29.09, 2.75, 12.51 },
+        { 29.09, 2.75, 9.53 },
+        { 29.09, 2.75, 6.56 },
+        { 29.09, 2.75, 3.59 },
+        { 29.09, 2.75, 0.61 },
+        { 29.09, 2.75, -2.36 },
+      }
+      for i = 1, #posStaging do
+        if not foundEnemies[i] and chipReturnName ~= wabbajackAttacker then
+          if object then
+            -- add to foundEnemies table along with name, hp, level, position, and return bag data
+            foundEnemies[i] = {
+              name     = chipReturnName,
+              hp       = chipReturnHP,
+              level    = chipLevel,
+              position = posChip,
+              bag      = returnBag,
+            }
+            getObjectbyName("Defeated Monsters Bag").call('clear_old_chips', object)
+            returnBag.putObject(object)
+            break
+          end
+        end
+      end
+    end
+  end
+  -- shuffle each found return bag once, and then, for each foundEnemy in foundEnemies pull a same level out, place to same position, set to same HP
+  for _, bag in pairs({ getObjectbyName("Level 1 / 5 Enemies"), getObjectbyName("Level 10 / 20 Enemies") }) do
+    if bag then bag.shuffle() end
+  end
+  for _, enemyData in pairs(foundEnemies) do
+    if enemyData.bag then
+      local rotEnemy = (enemyData.level == 1 or enemyData.level == 10) and { 0, 180, 180 } or { 0, 180, 0 }
+      local newEnemy = enemyData.bag.takeObject({ rotation = rotEnemy })
+      Wait.frames(function()
+        newEnemy.setPosition(enemyData.position, false, true)
+        Wait.time(function()
+            if newEnemy ~= nil then
+                getObjectbyName("Defeated Monsters Bag").call('set_val_remote', {chip_obj=newEnemy, val=enemyData.hp})
+                getObjectbyName("Defeated Monsters Bag").call('update_tile_stack_remote', {chip_obj=newEnemy, val=enemyData.hp})
+            end        
+            broadcastToAll("Wabbajack Attack changed " .. enemyData.name .. ", HP: " .. enemyData.hp .. ", to " .. newEnemy.getName() .. "!", "White")
+        end, 1)
+      end)
+    end
+  end
+
+  -- broadcast
+  broadcastToAll("Wabbajack Attack! Change Places!!", "White")
+end
+
+
+function getObjectbyName(name)
+  -- simply search all objects for an object named a particular string
+  for _, object in pairs(getObjects()) do
+  if object.getName() == name then
+    return object
+  end
+  end
+  log("getObjectbyName() object not found: " .. name)
+  return nil
+end

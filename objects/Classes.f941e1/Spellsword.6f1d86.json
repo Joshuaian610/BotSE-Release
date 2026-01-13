@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 15115,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "94": {
+      "BackIsHidden": false,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/17773199578483952585/5BD5AE9F5ED592343A2AF9D1DE6830B29523D734/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/18201209347882533190/1B50F05A3E442CCBBB8FE48B3E1EF0A4721625D3/",
+      "NumHeight": 3,
+      "NumWidth": 6,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6f1d86",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Spellsword",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 3.601,
+    "posY": 1.675,
+    "posZ": 13.77,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 3.38,
+    "scaleY": 1,
+    "scaleZ": 3.38
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

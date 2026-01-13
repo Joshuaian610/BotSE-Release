@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673623199/0673F0D18FCA0D2AADA660A9552E7D6BE003EA3B/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673623199/0673F0D18FCA0D2AADA660A9552E7D6BE003EA3B/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Arcane:\nThe damage dealt by this unit is true damage.\n\nDaze:\nAfter this unit’s engage, apply a Daze status die to this unit’s target.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "2a8fbb",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[9]",
+  "LuaScript_path": "Level1020Enemies.65d32f/DremoraTroll.2a8fbb.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Dremora / Troll",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman_enemyDaedra",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.96,
+    "posY": 0.008,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

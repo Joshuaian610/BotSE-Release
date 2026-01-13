@@ -1,0 +1,86 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "DrippingCavern.eb3f8f",
+    "Vortex.979d53",
+    "SuspiciousPond.42f611",
+    "FertileBog.715bad",
+    "Fume-RiddledDepths.d2ad99",
+    "NarrowCauseway.c97eae",
+    "WateryHalls.9f43b7",
+    "LabyrinthineMarsh.f991c0",
+    "WanderingArgonian.59088c",
+    "SporeChamber.2ec1c6"
+  ],
+  "ContainedObjects_path": "BlackMarshDelves.96b4ea",
+  "CustomDeck": {
+    "92": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14147321131299159145/90079658D030D085023079157E8F478F4533DBFB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16378487669719283247/7E01AEBDDDB3A6132E6B524000C885A6DE98FA56/",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    9209,
+    9208,
+    9207,
+    9206,
+    9205,
+    9204,
+    9203,
+    9202,
+    9201,
+    9200
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "96b4ea",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Black Marsh Delves",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "delve",
+    "obj_bm"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -62.5,
+    "posY": 3.016,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

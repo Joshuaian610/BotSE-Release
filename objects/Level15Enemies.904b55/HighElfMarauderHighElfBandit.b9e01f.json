@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673459928/8BA36428DCEF2D797E7AB7EE93FACA8EA3FC7642/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673459928/8BA36428DCEF2D797E7AB7EE93FACA8EA3FC7642/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Divert:\nThis unit cannot lose its last HP unless it is already at 1 HP prior to taking damage.\n\nDodge:\nWhen this unit is engaged by an opposing unit, prevent damage dealt to this unit equal to the number of rolled skill dice that do not deal damage.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "b9e01f",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "Level15Enemies.904b55/HighElfMarauderHighElfBandit.b9e01f.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "High Elf Marauder / High Elf Bandit",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHuman",
+    "enemyLow",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 36.67,
+    "posY": 0.022,
+    "posZ": 11.973,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

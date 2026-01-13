@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673451577/D9C75DDD9AA2CF79D2F066A9E172103167487D5D/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673451577/D9C75DDD9AA2CF79D2F066A9E172103167487D5D/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Divert:\nThis unit cannot lose its last HP unless it is already at 1 HP prior to taking damage.\n\nRetreat:\nAt the end of this unit’s turn, if no units took damage this turn, this unit gains a Stealth status die and heals for 1 HP.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "dc61b3",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "ProvinceBagSkyrim.f12f8a/ChaurusBristleback.dc61b3.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Chaurus / Bristleback",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast",
+    "enemyLow",
+    "obj_sk",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 47.812,
+    "posY": 3.104,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

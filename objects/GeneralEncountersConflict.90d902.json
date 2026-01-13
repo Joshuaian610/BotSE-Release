@@ -1,0 +1,86 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "KeepAway.735b47",
+    "BlackMarketEconomics.5d5c5e",
+    "BrokenBones.5ab086",
+    "UnsulliedPool.1c6bd5",
+    "Captured!.605cec",
+    "TheWellofLife.e92901",
+    "Highwaymen.c39374",
+    "TheWackyBoxofWonders.a21b5e",
+    "ForeverMine.067d6e",
+    "WabbajackAttack.87cc18"
+  ],
+  "ContainedObjects_path": "GeneralEncountersConflict.90d902",
+  "CustomDeck": {
+    "108": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15909500411437600158/A6A064E436A67F7B88CC65C144D2D52E823077ED/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10855492560291937561/D0D89EF86E19E6C413C27841FD94DE1205C6EB04/",
+      "NumHeight": 5,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    10809,
+    10808,
+    10807,
+    10806,
+    10805,
+    10804,
+    10803,
+    10802,
+    10801,
+    10800
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "90d902",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "General Encounters Conflict",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_conflict",
+    "obj_ge"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 49.178,
+    "posY": 1.407,
+    "posZ": -8.252,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673456122/3519AEC2AA6D587FEA8880AF94FD527CD00105CE/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673456122/3519AEC2AA6D587FEA8880AF94FD527CD00105CE/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Chilblain:\nAfter this unit is engaged by an adventurer who is not using a weapon item that adventurer gains light fatigue equal to player count.\n\nDetection:\nThis unit ignores Stealth status dice when targeting.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "85ab73",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[6]",
+  "LuaScript_path": "ProvinceBagSkyrim.f12f8a/FalmerDraugr.85ab73.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Falmer / Draugr",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyDaedra_enemyHuman",
+    "enemyLow",
+    "obj_sk",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 47.812,
+    "posY": 3.104,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,46 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0.5098,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2dc97f",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "ScriptingTrigger",
+  "Nickname": "Zone Player Racepad Red",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -63.22,
+    "posY": 1.651,
+    "posZ": -27.94,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 3.57,
+    "scaleY": 1,
+    "scaleZ": 10.26
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

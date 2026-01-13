@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23523,
+    "g": 0.23523,
+    "r": 0.23523
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.302635342,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/13619944835168301526/A50B4EB3CC24CF44AC8DCF82BFB145F8E73FD5F0/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/13619944835168301526/A50B4EB3CC24CF44AC8DCF82BFB145F8E73FD5F0/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "4dabc5",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Deploy Level 5 Enemy",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -35.859,
+    "posY": 1.138,
+    "posZ": -9.85,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.4,
+    "scaleY": 1,
+    "scaleZ": 0.4
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

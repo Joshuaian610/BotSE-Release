@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23525,
+    "g": 0.23525,
+    "r": 0.23525
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.302635819,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/13000220586455655094/834C71C642B92E68C90AF64FC4D8C123EAECA35F/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/13000220586455655094/834C71C642B92E68C90AF64FC4D8C123EAECA35F/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "Red",
+  "GUID": "3105b9",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Open Pack",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_red"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -38.623,
+    "posY": 1.138,
+    "posZ": -22.03,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.25,
+    "scaleY": 1,
+    "scaleZ": 0.25
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

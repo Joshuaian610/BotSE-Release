@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.206132635
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234558967480/F6CF9CCFEA269ACC4C9592CDCDFD012C6A534E36/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "disabled",
+  "GUID": "977c17",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Bow Skill Line Token",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "btn_skill_selection",
+    "non_int",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -34.005,
+    "posY": 1.442,
+    "posZ": -28.876,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.24,
+    "scaleY": 1,
+    "scaleZ": 0.24
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

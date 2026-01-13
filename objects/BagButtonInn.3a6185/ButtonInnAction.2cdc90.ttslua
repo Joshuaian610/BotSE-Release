@@ -1,0 +1,200 @@
+function onLoad()
+    create_all()
+end
+
+
+function create_all()
+    self.createButton({
+        label          = "",
+        click_function = "inn_action",
+        function_owner = self,
+        position       = {0.00, 0.31, 0.00},
+        height         = 995,
+        width          = 1050,
+        scale          = {x=1.00, y=1.00, z=1.00},
+        color          = {1, 1, 1, 0},
+        hover_color    = {1, 1, 1, .6},
+        tooltip        = "Click this button to take an Inn Town Action.\n\n(Clicking player will automatically heal to full and clear cooldown track. If playing multi handed solo, you will need to first switch handzone colors to the color of the adventurer that would like to take the Inn Action.)"
+    })
+end
+
+
+function animate_button()
+    self.clearButtons()
+    Wait.time(function() create_all() end, 1)
+    local pos = self.getPosition()
+    pos.y = pos.y - .29
+    self.setPosition(pos)
+    pos.y = pos.y + .29
+    self.setPositionSmooth(pos, false, false)
+end
+
+
+function inn_action(button, playercolor, _)
+    if playercolor ~= "Red" and playercolor ~= "Orange" and playercolor ~= "Blue" and playercolor ~= "Green" then
+        broadcastToAll("Be seated at a handzone color before using this button.", "Orange")
+        return
+    end
+    local check_zones = {
+        ["Red"] = {
+            "826a6a",
+            "173893",
+            "7aa988",
+            "c293a7",
+            "e3f696",
+            "a49fe8",
+            "3c71e5",
+            "a0bcd0",
+            "0e2ffb",
+            "9ebacd",
+            "0d6986",
+            "e53e86",
+            "e1340c",
+            "085d1c",
+            "a8d284",
+            "02f1a8",
+            "9f9e1e",
+            "775205",
+            "8d8283",
+            "74ff7a",
+            "8f176b",
+            "b6d08d",
+            "e0c525",
+            "008456",
+        },
+        ["Orange"] = {
+            "180b57",
+            "d3f901",
+            "ec6750",
+            "22c65a",
+            "bac26f",
+            "36646a",
+            "bb56af",
+            "16ec19",
+            "fe209b",
+            "725737",
+            "232ae1",
+            "2b3b1a",
+            "fcb1b5",
+            "cc995b",
+            "ab1638",
+            "5933d2",
+            "cf3941",
+            "fb62c4",
+            "284766",
+            "0ad4e7",
+            "4f2ee5",
+            "11065d",
+            "961ef4",
+            "146d42",
+        },
+        ["Blue"] = {
+            "58dc17",
+            "455c7e",
+            "64ae52",
+            "191ecb",
+            "4102d2",
+            "440483",
+            "d1bf26",
+            "1466f8",
+            "588b1a",
+            "590836",
+            "56fe6e",
+            "f011c7",
+            "fdd62c",
+            "ebd467",
+            "2314f9",
+            "40c189",
+            "122ab3",
+            "be18bd",
+            "c832c0",
+            "fadb55",
+            "3d3c79",
+            "fba2be",
+            "6a2561",
+            "af5b53",
+        },
+        ["Green"] = {
+            "a85c38",
+            "c9ca8a",
+            "5636e8",
+            "b2c1bc",
+            "86dee0",
+            "3d1518",
+            "cdfa51",
+            "0d5ab6",
+            "28ad3d",
+            "56b556",
+            "87c201",
+            "72ba86",
+            "418ca3",
+            "c58868",
+            "084361",
+            "f7e7fc",
+            "ab82d4",
+            "5e5806",
+            "af8bab",
+            "113b55",
+            "b0d085",
+            "0b49a2",
+            "78ad8b",
+            "407c7e",
+        },
+    }
+    animate_button()
+    local player_tag   = (playercolor == "Red" and "player_red") or (playercolor == "Orange" and "player_orange") or
+    (playercolor == "Blue" and "player_blue") or (playercolor == "Green" and "player_green")
+    local counter = getObjectFromGUID((playercolor == "Red" and "12870c") or (playercolor == "Orange" and "a6b220") or
+    (playercolor == "Blue" and "68b5c6") or (playercolor == "Green" and "a8ecfa"))
+    local chip = nil
+    local max_health_val   = nil
+    local total_max_health = nil
+    for _, object in pairs(getAllObjects()) do
+        if object.hasTag(player_tag) then
+            chip = object
+            max_health_val = chip.getVar('max_health_val')
+        end
+    end
+    local total_max_health = nil
+    local extra_max_health = 0
+    for i = 1, 24 do
+        for _, object in pairs(getObjectFromGUID(check_zones[playercolor][i]).getObjects()) do
+            if object.getName() == "HP Stat Token" then
+                extra_max_health = extra_max_health + 1
+            end
+        end
+    end
+    if chip ~= nil then max_health_val = chip.getVar('max_health_val') end
+    if max_health_val ~= nil then total_max_health = max_health_val + extra_max_health end
+    if (total_max_health ~= nil and total_max_health ~= 0) and counter ~= nil then
+        local chip_bag = getObjectFromGUID("18de0f")
+        chip_bag.call('clear_old_chips_remote', {chip_obj=chip})
+        Wait.time(function()
+        chip_bag.call('update_tile_stack_remote', {chip_obj=chip, val=total_max_health})
+        end, .5)
+        chip.clearButtons()
+        local chip_rotation = chip.getRotation()
+        local position, rotation
+        if chip_rotation.z > 330 or chip_rotation.z < 30 then
+            position = {0.00, 1.00, -1.20}
+            rotation = {250.00, 180.00, 180.00}
+        else
+            position = {0.00, -1.00, -1.20}
+            rotation = {290.00, 0.00, 180.00}
+        end
+        chip.setVar('val', total_max_health)
+        chip_bag.call('create_counter_remote', {position=position, rotation=rotation, chip_obj=chip})
+        counter.call('set_val', total_max_health)
+    end
+    local cd_zone = getObjectFromGUID((playercolor == "Red" and "3a8b40") or (playercolor == "Orange" and "4fae72") or
+    (playercolor == "Blue" and "d6184c") or (playercolor == "Green" and "0cc81c"))
+    for _, object in pairs(cd_zone.getObjects()) do
+        if object.type == "Dice" then
+            if string.find(object.getName(), "atigue") or string.find(object.getName(), "Status") then
+                Global.call('return_supply_die_remote', {die_obj=object, color=playercolor})
+            else
+                Global.call('return_home_die_remote', {die_obj=object, color=playercolor})
+            end
+        end
+    end
+end

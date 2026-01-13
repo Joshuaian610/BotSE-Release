@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0,
+    "r": 0.84843
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582865174/A52E7748EE3C307114297E39DDA46984F30DE03F/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582865174/A52E7748EE3C307114297E39DDA46984F30DE03F/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "95e902",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "1HPChipBag.218b6b/HPChip.95e902.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "HP Chip",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "hp_chip",
+    "snap_hex"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 27.09,
+    "posY": 2.876,
+    "posZ": -5.967,
+    "rotX": 0,
+    "rotY": 270,
+    "rotZ": 0,
+    "scaleX": 1.2,
+    "scaleY": 1,
+    "scaleZ": 1.2
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

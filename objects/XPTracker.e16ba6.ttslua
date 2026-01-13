@@ -1,0 +1,15 @@
+function setDialValue(args)
+    local val = args.val
+    if val < 1 or val > 200 then
+        return
+    end
+
+    local index = ((val - 1) % 20)  -- 0–19 for visual position
+    local flipCount = math.floor((val - 1) / 20)
+    local zAngle = (flipCount % 2 == 1) and 180 or 0  -- flip every 20
+
+    local yAngle = (88 - (index * 18)) % 360
+    local rotation = { x = 0, y = yAngle, z = zAngle }
+
+    self.setRotation(rotation)
+end

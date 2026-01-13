@@ -1,0 +1,57 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582989556/4A4A27EEA1B18BA68823B99A55A85D9267C43471/",
+    "WidthScale": 0
+  },
+  "Description": "This Journal and it's contents may be saved to use in another session by right clicking on it and selecting Save Object.\n\nIt may be loaded into another session via Top Icons \u003e Objects \u003e Saved Objects. Either the game host or a propmoted player will need to do this.\n\nYou may want to consider checking out:\nhttps://app.botse-helper.com/\n:)",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "eda22b",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState_path": "UnusedObjectBag.4da6b0/CampaignJournal.eda22b.luascriptstate",
+  "LuaScript_path": "UnusedObjectBag.4da6b0/CampaignJournal.eda22b.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Campaign Journal",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 6.645,
+    "posY": 1.935,
+    "posZ": 49.59,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 6,
+    "scaleY": 1,
+    "scaleZ": 6
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

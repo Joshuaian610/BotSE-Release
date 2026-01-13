@@ -1,0 +1,462 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -8.142,
+        "y": 0.1,
+        "z": 2.805
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -8.137,
+        "y": 0.1,
+        "z": 0.019
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -8.147,
+        "y": 0.1,
+        "z": -2.847
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -5.673,
+        "y": 0.1,
+        "z": -4.305
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -5.714,
+        "y": 0.1,
+        "z": -1.515
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -5.749,
+        "y": 0.1,
+        "z": 1.366
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -5.7,
+        "y": 0.1,
+        "z": 4.203
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -3.308,
+        "y": 0.1,
+        "z": 5.667
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -3.267,
+        "y": 0.1,
+        "z": 2.855
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -3.305,
+        "y": 0.1,
+        "z": -0.003
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -3.27,
+        "y": 0.1,
+        "z": -2.82
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -3.258,
+        "y": 0.1,
+        "z": -5.715
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.803,
+        "y": 0.1,
+        "z": -4.255
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.828,
+        "y": 0.1,
+        "z": -1.49
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.796,
+        "y": 0.1,
+        "z": 1.371
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.819,
+        "y": 0.1,
+        "z": 4.15
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.648,
+        "y": 0.1,
+        "z": 5.662
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.607,
+        "y": 0.1,
+        "z": 2.793
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.61,
+        "y": 0.1,
+        "z": -0.056
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.602,
+        "y": 0.1,
+        "z": -2.837
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 1.66,
+        "y": 0.1,
+        "z": -5.688
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 4.117,
+        "y": 0.1,
+        "z": -4.244
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 4.128,
+        "y": 0.1,
+        "z": -1.436
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 4.102,
+        "y": 0.1,
+        "z": 1.386
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 4.066,
+        "y": 0.1,
+        "z": 4.182
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 6.548,
+        "y": 0.1,
+        "z": 2.816
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 6.537,
+        "y": 0.1,
+        "z": -0.013
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 6.551,
+        "y": 0.1,
+        "z": -2.903
+      },
+      "Tags": [
+        "enemy_chip",
+        "player_chip",
+        "hp_chip",
+        "cache_chip",
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/12070051115191376124/F9270386CA77B044608F8FF9654B9B1E6BF7CBE4/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12575864531793338978/9304F838B14A935A97131CF28ADCD64F868F2E2F/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/12070051115191376124/F9270386CA77B044608F8FF9654B9B1E6BF7CBE4/",
+    "NormalURL": "",
+    "TypeIndex": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "D",
+  "GUID": "ea1382",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Clash Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "hex_clash"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 92.257,
+    "posY": 2.832,
+    "posZ": 32.511,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 1.25,
+    "scaleY": 1.25,
+    "scaleZ": 1.25
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

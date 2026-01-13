@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.5,
+    "g": 0.5,
+    "r": 0.5
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": true,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582860175/ED3BD56CAA9A5E26990A0B042B2567A8E64FB8DA/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582859496/0FF9E0F946B70FB7E31ED5340F24D61BA4BA6EEC/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "f6fd2e",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "CacheChipBag.e1214f/CacheChip.f6fd2e.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Cache Chip",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "cache_chip",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 21.128,
+    "posY": 1.138,
+    "posZ": 0.401,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.15,
+    "scaleY": 1,
+    "scaleZ": 1.15
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

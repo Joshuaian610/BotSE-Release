@@ -1,0 +1,1097 @@
+
+
+
+function initButtonCooldownAction(obj)
+  obj.createButton({
+    label          = "",
+    click_function = "cooldownAction",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click this button to perform the beginning of turn Cooldown action.\n\nMake sure your Adventurer Mat Peg is at the right spot on the track to get accurate results!"
+  })
+end
+
+
+function initButtonCooldownCollapse(obj)
+  obj.createButton({
+    label          = "",
+    click_function = "cooldownCollapse",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click this button to collapse the Cooldown track and clean up any gaps."
+  })
+end
+
+function initButtonFatigue(obj)
+  obj.createButton({
+    label          = "",
+    click_function = "addFatigue",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click this button to add a Fatigue die to your Cooldown track."
+  })
+end
+
+
+function initButtonOverfatigue(obj)
+  obj.createButton({
+    label          = "",
+    click_function = "addOverfatigue",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click this button to add an Overfatigue die to your Cooldown track."
+  })
+end
+
+
+function initButtonPlayerRollDice(obj)
+  obj.createButton({
+    label          = "",
+    click_function = "rollDice",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click this button to roll the dice currently on the pad."
+  })
+end
+
+
+function initButtonOpenPack(obj)
+  obj.createButton({
+    label          = "",
+    click_function = "openPack",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 990,
+    width          = 4300,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click this button to search this Pack."
+  })
+end
+
+
+function initButtonPackCounter(obj, bagCount)
+  obj.createButton({
+    click_function = "nullFunc",
+    function_owner = self,
+    label          = bagCount,
+    position       = {0.9, 0.3, 0.3},
+    rotation       = {90, 180, 0},
+    width          = 200,
+    height         = 200,
+    font_size      = 150,
+    scale          = {2.3, 2.3, 2.3},
+    color          = {255/255, 255/255, 255/255, 255},
+    font_color     = {0, 0, 0, 1},
+    tooltip        = "There are " .. bagCount .. " card(s) stored in this pack.",
+  })
+end
+
+
+function nullFunc()
+  -- no action function to handle clicks of the pack counters
+  return
+end
+
+
+function animateButtonsPlayerArea(obj)
+  obj.clearButtons()
+  local name = obj.getName()
+  Wait.time(function()
+
+    if name == "Button Cooldown" then
+      initButtonCooldownAction(obj)
+
+    elseif name == "Button Collapse Cooldown" then
+      initButtonCooldownCollapse(obj)
+
+    elseif name == "Button Fatigue" then
+      initButtonFatigue(obj)
+
+    elseif name == "Button Overfatigue" then
+      initButtonOverfatigue(obj)
+
+    elseif name == "Button Open Pack" then
+      initButtonOpenPack(obj)
+
+    elseif name == "Button Roll Dice" then
+      initButtonPlayerRollDice(obj)
+    end
+
+  end, 1)
+  local pos = obj.getPosition()
+  pos.y = pos.y - .29
+  obj.setPosition(pos)
+  pos.y = pos.y + .29
+  obj.setPositionSmooth(pos, false, false)
+end
+
+
+function cooldownAction(button, _, _)
+
+  -- this function handles the button click of the player area cooldown buttons
+
+  local playerColor = button.getGMNotes()
+  local pegZones = {
+    ["Red"] = getObjectFromGUID("472e65"),
+    ["Orange"] = getObjectFromGUID("1d162c"),
+    ["Blue"] = getObjectFromGUID("9ee619"),
+    ["Green"] = getObjectFromGUID("1c205d"),
+  }
+  local pegZone = pegZones[playerColor]local cdZones  = {
+    ["Red"] = getObjectFromGUID("3a8b40"),
+    ["Orange"] = getObjectFromGUID("4fae72"),
+    ["Blue"] = getObjectFromGUID("d6184c"),
+    ["Green"] = getObjectFromGUID("0cc81c"),
+  }
+  cdZone = cdZones[playerColor]local posPegs = {
+    ["Red"] = {
+      { -59.74, 1.97, -30.86 },
+      { -58.89, 1.97, -30.86 },
+      { -58.04, 1.97, -30.86 },
+      { -57.22, 1.97, -30.88 },
+      { -56.36, 1.97, -30.88 },
+      { -55.51, 1.97, -30.89 },
+    },
+    ["Orange"] = {
+      { -24.09, 1.97, -30.90 },
+      { -23.23, 2.00, -30.91 },
+      { -22.37, 1.97, -30.92 },
+      { -21.53, 1.97, -30.91 },
+      { -20.67, 1.97, -30.92 },
+      { -19.82, 1.97, -30.92 },
+    },
+    ["Blue"] = {
+      { 12.23, 1.97, -30.89 },
+      { 13.10, 2.00, -30.89 },
+      { 13.94, 1.97, -30.89 },
+      { 14.79, 1.97, -30.89 },
+      { 15.64, 1.97, -30.88 },
+      { 16.51, 1.97, -30.89 },
+    },
+    ["Green"] = {
+      { 16.51, 1.97, -30.89 },
+      { 48.79, 2.00, -30.91 },
+      { 49.64, 1.97, -30.91 },
+      { 50.48, 1.97, -30.91 },
+      { 51.34, 1.97, -30.91 },
+      { 52.19, 1.97, -30.93 },
+    },
+  }
+  
+  -- determine current cooldown amount via detection of CD peg on playerColor's mat
+  local tolerance = 0.3
+  local posPeg = nil
+  for _, object in pairs(pegZone.getObjects()) do
+    if object.hasTag('mat_marker') then
+      posPeg = object.getPosition()
+      break
+    end
+  end
+  if posPeg == nil then
+    broadcastToAll("No Peg found on " .. playerColor .. " Cooldown track.", "Orange")
+    return
+  end
+
+  local pegX = posPeg.x
+  local matchedIndex = nil
+  for i, pos in ipairs(posPegs[playerColor]) do
+    local slotX = pos[1]
+    if math.abs(pegX - slotX) <= tolerance then
+      matchedIndex = i
+      break
+    end
+  end
+  if matchedIndex == nil then
+    broadcastToAll("No Peg found on " .. playerColor .. " Cooldown track.", "Orange")
+    return
+  end
+
+  -- get a sorted table of dice within playerColor's cooldownZone
+  local allDice = {}
+  for _, obj in pairs(cdZone.getObjects()) do
+    if obj.type == "Die" or obj.type == "Dice" then
+      table.insert(allDice, obj)
+    end
+  end
+  table.sort(allDice, function(a, b) return a.getPosition().x < b.getPosition().x end)
+
+ -- collect Overfatigue dice for special placement, handle other dice normally
+  local overfatigueDice = {}
+  for i = 1, matchedIndex do
+    local dieObj = allDice[i]
+    if dieObj then
+      if dieObj.getName() == "Overfatigue" then
+        -- collect Overfatigue dice
+        table.insert(overfatigueDice, dieObj)
+      elseif dieObj.getName() == "[f8e28d]Acrobatics[-]: Duelist Rebuff" and dieObj.getRotationValue() == 1 then
+        placeDieToTrack(playerColor, dieObj, "Drain")
+      elseif dieObj.getGMNotes() == "" then
+        returnSupplyDie(playerColor, dieObj)
+      else
+        returnHomeDie(playerColor, dieObj)
+      end
+    end
+  end
+
+  -- if there are Overfatigue dice, use buffer positions and wait timing
+  if #overfatigueDice > 0 then
+    local totalSlots = #posCooldownDice[playerColor]
+    local numOF = #overfatigueDice
+
+    -- move Overfatigue dice to buffer positions
+    for idx, dieObj in ipairs(overfatigueDice) do
+      local targetSlot = totalSlots - numOF + idx
+      local bufferPos = {posCooldownDice[playerColor][targetSlot][1], 1.65, -32.63}
+      dieObj.setPosition(bufferPos)
+    end
+
+    -- compress normal dice to left-hand slots (leaving right-hand slots for Overfatigue)
+    Wait.time(function()
+      compressTrack(playerColor, "Cooldown")
+    end, 0.25)
+
+    -- place Overfatigue dice into their final right-hand slots
+    Wait.time(function()
+      for idx, dieObj in ipairs(overfatigueDice) do
+        local targetSlot = totalSlots - numOF + idx
+        dieObj.setPosition(posCooldownDice[playerColor][targetSlot])
+      end
+    end, 0.5)
+
+    -- final compress after everything has settled
+    Wait.time(function()
+      compressTrack(playerColor, "Cooldown")
+    end, 0.75)
+
+  else
+    -- no Overfatigue, compress track immediately
+    compressTrack(playerColor, "Cooldown")
+  end
+
+  -- broadcast  
+  if Player[playerColor].steam_name ~= nil then
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has executed their Cooldown action.", "White")
+  else
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has executed their Cooldown action.", "White")
+  end
+
+  -- refresh any in play turn skill trackers  
+  for _, object in pairs(getObjects()) do
+    if object.getName() == playerColor .. " Per Turn Skill Tracker" then
+      if object.is_face_down then
+        object.flip()
+      end
+    end
+  end
+  
+  -- check current track slots, reform track
+  Wait.time(function() compressTrack(playerColor, "Cooldown") end, .25)
+end
+
+
+function getTrackSlots(playerColor, trackType) -- trackTypes = "Cooldown", "Drain", "Roll"
+
+  log("getTrackSlots(" .. playerColor .. ", " .. trackType .. ") RUNNING")
+
+  -- this function simply checks the dice in a single zone track for a playerColor, returns boolean table of occupied slots (trackSlots), and, nextAvailableSlot
+
+  -- get dice in trackSlots
+  local trackSlots = {false, false, false, false, false, false, false, false, false, false, false, false, false}
+  local zones = (trackType == "Cooldown" and {["Red"]="3a8b40", ["Orange"]="4fae72", ["Blue"]="d6184c", ["Green"]="0cc81c"}) or
+                (trackType == "Roll"     and {["Red"]="f3e8f3", ["Orange"]="bad5bc", ["Blue"]="b0487f", ["Green"]="841cca"}) or
+                (trackType == "Drain"    and {["Red"]="b68e00", ["Orange"]="7516a3", ["Blue"]="805890", ["Green"]="517c9e"}) or {}
+  local zoneTrack = getObjectFromGUID(zones[playerColor])
+  local zoneObjects = zoneTrack.getObjects()
+  local posDieSlots = (trackType == "Cooldown" and posCooldownDice[playerColor]) or
+                      (trackType == "Drain"    and posDrainDice[playerColor]) or
+                      (trackType == "Roll"     and posRollpadDice[playerColor]) or {}
+  local usedSlots = {}
+  local tolerance = 0.3
+  for _, obj in ipairs(zoneObjects) do
+    if obj.type == "Dice" then
+      -- get dice position
+      local pos = obj.getPosition()
+      for i, slot in ipairs(posDieSlots) do
+        if not usedSlots[i] and math.abs(pos.x - slot[1]) <= tolerance then
+          trackSlots[i] = true
+          usedSlots[i] = true
+          break
+        end
+      end
+    end
+  end
+
+  -- determine if all slots filled, broadcast out if so
+  local allSlotsFilled = true
+  for i = 1, #trackSlots do
+    if trackSlots[i] == false then      
+      allSlotsFilled = false
+      break
+    end
+  end
+
+  if allSlotsFilled then
+    nextAvailableSlot = "Full"
+  end
+
+  -- return table of trackSlots, nextAvailableSlot
+  local nextAvailableSlot = nil
+  for i = 1, #trackSlots do
+      if trackSlots[i] == false then
+          nextAvailableSlot = i
+          break
+      end
+  end
+
+  if nextAvailableSlot == nil then
+      nextAvailableSlot = "Full"
+  end
+  return trackSlots, nextAvailableSlot
+end
+
+
+function placeDieToTrack(playerColor, dieObj, trackType) -- trackTypes = "Cooldown", "Drain", "Roll"
+
+  log("placeDieToTrack(" .. playerColor .. ", " .. dieObj.getName() .. ", " .. trackType .. ") RUNNING")
+  
+  -- this function handles the placement of a die into next available single zone track slot
+
+  -- verify player is seated
+  if playerColor ~= "Red" and playerColor ~= "Orange" and playerColor ~= "Blue" and playerColor ~= "Green" then
+    broadcastToAll("Please be seated at one of the four player areas before attempting to place a die!", "Orange")
+    return
+  end
+  
+  -- verify die object is not already in cooldown track
+  local dieInCooldown = false
+  local checkZones = {["Red"]="3a8b40", ["Orange"]="4fae72", ["Blue"]="d6184c", ["Green"]="0cc81c"}
+  local checkZone = getObjectFromGUID(checkZones[playerColor])
+  for _, object in pairs(checkZone.getObjects()) do
+    if object == dieObj then
+      dieInCooldown = true
+    end
+  end    
+  
+  -- determine next available slot in relevant track
+  local _, nextAvailableSlot = getTrackSlots(playerColor, trackType)
+
+  -- if cooldown slots are full, take actions if cooldown track, then return out
+  if nextAvailableSlot == "Full" then
+
+    -- return out if die object is already in cooldown track
+    if dieInCooldown then
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] - Die is already in Cooldown track!", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] - Die is already in Cooldown track!", "White")
+      end
+      return
+    end
+
+    if trackType == "Cooldown" then
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: All cooldown slots are full!", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: All cooldown slots are full!", "White")
+      end
+
+      -- handle full cooldown track actions
+      Wait.time(function()        
+
+        -- if fatigue/overfatigue/status, return to supply
+        if dieObj.getName() == "Overfatigue" then
+          getObjectbyName("Overfatigue Dice Bag").putObject(dieObj)
+          if Player[playerColor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: Overfatigue die unable to be placed, has been returned to Supply", "White")
+          else
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: Overfatigue die unable to be placed, has been returned to Supply", "White")
+          end
+        elseif dieObj.getName() == "Fatigue" then
+          getObjectbyName("Fatigue Dice Bag").putObject(dieObj)
+          if Player[playerColor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: Fatigue die unable to be placed, has been returned to Supply", "White")
+          else
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: Fatigue die unable to be placed, has been returned to Supply", "White")
+          end
+        elseif dieObj.getName() == "Status Effect" then
+          getObjectbyName("Status Effect Dice Bag").putObject(dieObj)
+          if Player[playerColor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: Status Effect die unable to be placed, has been returned to Supply", "White")
+          else
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: Status Effect die unable to be placed, has been returned to Supply", "White")
+          end
+
+        -- if skill die, drain it
+        else
+          placeDieToTrack(playerColor, dieObj, "Drain")
+          if Player[playerColor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: " .. dieObj.getName() .. " unable to be placed, has been Drained", "White")
+          else
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: " .. dieObj.getName() .. " unable to be placed, has been Drained", "White")
+          end
+        end
+
+        -- then, replace rightmost die in cooldown track with an overfatigue die (same handling for replaced die)
+        Wait.time(function()
+
+          replaceLastDieOverfatigue(playerColor)
+
+        end, .5)
+
+      end, .5)
+
+    elseif trackType == "Drain" then
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: All drain slots are full! Place more drained dice manually.", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: All drain slots are full! Place more drained dice manually.", "White")
+      end
+    elseif trackType == "Roll" then
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: All roll slots are full! Place more dice to the pad manually.", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: All roll slots are full! Place more dice to the pad manually.", "White")
+      end
+    end
+    return "Full"
+  end
+
+  local posDiePlacement = (trackType == "Cooldown" and posCooldownDice[playerColor][nextAvailableSlot]) or
+                          (trackType == "Drain"    and posDrainDice[playerColor][nextAvailableSlot]) or
+                          (trackType == "Roll"     and posRollpadDice[playerColor][nextAvailableSlot]) or {}
+  if not posDiePlacement then log("placeDieToTrack() posDiePlacement not found") return end
+
+  -- place die object
+  dieObj.setPosition({posDiePlacement[1], posDiePlacement[2], posDiePlacement[3]})
+
+  Wait.frames(function()
+    if dieInCooldown then
+      compressTrack(playerColor, "Cooldown")
+    end
+  end)
+  
+  -- broadcast
+  if trackType == "Cooldown" then
+    if Player[playerColor].steam_name ~= nil then
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has placed " .. dieObj.getName() .. " die into Cooldown Track.", "White")
+    else
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has placed " .. dieObj.getName() .. " die into Cooldown Track.", "White")
+    end
+  elseif trackType == "Drain" then
+    if Player[playerColor].steam_name ~= nil then
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has drained " .. dieObj.getName() .. ".", "White")
+    else
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has drained " .. dieObj.getName() .. ".", "White")
+    end
+  elseif trackType == "Roll" then
+    if Player[playerColor].steam_name ~= nil then
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has placed " .. dieObj.getName() .. " to be rolled.", "White")
+    else
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has placed " .. dieObj.getName() .. " to be rolled.", "White")
+    end
+  end
+  return "Placed"
+end
+
+
+function replaceLastDieOverfatigue(playerColor)
+
+  -- this function handles the full cooldown case of replacing the last die in the cooldown track with an Overfatigue
+  local cooldownZone = getObjectFromGUID(
+    (playerColor == "Red" and "3a8b40") or
+    (playerColor == "Orange" and "4fae72") or
+    (playerColor == "Blue" and "d6184c") or
+    (playerColor == "Green" and "0cc81c")
+  )
+  
+  
+  -- get all objects in cooldownZone, determine which die object is the furthest right non overfatigue die, define lastDie
+  local lastDie = nil
+  local rotLastDie = { 0, 0, 0 }
+  local posLastDie = posCooldownDice[playerColor][13]
+  local zoneObjects = cooldownZone.getObjects()
+  local maxX = -math.huge
+
+  for i, obj in ipairs(zoneObjects) do
+    if obj.type == "Dice" and obj.getName() ~= "Overfatigue" then
+      local objX = obj.getPosition().x
+      if objX > maxX then
+        maxX = objX
+        lastDie = obj
+      end
+    end
+  end
+
+  -- handle lastDie in the same fashion in the full cooldown track case, ie: overfatigue, fatigue, or status effects back to their respective bags, and other dice getting drained
+  if lastDie ~= nil then
+    if lastDie.getName() == "Overfatigue" then
+      getObjectbyName("Overfatigue Dice Bag").putObject(lastDie)
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: Last Cooldown die was Overfatigue, has been returned to Supply...", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: Last Cooldown die was Overfatigue, has been returned to Supply...", "White")
+      end
+    elseif lastDie.getName() == "Fatigue" then
+      getObjectbyName("Fatigue Dice Bag").putObject(lastDie)
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: Last Cooldown die was Fatigue, has been returned to Supply...", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: Last Cooldown die was Fatigue, has been returned to Supply...", "White")
+      end
+    elseif lastDie.getName() == "Status Effect" then
+      getObjectbyName("Status Effect Dice Bag").putObject(lastDie)
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: Last Cooldown die was Status Effect, has been returned to Supply...", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: Last Cooldown die was Status Effect, has been returned to Supply...", "White")
+      end
+    else
+      placeDieToTrack(playerColor, lastDie, "Drain")
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-]: Last Cooldown die has been Drained...", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-]: Last Cooldown die has been Drained...", "White")
+      end
+    end
+  end
+
+  -- Wait half a second, then, pull and place overfatigue to posDie
+  Wait.time(function()
+
+    local bagOverfatigue = getObjectbyName("Overfatigue Dice Bag")
+    if #bagOverfatigue.getObjects() > 0 then
+      local overfatigueDie = bagOverfatigue.takeObject()
+      overfatigueDie.setRotation(rotLastDie)
+      overfatigueDie.setPosition(posLastDie)
+      if Player[playerColor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] ...and has been replaced with an Overfatigue die.", "White")
+          else
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. "[-] ...and has been replaced with an Overfatigue die.", "White")
+          end
+
+    -- if overfatigue supply is empty, player takes 1 true damage instead
+    else
+      local hpCounter = getObjectbyName("HP Counter " .. playerColor)
+      local bagPlayerChips = getObjectbyName("Player Chip Bag")
+      if hpCounter then
+        local val = hpCounter.getVar('val')
+        local newVal = val - 1
+        hpCounter.call('update_val', newVal)
+        hpCounter.call('update_chip', newVal)
+        -- broadcast defeat message if required
+        if newVal == 0 then
+          if Player[playerColor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has been defeated!", "White")
+          else
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has been defeated!", "White")
+          end
+        end
+        
+      end
+    end
+
+  end, .75)
+
+end
+
+
+function compressTrack(playerColor, trackType)
+
+  log("compressTrack(" .. playerColor .. ", " .. trackType .. ") RUNNING")
+
+  -- this function will compress the dice in the "Cooldown" track to the left, or "Drain" track centrally, and also return the nextAvailableSlot
+
+  local zones = (trackType == "Cooldown" and {["Red"]="3a8b40", ["Orange"]="4fae72", ["Blue"]="d6184c", ["Green"]="0cc81c"}) or
+                (trackType == "Drain" and {["Red"]="b68e00", ["Orange"]="7516a3", ["Blue"]="805890", ["Green"]="517c9e"}) or
+                (trackType == "Roll" and {["Red"]="f3e8f3", ["Orange"]="bad5bc", ["Blue"]="b0487f", ["Green"]="841cca"}) or {}
+  local zoneTrack = getObjectFromGUID(zones[playerColor])
+
+  local zoneObjects = zoneTrack.getObjects()
+  local posDieSlots = (trackType == "Cooldown" and posCooldownDice[playerColor]) or
+                      (trackType == "Drain"    and posDrainDice[playerColor]) or {}
+
+  local tolerance = 0.3
+  local dice = {}
+  -- check objects in zone
+  for _, obj in ipairs(zoneObjects) do
+    -- if they're dice...B
+    if obj.type == "Dice" then
+      -- ...get it's position, determine it's slot, add to table "dice" and move on
+      local pos = obj.getPosition()
+      for i, slot in ipairs(posDieSlots) do
+        if math.abs(pos.x - slot[1]) <= tolerance then
+          table.insert(dice, {obj = obj, index = i})
+          break
+        end
+      end
+    end
+  end
+
+  -- sort dice table by index
+  table.sort(dice, function(a, b) return a.index < b.index end)
+
+  -- get placement destinations for all dice in table, place, return next available index
+  local targetIndex = 1
+  for _, entry in ipairs(dice) do
+    if entry.index ~= targetIndex then
+      local dest = posDieSlots[targetIndex]
+      entry.obj.setPosition({dest[1], dest[2], dest[3]}, false, true)
+    end
+    targetIndex = targetIndex + 1
+  end
+  return targetIndex <= #posDieSlots and targetIndex or nil
+end
+
+
+function returnSupplyDie(playerColor, dieObj)  
+
+  -- this function handles the return of die objects to the supply bag
+
+  if not dieObj or dieObj.type ~= "Dice" then return end
+  local guid = dieObj.getGUID()
+  local bag = getObjectbyName((string.find(dieObj.getName(), "Acrobatics")          and "Acrobatics Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Bow")                 and "Bow Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Daedric Summoning")   and "Daedric Summoning Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Destruction Staff")   and "Destruction Staff Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Heavy Armor")         and "Heavy Armor Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Illusion")            and "Illusion Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Legerdemain")         and "Legerdemain Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Light Armor")         and "Light Armor Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "One Hand And Shield") and "One Hand And Shield Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Restoring Light")     and "Restoring Light Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Shadow")              and "Shadow Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Speech")              and "Speech Skill Line Dice Bag") or
+                              (string.find(dieObj.getName(), "Two Handed")          and "Two Handed Skill Line Dice Bag") or
+                              (dieObj.getName() == "Overfatigue"                    and "Overfatigue Dice Bag") or
+                              (dieObj.getName() == "Fatigue"                        and "Fatigue Dice Bag") or
+                              (string.find(dieObj.getName(), "Status")              and "Status Effect Dice Bag") or
+                              (dieObj.getName() == "Combat"                         and "Combat Dice Bag") or
+                              (dieObj.getName() == "Enemy Combat"                   and "Enemy Combat Dice Bag"))  
+   
+  dieObj.setGMNotes("")
+
+  -- get position of return bag, or, table placement if unstable or lockpick with no supply bag on table
+  local posDie = nil
+  if bag ~= nil then
+    posDie = bag.getPosition()
+    posDie.y = 3.00
+  end
+  if bag == nil and dieObj.getGUID() == "21e4b0" then -- unstable
+    posDie = {-56.50, 1.75, -5.00}
+  elseif bag == nil and dieObj.getGUID() == "9043cc" then -- lockpick dice
+    posDie = {-57.50, 1.75, -5.00}
+  elseif bag == nil and dieObj.getGUID() == "bbdad8" then
+    posDie = {-58.50, 1.75, -5.00}
+  elseif bag == nil and dieObj.getGUID() == "e4071b" then
+    posDie = {-59.50, 1.75, -5.00}
+  end
+
+  -- send die home
+  dieObj.setPosition(posDie)
+  if bag then
+    bag.putObject(dieObj)
+  end
+  
+  -- broadcast
+  if Player[playerColor].steam_name ~= nil then
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has returned " .. dieObj.getName() .. " die to the Supply.", "White")
+  else
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has returned " .. dieObj.getName() .. " die to the Supply.", "White")
+  end
+end
+
+
+function returnHomeDie(playerColor, dieObj)
+  
+  -- checks die GM notes for position, which gets assigned when die drops into a zone in a player mat slot
+  local dieNotes = dieObj.getGMNotes()
+  local posDie = nil
+  if dieNotes ~= "" then
+    local x, y, z = dieNotes:match("([^,]+),%s*([^,]+),%s*([^,]+)")
+    posDie = Vector({tonumber(x), tonumber(y), tonumber(z)})
+    Wait.frames(function()
+      dieObj.setPosition(posDie)
+    end, 1)
+
+    -- broadcast
+    if Player[playerColor].steam_name ~= nil then
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has returned " .. dieObj.getName() .. " die to it's slot on their Adventurer Mat.", "White")
+    else
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has returned " .. dieObj.getName() .. " die to it's slot on their Adventurer Mat.", "White")
+    end
+  end
+end
+
+
+function cooldownCollapse(button, _, _)
+
+  -- handles collapse animation of cooldown track
+  animateButtonsPlayerArea(button)
+  compressTrack(button.getGMNotes(), "Cooldown")
+end
+
+
+function addFatigue(button, _, _)
+
+  -- this function handles the Take Fatigue button clicks
+  animateButtonsPlayerArea(button)
+  local playerColor = button.getGMNotes()
+  local targetDie = nil
+  local targetBag = nil
+  local fatigueDie = nil
+  local overfatigueDie = nil
+  local bagFatigueDice = getObjectbyName("Fatigue Dice Bag")
+  local bagOverfatigueDice = getObjectbyName("Overfatigue Dice Bag")
+  if #bagFatigueDice.getObjects() > 0 then    
+    targetBag = bagFatigueDice
+    fatigueDie = bagFatigueDice.takeObject()
+  end
+  if fatigueDie ~= nil then
+    targetDie = fatigueDie
+  else
+    if #bagOverfatigueDice.getObjects() > 0 then      
+      targetBag = bagOverfatigueDice
+      overfatigueDie = bagOverfatigueDice.takeObject()
+    end
+    if overfatigueDie ~= nil then
+      targetDie = overfatigueDie
+      broadcastToAll("No Light Fatigue left in Supply to take! Taking an Overfatigue.", "Orange")
+    else
+      broadcastToAll("No Fatigue or Overfatigue Dice currently found in supply!", "Orange")
+      return
+    end
+  end  
+
+  if targetDie ~= nil then
+    local isPlaced = placeDieToTrack(playerColor, targetDie, "Cooldown")
+    
+    if isPlaced == "Full" then
+      targetBag.putObject(targetDie)
+    end
+  end
+end
+
+
+function addOverfatigue(button, _, _)
+
+  -- this function handles the Take Overfatigue button clicks
+  animateButtonsPlayerArea(button)
+  local playerColor = button.getGMNotes()
+  local overfatigueDie = nil
+  local bagOverfatigueDice = getObjectbyName("Overfatigue Dice Bag")
+  if #bagOverfatigueDice.getObjects() > 0 then
+    overfatigueDie   = bagOverfatigueDice.takeObject()
+  end
+  if overfatigueDie ~= nil then    
+    local isPlaced = placeDieToTrack(playerColor, overfatigueDie, "Cooldown")
+    if isPlaced == "Full" then
+      bagOverfatigueDice.putObject(overfatigueDie)
+    end
+  else
+    broadcastToAll("No Overfatigue Dice currently found in supply!", "Orange")
+  end
+end
+
+
+function openPack(button, _, _)
+
+  -- this function handles the click of the player area Open Pack buttons
+  animateButtonCleanupSession(button)
+
+  local playerColor = button.getGMNotes()
+  local pack = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Button Open Pack" and object.getGMNotes() == playerColor then
+      pack = object
+    end
+  end
+  if pack == nil then log("openPack(): pack not found") return end
+
+  pack.Container.search(playerColor)
+end
+
+
+function updatePackCounter(obj)
+  -- get card in bag count
+  local packObjects = obj.getObjects()
+  local packCount   = #packObjects
+
+  -- if bag count > 0, remove buttons & recreate counter button / search button
+  local buttons = obj.getButtons()
+  if packCount > 0 then
+    if buttons ~= nil then
+      obj.clearButtons()
+    end
+    initButtonPackCounter(obj, packCount)
+  elseif packCount == 0 then
+    if buttons ~= nil then
+      obj.clearButtons()
+    end
+  end
+end
+
+
+function onObjectEnterContainer(container, _)
+  -- handles update of player pack counters on item drop into/retrieve from bag
+  if container.getName():find(" Player Pack") then
+    updatePackCounter(container)
+  end
+end
+
+
+function onObjectLeaveContainer(container, _)
+  -- handles update of player pack counters on item drop into/retrieve from bag
+  if container.getName():find(" Player Pack") then
+    updatePackCounter(container)
+  end
+end
+
+
+function onScriptingButtonDown(index, playerColor)
+
+  -- this function handles the numPad hotkey assignments  
+  local dieObj = Player[playerColor].getHoverObject()
+  local pos = Player[playerColor].getPointerPosition()
+  
+  -- place to cooldown track
+  if index == 1 then
+    if not dieObj or dieObj.type ~= "Dice" then return end
+    placeDieToTrack(playerColor, dieObj, "Cooldown")
+
+  -- place to drain track
+  elseif index == 2 then
+    if not dieObj or dieObj.type ~= "Dice" then return end
+    placeDieToTrack(playerColor, dieObj, "Drain")
+
+  -- place to active slot
+  elseif index == 3 then
+    if not dieObj or dieObj.type ~= "Dice" then return end
+    placeActiveDie(playerColor, dieObj)
+
+  -- return die to supply
+  elseif index == 4 then    
+    if not dieObj or dieObj.type ~= "Dice" then return end
+    returnSupplyDie(playerColor, dieObj)
+
+  -- return die to home position on adventurer mat
+  elseif index == 5 then
+    if not dieObj or dieObj.type ~= "Dice" then return end
+    returnHomeDie(playerColor, dieObj)
+
+  -- summon an available enemy combat die
+  elseif index == 6 then
+    summonEnemyCombat(playerColor, _, pos)
+
+  -- summon an available status effect die
+  elseif index == 7 then
+    summonStatusEffect(playerColor, _, pos)
+
+  -- place die to player roll pad
+  elseif index == 10 then
+    if not dieObj or dieObj.type ~= "Dice" then return end
+    log("hotkey found die: " .. dieObj.getName())
+    placeDieToTrack(playerColor, dieObj, "Roll")
+  end
+end
+
+
+function summonEnemyCombat(playerColor, _, posPointer)
+  local targetDie = nil
+  bagEnemyCombatDie = getObjectbyName("Enemy Combat Dice Bag")
+  local bagObjects = bagEnemyCombatDie.getObjects()
+  if #bagObjects == 0 then
+    if Player[playerColor].steam_name ~= nil then
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has attempted to Summon an Enemy Combat Die, but there were none found in the Supply.", "Orange")
+    else
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has attempted to Summon an Enemy Combat Die, but there were none found in the Supply.", "Orange")
+    end
+    return
+  end
+  targetDie = bagEnemyCombatDie.takeObject()
+  targetDie.setPosition(posPointer, false, true)
+  if Player[playerColor].steam_name ~= nil then
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has Summoned an Enemy Combat Die from the Supply.", "White")
+  else
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has Summoned an Enemy Combat Die from the Supply.", "White")
+  end
+end
+
+
+function summonStatusEffect(playerColor, _, posPointer)
+  bagStatusEffectDie = getObjectbyName("Status Effect Dice Bag")
+  local bagObjects = bagEnemyCombatDie.getObjects()
+  if #bagObjects == 0 then
+    if Player[playerColor].steam_name ~= nil then
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has attempted to Summon a Status Effect Die, but there were none found in the Supply.", "Orange")
+    else
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has attempted to Summon a Status Effect Die, but there were none found in the Supply.", "Orange")
+    end
+    return
+  end
+  targetDie = bagStatusEffectDie.takeObject()
+  targetDie.setPosition(posPointer, false, true)
+  if Player[playerColor].steam_name ~= nil then
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has Summoned a Status Effect Die from the Supply.", "White")
+  else
+    broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has Summoned a Status Effect Die from the Supply.", "White")
+  end
+end
+
+
+function placeActiveDie(playerColor, dieObj)
+
+  log("placeActiveDie(" .. playerColor .. ", " .. dieObj.getName() .. ") RUNNING")
+  -- this function handles the placement of a die object into an active slot in the player's adventurer mat
+  if not dieObj or dieObj.type ~= "Dice" then return end
+
+  local activeSlots = {false, false, false, false}
+  local allActiveZones = {
+    ["Red"] = {
+      getObjectFromGUID("c6fdfc"),
+      getObjectFromGUID("d4f0ba"),
+      getObjectFromGUID("b9af24"),
+      getObjectFromGUID("815769"),
+    },
+    ["Orange"] = {
+      getObjectFromGUID("3a129b"),
+      getObjectFromGUID("07bb9d"),
+      getObjectFromGUID("d27252"),
+      getObjectFromGUID("e3ab53"),
+    },
+    ["Blue"] = {
+      getObjectFromGUID("22f4bb"),
+      getObjectFromGUID("9870ce"),
+      getObjectFromGUID("bcadbd"),
+      getObjectFromGUID("9f4960"),
+    },
+    ["Green"] = {
+      getObjectFromGUID("53c9ad"),
+      getObjectFromGUID("9bd918"),
+      getObjectFromGUID("8b01c2"),
+      getObjectFromGUID("b9f0b6"),
+    },
+  }
+  local activeZones = allActiveZones[playerColor]
+  if not activeZones then log("placeActiveDie() activeZones not found") return end
+  
+  local posSlots = {}
+  for i, zone in ipairs(allActiveZones[playerColor]) do
+    posSlots[i] = zone.getPosition()
+  end
+  local usedSlots = {}
+  local tolerance = 0.3
+  for _, zone in ipairs(activeZones) do
+    local zoneObjs = zone.getObjects()
+    for _, obj in ipairs(zoneObjs) do
+      if obj.type == "Dice" then
+        local pos = obj.getPosition()
+        for i, slot in ipairs(posSlots) do
+          if not usedSlots[i] and math.abs(pos.x - slot[1]) <= tolerance then
+            activeSlots[i] = true
+            usedSlots[i] = true
+            break
+          end
+        end
+      end
+    end
+  end
+
+  local allSlotsFilled = true
+  for i = 1, #activeSlots do
+    if not activeSlots[i] then
+      allSlotsFilled = false
+      break
+    end
+  end
+  if allSlotsFilled then
+    if Player[playerColor].steam_name ~= nil then
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has attempted to Place an Active Die, but all Active slots are already full.", "Orange")
+    else
+      broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has attempted to Place an Active Die, but all Active slots are already full.", "Orange")
+    end
+    return
+  end
+  for i, isActive in ipairs(activeSlots) do
+    if not isActive then
+      -- set die rotation, place to active
+      local posSlot = posSlots[i]
+      local rotDieObj = dieObj.getRotationValue()
+      dieObj.setRotation((rotDieObj == 1 and {270,0,0}) or (rotDieObj == 2 and {0,0,0}) or
+      (rotDieObj == 3 and {0,0,270}) or (rotDieObj == 4 and {0,0,90}) or
+      (rotDieObj == 5 and {0,0,180}) or (rotDieObj == 6 and {0,0,90}))
+      dieObj.setPosition({posSlot[1], dieObj.getPosition().y, posSlot[3]})
+      -- broadcast
+      if Player[playerColor].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has placed " .. dieObj.getName() .. " die into an Active Slot.", "White")
+      else
+        broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has placed " .. dieObj.getName() .. " die into an Active Slot.", "White")
+      end
+      break
+    end
+  end
+end
+
+
+function rollDice(button, _, _)
+
+  -- this function handles the click action of the player area Roll Dice buttons
+  animateButtonsPlayerArea(button)
+
+  local playerColor = button.getGMNotes()
+  local zones = {["Red"]="f3e8f3", ["Orange"]="bad5bc", ["Blue"]="b0487f", ["Green"]="841cca"} or {}
+  local zoneRollpad = getObjectFromGUID(zones[playerColor])
+
+  local dice = {}
+  for _, die in pairs(zoneRollpad.getObjects()) do
+    if die.type == "Dice" then
+      die.randomize()
+      table.insert(dice, die)
+    end
+  end
+  function coroutineMonitorGroup()
+    repeat
+      local allRest = true
+      for _, die in ipairs(dice) do
+        if not die.resting then
+          allRest = false
+          break
+        end
+      end
+      coroutine.yield(0)
+    until allRest == true
+    for _, die in ipairs(dice) do
+      local value = die.getRotationValue()
+      die.setRotationValue(value)
+      Global.call("label_die_result_remote", {die_obj = die, rot_val = value})
+    end
+    return 1
+  end
+  startLuaCoroutine(self, "coroutineMonitorGroup")
+end

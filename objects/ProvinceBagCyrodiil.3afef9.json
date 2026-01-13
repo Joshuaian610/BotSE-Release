@@ -1,0 +1,84 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "CyrodiilReference2.447222",
+    "CyrodiilReference1.a2bbf3",
+    "CyrodiilDelves.6365b0",
+    "CyrodiilEncountersConflict.69c31b",
+    "CyrodiilEncountersPeaceful.76e441",
+    "CyrodiilGazetteer.7084b5",
+    "CyrodiilOverlandMap.bbf548",
+    "Will-O-The-WispImp.e43710",
+    "MountainLionBoar.5cd5a4",
+    "WormAnchoriteWormWarrior.88c374",
+    "MinotaurLordMinotaur.87c75f"
+  ],
+  "ContainedObjects_path": "ProvinceBagCyrodiil.3afef9",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397032632/77EF1E0C150D66FF21066AF0EB5B7B62FB363596/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397033578/55F4CCE665C6712ED88F423C7D64CBF7C974A82A/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "3afef9",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "ProvinceBagCyrodiil.3afef9.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Province Bag Cyrodiil",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -47.5,
+    "posY": 3.016,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

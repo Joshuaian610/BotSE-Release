@@ -1,0 +1,90 @@
+MIN_VALUE        = 1
+MAX_VALUE        = 6
+
+
+function onload(saved_data)
+    val = 6
+    Wait.frames(function() create_all() end)
+end -- end function onload()
+
+
+function update_save()
+    local data_to_save = {val}
+    saved_data = JSON.encode(data_to_save)
+    self.script_state = saved_data
+end -- end function update_save()
+
+
+function create_all()
+    self.createButton({
+        label          = "",
+        click_function = "fatigue_or_reset",
+        function_owner = self,
+        position       = {0.00, 0.21, 0.00},
+        height         = 1000,
+        width          = 1000,
+        font_size      = 1100,
+        scale          = {x=1.00, y=1.00, z=1.00},
+        color          = {66/255, 52/255, 31/255, 0},
+        hover_color    = {1, 1, 1, .3},
+        tooltip        = "Battle Round Counter\n\nLeft Click to trigger Fatigue Round\n(Including taking an Overfatigue die to every seated player's Cooldown track)\n\nRight Click to Reset Counter to 1 at end of battle."
+    })
+end -- end function create_all()
+
+
+function fatigue_or_reset(_obj, playercolor, alt_click)
+    if not alt_click then
+        broadcastToAll("Fatigue Round!", "Orange")
+        for _, object in pairs(getAllObjects()) do
+            if string.find(object.getName(), "Per Turn Skill Tracker") and object.type == "Tile" then
+                object.setRotationSmooth({0, 180, 0})
+            end
+        end
+        local fatigue_buttons = {
+            Red = "43215c",
+            Orange = "79667c",
+            Blue = "aa9374",
+            Green = "5beae6"
+        }
+        local cooldown_zones = {
+            Red = "3a8b40",
+            Orange = "4fae72",
+            Blue = "d6184c",
+            Green = "0cc81c"
+        }
+        for _, color in ipairs(getSeatedPlayers()) do
+            local buttonGUID = fatigue_buttons[color]
+            if buttonGUID then
+                getObjectFromGUID(buttonGUID).call('add_fatigue_remote', {playercolor = color})
+            end
+            Wait.time(function()
+            local zoneGUID = cooldown_zones[color]
+            local zone = getObjectFromGUID(zoneGUID)
+            local count = 0
+            if zone then
+                local objs = zone.getObjects()
+                for _, obj in ipairs(objs) do
+                    if obj.getName() == "Overfatigue" then
+                        count = count + 1
+                    end
+                end
+            end
+            if Player[playercolor].steam_name ~= nil then
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. Player[playercolor].steam_name .. "[-] takes " .. count .. " True Damage from Overfatigue!", "White")
+            else
+                broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. playercolor .. " Player[-] takes " .. count .. " True Damage from Overfatigue!", "White")
+            end
+            end, 2)
+        end
+
+    else
+        val = 1
+        getObjectFromGUID("f1cfea").setRotationSmooth({270,0,0})
+        self.setState(1)
+        if Player[playercolor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. Player[playercolor].steam_name .. "[-] has Reset the Battle Round Counter.", "White")
+        else
+            broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. playercolor .. " Player[-] has Reset the Battle Round Counter.", "White")
+        end
+    end
+end

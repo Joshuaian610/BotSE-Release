@@ -1,0 +1,46 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0.5098,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "fbe340",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "ScriptingTrigger",
+  "Nickname": "Zone Delve Discard",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 53.3,
+    "posY": 1.415,
+    "posZ": -8.261,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 3.2,
+    "scaleY": 0.25,
+    "scaleZ": 4.59
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

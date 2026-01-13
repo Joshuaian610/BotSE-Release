@@ -1,0 +1,357 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 11.703,
+        "y": 0.113,
+        "z": -7.932
+      }
+    },
+    {
+      "Position": {
+        "x": 11.18,
+        "y": 0.113,
+        "z": -9.146
+      }
+    },
+    {
+      "Position": {
+        "x": 9.928,
+        "y": 0.113,
+        "z": -9.677
+      }
+    },
+    {
+      "Position": {
+        "x": 8.727,
+        "y": 0.113,
+        "z": -9.182
+      }
+    },
+    {
+      "Position": {
+        "x": 8.161,
+        "y": 0.113,
+        "z": -7.895
+      }
+    },
+    {
+      "Position": {
+        "x": -7.232,
+        "y": 0.113,
+        "z": -8.929
+      }
+    },
+    {
+      "Position": {
+        "x": -9.064,
+        "y": 0.113,
+        "z": -8.95
+      }
+    },
+    {
+      "Position": {
+        "x": -10.419,
+        "y": 0.113,
+        "z": -8.952
+      }
+    },
+    {
+      "Position": {
+        "x": -11.805,
+        "y": 0.113,
+        "z": -8.981
+      }
+    },
+    {
+      "Position": {
+        "x": 11.057,
+        "y": 0.113,
+        "z": 6.762
+      }
+    },
+    {
+      "Position": {
+        "x": 9.107,
+        "y": 0.113,
+        "z": 6.773
+      }
+    },
+    {
+      "Position": {
+        "x": 7.13,
+        "y": 0.113,
+        "z": 6.76
+      }
+    },
+    {
+      "Position": {
+        "x": 5.181,
+        "y": 0.113,
+        "z": 6.77
+      }
+    },
+    {
+      "Position": {
+        "x": 3.178,
+        "y": 0.113,
+        "z": 6.757
+      }
+    },
+    {
+      "Position": {
+        "x": 1.22,
+        "y": 0.113,
+        "z": 6.815
+      }
+    },
+    {
+      "Position": {
+        "x": -3.646,
+        "y": 0.113,
+        "z": 6.781
+      }
+    },
+    {
+      "Position": {
+        "x": -5.461,
+        "y": 0.113,
+        "z": 6.765
+      }
+    },
+    {
+      "Position": {
+        "x": -6.92,
+        "y": 0.113,
+        "z": 6.767
+      }
+    },
+    {
+      "Position": {
+        "x": -8.412,
+        "y": 0.113,
+        "z": 6.793
+      }
+    },
+    {
+      "Position": {
+        "x": -9.891,
+        "y": 0.113,
+        "z": 6.795
+      }
+    },
+    {
+      "Position": {
+        "x": -11.328,
+        "y": 0.113,
+        "z": 6.772
+      }
+    },
+    {
+      "Position": {
+        "x": 7.744,
+        "y": 0.087,
+        "z": -4.079
+      }
+    },
+    {
+      "Position": {
+        "x": 7.744,
+        "y": 0.113,
+        "z": -1.233
+      }
+    },
+    {
+      "Position": {
+        "x": 7.744,
+        "y": 0.113,
+        "z": 1.651
+      }
+    },
+    {
+      "Position": {
+        "x": 7.744,
+        "y": 0.113,
+        "z": 4.535
+      }
+    },
+    {
+      "Position": {
+        "x": 4.605,
+        "y": 0.113,
+        "z": 1.651
+      }
+    },
+    {
+      "Position": {
+        "x": 4.605,
+        "y": 0.113,
+        "z": -1.233
+      }
+    },
+    {
+      "Position": {
+        "x": 4.605,
+        "y": -0.028,
+        "z": -4.079
+      }
+    },
+    {
+      "Position": {
+        "x": 1.535,
+        "y": 0.113,
+        "z": -1.233
+      }
+    },
+    {
+      "Position": {
+        "x": 1.535,
+        "y": 0.113,
+        "z": 1.651
+      }
+    },
+    {
+      "Position": {
+        "x": 1.535,
+        "y": 0.113,
+        "z": 4.535
+      }
+    },
+    {
+      "Position": {
+        "x": -1.605,
+        "y": 0.113,
+        "z": 4.535
+      }
+    },
+    {
+      "Position": {
+        "x": -4.744,
+        "y": 0.113,
+        "z": -4.079
+      }
+    },
+    {
+      "Position": {
+        "x": -4.744,
+        "y": 0.113,
+        "z": -1.233
+      }
+    },
+    {
+      "Position": {
+        "x": -4.744,
+        "y": 0.113,
+        "z": 4.536
+      }
+    },
+    {
+      "Position": {
+        "x": -7.837,
+        "y": 0.113,
+        "z": 4.535
+      }
+    },
+    {
+      "Position": {
+        "x": -7.837,
+        "y": 0.113,
+        "z": 1.651
+      }
+    },
+    {
+      "Position": {
+        "x": -7.837,
+        "y": 0.113,
+        "z": -1.233
+      }
+    },
+    {
+      "Position": {
+        "x": -8.369,
+        "y": 0.446,
+        "z": -14.251
+      }
+    },
+    {
+      "Position": {
+        "x": -10.954,
+        "y": -0.117,
+        "z": 4.638
+      }
+    },
+    {
+      "Position": {
+        "x": 10.86,
+        "y": 0.113,
+        "z": -1.181
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/15116306309697017101/4C9DD080C170CC2A3B962255D1DA0A99BEA50FDB/",
+    "Convex": false,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/14452093163608176858/B1B7EBE933D583AFC1ADDBEE5676A73B9DA8794C/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/15116306309697017101/4C9DD080C170CC2A3B962255D1DA0A99BEA50FDB/",
+    "NormalURL": "",
+    "TypeIndex": 4
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e0a25a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Green Adventurer Mat",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "player_green"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 52.71,
+    "posY": 1.251,
+    "posZ": -28,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.43,
+    "scaleY": 0.43,
+    "scaleZ": 0.43
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

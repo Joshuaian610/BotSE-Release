@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674050576/46677CB39463274D7AAF8945842C7DD8CF515A7F/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674050576/46677CB39463274D7AAF8945842C7DD8CF515A7F/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Elusive:\nThis unit prevents all damage (including true damage) dealt by units that were not adjacent to it at the start of the current turn.\n\nNative:\nThis unit has the skill specific to the current province.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "b5c815",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[6]",
+  "LuaScript_path": "Level1020Enemies.65d32f/HarpyGiantBat.b5c815.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Harpy / Giant Bat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast_enemyHuman",
+    "enemyHigh",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.889,
+    "posY": 0.022,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

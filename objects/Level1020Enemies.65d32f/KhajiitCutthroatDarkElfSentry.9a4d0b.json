@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674051428/C23C293A9DF080E3B9E366B723EC5D7A41A61343/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674051428/C23C293A9DF080E3B9E366B723EC5D7A41A61343/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Retreat:\nAt the end of this unit’s turn, if no units took damage this turn, this unit gains a Stealth status die and heals for 1 HP.\n\nRiposte 3:\nEach turn, the first time this unit is dealt damage by an adjacent opposing unit, this unit will then deal 3 damage back, so long as it was not defeated.\n\nSteal:\nWhen this unit determines a target, roll 1 D6. If the result is greater than or equal to its target’s current HP, that target discards a non-food item from a ready slot.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "9a4d0b",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[8]",
+  "LuaScript_path": "Level1020Enemies.65d32f/KhajiitCutthroatDarkElfSentry.9a4d0b.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Khajiit Cutthroat / Dark Elf Sentry",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.96,
+    "posY": 0.008,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

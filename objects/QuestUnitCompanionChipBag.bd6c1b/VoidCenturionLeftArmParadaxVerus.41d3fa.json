@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673425693/E27D040F02059ACFC88625F55ABCB4427A73FFB0/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673425693/E27D040F02059ACFC88625F55ABCB4427A73FFB0/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Dodge:\nWhen this unit is engaged by an opposing unit, prevent damage dealt to this unit equal to the number of rolled skill dice that do not deal damage.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "41d3fa",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[0]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/VoidCenturionLeftArmParadaxVerus.41d3fa.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Void Centurion Left Arm / Paradax Verus",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHuman_enemyDaedra",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.743,
+    "posY": 2.22,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 164,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

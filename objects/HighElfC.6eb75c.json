@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674120884/A5CEC978F2283F33E7C19550B6D2F85BBA62393C/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674120884/A5CEC978F2283F33E7C19550B6D2F85BBA62393C/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "disabled",
+  "GUID": "6eb75c",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "[0]",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "High Elf C",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "btn_race_selection",
+    "h_elf_b",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -27.087,
+    "posY": 1.413,
+    "posZ": -27.583,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.36,
+    "scaleY": 0.75,
+    "scaleZ": 0.36
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

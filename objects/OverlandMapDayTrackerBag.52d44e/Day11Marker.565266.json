@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedDecals": [
+    {
+      "CustomDecal": {
+        "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/17523462844661409724/8C84FD26D7352A982793536C961082E6CE5D39BD/",
+        "Name": "Day 11",
+        "Size": 1
+      },
+      "OwnerSteamID": 0,
+      "Transform": {
+        "posX": -0.000869460753,
+        "posY": 0.060000062,
+        "posZ": 0.05708113,
+        "rotX": 90,
+        "rotY": 179.666534,
+        "rotZ": 0,
+        "scaleX": 3.652731,
+        "scaleY": 1.01416981,
+        "scaleZ": 1
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.1
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559240736/6070A2A83B8B67F11225A4A2F3F1DA11F12113FE/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "565266",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Day 11 Marker",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "snap_overland"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -19.647,
+    "posY": 1.299,
+    "posZ": -0.293,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.31,
+    "scaleY": 1,
+    "scaleZ": 0.31
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "MysteryUnderMorrowind.40fc93",
+    "NoTresspassingg.be514b",
+    "YoursfortheTaking.86b365",
+    "AugmentedArms.f4fee0",
+    "DealsinDwemer.054ef9",
+    "EggMineNoEggsMine!.5f0117",
+    "NotMushroomtoMove.670112",
+    "WrongSideoftheLaw.ace7b2"
+  ],
+  "ContainedObjects_path": "MorrowindEncountersConflict.58f598",
+  "CustomDeck": {
+    "98": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13055726025316600992/6E3EF47B82146F42CB79DF28019E1148E7162119/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/17271010864148035403/D622CE70D93DD690CE44B330AA855847E121D094/",
+      "NumHeight": 4,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    9807,
+    9806,
+    9805,
+    9804,
+    9803,
+    9802,
+    9801,
+    9800
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "58f598",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Morrowind Encounters Conflict",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_conflict",
+    "obj_mw"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 53.158,
+    "posY": 2.031,
+    "posZ": 55.279,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

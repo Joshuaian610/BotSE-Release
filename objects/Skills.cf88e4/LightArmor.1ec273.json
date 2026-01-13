@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 15008,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "93": {
+      "BackIsHidden": false,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13644123701056149276/E55FFC9F13651C24187FF163CA54CE4CCD9F53BC/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16357913486892803706/FF34DE2457BB50E3C790EB64EBD3C66AD637713C/",
+      "NumHeight": 2,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "1ec273",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Card",
+  "Nickname": "Light Armor",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 16.972,
+    "posY": 1.6,
+    "posZ": 7.18,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 3.38,
+    "scaleY": 1,
+    "scaleZ": 3.38
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

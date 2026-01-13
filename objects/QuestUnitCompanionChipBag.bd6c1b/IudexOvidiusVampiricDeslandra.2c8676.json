@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673429418/B625D5C4B3A277052A1ECE9BCAF3E6DE30E608A1/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673429418/B625D5C4B3A277052A1ECE9BCAF3E6DE30E608A1/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Bide:\nIf this unit does not move on its turn, it heals for 2 HP at the end of its turn.\n\nBlind:\nAfter this unit’s engage, apply a Blind status die to this unit’s target.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "2c8676",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[8]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/IudexOvidiusVampiricDeslandra.2c8676.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Iudex Ovidius / Vampiric Deslandra",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.881,
+    "posY": 2.205,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 176,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

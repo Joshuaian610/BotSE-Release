@@ -1,0 +1,2920 @@
+
+
+
+
+posEncounters                     = {
+
+  ["Black Marsh"]                 = {
+    ["Town"]                      = {
+      ["Alten Corimont"]          = { -42.60, 1.69, 17.04 },
+      ["Bright-Throat Village"]   = { -42.65, 1.69, 3.66 },
+      ["Dead-Water Village"]      = { -46.52, 1.69, 4.27 },
+      ["Fort Redmane"]            = { -54.29, 1.69, 13.28 },
+      ["Gideon"]                  = { -51.68, 1.69, 10.31 },
+      ["Hissmir"]                 = { -45.19, 1.69, 15.50 },
+      ["Leyawiin"]                = { -54.29, 1.69, 10.28 },
+      ["Lilmoth"]                 = { -41.36, 1.69, 1.56 },
+      ["Percolating Mire"]        = { -40.00, 1.69, 15.50 },
+      ["Root-Whisper Village"]    = { -41.30, 1.69, 5.81 },
+      ["Stonewastes"]             = { -50.39, 1.69, 6.56 },
+      ["Stormhold"]               = { -43.87, 1.69, 20.78 },
+    },
+    ["Peaceful"]                  = {
+      ["Alten Meerhleel"]         = { -43.96, 1.69, 1.29 },
+      ["Deep Swamp Forge"]        = { -47.81, 1.69, 3.60 },
+      ["Farmer's Nook"]           = { -47.75, 1.69, 14.09 },
+      ["Forsaken Hamlet"]         = { -41.26, 1.69, 17.73 },
+      ["Fort Blueblood"]          = { -53.02, 1.69, 9.58 },
+      ["Hutan-T'Zel"]             = { -46.48, 1.69, 11.80 },
+      ["Murkwater"]               = { -43.85, 1.69, 14.81 },
+      ["Plateau Of The Traveler"] = { -47.81, 1.69, 8.02 },
+      ["Stillrise Village"]       = { -45.17, 1.69, 20.07 },
+      ["The Dominus Fatum"]       = { -43.88, 1.69, 5.77 },
+      ["Xal Ithix"]               = { -47.78, 1.69, 15.58 },
+      ["Xinchei-Konu Monument"]   = { -41.32, 1.69, 2.83 },
+    },
+    ["Conflict"]                  = {
+      ["Blackrose Prison"]        = { -46.51, 1.69, 2.87 },
+      ["Camp Merciful Reduction"] = { -39.97, 1.69, 18.48 },
+      ["Echoing Hollow"]          = { -45.24, 1.69, 6.58 },
+      ["Ten-Maur-Wolk"]           = { -42.60, 1.69, 18.52 },
+      ["Vunalk"]                  = { -46.50, 1.69, 8.79 },
+      ["Zenithar's Abbey"]        = { -50.35, 1.69, 14.07 },
+    },
+    ["Unstable"]                  = {
+      { -45.23, 1.69, 3.55 },
+      { -43.91, 1.69, 7.25 },
+      { -47.81, 1.69, 6.61 },
+      { -45.20, 1.69, 9.57 },
+      { -50.40, 1.69, 8.10 },
+      { -54.31, 1.69, 8.82 },
+      { -49.08, 1.69, 10.31 },
+      { -45.19, 1.69, 12.56 },
+      { -49.09, 1.69, 13.28 },
+      { -49.08, 1.69, 16.27 },
+      { -42.59, 1.69, 14.02 },
+      { -46.49, 1.69, 17.81 },
+      { -43.90, 1.69, 17.77 },
+    },
+  },
+
+  ["Cyrodiil"]                         = {
+    ["Town"]                           = {
+      ["Bruma"]                        = { -45.52, 1.64, 18.22 },
+      ["Castle Black Boot"]            = { -45.59, 1.64, 6.28 },
+      ["Castle Bloodmayne"]            = { -43.01, 1.64, 6.33 },
+      ["Chalman Keep"]                 = { -42.97, 1.64, 16.75 },
+      ["Cheydinhal"]                   = { -39.11, 1.64, 14.57 },
+      ["Chorrol"]                      = { -50.74, 1.64, 13.77 },
+      ["Cropsford"]                    = { -40.39, 1.64, 9.28 },
+      ["Fort Ash"]                     = { -48.18, 1.64, 13.76 },
+      ["Fort Warden"]                  = { -50.75, 1.64, 18.24 },
+      ["Imperial City"]                = { -44.27, 1.64, 13.02 },
+      ["Kingscrest Keep"]              = { -40.37, 1.64, 19.68 },
+      ["Vlastarus"]                    = { -48.14, 1.64, 7.82 },
+    },
+    ["Peaceful"]                       = {
+      ["Abbey Of The Eight"]           = { -48.14, 1.64, 6.27 },
+      ["Hackdirt"]                     = { -50.78, 1.64, 12.28 },
+      ["Ice-Heart Home"]               = { -48.15, 1.64, 18.25 },
+      ["Lunar Fang Docks"]             = { -41.71, 1.64, 8.53 },
+      ["Riverwatch"]                   = { -43.00, 1.64, 9.35 },
+      ["Temple Of The Ancestor Moths"] = { -39.11, 1.64, 17.47 },
+      ["Thalara's Winery"]             = { -46.85, 1.64, 7.06 },
+      ["Weye"]                         = { -46.89, 1.64, 13.02 },
+      ["Weynon Priory"]                = { -49.46, 1.64, 12.97 },
+      ["White Fall Mountain"]          = { -39.09, 1.64, 16.02 },
+      ["Wilminn's Winery"]             = { -41.69, 1.64, 17.53 },
+      ["Zimar's Winery"]               = { -48.15, 1.64, 19.71 },
+    },
+    ["Conflict"]                       = {
+      ["Gray Viper Outpost"]           = { -45.57, 1.64, 10.84 },
+      ["Harlun's Watch"]               = { -37.84, 1.64, 12.26 },
+      ["Lipsand Tarn"]                 = { -52.03, 1.64, 15.99 },
+      ["Sedor"]                        = { -41.68, 1.64, 19.06 },
+      ["Underpall Cave"]               = { -46.82, 1.64, 15.99 },
+      ["Wenyandawik"]                  = { -44.28, 1.64, 7.04 },
+    },
+    ["Unstable"]                       = {
+      { -44.29, 1.64, 4.09 },
+      { -49.42, 1.64, 8.55 },
+      { -52.03, 1.64, 19.01 },
+      { -49.46, 1.64, 16.00 },
+      { -48.14, 1.64, 10.81 },
+      { -45.59, 1.64, 9.32 },
+      { -44.24, 1.64, 18.95 },
+      { -36.53, 1.64, 16.03 },
+      { -40.40, 1.64, 15.26 },
+      { -40.40, 1.64, 12.28 },
+      { -42.97, 1.64, 12.27 },
+      { -44.29, 1.64, 11.53 },
+      { -45.54, 1.64, 12.29 },
+      { -45.59, 1.64, 13.80 },
+      { -44.25, 1.64, 14.51 },
+      { -42.98, 1.64, 13.75 },
+    },
+  },
+
+  ["High Rock"]                   = {
+    ["Town"]                      = {
+      ["Daggerfall"]              = { -53.29, 1.64, 5.62 },
+      ["Camlorn"]                 = { -50.74, 1.64, 10.01 },
+      ["Crosswych"]               = { -46.88, 1.64, 10.82 },
+      ["Alcaire Castle"]          = { -45.57, 1.64, 11.53 },
+      ["Shornhelm"]               = { -45.60, 1.64, 14.43 },
+      ["Fell's Run"]              = { -42.99, 1.64, 14.43 },
+      ["Northpoint"]              = { -42.98, 1.64, 17.50 },
+      ["Wayrest"]                 = { -41.77, 1.64, 7.79 },
+      ["Evermore"]                = { -37.84, 1.64, 10.00 },
+      ["Orsinium"]                = { -36.49, 1.64, 13.66 },
+      ["Morkul Stronghold"]       = { -39.12, 1.64, 15.25 },
+      ["Fharun Stronghold"]       = { -37.78, 1.64, 17.46 },
+    },
+    ["Peaceful"]                  = {
+      ["Aldcroft"]                = { -50.78, 1.64, 7.05 },
+      ["Bangkorai Garrison"]      = { -36.50, 1.64, 9.28 },
+      ["Camp Tamrith"]            = { -48.20, 1.64, 12.97 },
+      ["Graystone Quarry"]        = { -39.15, 1.64, 12.26 },
+      ["Koeglin Village"]         = { -45.58, 1.64, 10.05 },
+      ["Hoarfrost Downs"]         = { -44.30, 1.64, 13.76 },
+      ["Miltrin's Fishing Cabin"] = { -53.32, 1.64, 7.13 },
+      ["Shatul Range"]            = { -36.54, 1.64, 15.20 },
+    },
+    ["Conflict"]                  = {
+      ["At-Tura Estate"]          = { -44.29, 1.64, 7.87 },
+      ["Glenumbra Moors"]         = { -50.80, 1.64, 8.50 },
+      ["The Doomcrag"]            = { -46.81, 1.64, 15.22 },
+      ["Zthenganaz"]              = { -37.88, 1.64, 15.99 },
+    },
+    ["Unstable"]                  = {
+      { -49.47, 1.64, 12.26 },
+      { -48.15, 1.64, 10.06 },
+      { -44.26, 1.64, 18.19 },
+      { -45.59, 1.64, 16.03 },
+      { -45.61, 1.64, 13.00 },
+      { -43.01, 1.64, 11.55 },
+      { -41.70, 1.64, 9.30 },
+      { -35.27, 1.64, 10.08 },
+      { -37.81, 1.64, 11.55 },
+      { -39.12, 1.64, 13.80 },
+      { -36.54, 1.64, 16.72 },
+    },
+  },
+
+  ["Morrowind"]            = {
+    ["Town"]               = {
+      ["Balmora"]          = { -49.49, 1.64, 15.29 },
+      ["Davon's Watch"]    = { -46.87, 1.64, 9.33 },
+      ["Ebonheart"]        = { -49.45, 1.64, 7.74 },
+      ["Gnisis"]           = { -52.01, 1.64, 19.70 },
+      ["Kragenmoor"]       = { -53.32, 1.64, 5.55 },
+      ["Mournhold"]        = { -48.19, 1.64, 4.10 },
+      ["Narsis"]           = { -52.05, 1.64, 3.25 },
+      ["Necrom"]           = { -36.43, 1.64, 12.24 },
+      ["Sadrith Mora"]     = { -42.93, 1.64, 17.46 },
+      ["Sailenmora"]       = { -41.70, 1.64, 9.25 },
+      ["Silent Mire"]      = { -44.26, 1.64, 3.33 },
+      ["Vivec City"]       = { -46.85, 1.64, 12.19 },
+    },
+    ["Peaceful"]           = {
+      ["Ald Isra"]         = { -44.25, 1.64, 10.83 },
+      ["Dhalmora"]         = { -45.55, 1.64, 8.55 },
+      ["Fort Arand"]       = { -48.19, 1.64, 5.58 },
+      ["Iliath Temple"]    = { -54.63, 1.64, 6.33 },
+      ["Lukiul Uxith"]     = { -53.37, 1.64, 8.50 },
+      ["Molag Mar"]        = { -44.27, 1.64, 15.19 },
+      ["Muth Gnaar"]       = { -49.50, 1.64, 3.27 },
+      ["Seyda Neen"]       = { -48.19, 1.64, 13.04 },
+      ["Shad Astula"]      = { -45.59, 1.64, 5.51 },
+      ["Tel Dreloth"]      = { -40.38, 1.64, 7.03 },
+      ["Tel Hlurag Ven"]   = { -39.10, 1.64, 10.76 },
+      ["Vos"]              = { -45.52, 1.64, 18.98 },
+    },
+    ["Conflict"]           = {
+      ["Anchre Egg Mine"]  = { -37.79, 1.64, 10.01 },
+      ["Camonnaruhn"]      = { -44.25, 1.64, 6.33 },
+      ["Forgotten Wastes"] = { -46.84, 1.64, 19.72 },
+      ["Fort Virak"]       = { -53.34, 1.64, 11.42 },
+      ["Nchuleftingth"]    = { -45.59, 1.64, 15.91 },
+      ["Tormented Spire"]  = { -50.72, 1.64, 5.54 },
+    },
+    ["Unstable"]           = {
+      { -54.64, 1.64, 9.23 },
+      { -53.31, 1.64, 7.01 },
+      { -52.03, 1.64, 4.79 },
+      { -50.77, 1.64, 7.01 },
+      { -46.85, 1.64, 3.33 },
+      { -45.59, 1.64, 7.09 },
+      { -44.32, 1.64, 4.82 },
+      { -43.01, 1.64, 8.52 },
+      { -40.38, 1.64, 5.53 },
+      { -37.79, 1.64, 11.53 },
+      { -40.37, 1.64, 11.50 },
+      { -49.47, 1.64, 13.79 },
+      { -50.74, 1.64, 15.97 },
+      { -50.74, 1.64, 20.46 },
+    },
+    ["Dig Site"]           = {
+      { -45.57, 1.64, 4.01 },
+      { -49.43, 1.64, 19.70 },
+    },
+  },
+
+  ["Western Skyrim"]               = {
+    ["Town"]                       = {
+      ["Dragon Bridge"]            = { -46.37, 1.64, 14.79 },
+      ["Entrance To Dusktown"]     = { -45.03, 1.64, 10.98 },
+      ["Karthwasten"]              = { -50.26, 1.64, 11.00 },
+      ["Karthwatch"]               = { -47.67, 1.64, 12.53 },
+      ["Kilkreath Temple"]         = { -45.06, 1.64, 17.01 },
+      ["Lost Valley Redoubt"]      = { -43.75, 1.64, 5.86 },
+      ["Markarth"]                 = { -52.85, 1.64, 6.63 },
+      ["Mor Khazgur"]              = { -51.52, 1.64, 14.81 },
+      ["Morthal"]                  = { -38.50, 1.64, 13.27 },
+      ["Rebel's Retreat"]          = { -48.99, 1.64, 7.32 },
+      ["Solitude"]                 = { -41.17, 1.64, 17.68 },
+      ["The Silver Cormorant"]     = { -38.55, 1.64, 17.80 },
+    },
+    ["Peaceful"]                   = {
+      ["Dragon's Belly"]           = { -50.21, 1.64, 15.45 },
+      ["Druadach Redoubt"]         = { -51.56, 1.64, 11.82 },
+      ["Hroldan Ring"]             = { -47.62, 1.64, 6.54 },
+      ["Hunter's House"]           = { -43.77, 1.64, 13.23 },
+      ["Morthal Market"]           = { -39.84, 1.64, 12.56 },
+      ["North Markarth Outskirts"] = { -51.59, 1.64, 7.27 },
+      ["Solitude Docks"]           = { -42.44, 1.64, 17.03 },
+      ["Southern Watch"]           = { -45.07, 1.64, 9.52 },
+      ["Stillwaters Retreat"]      = { -35.99, 1.64, 16.20 },
+      ["Storm-Hawk's Altar"]       = { -39.80, 1.64, 16.96 },
+      ["Sword's Point Watchtower"] = { -46.30, 1.64, 19.27 },
+      ["Wolf's Eye Lighthouse"]    = { -41.14, 1.64, 20.72 },
+    },
+    ["Conflict"]                   = {
+      ["Briar Rock Ruins"]         = { -51.56, 1.64, 4.30 },
+      ["Chilblain Peak"]           = { -48.91, 1.64, 13.24 },
+      ["Four Skull Lookout"]       = { -47.64, 1.64, 9.53 },
+      ["Labyrinthian"]             = { -37.31, 1.64, 11.06 },
+      ["Lift To Greymoor Keep"]    = { -41.17, 1.64, 13.31 },
+      ["Ysmgar's Beach"]           = { -47.58, 1.64, 19.96 },
+    },
+    ["Unstable"] = {
+      { -43.76, 1.64, 4.40 },
+      { -48.95, 1.64, 5.80 },
+      { -50.26, 1.64, 8.09 },
+      { -54.13, 1.64, 10.37 },
+      { -42.46, 1.64, 11.09 },
+      { -46.35, 1.64, 11.82 },
+      { -50.24, 1.64, 18.53 },
+      { -47.59, 1.64, 16.95 },
+      { -45.01, 1.64, 19.99 },
+      { -42.46, 1.64, 15.56 },
+      { -39.82, 1.64, 15.53 },
+      { -34.67, 1.64, 18.51 },
+      { -34.67, 1.64, 17.05 },
+      { -35.99, 1.64, 13.29 },
+      { -34.67, 1.64, 12.56 },
+    },
+  },
+
+    ["Eastern Skyrim"]                    = {
+    ["Town"]                              = {
+      ["Fort Amol"]                       = { -48.83, 1.64, 12.73 },
+      ["Fort Morvunskar"]                 = { -46.15, 1.64, 15.66 },
+      ["Fullhelm Fort"]                   = { -38.46, 1.64, 3.83 },
+      ["Ivarstead"]                       = { -52.67, 1.64, 8.93 },
+      ["Jorunn's Stand"]                  = { -41.03, 1.64, 12.67 },
+      ["Mistwatch"]                       = { -44.92, 1.64, 11.88 },
+      ["Nimalten"]                        = { -50.11, 1.64, 7.50 },
+      ["Riften"]                          = { -42.37, 1.64, 6.01 },
+      ["Shor's Stone"]                    = { -42.35, 1.64, 9.04 },
+      ["Skald's Retreat"]                 = { -44.97, 1.64, 4.47 },
+      ["Windhelm"]                        = { -42.29, 1.64, 17.94 },
+      ["Wittestadr"]                      = { -43.58, 1.64, 14.22 },
+    },
+    ["Peaceful"]                          = {
+      ["Boulderfall Pass"]                = { -43.64, 1.64, 8.18 },
+      ["Cragwallow"]                      = { -42.29, 1.64, 14.91 },
+      ["Crimson Kada's Crafting Caravan"] = { -47.48, 1.64, 13.46 },
+      ["Eldbjorg's Hideaway"]             = { -48.82, 1.64, 8.27 },
+      ["Giermund's Hall"]                 = { -51.41, 1.64, 8.22 },
+      ["Hammerhome"]                      = { -39.73, 1.64, 12.01 },
+      ["Lower Yorgrim"]                   = { -41.06, 1.64, 17.17 },
+      ["Smokefrost Vigil"]                = { -41.01, 1.64, 3.82 },
+      ["Tinkerer Tobin's Workshop"]       = { -44.86, 1.64, 14.99 },
+      ["Treva's Farm"]                    = { -47.50, 1.64, 6.03 },
+      ["Trollslayer's Gully"]             = { -46.21, 1.64, 3.79 },
+      ["Voljar's Meadery"]                = { -46.20, 1.64, 18.69 },
+    },
+    ["Conflict"]                          = {
+      ["Faldar's Tooth"]                  = { -44.92, 1.64, 6.03 },
+      ["Old Sord's Cave"]                 = { -43.62, 1.64, 12.70 },
+      ["Skuldafn"]                        = { -38.44, 1.64, 14.20 },
+      ["Snapleg Cave"]                    = { -48.83, 1.64, 9.73 },
+      ["The Grinning Horker"]             = { -47.48, 1.64, 17.93 },
+      ["Trolhetta Summit"]                = { -41.05, 1.64, 2.32 },
+    },
+    ["Unstable"]                          = {
+      { -53.98, 1.64, 9.75 },
+      { -53.95, 1.64, 6.80 },
+      { -52.71, 1.64, 4.54 },
+      { -48.80, 1.64, 5.31 },
+      { -50.10, 1.64, 14.93 },
+      { -46.20, 1.64, 9.75 },
+      { -44.86, 1.64, 17.99 },
+      { -44.89, 1.64, 7.52 },
+      { -43.64, 1.64, 5.28 },
+      { -42.29, 1.64, 19.46 },
+      { -41.03, 1.64, 9.72 },
+      { -39.74, 1.64, 5.99 },
+      { -38.42, 1.64, 8.29 },
+      { -38.44, 1.64, 12.75 },
+      { -37.08, 1.64, 14.95 },
+    },
+  },
+
+  ["Valenwood"]                 = {
+    ["Town"]                    = {
+      ["Arenthia"]              = { -38.55, 1.64, 18.67 },
+      ["Baandari Trading Post"] = { -42.47, 1.64, 16.45 },
+      ["Dread Vullain"]         = { -51.52, 1.64, 9.74 },
+      ["Elden Root"]            = { -41.18, 1.64, 5.25 },
+      ["Greenheart"]            = { -50.29, 1.64, 4.46 },
+      ["Haven"]                 = { -37.28, 1.64, 2.99 },
+      ["Marbruk"]               = { -46.35, 1.64, 8.22 },
+      ["Silvenar"]              = { -45.02, 1.64, 15.00 },
+      ["Southpoint"]            = { -42.46, 1.64, 1.52 },
+      ["Velyn Harbor"]          = { -51.51, 1.64, 14.20 },
+      ["Willowgrove"]           = { -41.16, 1.64, 11.35 },
+      ["Woodhearth"]            = { -54.15, 1.64, 6.77 },
+    },
+    ["Peaceful"]                = {
+      ["Cormount"]              = { -41.18, 1.64, 8.28 },
+      ["Do'Krin Monastery"]     = { -42.44, 1.64, 12.05 },
+      ["Falinesti Autumn Site"] = { -39.85, 1.64, 16.46 },
+      ["Falinesti Spring Site"] = { -47.68, 1.64, 9.01 },
+      ["Falinesti Summer Site"] = { -50.22, 1.64, 13.51 },
+      ["Falinesti Winter Site"] = { -42.48, 1.64, 4.48 },
+      ["Longhaven"]             = { -52.86, 1.64, 6.02 },
+      ["Redfur Trading Post"]   = { -43.77, 1.64, 8.22 },
+      ["Spinner's Cottage"]     = { -47.64, 1.64, 6.03 },
+      ["Tanglehaven"]           = { -47.66, 1.64, 13.51 },
+      ["The Gray Mire"]         = { -41.19, 1.64, 2.24 },
+      ["Valeguard"]             = { -43.78, 1.64, 14.19 },
+    },
+    ["Conflict"]                = {
+      ["City Of Ash"]           = { -46.35, 1.64, 9.75 },
+      ["Gil-Var-Delle"]         = { -45.09, 1.64, 4.51 },
+      ["Horseshoe Island"]      = { -47.62, 1.64, 16.49 },
+      ["Ossuary Of Telacar"]    = { -38.58, 1.64, 5.26 },
+      ["Rulanyil's Fall"]       = { -51.56, 1.64, 8.27 },
+      ["The Vile Manse"]        = { -41.13, 1.64, 18.67 },
+    },
+    ["Unstable"]                = {
+      { -54.10, 1.64, 8.22 },
+      { -50.24, 1.64, 6.00 },
+      { -51.50, 1.64, 11.22 },
+      { -48.94, 1.64, 11.29 },
+      { -48.94, 1.64, 15.70 },
+      { -46.27, 1.64, 15.69 },
+      { -45.06, 1.64, 11.99 },
+      { -43.75, 1.64, 9.76 },
+      { -43.78, 1.64, 6.76 },
+      { -39.83, 1.64, 3.03 },
+      { -39.89, 1.64, 7.43 },
+      { -41.15, 1.64, 14.19 },
+      { -41.15, 1.64, 17.22 },
+      { -43.72, 1.64, 18.69 },
+      { -38.54, 1.58, 20.19 },
+    },
+  },
+}
+
+posTrainers = {
+  {-26.48, 1.69, -14.00},
+  {-23.07, 1.69, -14.00},
+  {-19.65, 1.69, -14.00},
+  {-16.24, 1.69, -14.00},
+  {-12.82, 1.69, -14.00},
+  {-9.41, 1.69, -14.00},
+  {-5.99, 1.69, -14.00},
+  {-2.58, 1.69, -14.00},
+}
+
+posCommonItems = {
+  {-26.48, 1.60, -10.00},
+  {-23.07, 1.60, -10.00},
+  {-19.65, 1.60, -10.00},
+  {-16.24, 1.60, -10.00},
+  {-12.82, 1.60, -10.00},
+  {-9.41, 1.60, -10.00},
+  {-5.99, 1.60, -10.00},
+  {-2.58, 1.60, -10.00},
+  {0.84, 1.60, -10.00},
+  {4.26, 1.60, -10.00},
+  {7.67, 1.60, -10.00},
+  {11.09, 1.60, -10.00},
+  {14.50, 1.60, -10.00},
+}
+
+posLegendaryItems = {
+  {-26.48, 1.60, -5.00},
+  {-23.07, 1.60, -5.00},
+  {-19.65, 1.60, -5.00},
+  {-16.24, 1.60, -5.00},
+  {-12.82, 1.60, -5.00},
+  {-9.41, 1.60, -5.00},
+  {-5.99, 1.60, -5.00},
+  {-2.58, 1.60, -5.00},
+  {0.84, 1.60, -5.00},
+  {4.26, 1.60, -5.00},
+  {7.67, 1.60, -5.00},
+  {11.09, 1.60, -5.00},
+  {14.50, 1.60, -5.00},
+}
+
+
+function initButtonSetupEncounter(obj)
+  
+  obj.clearButtons()
+
+  obj.createButton({
+    label          = "",
+    click_function = "getEncounterLocation",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 990,
+    width          = 1890,
+    scale          = { 1, 1, 1 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "First, ensure that the Party Overland Token is in your desired Encounter location.\n\nThen, click this button to set up the current location's Encounter."
+  })
+end
+
+
+function initButtonCleanupEncounter(obj)
+
+  obj.clearButtons()
+
+  obj.createButton({
+    label          = "",
+    click_function = "cleanupEncounter",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 990,
+    width          = 1890,
+    scale          = { 1, 1, 1 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click this button to clean up the currently active Encounter."
+  })
+end
+
+
+function initButtonsConflictSelect(obj)
+  obj.clearButtons()
+
+  local posButton1, heightButton1, posButton2, heightButton2, posButton3, heightButton3 = getConflictDetails(obj.getName())
+
+  obj.createButton({
+    label          = "",
+    click_function = "setupConflict1",
+    function_owner = self,
+    position       = posButton1,
+    rotation       = { 0, 0, 180 },
+    height         = heightButton1,
+    width          = 910,
+    scale          = { 1, 1, 1 },
+    color          = { 1, 1, 1, .6 },
+    hover_color    = { 1, 1, 1, .8 },
+    tooltip        = "Click to select this conflict encounter option."
+  })
+
+  if posButton2 ~= nil and heightButton2 ~= nil then
+    obj.createButton({
+    label          = "",
+    click_function = "setupConflict2",
+    function_owner = self,
+    position       = posButton2,
+    rotation       = { 0, 0, 180 },
+    height         = heightButton2,
+    width          = 910,
+    scale          = { 1, 1, 1 },
+    color          = { 1, 1, 1, .6 },
+    hover_color    = { 1, 1, 1, .8 },
+    tooltip        = "Click to select this conflict encounter option."
+  })
+  end
+
+  if posButton3 ~= nil and heightButton3 ~= nil then
+    obj.createButton({
+    label          = "",
+    click_function = "setupConflict3",
+    function_owner = self,
+    position       = posButton3,
+    rotation       = { 0, 0, 180 },
+    height         = heightButton3,
+    width          = 910,
+    scale          = { 1, 1, 1 },
+    color          = { 1, 1, 1, .6 },
+    hover_color    = { 1, 1, 1, .8 },
+    tooltip        = "Click to select this conflict encounter option."
+  })
+  end
+end
+
+
+function animateButtonsEncounter(obj)
+  -- this function handles the animation of the switch between setup and cleanup encounter buttons
+
+  -- based on clicked object, determine counterpart button, make the swap visually & mechanically
+  local counterpartName = obj.getName() == "Button Setup Encounter" and "Button Cleanup Encounter" or "Button Setup Encounter"
+  local counterpart = getObjectbyName(counterpartName)
+  if not counterpart then log("animateButtonsEncounter(): counterpart not found") return end
+
+  obj.clearButtons()
+  local pos = obj.getPosition()
+  pos.y = pos.y - .29
+  obj.setPosition(pos)
+  counterpart.setPosition({-38.89, 0.87, -5.75})
+  counterpart.setScale({0.58, 1.00, 0.58})
+  counterpart.setPositionSmooth({-38.89, 1.14, -5.75})
+  Wait.time(function() 
+   
+    if counterpart.getName() == "Button Setup Encounter" then
+      initButtonSetupEncounter(counterpart)
+    else
+      initButtonCleanupEncounter(counterpart)
+    end
+
+  end, .5)
+  pos.y = -2
+  obj.setPositionSmooth(pos, false, false)
+end
+
+
+function getEncounterLocation(button, _, _)
+
+  -- this function handles the detection of the party token, and launching the appropriate encounter type
+
+  animateButtonsEncounter(button)
+
+  -- get and find province map, provinceMapName (especially important for eastern/western skyrim)
+  local zone = getObjectFromGUID("64c0a4")
+  local provinceMapName = nil
+  for _, obj in ipairs(zone.getObjects()) do
+    local name = obj.getName()
+    local match = string.match(name, "^(.-) Overland Map$")
+    if match and posEncounters[match] then
+      provinceMapName = match
+      break
+    end
+  end
+  if not provinceMapName then
+    broadcastToAll("No Province Map Found. Set up encounter manually", "Orange")
+    return
+  end
+
+  -- first, determine if unstable die is in zone, if it's rolling or not, and if stopped, trigger unstable encounter, resize/place die, and return out
+  local dieZone = getObjectFromGUID("b5dd6d")
+  local die = getObjectbyName("Unstable Die")
+  if not die then log("getEncounterLocation(): die not found") return end
+
+  for _, object in pairs(dieZone.getObjects()) do
+    if object == die then
+      if object.getVar('just_rolled') then
+        broadcastToAll("Please allow the Unstable Die to come to a rest before setting up it's Encounter.", "Orange")
+        return
+
+      else
+
+        local dieScale = { 1, 1, 1 }
+        local posDieHome = { -56.50, 1.75, -5.00 }
+        local rotValue = die.getRotationValue()
+        
+        animateButtonsEncounter(getObjectbyName("Button Setup Encounter"))
+
+        if rotValue < 4 then          
+          setupEncounter(provinceMapName, "Unstable", "Conflict")
+        elseif rotValue > 3 and rotValue ~= 6 then
+          setupEncounter(provinceMapName, "Unstable", "Peaceful")
+        elseif rotValue == 6 then          
+          setupTownEncounter(provinceMapName, "Traveling Caravan")
+        end
+
+        die.setScale(dieScale)
+        die.setPositionSmooth(posDieHome, false, true)
+        return
+
+      end
+    end
+  end
+
+  -- get partyToken, determine it's position 
+  local partyToken = getObjectbyName("Party Overland Token")
+  if not partyToken then
+    broadcastToAll("Party Overland Token not found - Set up encounter manually.", "Orange")
+    return
+  end
+  local pos = partyToken.getPosition()
+  local x, y = pos.x, pos.z
+  local data = posEncounters[provinceMapName]
+  local tol = 0.3
+
+  for category, entries in pairs(data) do
+    if category ~= "Unstable" and category ~= "Dig Site" then
+      for name, coords in pairs(entries) do
+        if math.abs(coords[1] - x) <= tol and math.abs(coords[3] - y) <= tol then
+          if category == "Town" then
+            setupTownEncounter(provinceMapName, name)
+          elseif category == "Peaceful" then
+            setupEncounter(provinceMapName, name, "Peaceful")
+          elseif category == "Conflict" then
+            setupEncounter(provinceMapName, name, "Conflict")
+          end
+          return category, name
+        end
+      end
+
+    elseif category == "Unstable" then
+      for _, coords in ipairs(entries) do
+        if math.abs(coords[1] - x) <= tol and math.abs(coords[3] - y) <= tol then
+          setupUnstableEncounter(provinceMapName)
+          return "Unstable"
+        end
+      end
+
+    elseif category == "Dig Site" then
+      for _, coords in ipairs(entries) do
+        if math.abs(coords[1] - x) <= tol and math.abs(coords[3] - y) <= tol then
+          -- dig site stuff
+          local gazetteerMorrowind = getObjectbyName("Morrowind Gazetteer")
+          if gazetteerMorrowind then gazetteerMorrowind.Book.setPage(3) end
+          broadcastToAll("Dig Site Encountered!", "White")
+          return "Dig Site"
+        end
+      end
+
+    end
+  end
+  return "Empty"
+end
+
+
+function setupEncounter(provinceMapName, encounterName, encounterType)
+
+  -- this function handles the setup of all non town encounters
+
+  -- get drawn encounter card, type set by zone selected via checkZone declaration
+  local card = nil
+  local posActiveEncounter = { -38.89, 1.40, -2.53 }
+  local rotFaceUp = { 0, 180, 180 }
+  local posDeckPeaceful = { 44.98, 1.40 -2.83 }
+  local posDeckConflict = { 49.14, 1.40, -2.85 }
+  local checkZone = getObjectFromGUID(encounterType == "Peaceful" and "623063" or "11495d")
+  for _, object in pairs(checkZone.getObjects()) do
+    if object.type == "Deck" then
+      card = object.takeObject()
+    elseif object.type == "Card" then
+      card = object
+    end
+  end  
+  if card == nil then -- handle deck refresh if needed
+    local discardCheckZone = getObjectFromGUID(encounterType == "Peaceful" and "503dae" or "035f7b")
+    for _, object in pairs(discardCheckZone.getObjects()) do
+      if object.type == "Deck" then
+        object.setRotation(rotFaceUp)
+        object.shuffle()
+        card = object.takeObject()
+        object.setPositionSmooth(type == "Peaceful" and posDeckPeaceful or posDeckConflict, false, false)
+      end
+    end
+  end  
+  if card ~= nil then
+    card.addTag(type == "Peaceful" and "peaceful_encounter" or "conflict_encounter")
+    card.setRotation(rotFaceUp)
+    card.setPositionSmooth(posActiveEncounter)
+    if encounterName ~= "Unstable" then
+      broadcastToAll(encounterName .. " - " .. type .. " Encounter Drawn: " .. card.getName(), "White")
+    else
+      broadcastToAll("Unstable - " .. type .. " Encounter Drawn: " .. card.getName(), "White")
+    end
+  end
+
+  -- if peaceful encounter, update province effect
+  local peDisplay = nil
+  for _, object in ipairs(getObjects()) do
+    if object.hasTag('pe_display') then
+      peDisplay = object
+    end
+  end
+
+  local currentState = peDisplay.getStateId()
+
+  if peDisplay ~= nil and peDisplay.getStateId() == 1 then
+    
+    if card.hasTag("symbol0") and currentState ~= 1 then -- state 1
+      peDisplay = peDisplay.setState(1)
+    elseif card.hasTag("symbol1") and not card.hasTag('symbol2') and not card.hasTag('symbol3') and currentState ~= 2 then -- state 2
+      peDisplay = peDisplay.setState(2)
+    elseif card.hasTag("symbol2") and not card.hasTag('symbol1') and not card.hasTag('symbol3') and currentState ~= 3 then -- state 3
+      peDisplay = peDisplay.setState(3)
+    elseif card.hasTag("symbol3") and not card.hasTag('symbol1') and not card.hasTag('symbol2') and currentState ~= 4 then -- state 4
+      peDisplay = peDisplay.setState(4)
+
+    -- double province effect icon handling                
+        
+    -- one for the wilderqueen: symbol1, symbol2            
+    -- the love of mother morrowind: symbol1, symbol2
+    -- money tree: symbol1, symbol2
+    elseif card.hasTag("symbol1") and card.hasTag('symbol2') and currentState ~= 5 then -- state 5  
+      peDisplay = peDisplay.setState(5)
+    
+    -- jungle jumble: symbol1, symbol3
+    elseif card.hasTag("symbol1") and card.hasTag('symbol3') and currentState ~= 6 then -- state 6
+      peDisplay = peDisplay.setState(6)
+    
+    -- share the woods: symbol2, symbol3
+    elseif card.hasTag("symbol2") and card.hasTag('symbol3') and currentState ~= 7 then -- state 7
+      peDisplay = peDisplay.setState(7)
+    
+    -- introducing arvan: symbol3, symbol3
+    elseif card.hasTag("symbol3X2") and currentState ~= 8 then -- state 8
+      peDisplay = peDisplay.setState(8)
+    end
+
+    Wait.frames(function() 
+      peDisplay.interactable = false
+
+      -- add a day indicator to peDisplay
+      local currentDayNumber = getObjectbyName("Day Tracker Counter").getVar('val')
+      if currentDayNumber and type == "Peaceful" then
+        peDisplay.createButton({
+          click_function = "nullFunc",
+          function_owner = self,
+          label          = currentDayNumber,
+          position       = {0.70, 0.31, 0.70},
+          rotation       = {0, 0, 0},
+          width          = 300,
+          height         = 300,
+          font_size      = 250,
+          color          = {20/255, 48/255, 59/255},
+          font_color     = {1, 1, 1},
+          tooltip        = "Province Effect in effect for Current Day: " .. currentDayNumber .. ".\n\nProvided by Peaceful Encounter Card: " .. card.getName()
+        })
+      end
+
+      -- add tag to detect if set for current day or not
+      peDisplay.addTag('day_locked')
+    end)
+  end
+end
+
+
+function nullFunc()
+
+  -- this is just a dummy no action function to fire if peDisplay day button indicator is clicked
+  return
+end
+
+
+function setupTownEncounter(provinceMapName, townName)
+
+  -- this function handles the setup of town encounters and everything related
+
+  -- check if objects in play zone, return out if so
+  local play_zone = getObjectFromGUID("fecaa4")
+  for _, object in pairs(play_zone.getObjects()) do
+    if (object.type == "Token" or object.type == "Card" or
+    object.type == "Deck" or object.type == "Model" or
+    object.type == "Tile" and not object.hasTag('enemy_chip')) and object ~= getObjectFromGUID("2f6965") then
+      broadcastToAll("Remove objects from bottom area before using this button.", "Orange")
+      return
+    end
+  end
+  -- get current province, gazetteer
+  local currentProvince = provinceMapName -- needs to be in full format (inc eastern, western) to handle skyrims
+  if currentProvince == nil then log("setupTownEncounter(): currentProvince not found") return end
+  local normalizedProvince = currentProvince:find("Skyrim") and "Skyrim" or currentProvince
+  local gazetteer = getObjectbyName(normalizedProvince .. " Gazetteer")
+  if gazetteer == nil then
+      broadcastToAll(normalizedProvince .. " Gazetteer not found. Manual setup of Town Encounter will be required.", "Orange")
+      return
+  end
+
+  local buttonInn = nil
+  local buttonQuest = nil
+  local marketCommon = 0
+  local marketLegend = 0
+  local trainers = 0
+  local trainerWarrior = false
+  local trainerMage = false
+  local trainerRogue = false
+  local encounterTTip = nil
+  local pdfPage = nil
+
+  if currentProvince     == "Black Marsh" then
+      if townName        == "Traveling Caravan" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Trouble Brewing[-]: Set the weather to Flooding. Do not change the weather during today's Activate Province Effect step (but still resolve the step for any other effects)."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 3
+      elseif townName    == "Alten Corimont" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 3
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Open Contracts[-]: As a free town action, an adventurer may discard an active side quest to gain 1 item from the shop."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 4
+      elseif townName    == "Bright-Throat Village" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 1
+          marketLegend    = 3
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Local Artisans[-]: After populating the shop, the party may choose to discard all items from the shop and replace them with new ones before any town actions are taken."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 5
+      elseif townName    == "Dead-Water Village" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Camp Under The Stars[-]: At the start of this encounter, if the weather is Sunny, each adventurer may remove all dice from their cooldown track and heal to full HP."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 6
+      elseif townName    == "Fort Redmane" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Dagon's Shadow[-]: Ignore this town effect if there are no Objective tokens currently in play. Each adventurer may take an additional town action. If any adventurer takes this additional town action, each Objective token doubles it's movement during today's Activate Province Effect step."
+          trainerWarrior  = true
+          trainerMage     = false
+          trainerRogue    = false
+          pdfPage         = 7
+      elseif townName    == "Gideon" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 5
+          marketLegend    = 1
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Hub City[-]: Each time an adventurer trains a skill line in this town, discard all remaining trainers and replace them with 4 new ones."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 8
+      elseif townName    == "Hissmir" then
+          buttonInn       = false
+          buttonQuest     = false
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 1
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Hist Communion[-]: At the start of this encounter, if the weather is Sunny, each adventurer may gain 2 tenacity and remove up to 2 light fatigue from their cooldown stack."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 9
+      elseif townName    == "Leyawiin" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 2
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]No Vacancy[-]: If the weather is Flooding, the inn is closed for this encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 10
+      elseif townName    == "Lilmoth" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 6
+          marketLegend    = 0
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Oliis Bay Tradeways[-]: When an adventurer takes a shop town action, they may gain 2 items instead of 1."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 11
+      elseif townName    == "Percolating Mire" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Lost to the Mire[-]: At the start of this encounter, the party may freely gain the Mercs and Scales side quest, if available."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 12
+      elseif townName    == "Root-Whisper Village" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]A Stranger's Generosity[-]: At the start of this encounter, the party must make a social check (Adv. Count X 2). If unsuccessful, the inn is closed for this encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 13
+      elseif townName    == "Stonewastes" then
+          buttonInn       = false
+          buttonQuest     = false
+          marketCommon    = 2
+          marketLegend    = 1
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Train with the Four Winds[-]: After populating trainers, the party may replace any non Warrior type skill lines from the trainers with randomly drawn Warrior skill lines. If the party chooses to do this, the town square is closed for this encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 14
+      elseif townName    == "Stormhold" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 1
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Open Air Markets[-]: When populating the shop, if the weather is sunny, the shop populates an additional Common and Legendary item. (Must populate manually)"
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 15
+      end
+
+  elseif currentProvince == "Cyrodiil" then
+      if townName        == "Traveling Caravan" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 1
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Remake Yourself[-]: At least 1 adventurer must take a trainer town action this encounter. If the adventurer who visits the trainer has already filled all of their attribute slots, they must replace a trained skill line with a skill line from the trainer. Any skill dice already trained in the original line are untrained and replaced with skill dice of equal of lower levels from the new line. If the adventurer already has the available skill line trained, they must draw a random untrained skill line to train."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 4
+      elseif townName    == "Bruma" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Shadowed Path Secrets[-]: At the start of this encounter, the party may make a social check (Adv. Count X 2). If successful, the party may search the Conflict Overland Deck for the next delve encounter and set it aside. Then, shuffle the deck and place the delve encounter on top.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 5
+      elseif townName    == "Castle Black Boot" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 5
+          marketLegend    = 1
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Dominion Control[-]: At the start of this encounter, the party must make a social check (Adv. Count X 4). If the Aldmeri Dominion is dominant, or if it is day 1, this check is automatically successful. Each High Elf, Khajiit, and Wood Elf adventurer may reduce the difficulty of this check by 1. If unsuccessful, Castle Black Boot is closed for this encounter and you must proceed directly to the End of Day Phase.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 6
+      elseif townName    == "Castle Bloodmayne" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Dominion Control[-]: At the start of this encounter, the party must make a social check (Adv. Count X 3). If the Aldmeri Dominion is dominant, or if it is day 1, this check is automatically successful. Each High Elf, Khajiit, and Wood Elf adventurer may reduce the difficulty of this check by 1. If unsuccessful, the inn is closed for this encounter.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 7
+      elseif townName    == "Chalman Keep" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 4
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Pact} Control[-]: At the start of this encounter, the party must make a social check (Adv. Count X 3). If the Aldmeri Dominion is dominant, or if it is day 1, this check is automatically successful. Each High Elf, Khajiit, and Wood Elf adventurer may reduce the difficulty of this check by 1. If unsuccessful, the shop and trainers are closed for this encounter.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 8
+      elseif townName    == "Cheydinhal" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 1
+          marketLegend    = 3
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Resistance Allies[-]: At the start of this encounter, the party may make a social check (Adv. Count X 2). If successful, the party may search the Conflict Overland Deck for the next delve encounter and set it aside. Shuffle the deck and place the delve encounter on top."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 9
+      elseif townName    == "Chorrol" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 1
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Little Oak Place[-]: After each time an item is gained from the shop, immediately refill the shop with a new item from the corresponding deck."
+          trainerWarrior  = false
+          trainerMage     = false
+          trainerRogue    = true
+          pdfPage         = 10
+      elseif townName    == "Cropsford" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 2
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Definitely Appropriate[-]: At the start of this encounter, the party may freely gain the 'Seems Like Appropriate Business' side quest, if possible.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 11
+      elseif townName    == "Fort Ash" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Covenant Control[-]: At the start of this encounter, the party must make a social check (Adv. Count X 3). If the Daggerfall Covenant is dominant, this check is automatically successful. Each Breton, Orc, and Redguard adventurer may reduce the difficulty of this check by 1. If unsuccessful, the inn is closed for this encounter.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 12
+      elseif townName    == "Fort Warden" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 1
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Covenant Control[-]: At the start of this encounter, the party must make a social check (Adv. Count X 4). If the Daggerfall Covenant is dominant, this check is automatically successful. Each Breton, Orc, and Redguard adventurer may reduce the difficulty of this check by 1. If unsuccessful, Fort Warden is closed for this encounter and you must proceed directly to the End of Day Phase.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 13
+      elseif townName    == "Imperial City" then
+          buttonInn       = false
+          buttonQuest     = false
+          marketCommon    = 0
+          marketLegend    = 0
+          local bag_objs  = getObjectbyName("Skill Tokens Bag").getObjects()
+          trainers        = #bag_objs
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Black Worm Influence[-]: Skip today's Adventurer's Rest step. All skill tokens from the trainer bag are available for this encounter, but each time an adventurer trains a skill line, they must gain 1 overfatigue. Imperial adventuers may choose to gain a light fatigue instead.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 14
+      elseif townName    == "Kingscrest Keep" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Pact Control[-]: At the start of this encounter, the party must make a social check (Adv. Count X 4). If the Ebonheart Pact is dominant, this check is automatically successful. Each Argonian, Dark Elf, and Nord adventurer may reduce the difficulty of this check by 1. If unsuccessful, Kingscrest Keep is closed for this encounter and you must proceed directly to the End of Day Phase.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 15
+      elseif townName    == "Vlastarus" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 1
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Armory Stock[-]: All items in the shop must be Weapon or Armor (Not yet scripted - manually pull). All items that are drawn and replaced when populating the shop are shuffled back into their respective decks afterwards. The shop remains open even if the Daggerfall Covenant is the dominant faction.\n[" .. Color.fromString("Green"):toHex() .. "]Shifting Tides[-]: Apply the dominant faction's effect for this town encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 16
+      end
+
+  elseif currentProvince == "High Rock" then
+      if townName        == "Traveling Caravan" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 8
+          marketLegend    = 0
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Malicious Mistrust[-]: At the start of this encounter, the party must make a social check determined by the current unrest level:\n\n Peaceful (Adv. Count X 1), Tense (Adv. Count X 2), Dangerous (Adv. Count X 3), Chaotic (Adv. Count X 4)\n\nAdventurers may roll Combat skill dice as if they are Speech skill dice. Adventurers do not get tenacity from Tenacity results. If unsuccessful, each adventurer must discard an item or be dealt 2 damage."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 4
+      elseif townName    == "Alcaire Castle" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 4
+          marketLegend    = 0
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Edric's Greed[-]: At the start of this encounter, the party may freely gain the Dark Forces of Greed side quest."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 5
+      elseif townName    == "Camlorn" then
+          buttonInn       = false
+          buttonQuest     = false
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Faolchu's Regiment[-]: After all adventurers have taken all of their town actions, if the unrest level is at Tense or higher, each adventurer must exhaust Adv. Count availble skill dice (or as many as possible)."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 6
+      elseif townName    == "Crosswych" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 0
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Spirit of Resistance[-]: At the start of this encounter, if the unrest level is at Dangerous or higher, each adventurer may remove 1 die from their cooldown track."
+          trainerWarrior  = false
+          trainerMage     = false
+          trainerRogue    = true
+          pdfPage         = 7
+      elseif townName    == "Daggerfall" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 1
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Covenant Namesake[-]: The first time a Breton, Orc, or Redguard adventurer takes a quest board town action this encounter, they may keep both side quests they draw."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 8
+      elseif townName    == "Evermore" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 4
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Watchful Eyes[-]: If the unrest level is at Dangerous or higher, the shop is closed for this encounter. If unrest is reduced below Dangerous during this town encounter, the shop opens and is populated at that time."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 9
+      elseif townName    == "Fell's Run" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 3
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Bitterhand Influence[-]: At the start of this encounter, if the unrest level is at Tense or higher, each adventurer must discard 1 item, if possible."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 10
+      elseif townName    == "Fharun Stronghold" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Unstable Strife[-]: At the start of this encounter, if the unrest level is at Tense or lower, increase unreast by 1. If the unrest level is at Dangerous or higher, decrease unrest by 1."
+          trainerWarrior  = true
+          trainerMage     = false
+          trainerRogue    = false
+          pdfPage         = 11
+      elseif townName    == "Morkul Stronghold" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 3
+          marketLegend    = 1
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Insular[-]: If the unrest level is at Dangerous or higher, the inn is closed for this encounter. The party may make a social check (Adv. Count X 3). If successful, the inn is open."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 12
+      elseif townName    == "Northpoint" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 3
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Smuggler's Haven[-]: The first time a single adventurer takes a shop town action this encounter, they may gain 2 items instead of 1. If the unrest level is at Dangerous (neither higher nor lower), each adventurer may do this the first time they take a town action this encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 13
+      elseif townName    == "Orsinium" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 2
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Kurog's Legacy[-]: Each time a Warrior type skill line is trained, increase unrest by 1. This effect is ignored on day 1."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 14
+      elseif townName    == "Shornhelm" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 1
+          trainers        = 0
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]A City Divided[-]: Before populating trainers, subtract a number of trainers based on the current unrest level (then manually draw from skill bag).\n\nPeaceful: 0, Tense: 2, Dangerous: 4, Chaotic: 6"
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 15
+      elseif townName    == "Wayrest" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Suspicious of Outsiders[-]: If the unrest level is at Dangerous or higher, adventurers have 1 fewer town action this encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 16
+      end
+
+  elseif currentProvince == "Morrowind" then
+      if townName        == "Traveling Caravan" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 6
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Dismaying Delays[-]: Each adventurer has 2 fewer town actions. At the start of this encounter, the party may choose to increase the Dig track by 1 to give each adventurer an additional town action. This may be done multiple times, up until the Excavation Track is increased."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 4
+      elseif townName    == "Balmora" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 0
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]House Brother's Guidance[-]: After populating trainers, each adventurer may discard an item to (manually) replace 1 of the drawn skill lines with a Warrior type skill line of their choice from the trainer bag."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 5
+      elseif    townName == "Davon's Watch" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 4
+          marketLegend    = 2
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Besieged[-]: If this is the party's first visit to Davon's Watch this campaign, the first town action taken must be the Army of the Dead town square action. This is considered a free town action. The party may choose to ignore this effect if each adventurer either discards 2 items or gains 2 overfatigue. Then, log the visit in your campaign journal."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 6
+      elseif townName == "Ebonheart" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 6
+          marketLegend    = 0
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Strie in the Pact[-]: Argonian adventurers cannot take inn town actions. Dark Elf adventurers cannot take trainer town actions. Nord adventurers cannot take shop town actions. The party may make a social check (Adv. Count X 2) and ignore this effect if successful."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 7
+      elseif townName    == "Gnisis" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Fanisea Saram, traveling merchant[-]: If it is day 7 or earlier, the shop is open and (manually) populated with 6 Legendary Items."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 8
+      elseif townName    == "Kragenmoor" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 5
+          marketLegend    = 1
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Vendetta of House Dres[-]: If the party ever takes the Liberators town square action, Kragenmoor becomes closed for the rest of the campaign, except for quest-specific reasons (log this in your campaign journal)."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 9
+      elseif townName    == "Mournhold" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 5
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Bustling Capital[-]: Each adventurer has 1 additional town action. If this is the party's first visit to Mournhold this campaign. the first town action taken must be the Registration town square action. Then, log this visit in your campaign journal."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 10
+      elseif townName    == "Narsis" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 5
+          marketLegend    = 1
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Plague Ridden[-]: After each time an adventurer takes a town action, they must roll 1 D6. On a 1-3, they gain 2 light fatigue or are dealt 1 true damage. This effect is ignored on day 1."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 11
+      elseif townName    == "Necrom" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 6
+          marketLegend    = 2
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Bounding Ritual[-]: At the start of this encounter, the party gains the following Persistent effect: For the rest of the session, after a full party defeat, the party may be placed in Necrom instead of in the closest town. Doing so revives each adventurer to full HP."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 12
+      elseif townName    == "Sadrith Mora" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 2
+          marketLegend    = 3
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Outside the Pact[-]: At the start of this encounter, each adventurer may discard 1 Legendary Item to gain 1 additional town action."
+          trainerWarrior  = false
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 13
+      elseif townName    == "Sailenmora" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Baandari Merchants[-]: At the start of this encounter, each adventurer may draw 1 Common Item. Each adventurer that does so must then discard 1 Common Item."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 14
+      elseif townName    == "Silent Mire" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]A Pirate's Calling[-]: At the start of this encounter, the party may freely gain The Prodigal Bandit side quest, if possible."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 15
+      elseif townName    == "Vivec City" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 4
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Shadow of Baar Dau[-]: Adventurers must spend 1 tenacity in order to take a second town action. This effect is ignored on day 1."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 16
+      end
+
+  elseif currentProvince == "Eastern Skyrim" then
+      if townName        == "Traveling Caravan" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 6
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Dismaying Delays[-]: Each adventurer has 2 fewer town actions. At the start of this encounter, the party may choose to increase the Dig track by 1 to give each adventurer an additional town action. This may be done multiple times, up until the Excavation Track is increased."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 4
+      elseif townName    == "Fort Amol" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 1
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Pact Meeting Ground[-]: If this town is under siege, Nord, Dark Elf, and Argonian adventurers may add 1 enemy Combat die to each of their engaes made in One Hand, Two Hand, or Bow Battle Forms."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 7
+      elseif townName    == "Fort Morvunskar" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Keepers of the Crypts[-]: If this town is under siege, level 10: Nord Swordmaster becomes a companion controlled by the party for this clash. If Adv. Count is 3+ use level 20: Nord Pyromancer instead."
+          trainerWarrior  = true
+          trainerMage     = false
+          trainerRogue    = false
+          pdfPage         = 8
+      elseif townName    == "Fullhelm Fort" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 8
+          marketLegend    = 0
+          trainers        = 0
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Ironhand's Oath[-]: If this town is under siege, each adventurer gains 1 additional town action but does not gain a free town action upon defeating all enemies. If there are undefeated enemies at the end of this encounter, this town is closed for the rest of the campaign (log this in your campaign journal)."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 9
+      elseif townName    == "Ivarstead" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Adla's Wares[-]: All items in the shop must be Food or Potion. All other items that are drawn and replaced when populating the shop are shuffled back into their respective decks."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 10
+      elseif townName    == "Jorunn's Stand" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 1
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Easy Mark[-]: If this town is under siege, add Adv. Count level 1 enemies to the EP and deploy them last."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 11
+      elseif townName    == "Mistwatch" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Spirits of the Crevasse[-]: If the party is on a Psijic Order or Undaunted quest, adventurers may take guild kiosk town actions. If this town is under siege, this town action must be taken in the town square. The first time this encounter that an adventurer takes the Undaunted guild kiosk town action, populate a shop of 4 Common Items."
+          trainerWarrior  = true
+          trainerMage     = false
+          trainerRogue    = false
+          pdfPage         = 17
+      elseif townName    == "Nimalten" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 04
+          marketLegend    = 4
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Nimalten Barrow[-]: If the town is under siege, party members occupying the town square building cannot target or be targeted by units not occupying the town square."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 20
+      elseif townName    == "Riften" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 1
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Ruins of Sinmur[-]: At the start of this encounter, 1 adventurer must roll 1 D6. If the adventurer's class is a Warrior type, or if it is day 1, they may re-roll the D6 once. The rolled result is closed for this encounter.\n\n1: Shop, 2: Trainers, 3: Inn, 4: Quest Board and Alchemy Station, 5: Guild Kiosk, 6: Town Square"
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 22
+      elseif townName    == "Shor's Stone" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 5
+          marketLegend    = 0
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Mining Town[-]: At the start of this encounter, each adventurer with a Warrior type class gains 1 tenacity."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 23
+      elseif townName    == "Skald's Retreat" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Song of Awakening[-]: At the start of this encounter, the party may freely gain the Bard Harder side quest, if available."
+          trainerWarrior  = false
+          trainerMage     = true
+          trainerRogue    = false
+          pdfPage         = 25
+      elseif townName    == "Windhelm" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 2
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Eating Contests[-]: At the start of this encounter, each adventurer must discard all Food in their inventory. Then, they gain 1 tenacity for each item they discarded. This effect is ignored on day 1 or if the town is under siege."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 27
+      elseif townName    == "Wittestadr" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Soothing Hot Springs[-]: After an adventurer takes an inn town action, they gain 2 bonus HP."
+          trainerWarrior  = false
+          trainerMage     = false
+          trainerRogue    = true
+          pdfPage         = 28
+      end
+
+  elseif currentProvince == "Western Skyrim" then
+      if townName        == "Traveling Caravan" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 3
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Winds of Change[-]: At the start of this encounter, each adventurer must spend 2 tenacity, untrain a skill line (and all dice in that line), or flip their class sheet to the opposite side."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 4
+      elseif townName    == "Dragon Bridge" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Dragon Bridge Garrison[-]: If this town is under siege and the party defeats or otherwise removes all enemies, gain 1 XP instead of gaining the free town action."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 5
+      elseif townName    == "Entrance To Dusktown" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Bitterblade Mining Consortium[-]: The first time that trainers are populated each encounter, the party may choose to (manually) discard all of them and repopulate new ones."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 6
+      elseif townName    == "Karthwasten" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Siege of the Harrowed[-]: If this town is under siege, each enemy gains enemy skills: Decay and Rot. Adventurers cannot take town actions in buildings that enemies are occupying."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 12
+      elseif townName    == "Karthwatch" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Desolate[-]: If this is the first time the party has visited Karthwatch this campaign, do not advance the Day Dial at the start of the next New Day Phase. Log this visit in your campaign journal."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 13
+      elseif townName    == "Kilkreath Temple" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 5
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Temple to Meridia[-]: If the party is on a Mages Guild or Fighters Guild quest, adventurers may take guild kiosk town actions. If this town is under siege, this town action must be taken in the town square."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 14
+      elseif townName    == "Lost Valley Redoubt" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 6
+          trainers        = 0
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]There for the Taking[-]: At the start of this encounter, 1 adventurer must make a lockpick check of 1-5-3 (2 attempts). If successful, adventurers may gain 2 items instead of 1 when taking shop town actions. If unsuccessful, the shop is closed for the rest of the encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 15
+      elseif townName    == "Markarth" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 1
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Reachfolk Stronghold[-]: If this town is under siege, level 20: Briarheart becomes a companion controlled by the party for this clas. If Adv. Count is 3+ use level 10: Reachman instead."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 16
+      elseif townName    == "Mor Khazgur" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 0
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Friend to Fighters[-]: If at least 1 party member is an Orc, or if the party is on a Circle of Champions quest, each adventurer may take a free guild kiosk town action."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 18
+      elseif townName    == "Morthal" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 2
+          marketLegend    = 2
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Arsonists[-]: If this town is under siege and a party member takes damage while occupying a building, that building is closed for the rest of the encounter. Flip the building facedown. Each unit occupying the building is dealt 1 true damage and is placed in the closest unoccupied hex outside of that building. The building is now impassable."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 19
+      elseif townName    == "Rebel's Retreat" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 1
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Arsonists[-]: If this town is under siege and a party member takes damage while occupying a building, that building is closed for the rest of the encounter. Flip the building facedown. Each unit occupying the building is dealt 1 true damage and is placed in the closest unoccupied hex outside of that building. The building is now impassable."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 21
+      elseif townName    == "The Silver Cormorant" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Easy Mark[-]: If this town is under siege, add Adv. Count level 1 enemies to the EP and deploy them first."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 24
+      elseif townName    == "Solitude" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Shadow of the Blue Palace[-]: If this town is under siege, reduce the calculated EP by 4 (to a minimum of 1)."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 26
+      end
+  elseif currentProvince == "Valenwood" then
+      if townName        == "Traveling Caravan" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 0
+          marketLegend    = 0
+          trainers        = 0
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Off the Beaten Path[-]: At the start of this encounter, you must log this visit in the campaign journal. Then, each adventurer is dealt true damage equal to the number of times the party has visited this caravan. If this damage would defeat an adventurer, they instead remain at 1HP."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 3
+      elseif townName    == "Arenthia" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 5
+          marketLegend    = 1
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Colovian Influence[-]: Imperial adventurers may draw 2 Legendary Items when taking the town square action, choosing 1 to gain and 1 to discard."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 4
+      elseif townName    == "Baandari Trading Post" then
+          buttonInn       = true
+          buttonQuest     = false
+          marketCommon    = 6
+          marketLegend    = 2
+          trainers        = 3
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]The Bylaw of Salvage[-]: At the start of this encounter, 1 adventurer must make a lockpick check of 6-5-4 (3 attempts). If unsuccessful, each adventurer must discard 1 item, if possible."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 5
+      elseif townName    == "Dread Vullain" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 0
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Blessings of the Blackroot[-]: At the start of this encounter, each adventurer may place a Bane status die on their class card. Then, gain the following Persistent effect: At the start of the next clash, each adventurer may apply the Bane status die on their class card to a non-quest enemy of their choice. If they do not, the Bane die is discarded."
+          trainerWarrior  = false
+          trainerMage     = false
+          trainerRogue    = false
+          pdfPage         = 6
+      elseif townName    == "Elden Root" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 3
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Dominion Capital[-]: At the end of this encounter, you may move the party token 1 hex. If there is at least 1 High Elf, Khajiit, or Wood Elf adventurer in the party, you may move the party token up to 2 hexes instead."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 7
+      elseif townName    == "Greenheart" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 0
+          trainers        = 0
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Seat of the Wilderqueen[-]: At the start of this encounter, you may make a social check (Adv. Count X 4). If successful, gain the following Persistent effect: For the rest of the current session, you may ignore enemy skill: Native."
+          trainerWarrior  = false
+          trainerMage     = false
+          trainerRogue    = false
+          pdfPage         = 8
+      elseif townName    == "Haven" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 1
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Epicenter of Trade[-]: After each time an adventurer visits the trainer, draw a new token from the trainer bag and add it to the skill lines available to be trained."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 9
+      elseif townName    == "Marbruk" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 1
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Vibrant Underworld[-]: If the party is on a quest for the Thieves Guild, Dark Brotherhood, Undaunted, or Eyes of the Queen, each adventurer may take a free guild kiosk town action during this encounter."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 10
+      elseif townName    == "Silvenar" then
+          buttonInn       = false
+          buttonQuest     = false
+          marketCommon    = 1
+          marketLegend    = 2
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Sentinals of the Green Lady[-]: At the start of this encounter, the party may freely gain the Power of Teamwork side quest, if available."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 11
+      elseif townName    == "Southpoint" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 4
+          marketLegend    = 3
+          trainers        = 5
+          encounterTTip   = ""
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 12
+      elseif townName    == "Velyn Harbor" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 2
+          trainers        = 4
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Harbor Customs Hall[-]: After each time an adventurer takes a shop town action, they may discard an item from their inventory to take a free inn town action."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 13
+      elseif townName    == "Willowgrove" then
+          buttonInn       = false
+          buttonQuest     = true
+          marketCommon    = 5
+          marketLegend    = 0
+          trainers        = 2
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Green Pact Devotion[-]: At the start of this encounter, each adventurer must discard all Food items in their inventory. Then, each adventurer heals for 1 HP for each Common Food Item and 2 HP for each Legendary Food Item they discarded that does not have any of the following traits: Fruit, Grain, Salad, or Vegetable."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 14
+      elseif townName    == "Woodhearth" then
+          buttonInn       = true
+          buttonQuest     = true
+          marketCommon    = 3
+          marketLegend    = 1
+          trainers        = 6
+          encounterTTip   = "[" .. Color.fromString("Green"):toHex() .. "]Thalmor Outpost[-]: After each time an adventurer takes an inn town action, they may gain 2 tenacity."
+          trainerWarrior  = true
+          trainerMage     = true
+          trainerRogue    = true
+          pdfPage         = 15
+      end
+  end
+
+  -- get item decks, skill token bag
+  local commonDeck = getObjectbyName("Common Items")
+  local legendDeck = getObjectbyName("Legendary Items")
+  local trainerBag = getObjectbyName("Skill Tokens Bag")
+  if not trainerBag then log("setupTownEncounter() trainerBag not found") return end
+  if commonDeck == nil then
+    local zoneDeckCommon = getObjectFromGUID("0ec927")
+    for _, object in pairs(zoneDeckCommon.getObjects()) do
+      if object.type == "Deck" then
+        commonDeck = object
+      end
+    end
+  end
+  if legendDeck == nil then
+    zoneDeckLegend = getObjectFromGUID("254628")
+    for _, object in pairs(zoneDeckLegend.getObjects()) do
+      if object.type == "Deck" then
+        legendDeck = object
+      end
+    end
+  end
+  if commonDeck == nil or legendDeck == nil then
+    broadcastToAll("One of the item decks not found. Manual setup of Town Encounter will be required.", "Orange")
+    return
+  end
+
+  -- deal market item cards
+  for i = 1, marketCommon do
+    local dealCard = commonDeck.takeObject()
+    dealCard.addTag('common_item')
+    dealCard.setRotation({0, 180, 0})
+    dealCard.setPositionSmooth(posCommonItems[i])
+  end
+  for i = 1, marketLegend do
+    local dealCard = legendDeck.takeObject()
+    dealCard.addTag('legend_item')
+    dealCard.setRotation({0, 180, 0})
+    dealCard.setPositionSmooth(posLegendaryItems[i])
+  end
+
+  -- deal trainer tokens
+  trainerBag.shuffle()
+  for i = 1, trainers do
+    local foundToken = false
+    local bagObjects = trainerBag.getObjects()
+    for index, object in ipairs(bagObjects) do
+      local objTags = object.tags or {}
+      for _, tag in ipairs(objTags) do
+        if (tag == "skill_token_warrior" and trainerWarrior) or
+           (tag == "skill_token_mage" and trainerMage) or
+           (tag == "skill_token_rogue" and trainerRogue) then
+
+          local dealToken = trainerBag.takeObject({ guid = object.guid })
+          -- handle shaerza's upside down assets
+          if dealToken.getName() == "Daedric Summoning Skill Line Token" or
+          dealToken.getName() == "Illusion Skill Line Token" then
+            dealToken.setRotation({ 0, 0, 0 })
+          else
+            dealToken.setRotation({ 0, 180, 0 })
+          end
+          dealToken.setPositionSmooth(posTrainers[i])
+
+          table.remove(bagObjects, index) -- prevent reusing the same token
+          foundToken = true
+          break
+        end
+      end
+      if foundToken then break end
+    end
+  end
+
+  -- clone, place gazetteer
+  local townDisplay = gazetteer.clone()
+  Wait.frames(function()
+    local scaleTownDisplay = { 5.25, 1.00, 5.25 }
+    local rotTownDisplay = { 0, 180, 0 }
+    local posTownDisplay = { -20.31, 1.59, 8.52 }
+    townDisplay.setScale(scaleTownDisplay)
+    townDisplay.setRotation(rotTownDisplay)
+    townDisplay.setPosition(posTownDisplay)
+    townDisplay.addTag("town_display_gazetteer")
+    townDisplay.Book.setPage(pdfPage)
+  end)
+
+  --- place inn, side quest buttons if required
+  if buttonInn then
+    local buttonInn = getObjectbyName("Bag Button Inn").takeObject()
+    Wait.frames(function()
+      local rotButtonInn = { 0, 180, 0 }
+      local posButtonInn = { -9.50, 1.59, 0.00 }
+      buttonInn.setLock(true)
+      buttonInn.interactable = false
+      buttonInn.setRotation(rotButtonInn)
+      buttonInn.setPosition(posButtonInn)
+    end)
+  end
+  if buttonQuest then
+    local buttonQuest = getObjectbyName("Bag Button Side Quest").takeObject()
+    Wait.frames(function()
+      local rotButtonQuest = { 0, 180, 0 }
+      local posButtonQuest = { -9.50, 1.59, 5.00 }
+      buttonQuest.setLock(true)
+      buttonQuest.interactable = false
+      buttonQuest.setRotation(rotButtonQuest)
+      buttonQuest.setPosition(posButtonQuest)
+    end)
+  end
+
+  broadcastToAll("[" .. Color.fromString("Yellow"):toHex() .. "]" .. townName .. "[-]: Town Encounter Intiated." , "White")
+  Wait.time(function() if townName ~= "Southpoint" then printToAll(encounterTTip, "White") end end, 1.5)
+end
+
+
+function setupUnstableEncounter()
+  local dieUnstable = getObjectbyName("Unstable Die")
+  local scaleDie = { 3, 3, 3 }
+  local posDie = { -23, 2.13, -10 }
+  dieUnstable.setScale(scaleDie)
+  dieUnstable.setPositionSmooth(posDie, false, true)
+  broadcastToAll("Unstable Encounter - Once Unstable Die rolls, use 'Setup Encounter' button again to trigger encounter for Unstable Die result.", "White")
+
+  Wait.time(function()
+
+    dieUnstable.setVar("just_rolled", true)
+    dieUnstable.roll()
+
+    function coroutine_monitor_dieUnstable()
+      repeat
+        if dieUnstable.resting then break end
+        coroutine.yield(0)
+      until false
+      local value = dieUnstable.getRotationValue()
+      dieUnstable.setRotationValue(value)
+      dieUnstable.setVar('just_rolled', false)
+      return 1
+    end
+
+    startLuaCoroutine(self, "coroutine_monitor_dieUnstable")
+
+  end, 1)
+end
+
+
+function cleanupEncounter(button, _, _)
+
+  -- this function handles the cleanup of the currently active encounter
+
+  animateButtonsEncounter(button)
+
+  local encounterZone = getObjectFromGUID("fecaa4")
+  local rotFaceUp = { 0, 180, 0 }
+  local rotFaceDown = { 0, 180, 180 }
+  local posCommonItems = { 57.54, 2.00, -2.83 }
+  local posLegendaryItems = { 61.66, 2.00, -2.85 }
+  local posPeacefuls = { 44.98, 1.5, -2.83 }
+  local posConflicts = { 49.16, 1.5, -2.83 }
+  local bagSkillTokens = getObjectbyName("Skill Tokens Bag")
+  for _, object in pairs(encounterZone.getObjects()) do
+    -- cleanup placed skill tokens
+    if string.find(object.getName(), "Skill Line Token") then
+      bagSkillTokens.putObject(object)
+    end
+
+    -- cleanup placed market cards    
+    if object.type == "Card" then
+      if object.hasTag('common_item') then -- common
+        object.removeTag('common_item')
+        object.setRotation(rotFaceUp)
+        object.setPositionSmooth(posCommonItems, false, false)
+
+      elseif object.hasTag('legend_item') then -- legendary
+        object.removeTag('legend_item')
+        object.setRotation(rotFaceUp)
+        object.setPositionSmooth(posLegendaryItems, false, false)
+
+      elseif object.hasTag('peaceful_encounter') then -- peaceful
+        object.removeTag('peaceful_encounter')
+        object.setRotation(rotFaceDown)
+        object.setPositionSmooth(posPeacefuls, false, false)
+
+      elseif object.hasTag('conflict_encounter') then -- conflict
+        object.removeTag('conflict_encounter')
+        object.setRotation(rotFaceDown)
+        object.setPositionSmooth(posConflicts, false, false)      
+      end
+    end
+  end
+
+  -- clear active encounter card
+  local zoneActiveEncounter = getObjectFromGUID("8347e9")
+  for _, object in pairs(zoneActiveEncounter.getObjects()) do
+    if object.hasTag('peaceful_encounter') then -- peaceful
+      object.removeTag('peaceful_encounter')
+      object.setRotation(rotFaceDown)
+      object.setPositionSmooth(posPeacefuls, false, false)
+
+    elseif object.hasTag('conflict_encounter') then -- conflict
+      object.removeTag('conflict_encounter')
+      if object.hasTag('conflict_selected') then
+        object.removeTag('conflict_selected')
+      end
+      object.setRotation(rotFaceDown)
+      object.setPositionSmooth(posConflicts, false, false)
+    end
+  end
+
+  -- clean up town encounter gazetteer
+  for _, object in pairs(getObjects()) do
+    if object.hasTag("town_display_gazetteer") then
+      object.destruct()
+    end
+  end
+
+  -- clean up inn / quest buttons
+  for _, object in pairs(getObjects()) do
+    if object.hasTag('button_inn') or object.hasTag('button_quest') then
+      object.destruct()
+    end
+  end
+
+  -- send loose side quests to discard
+  local zoneBattleArea = getObjectFromGUID("b5dd6d")
+  local posDiscardSideQuest = {63.78, 2.00, 3.31}
+  for _, object in pairs(zoneBattleArea.getObjects()) do
+    if object.hasTag('side_quest') then
+      object.setRotation(rotFaceDown)
+      object.setPositionSmooth(posDiscardSideQuest, false, true)
+    end
+  end
+end
+
+
+function onObjectRotate(object, spin, flip, playerColor, oldSpin, oldFlip)
+
+  -- this function checks rotated objects to see if they're active conflict cards,
+  -- inits conflict setup buttons on card
+  local rotTolerance = 5
+  if (math.abs(object.getRotation().z) < rotTolerance) or (math.abs(object.getRotation().z - 360) < rotTolerance) then
+    local pos = object.getPosition()
+    local tolerance = 0.50
+    if (math.abs(pos.x + 38.88) < tolerance) and (math.abs(pos.z + 2.53) < tolerance) then
+      initButtonsConflictSelect(object)
+    end
+  end
+end
+
+
+function getConflictDetails(cardName)
+
+  -- this function returns the height and position values for the conflict select buttons, based on card name
+  -- will return nil for value if button does not exist on card (1 to 3 buttons possible per card)
+  local posButton1 = nil
+  local posButton2 = nil
+  local posButton3 = nil
+  local heightButton1 = nil
+  local heightButton2 = nil
+  local heightButton3 = nil
+  
+  -- general conflict encounters
+  if cardName == "Wabbajack Attack" then
+    posButton1 = { -0.02, -0.21, -1.29 }
+    heightButton1 = 60
+    posButton2 = { -0.02, -0.21, 0.835 }
+    heightButton2 = 60
+
+  elseif cardName == "Forever Mine" then
+    posButton1 = { -0.02, -0.21, -1.28 }
+    heightButton1 = 60
+    posButton2 = { -0.02, -0.21, 0.34 }
+    heightButton2 = 65
+
+  elseif cardName == "The Wacky Box of Wonders" then
+    posButton1 = { -0.02, -0.21, -1.175 }
+    heightButton1 = 200
+
+  elseif cardName == "Highwaymen" then
+    posButton1 = { -0.02, -0.21, -1.25 }
+    heightButton1 = 60
+    posButton2 = { -0.02, -0.21, 0.65 }
+    heightButton2 = 60
+
+  elseif cardName == "The \"Well\" of \"Life\"" then
+    posButton1 = { -0.02, -0.21, -1.28 }
+    heightButton1 = 60
+    posButton2 = { -0.02, -0.21, -0.185 }
+    heightButton2 = 65
+
+  elseif cardName == "Captured!" then
+    posButton1 = { -0.02, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { -0.02, -0.21, 0.86 }
+    heightButton2 = 60
+
+  elseif cardName == "Unsullied Pool" then
+    posButton1 = { -0.02, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { -0.02, -0.21, 0.665 }
+    heightButton2 = 60
+
+  elseif cardName == "Broken Bones" then
+    posButton1 = { -0.02, -0.21, -1.28 }
+    heightButton1 = 60
+    posButton2 = { -0.02, -0.21, 0.44 }
+    heightButton2 = 60
+
+  elseif cardName == "Black Market Economics" then
+    posButton1 = { -0.02, -0.21, -1.225 }
+    heightButton1 = 70
+    posButton2 = { -0.02, -0.21, -0.52 }
+    heightButton2 = 60
+
+  elseif cardName == "Keep Away" then
+    posButton1 = { -0.02, -0.21, -1.28 }
+    heightButton1 = 60
+
+
+
+
+
+
+  end
+  return posButton1, heightButton1, posButton2, heightButton2, posButton3, heightButton3
+end
+
+
+function setupConflict1(card, _, _)
+
+  cardName = card.getName()
+  
+  -- this function handles the setup of the first (top) conflict encounter card option
+  
+  local ttip = ""
+  local isUnstable = false
+  local conflictType = nil
+  -- general conflict encounters
+  if cardName == "Wabbajack Attack" then
+    ttip = "Don't get Cheesed!"
+    conflictType = "Clash"
+
+  elseif cardName == "Forever Mine" then
+    ttip = "Explore the mine."
+    conflictType = "Delve"
+
+  elseif cardName == "The Wacky Box of Wonders" then
+    ttip = "You interrupt the bandit solving the puzzle box. A flurry of afflictions fly out."
+    conflictType = "Clash"
+
+  elseif cardName == "Highwaymen" then
+    ttip = "Sieze the caravan!"
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "The \"Well\" of \"Life\"" then
+    ttip = "Search the \"Well\"."
+    conflictType = "Delve"
+
+  elseif cardName == "Captured!" then
+    ttip = "Time to get your stuff back!"
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Unsullied Pool" then
+    ttip = "Hunt the beasts."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Broken Bones" then
+    ttip = "Endless skeletons."
+    conflictType = "Delve"
+  
+  elseif cardName == "Black Market Economics" then
+    ttip = "And if you can reap the benefits, all the better."
+    conflictType = "Clash"
+
+  elseif cardName == "Keep Away" then
+    ttip = "These [i]do[/i] look pretty sharp..."
+    conflictType = "Clash"
+
+  end
+
+  -- if isUnstable is true, need to get which current province map is out (can't use getCurrentProvince because I need to differentiate eastern and western skyrim) is out, and determine if partyToken is located on an Unstable space per the data in posEncounters
+  if not isUnstable then
+    local isOnUnstable = checkIfUnstable()
+    if isOnUnstable then broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange") return end
+  end
+  
+  card.clearButtons()
+  card.addTag('conflict_selected')
+
+  if conflictType == "Clash" then
+    deployClash(cardName, 1)
+  elseif conflictType == "Delve" then
+    deployDelve(cardName, 1)
+  end
+
+end
+
+
+function setupConflict2(card, _, _)
+
+  -- this function handles the setup of the second conflict encounter card option
+
+  local ttip = ""
+  local isUnstable = false
+  local conflictType = nil
+  -- general conflict encounters
+  if cardName == "Wabbajack Attack" then
+    ttip = "Too late!"
+    isUnstable = true
+
+  elseif cardName == "Forever Mine" then
+    ttip = "Excavate some rusty old scraps outside."
+    isUnstable = true
+
+  elseif cardName == "Highwaymen" then
+    ttip = "Sneak Away."
+
+  elseif cardName == "The \"Well\" of \"Life\"" then
+    ttip = "Throw in a coin."
+
+  elseif cardName == "Captured!" then
+    ttip = "Tiptoe off."
+
+  elseif cardName == "Unsullied Pool" then
+    ttip = "Drink from the pool."
+
+  elseif cardName == "Broken Bones" then
+    ttip = "These bones are facing a slight delay."
+
+  elseif cardName == "Black Market Economics" then
+    ttip = "Fight first, treasure later."
+    conflictType = "Clash"
+
+  end
+
+  -- if isUnstable is true, need to get which current province map is out (can't use getCurrentProvince because I need to differentiate eastern and western skyrim) is out, and determine if partyToken is located on an Unstable space per the data in posEncounters
+  if not isUnstable then
+    local isOnUnstable = checkIfUnstable()
+    log("isOnUnstable: " .. tostring(isOnUnstable))
+    if isOnUnstable then broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange") return end
+  end
+  
+  card.clearButtons()
+  card.addTag('conflict_selected')
+
+  if conflictType == "Clash" then
+    deployClash(cardName, 2)
+  elseif conflictType == "Delve" then
+    deployDelve(cardName, 2)
+  end
+
+end
+
+
+function setupConflict3(card, _, _)
+
+end
+
+
+function checkIfUnstable()
+
+  -- this function checks and returns if the party token is located at an unstable space
+  local isOnUnstable = false
+  local partyToken = getObjectbyName("Party Overland Token")
+  if not partyToken then log("checkIfUnstable(): partyToken not found") return end
+  local partyPos = partyToken.getPosition()
+  local zone = getObjectFromGUID("64c0a4")
+  local provinceMapName = nil
+
+  for _, obj in ipairs(zone.getObjects()) do
+    local name = obj.getName()
+    local match = string.match(name, "^(.-) Overland Map$")
+    if match and posEncounters[match] then
+      provinceMapName = match
+      break
+    end
+  end
+  if not provinceMapName then
+    broadcastToAll("No Province Map Found. Set up encounter manually", "Orange")
+    return
+  end
+  
+  local encounterPositions = posEncounters[provinceMapName]
+  if not encounterPositions then log("checkIfUnstable(): encounterPositions not found for " .. provinceMapName) return false end
+
+  local unstableList = encounterPositions["Unstable"]
+  if not unstableList then log("checkIfUnstable(): Unstable list missing for " .. provinceMapName) return false end
+
+  local tolerance = 0.5
+
+  for _, encounterPos in ipairs(unstableList) do
+    if (math.abs(partyPos.x - encounterPos[1]) < tolerance)
+    and (math.abs(partyPos.z - encounterPos[3]) < tolerance) then
+      return true
+    end
+  end
+
+  return false
+end
+
+
+function deployClash(clashName, optionNumber)
+
+  -- this function handles the setup of clash conflict encounters
+
+  -- spaces declared top to bottom, left to right, column by column
+  posClashSpaces = {
+    -- lefthand column
+    ["column1"]   = {
+      { -8.20, 2.25, 5.96 },
+      { -8.20, 2.25, 2.41 },
+      { -8.20, 2.25, -1.14 },
+    },
+    -- second from lefthand column
+    ["column2"]   = {
+      { -5.13, 2.25, 7.74 },
+      { -5.13, 2.25, 4.19 },
+      { -5.13, 2.25, 0.64 },
+      { -5.13, 2.25, -2.91 },
+    },
+    -- third from lefthand column
+    ["column3"]   = {
+      { -2.05, 2.25, 9.51 },
+      { -2.05, 2.25, 5.96 },
+      { -2.05, 2.25, 2.41 },
+      { -2.05, 2.25, -1.14 },
+      { -2.05, 2.25, -4.69 },
+    },
+    -- middle column
+    ["column4"]   = {
+      { 1.02, 2.25, 7.74 },
+      { 1.02, 2.25, 4.19 },
+      { 1.02, 2.25, 0.64 },
+      { 1.02, 2.25, -2.91 },
+    },
+    -- third from righthand column
+    ["column5"]   = {
+      { 4.10, 2.25, 9.51 },
+      { 4.10, 2.25, 5.96 },
+      { 4.10, 2.25, 2.41 },
+      { 4.10, 2.25, -1.14 },
+      { 4.10, 2.25, -4.69 },
+    },
+    -- second from righthand column
+    ["column6"]   = {
+      { 7.18, 2.25, 7.74 },
+      { 7.18, 2.25, 4.19 },
+      { 7.18, 2.25, 0.64 },
+      { 7.18, 2.25, -2.91 },
+    },
+    -- righthand column
+    ["column7"]   = {
+      { 10.25, 2.25, 5.96 },
+      { 10.25, 2.25, 2.41 },
+      { 10.25, 2.25, -1.14 },
+    },
+  }
+  
+  -- first verify there's no clash mats on table
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Clash Mat" then
+      broadcastToAll("Please clear previous clash up, then rebuild current clash manually.", "Orange")
+      return
+    end
+  end
+
+  -- get current province, determine which clash mat to use
+  local currentProvince = getCurrentProvince()
+  if currentProvince == "" or currentProvince == nil then log("deployClash(): currentProvince not found") return end
+
+  -- randomly select mat from possible pool based on current province
+  local matPool     = {
+    ["Black Marsh"] = {"A", "B", "C"},
+    ["Cyrodiil"]    = {"A", "B"},
+    ["High Rock"]   = {"A", "D"},
+    ["Morrowind"]   = {"A", "B", "C"},
+    ["Skyrim"]      = {"A", "B", "D"},
+    ["Valenwood"]   = {"A", "B"},
+  }
+  local provinceMatPool = matPool[currentProvince]  
+  local selectedMat = provinceMatPool[math.random(#provinceMatPool)]
+
+  -- get clash mat bag, entrance tile bag
+  local bagClashMat = getObjectbyName("Clash Mat Bag")
+  local bagEntranceTile = getObjectbyName("Entrance Tile Bag")
+  if not bagClashMat then log("deployClash(): bagClashMat not found") return end
+  if not bagEntranceTile then log("deployClash(): bagEntranceTile not found") return end
+
+  -- pull selected mat from bag, place
+  local rotClashMat = { 0, 0, 0 }
+  local posClashMat = { 2.05, 1.71, 2.41 }
+  local clashMat = nil
+  for _, object in pairs(bagClashMat.getObjects()) do
+    if object.name == "Clash Mat" and object.gm_notes == selectedMat then
+      clashMat = bagClashMat.takeObject({guid = object.guid})
+    end
+  end
+  if clashMat == nil then log("deployClash(): clashMat not found") return end
+  Wait.frames(function()
+    clashMat.setRotation(rotClashMat)
+    clashMat.setPosition(posClashMat)
+    clashMat.setLock(true)
+  end)
+
+  -- get rotation, position of entrance tile per encounter name
+  -- also get tables for cache and enemy placement
+  local rotEntranceTile = {}
+  local posEntranceTile = {}
+  local spacesCaches = {}
+  local rotCaches = {}
+  local rotCommonCaches = { 0, 180, 0 }
+  local rotLegendaryCaches = { 0, 180, 180 }
+  local spacesEnemies = {}
+  
+  -- general encounters
+  if cardName == "Wabbajack Attack" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column7"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column6"][1],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column7"][1],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column7"][2],
+      posClashSpaces["column5"][3],
+    }
+
+  elseif cardName == "The Wacky Box of Wonders" then
+    rotEntranceTile = { 0, 180, 0 }
+    posEntranceTile = {9.22, 1.87, -6.46}
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][2],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column6"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][3],
+      posClashSpaces["column3"][1],      
+      posClashSpaces["column1"][3],
+      posClashSpaces["column3"][2],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column7"][1],
+      posClashSpaces["column4"][4],
+    }
+
+  elseif cardName == "Highwaymen" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column5"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column2"][1],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column2"][2],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][3],
+    }
+
+  elseif cardName == "Captured!" then
+    rotEntranceTile = { 0, 120, 0}
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column6"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column3"][2],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column3"][4],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column4"][2],
+    }
+
+  elseif cardName == "Unsullied Pool" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column1"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][3],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column7"][1],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column7"][2],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][4],
+    }
+
+  elseif cardName == "Black Market Economics" then
+    rotEntranceTile = { 0, 0, 0 }
+    posEntranceTile = { 2.05, 1.87, 13.06 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][2],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column7"][2],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][3],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column2"][2],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column5"][3],
+    }
+
+  elseif cardName == "Keep Away" then
+    rotEntranceTile = { 0, 240, 0 }
+    posEntranceTile = { -7.18, 1.87, -6.46 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column4"][4],
+      -- below will only be used in 3+ playerCount
+      posClashSpaces["column1"][2],
+      posClashSpaces["column7"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][3],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column4"][2],
+    }
+  end
+
+  local bagEntranceTiles = getObjectbyName("Entrance Tile Bag")
+  local entranceTile = bagEntranceTiles.takeObject()
+
+  Wait.frames(function()
+    entranceTile.setRotation(rotEntranceTile)
+    entranceTile.setPosition(posEntranceTile)
+    entranceTile.setLock(true)
+  end)
+
+  local bagCacheChips = getObjectbyName("Cache Chip Bag")
+  for i = 1, #spacesCaches do
+    bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+  end
+
+  Wait.time(function() deployClashEnemies(clashName, spacesEnemies, optionNumber) end, 1)
+
+  broadcastToAll("Clash has begun: " .. clashName, "White")
+
+end
+
+
+function deployDelve(cardName, optionNumber)
+  
+  -- this function handles the setup and deployment of a delve encounter
+  -- currently will only pull, place, and lock an entrance tile
+  local bagEntranceTiles = getObjectbyName("Entrance Tile Bag")
+  local rotEntranceTile = { 0, 300, 0 }
+  local posEntranceTile = { -25.63, 1.87, 14.84 }
+
+  local entranceTile = bagEntranceTiles.takeObject()
+
+  Wait.frames(function()
+    entranceTile.setRotation(rotEntranceTile)
+    entranceTile.setPosition(posEntranceTile)
+    entranceTile.setLock(true)
+  end)
+
+  broadcastToAll("Delve has begun: " .. cardName, "White")
+
+end
+
+
+function getChipBreakdown(value)
+
+  -- this function takes in an EP value and returns a table with keyed values
+  -- ie: 78 - result = { [20]=3, [10]=1, [5]=1, [1]=3 }
+  local chipBreakdown = {}
+  chipBreakdown[20] = math.floor(value / 20)
+  value = value % 20
+  chipBreakdown[10] = math.floor(value / 10)
+  value = value % 10
+  chipBreakdown[5]  = math.floor(value / 5)
+  value = value % 5
+  chipBreakdown[1]  = value
+  return chipBreakdown
+end
+
+
+function deployClashEnemies(clashName, spacesEnemies, optionNumber)
+
+  -- this function handles the individual enemy setup requirements for any given clash
+  local currentCalculatedEP = getObjectbyName("Button Calculated EP").getVar('val')
+  log("currentCalculatedEP: " .. currentCalculatedEP)
+  local playerCount = getObjectbyName("Button Player Count").getVar('val')
+  log("playerCount: " .. playerCount)
+  local chipBreakdown = getChipBreakdown(currentCalculatedEP)
+  log(chipBreakdown)
+  local bagLow, bagHigh = getObjectbyName("Level 1 / 5 Enemies"), getObjectbyName("Level 10 / 20 Enemies")
+  bagLow.shuffle()
+  bagHigh.shuffle()
+  local enemyCount = 0
+
+  if clashName == "Wabbajack Attack" then
+    -- before deploying EP, add khajiit marauder (<3) or khajiit cultist to enemy pool and deploy
+    local extraEnemy = playerCount < 3 and "Khajiit Marauder" or "Khajiit Cultist"
+    local extraBag = playerCount < 3 and bagLow or bagHigh
+    local extraRot = { 0, 180, 180 }
+    for _, object in pairs(extraBag.getObjects()) do
+      if object.name:find(extraEnemy) then
+        local chipExtraEnemy = extraBag.takeObject({guid = object.guid, rotation = extraRot})
+        enemyCount = 1
+        Wait.frames(function()
+          -- chipExtraEnemy.setVar('fresh_out_of_bag')
+          chipExtraEnemy.setPositionSmooth(spacesEnemies[enemyCount], false, true)
+        end)
+        break
+      end
+    end
+    -- deploy rest of EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif clashName == "The Wacky Box of Wonders" then
+    -- check if unstable
+    -- gain light fatigue, then, roll status die and place to CD track
+    -- first enemy deployed must be a human type
+    local firstEnemyDrawn = false
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          local chip20 = nil
+          enemyCount = enemyCount + 1
+          local index = enemyCount
+          if enemyCount < 8 then
+            if firstEnemyDrawn then
+                chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+                Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+            else
+              chip20 = deployEnemyType(20, "Human", spacesEnemies[index])
+              firstEnemyDrawn = true
+            end
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          local chip10 = nil
+          enemyCount = enemyCount + 1
+            local index = enemyCount
+          if enemyCount < 8 then
+            if firstEnemyDrawn then
+                chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+                Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)              
+            else
+              chip10 = deployEnemyType(10, "Human", spacesEnemies[index])
+              firstEnemyDrawn = true
+            end
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          local chip5 = nil
+          enemyCount = enemyCount + 1
+          local index = enemyCount
+          if enemyCount < 8 then
+            if firstEnemyDrawn then
+                chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+                Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+            else
+              chip5 = deployEnemyType(5, "Human", spacesEnemies[index])
+              firstEnemyDrawn = true
+            end
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          local chip1 = nil
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            if firstEnemyDrawn then
+                chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+                Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+            else
+              chip1 = deployEnemyType(1, "Human", spacesEnemies[index])
+              firstEnemyDrawn = true
+            end
+          end
+        end
+      end
+    end, 1)
+
+      
+    
+
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  end
+end
+
+
+function deployEnemyType(enemyLevel, enemyType, position)  
+  log("running deployEnemyType for enemyLevel: " .. enemyLevel .. ", enemyType: " .. enemyType)
+  Wait.time(function()
+    -- this function handles a clash enemy draw that is required to be of a special type
+    local enemyChipSide = (enemyLevel == 1 or enemyLevel == 10) and "Low" or "High"
+    local rotDrawnEnemy  = enemyChipSide == "Low" and { 0, 180, 180 } or { 0, 180, 0 }
+    log("rotDrawnEnemy:")
+    log(rotDrawnEnemy)
+    local validTags      = { enemyHuman = true, enemyBeast = true, enemyDaedra = true }
+    local bagEnemyDraw = (enemyLevel == 1 or enemyLevel == 5) and getObjectbyName("Level 1 / 5 Enemies") or getObjectbyName("Level 10 / 20 Enemies")
+    log("bagEnemyDraw: " .. bagEnemyDraw.getName())
+
+    local chip = nil
+
+    for _, object in pairs(bagEnemyDraw.getObjects()) do
+      local objTags = object.tags
+
+      for _, tag in ipairs(objTags) do
+        local tagLeft, tagRight = tag:match("([^_]+)_([^_]+)")
+        local primaryTag
+
+        if tagLeft and tagRight then
+          if validTags[tagLeft] and validTags[tagRight] then
+            primaryTag = (enemyChipSide == "Low") and tagLeft or tagRight
+          else
+            primaryTag = nil
+          end
+        else
+          primaryTag = validTags[tag] and tag or nil
+        end
+
+        if primaryTag
+        and ((primaryTag == "enemyHuman"  and enemyType == "Human")
+        or (primaryTag == "enemyBeast"  and enemyType == "Beast")
+        or (primaryTag == "enemyDaedra" and enemyType == "Daedra")) then
+
+          chip = bagEnemyDraw.takeObject({ rotation = rotDrawnEnemy, guid = object.guid })
+          chip.setVar('fresh_out_of_bag')
+          Wait.frames(function()          
+            chip.setPositionSmooth(position, false, true)
+          end)
+
+          break
+
+        end
+      end
+
+      if chip then break end
+    end
+
+    if chip then return chip else return nil end
+  end, 1)
+end

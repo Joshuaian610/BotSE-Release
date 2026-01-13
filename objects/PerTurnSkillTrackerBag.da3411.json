@@ -1,0 +1,74 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "BluePerTurnSkillTracker.4e3789"
+  ],
+  "ContainedObjects_path": "PerTurnSkillTrackerBag.da3411",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/18197600619807146260/0C42494331D55132C8DFE545D6967AEAFF862F80/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/1994562021176698519/9B45D437C9DF8B9BE4DE6D290B6F7211D08317A2/",
+    "NormalURL": "",
+    "TypeIndex": 7
+  },
+  "Description": "These Trackers may be optionally used to track \"Once Per Adventurer Turn\" Abilities, Skills, Class Skills, etc.\n\nThey will automatically refresh on Adventurer's Turn Start Cooldown step. These tokens may be removed by deleting, or, setting them to Ready and dropping them back here.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "da3411",
+  "Grid": false,
+  "GridProjection": true,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Infinite_Bag",
+  "Nickname": "Per Turn Skill Tracker Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "player_blue"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 30.49,
+    "posY": 1.135,
+    "posZ": -21.254,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.75,
+    "scaleY": 0.6,
+    "scaleZ": 0.37
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

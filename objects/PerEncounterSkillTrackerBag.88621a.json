@@ -1,0 +1,74 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "PerEncounterSkillTracker.a177f9"
+  ],
+  "ContainedObjects_path": "PerEncounterSkillTrackerBag.88621a",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/16141779921909822424/1180D1C9AF23D83581BCC68EFF008F2A99B911DB/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/1994562021176698519/9B45D437C9DF8B9BE4DE6D290B6F7211D08317A2/",
+    "NormalURL": "",
+    "TypeIndex": 7
+  },
+  "Description": "These Trackers may be optionally used to track \"Once Per Encounter\" Abilities, Skills, Racials, etc.\n\nThey will automatically refresh on Clear Battle. These tokens may be removed by deleting, or, setting them to Ready and dropping them back here.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "88621a",
+  "Grid": false,
+  "GridProjection": true,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Infinite_Bag",
+  "Nickname": "Per Encounter Skill Tracker Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "player_orange"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -5.96,
+    "posY": 1.135,
+    "posZ": -20.25,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.75,
+    "scaleY": 0.6,
+    "scaleZ": 0.37
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

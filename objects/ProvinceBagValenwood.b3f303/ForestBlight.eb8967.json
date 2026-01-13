@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "ForestBlight.f2de54",
+    "ForestBlight.d21deb",
+    "ForestBlight.d32537",
+    "ForestBlight.930729",
+    "ForestBlight.c0fd14",
+    "ForestBlight.c69394",
+    "ForestBlight.10eab1",
+    "ForestBlight.720ef1"
+  ],
+  "ContainedObjects_path": "ForestBlight.eb8967",
+  "CustomDeck": {
+    "82": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/10615052271067803496/5324A3E66675F90765B8975E95F81892168A78FB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13127475527087605207/71B5EEC6EE76B6A9BA1C73E53921990E8D3D2D3A/",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    8207,
+    8206,
+    8205,
+    8204,
+    8203,
+    8202,
+    8201,
+    8200
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "eb8967",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Forest Blight",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "forest_blight",
+    "obj_vw"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 79.54,
+    "posY": 2.767,
+    "posZ": 18.083,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

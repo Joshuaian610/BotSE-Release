@@ -1,0 +1,121 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -3.851,
+        "y": 0.831,
+        "z": -0.05
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": -2.472,
+        "y": 0.831,
+        "z": -0.082
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.67,
+        "y": 0.831,
+        "z": -0.089
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 2.102,
+        "y": 0.831,
+        "z": -0.049
+      },
+      "Tags": [
+        "snap_hex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "CacheChip.3fca6b",
+    "CacheChip.619b1d",
+    "CacheChip.7b1e0d",
+    "CacheChip.4cdd56",
+    "CacheChip.f6fd2e",
+    "CacheChip.d491ad"
+  ],
+  "ContainedObjects_path": "CacheChipBag.e1214f",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28818227112140657/452BD66B4AD623165CB43BE2A613622B34A963CE/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396461878/0263049DCC175C4A5985B7E425122406A1279784/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e1214f",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Cache Chip Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 38.466,
+    "posY": 2.068,
+    "posZ": -6.431,
+    "rotX": 358,
+    "rotY": 90,
+    "rotZ": 0,
+    "scaleX": 0.88,
+    "scaleY": 0.88,
+    "scaleZ": 0.88
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

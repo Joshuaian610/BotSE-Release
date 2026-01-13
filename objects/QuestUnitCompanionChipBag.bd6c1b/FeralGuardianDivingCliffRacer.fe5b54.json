@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673396890/62A9EDE8679A4C55B012BE3B6CA1C6C589134E62/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673396890/62A9EDE8679A4C55B012BE3B6CA1C6C589134E62/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Maim:\nAfter this unit’s engage, apply a Maim status die to this unit’s target.\n\nRush:\nIf this unit cannot target an opposing unit after its movement, it moves a second time instead.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "fe5b54",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/FeralGuardianDivingCliffRacer.fe5b54.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Feral Guardian / Diving Cliff Racer",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.881,
+    "posY": 2.205,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 176,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

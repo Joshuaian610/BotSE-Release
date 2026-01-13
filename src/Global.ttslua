@@ -1,0 +1,1177 @@
+-- Elder Scrolls: Betrayal of the Second Era
+-- code by Nonprophet, which is why it sucks
+-- code currently in conversion from object based to bundled lua based
+
+require("SetupProvince")
+require("HandleEnemies")
+require("HandleEncounters")
+require("PlayerAreas")
+
+
+
+
+function onLoad()
+
+  nonInt             = false
+  invis              = false
+  showCleanupButton  = false
+  showConfirmButtons = false
+
+  -- call this for each existing object since TTS doesn't do it
+  for _, obj in ipairs(getObjects()) do
+  onObjectSpawn(obj)
+  end
+
+  -- old onLoad  
+--   if nonInt then
+--     for _, object in pairs(getObjects()) do
+--       if object.hasTag('nonInt') then object.interactable = false end
+--     end
+--   end
+
+  local invisBags = {"e0d41f", "6d89c2", "db5580", "25be0c", "854dab", "6ccfde", "049614", "13826d", "441f00",
+  "3c306d", "10fcd4", "c1c1fa", "c09813", "c8b9dd", "4da6b0", "cdb313", "3a6185", "0e06c1"}
+  local mats = {"a1c5f4", "1fe5f3", "7d559d", "e0a25a", "0e06c1"}
+  local gameInProgress = false
+  for i = 1, 4 do
+  if getObjectFromGUID(mats[i]).hasTag('race_pulled') then
+    gameInProgress = true
+    break
+  end
+  end
+
+  if gameInProgress then showCleanupButton = true end
+
+  local rotCleanupButton = { 0, 180, 0 }
+  local posCleanupButton = { -65.55, 1.73, 41.31 }
+  local buttonCleanup = getObjectbyName("Button Cleanup Session")
+
+  if showCleanupButton then    
+  buttonCleanup.setRotation(rotCleanupButton)
+  buttonCleanup.setPosition(posCleanupButton)
+  else
+  buttonCleanup.setRotation(rotCleanupButton)
+  posCleanupButton = { -65.55, -2.00, 41.31 }
+  buttonCleanup.setPosition(posCleanupButton)
+  buttonCleanup.clearButtons()
+  end
+
+  for _, object in pairs(getObjects()) do
+  if object.getName() == "Confirm" and object.hasTag('btn_confirm') then
+    local pos = object.getPosition()
+    if showConfirmButtons then
+      pos.y = 1.14
+    else
+      pos.y = -1.00
+    end
+    object.setPosition(pos)
+  end
+  end
+
+  if invis then
+  for i = 1, 18 do
+    getObjectFromGUID(invisBags[i]).setInvisibleTo({"Red", "Orange", "Blue", "Green", "White", "Grey"})
+  end
+  end
+
+  -- addHotkey("Place Die To Roll Area", function(playercolor, object, _, is_key_up)
+  -- if is_key_up == false then get_roll_slots(playercolor, object) end
+  -- end, true)
+  -- addHotkey("Exhaust Die To Cooldown Track", function(playercolor, object, _, is_key_up)
+  -- if is_key_up == false then get_cooldown_slots(playercolor, object) end
+  -- end, true)
+  -- addHotkey("Drain Die", function(playercolor, object, _, is_key_up)
+  -- if is_key_up == false then get_drain_slots(playercolor, object) end
+  -- end, true)
+  -- addHotkey("Place Die to Active Slot", function(playercolor, object, _, is_key_up)
+  -- if is_key_up == false then get_active_slots(playercolor, object) end
+  -- end, true)
+  -- addHotkey("Return Die to Supply", function(playerColor, object, _, is_key_up)
+  -- if is_key_up == false then returnSupplyDie(playerColor, object) end
+  -- end, true)
+  -- addHotkey("Return Die to Skill Row", function(playerColor, object, _, is_key_up)
+  -- if is_key_up == false then returnHomeDie(playerColor, object) end
+  -- end, true)
+  -- addHotkey("Summon Enemy Combat Die", function(playercolor, object, pointerPosition, is_key_up)
+  -- if is_key_up == false and object == nil then summonEnemyCombat(playercolor, _, pointerPosition) end
+  -- end, true)
+  -- addHotkey("Summon Status Die", function(playercolor, object, pointerPosition, is_key_up)
+  -- if is_key_up == false and object == nil then summon_status(playercolor, _, pointerPosition) end
+  -- end, true)
+end
+
+function onObjectSpawn(obj)
+  -- set nonInteractables
+  if obj.hasTag("non_int") and nonInt then
+    obj.interactable = false
+  end
+
+  -- init buttons
+  local name = obj.getName()
+
+  if name:find("Button Setup") and name ~= "Button Setup Encounter" then
+    initButtonSetupProvince(obj)
+
+  elseif name:find("Button Cleanup Session") then
+    -- only create button if play session is ongoing, determined by button position
+    local pos = obj.getPosition()
+    if pos.y > 1.70 then
+      initButtonCleanupSession(obj)
+    end
+
+  elseif obj.hasTag('guild') and getObjectbyName("Guilds").getGMNotes() == "enabled" then
+    initButtonSelectGuild(obj)
+
+  elseif name == "Button True Solo" then
+    initButtonTrueSolo(obj)
+
+  elseif name == "Button Enemy Type Selector" then
+    initButtonsEnemyType(obj)
+
+  elseif name:find("Button Deploy Level ") then
+    initButtonDeployEnemy(obj)
+
+  elseif name == "Button Setup Encounter" then
+    -- only create button if button object is visible, determined by button position
+    local pos = obj.getPosition()
+    if pos.y > 1.10 then
+      initButtonSetupEncounter(obj)
+    end
+
+  elseif name == "Button Cleanup Encounter" then
+    -- only create button if button object is visible, determined by button position
+    local pos = obj.getPosition()
+    if pos.y > 1.10 then
+      initButtonCleanupEncounter(obj)
+    end
+  
+  elseif obj.hasTag("enc_conflict") then
+    -- conflict card buttons (only init buttons if card in active position and correct rot)
+    local pos = obj.getPosition()
+    local tolerance = 0.5      
+    if (math.abs(pos.x - (-38.88)) <= tolerance and math.abs(pos.z - (-2.53)) <= tolerance) and obj.is_face_down and not obj.hasTag("conflict_selected") then
+      initButtonsConflictSelect(obj)
+    end
+
+  elseif name == "Button Cooldown" then
+    initButtonCooldownAction(obj)
+
+  elseif name == "Button Collapse Cooldown" then
+    initButtonCooldownCollapse(obj)
+
+  elseif name == "Button Fatigue" then
+    initButtonFatigue(obj)
+
+  elseif name == "Button Overfatigue" then
+    initButtonOverfatigue(obj)
+
+  elseif name == "Button Open Pack" then
+    initButtonOpenPack(obj)
+
+  elseif name == "Button Roll Dice" then
+    initButtonPlayerRollDice(obj)
+
+  elseif name:find(" Player Pack") then
+    updatePackCounter(obj)
+
+  end
+end
+
+function getObjectbyName(name)
+  -- simply search all objects for an object named a particular string
+  for _, object in pairs(getObjects()) do
+  if object.getName() == name then
+    return object
+  end
+  end
+  log("getObjectbyName() object not found: " .. name)
+  return nil
+end
+
+posCooldownDice = {
+  ["Red"] = {
+    {-59.44, 1.47, -31.76}, {-58.68, 1.47, -31.76}, {-57.92, 1.47, -31.76}, {-57.16, 1.47, -31.76},
+    {-56.40, 1.47, -31.76}, {-55.64, 1.47, -31.76}, {-54.88, 1.47, -31.76}, {-54.12, 1.47, -31.76},
+    {-53.36, 1.47, -31.76}, {-52.60, 1.47, -31.76}, {-51.84, 1.47, -31.76}, {-51.08, 1.47, -31.76},
+    {-50.32, 1.47, -31.76},
+  },
+  ["Orange"] = {
+    {-23.93, 1.47, -31.82}, {-23.17, 1.47, -31.82}, {-22.41, 1.47, -31.82}, {-21.65, 1.47, -31.82},
+    {-20.89, 1.47, -31.82}, {-20.13, 1.47, -31.82}, {-19.36, 1.47, -31.82}, {-18.60, 1.47, -31.82},
+    {-17.84, 1.47, -31.82}, {-17.08, 1.47, -31.82}, {-16.32, 1.47, -31.82}, {-15.56, 1.47, -31.82},
+    {-14.80, 1.47, -31.82},
+  },
+  ["Blue"] = {
+    {12.42, 1.47, -31.80}, {13.18, 1.47, -31.80}, {13.94, 1.47, -31.80}, {14.70, 1.47, -31.80},
+    {15.46, 1.47, -31.80}, {16.22, 1.47, -31.80}, {16.98, 1.47, -31.80}, {17.74, 1.47, -31.80},
+    {18.50, 1.47, -31.80}, {19.26, 1.47, -31.80}, {20.02, 1.47, -31.80}, {20.78, 1.47, -31.80},
+    {21.54, 1.47, -31.80},
+  },
+  ["Green"] = {
+    {48.17, 1.47, -31.80}, {48.93, 1.47, -31.80}, {49.69, 1.47, -31.80}, {50.45, 1.47, -31.80},
+    {51.21, 1.47, -31.80}, {51.97, 1.47, -31.80}, {52.73, 1.47, -31.80}, {53.49, 1.47, -31.80},
+    {54.25, 1.47, -31.80}, {55.01, 1.47, -31.80}, {55.77, 1.47, -31.80}, {56.53, 1.47, -31.80},
+    {57.29, 1.47, -31.80},
+  },
+}
+
+posDrainDice = {
+  ["Red"] = {
+    {-54.97, 1.47, -34.00}, {-54.21, 1.47, -34.00}, {-55.73, 1.47, -34.00}, {-53.45, 1.47, -34.00},
+    {-56.49, 1.47, -34.00}, {-52.69, 1.47, -34.00}, {-57.25, 1.47, -34.00}, {-51.92, 1.47, -34.00},
+    {-58.01, 1.47, -34.00}, {-51.16, 1.47, -34.00}, {-58.77, 1.47, -34.00}, {-50.40, 1.47, -34.00},
+    {-59.53, 1.47, -34.00}},
+  ["Orange"] = {
+    {-19.29, 1.47, -34.00}, {-18.53, 1.47, -34.00}, {-20.05, 1.47, -34.00}, {-17.77, 1.47, -34.00},
+    {-20.81, 1.47, -34.00}, {-17.01, 1.47, -34.00}, {-21.57, 1.47, -34.00}, {-16.25, 1.47, -34.00},
+    {-22.33, 1.47, -34.00}, {-15.49, 1.47, -34.00}, {-23.09, 1.47, -34.00}, {-14.71, 1.47, -34.00},
+    {-23.85, 1.47, -34.00}},
+  ["Blue"] = {
+    {17.07, 1.47, -34.00}, {17.83, 1.47, -34.00}, {16.31, 1.47, -34.00}, {18.59, 1.47, -34.00},
+    {15.55, 1.47, -34.00}, {19.35, 1.47, -34.00}, {14.79, 1.47, -34.00}, {20.11, 1.47, -34.00},
+    {14.03, 1.47, -34.00}, {20.87, 1.47, -34.00}, {13.27, 1.47, -34.00}, {21.63, 1.47, -34.00},
+    {12.51, 1.47, -34.00}},
+  ["Green"] = {
+    {52.71, 1.47, -34.00}, {53.47, 1.47, -34.00}, {51.95, 1.47, -34.00}, {54.23, 1.47, -34.00},
+    {51.19, 1.47, -34.00}, {54.99, 1.47, -34.00}, {50.43, 1.47, -34.00}, {55.75, 1.47, -34.00},
+    {49.67, 1.47, -34.00}, {56.51, 1.47, -34.00}, {48.91, 1.47, -34.00}, {57.27, 1.47, -34.00},
+    {48.15, 1.47, -34.00}}
+}
+
+posRollpadDice = {
+  ["Red"] = {
+    {-54.32, 1.75, -21.50}, {-55.66, 1.75, -21.50}, {-55.66, 1.75, -20.25},
+    {-54.32, 1.75, -20.25}, {-52.97, 1.75, -20.25}, {-52.97, 1.75, -21.50},
+    {-56.99, 1.75, -21.50}, {-56.99, 1.75, -20.25}, {-51.64, 1.75, -20.25},
+    {-51.64, 1.75, -21.50}, {-58.33, 1.75, -21.50}, {-58.33, 1.75, -20.25},
+  },
+  ["Orange"] = {
+    {-18.62, 1.75, -21.50}, {-19.96, 1.75, -21.50}, {-19.96, 1.75, -20.25},
+    {-18.62, 1.75, -20.25}, {-17.26, 1.75, -20.25}, {-17.26, 1.75, -21.50},
+    {-21.35, 1.75, -21.50}, {-21.35, 1.75, -20.25}, {-15.92, 1.75, -20.25},
+    {-15.92, 1.75, -21.50}, {-22.67, 1.75, -21.50}, {-22.67, 1.75, -20.25},
+  },
+  ["Blue"] = {
+    {17.74, 1.75, -21.50}, {16.40, 1.75, -21.50}, {16.40, 1.75, -20.25},
+    {17.74, 1.75, -20.25}, {19.12, 1.75, -20.25}, {19.12, 1.75, -21.50},
+    {15.03, 1.75, -21.50}, {15.03, 1.75, -20.25}, {20.47, 1.75, -20.25},
+    {20.47, 1.75, -21.50}, {13.68, 1.75, -21.50}, {13.68, 1.75, -20.25},
+  },
+  ["Green"] = {
+    {53.36, 1.75, -21.50}, {52.03, 1.75, -21.50}, {52.03, 1.75, -20.25},
+    {53.36, 1.75, -20.25}, {54.73, 1.75, -20.25}, {54.73, 1.75, -21.50},
+    {50.66, 1.75, -21.50}, {50.66, 1.75, -20.25}, {56.08, 1.75, -20.25},
+    {56.08, 1.75, -21.50}, {49.32, 1.75, -21.50}, {49.32, 1.75, -20.25},
+  }
+}
+
+active_dice_pos = {
+  ["Red"]    = {{-56.97, 1.47, -24.08}, {-55.62, 1.47, -24.08}, {-54.31, 1.47, -24.08}, {-52.95, 1.47, -24.08}},
+  ["Orange"] = {{-21.32, 1.47, -24.03}, {-19.97, 1.47, -24.06}, {-18.60, 1.47, -24.06}, {-17.28, 1.47, -24.07}},
+  ["Blue"]   = {{15.05, 1.47, -24.05}, {16.40, 1.47, -24.05}, {17.77, 1.47, -24.05}, {19.11, 1.47, -24.05}},
+  ["Green"]  = {{50.66, 1.47, -24.06}, {52.06, 1.47, -24.06}, {53.37, 1.47, -24.06}, {54.73, 1.47, -24.06}},
+}
+
+supply_dice_bags = {
+  ["Acrobatics"]          = "26821c",
+  ["Bow"]                 = "01087e",
+  ["Daedric Summoning"]   = "4d7d97",
+  ["Destruction Staff"]   = "653f69",
+  ["Heavy Armor"]         = "a50b59",
+  ["Illusion"]            = "139763",
+  ["Legerdemain"]         = "c18430",
+  ["Light Armor"]         = "abb3f2",
+  ["One Hand And Shield"] = "2f6965",
+  ["Restoring Light"]     = "0f6e28",
+  ["Shadow"]              = "c49e77",
+  ["Speech"]              = "749ea0",
+  ["Two Handed"]          = "0d4d33",
+  ["Overfatigue"]         = "1e81c4",
+  ["Fatigue"]             = "058b91",
+  ["Status"]              = "97bfab",
+  ["Combat"]              = "0f834b",
+  ["Enemy Combat"]        = "3154b3",
+}
+
+guildPDFpages                   = {
+  ["Black Marsh"]             = {
+    ["Circle Of Champions"] = 21,
+    ["Dark Brotherhood"]    = 18,
+    ["Eyes Of The Queen"]   = 20,
+    ["Fighters Guild"]      = 17,
+    ["Mages Guild"]         = 16,
+    ["Outer Watch"]         = 19,
+    ["Psijic Order"]        = 20,
+    ["Thieves Guild"]       = 17,
+    ["Undaunted"]           = 18,
+  },
+  ["Cyrodiil"] = {
+    ["Circle Of Champions"] = 24,
+    ["Dark Brotherhood"]    = 19,
+    ["Eyes Of The Queen"]   = 23,
+    ["Fighters Guild"]      = 18,
+    ["Mages Guild"]         = 17,
+    ["Outer Watch"]         = 21,
+    ["Psijic Order"]        = 22,
+    ["Thieves Guild"]       = 17,
+    ["Undaunted"]           = 20,
+  },
+  ["High Rock"]               = {
+    ["Circle Of Champions"] = 24,
+    ["Dark Brotherhood"]    = 19,
+    ["Eyes Of The Queen"]   = 23,
+    ["Fighters Guild"]      = 18,
+    ["Mages Guild"]         = 17,
+    ["Outer Watch"]         = 21,
+    ["Psijic Order"]        = 22,
+    ["Thieves Guild"]       = 17,
+    ["Undaunted"]           = 20,
+  },
+  ["Morrowind"] = {
+    ["Circle Of Champions"] = 23,
+    ["Dark Brotherhood"]    = 19,
+    ["Eyes Of The Queen"]   = 22,
+    ["Fighters Guild"]      = 18,
+    ["Mages Guild"]         = 17,
+    ["Outer Watch"]         = 20,
+    ["Psijic Order"]        = 21,
+    ["Thieves Guild"]       = 17,
+    ["Undaunted"]           = 20,
+  },
+  ["Skyrim"]                  = {
+    ["Circle Of Champions"] = 36,
+    ["Dark Brotherhood"]    = 31,
+    ["Eyes Of The Queen"]   = 35,
+    ["Fighters Guild"]      = 30,
+    ["Mages Guild"]         = 29,
+    ["Outer Watch"]         = 33,
+    ["Psijic Order"]        = 34,
+    ["Thieves Guild"]       = 30,
+    ["Undaunted"]           = 32,
+  },
+  ["Valenwood"]               = {
+    ["Circle Of Champions"] = 22,
+    ["Dark Brotherhood"]    = 18,
+    ["Eyes Of The Queen"]   = 21,
+    ["Fighters Guild"]      = 17,
+    ["Mages Guild"]         = 16,
+    ["Outer Watch"]         = 19,
+    ["Psijic Order"]        = 21,
+    ["Thieves Guild"]       = 16,
+    ["Undaunted"]           = 19,
+  },
+}
+
+posGuildStarts                  = {
+  ["Black Marsh"]             = {
+    ["Circle Of Champions"] = {-54.29, 2.00, 10.28},  -- leyawiin
+    ["Dark Brotherhood"]    = {-43.87, 2.00, 20.78},  -- stormhold
+    ["Eyes Of The Queen"]   = {-54.29, 2.00, 10.28},  -- leyawiin
+    ["Fighters Guild"]      = {-43.87, 2.00, 20.78},  -- stormhold
+    ["Mages Guild"]         = {-41.36, 2.00, 1.56},   -- lilmoth
+    ["Outer Watch"]         = {-41.36, 2.00, 1.56},   -- lilmoth
+    ["Psijic Order"]        = {-43.87, 2.00, 20.78},  -- stormhold
+    ["Thieves Guild"]       = {-54.29, 2.00, 10.28},  -- leyawiin
+    ["Undaunted"]           = {-41.36, 2.00, 1.56},   -- lilmoth
+  },
+  ["Cyrodiil"]                = {
+    ["Circle Of Champions"] = {-50.75, 2.00, 18.24},  -- fort warden
+    ["Dark Brotherhood"]    = {-45.59, 2.00, 6.28},   -- castle black boot
+    ["Eyes Of The Queen"]   = {-45.59, 2.00, 6.28},   -- castle black boot
+    ["Fighters Guild"]      = {-40.37, 2.00, 19.68},  -- kingscrest keep
+    ["Mages Guild"]         = {-50.75, 2.00, 18.24},  -- fort warden
+    ["Outer Watch"]         = {-40.37, 2.00, 19.68},  -- kingscrest keep
+    ["Psijic Order"]        = {-45.59, 2.00, 6.28},   -- castle black boot
+    ["Thieves Guild"]       = {-40.37, 2.00, 19.68},  -- kingscrest keep
+    ["Undaunted"]           = {-50.75, 2.00, 18.24},  -- fort warden
+  },
+  ["High Rock"]               = {
+    ["Circle Of Champions"] = {-41.77, 2.00, 7.79},  -- wayrest
+    ["Dark Brotherhood"]    = {-53.29, 2.00, 5.62},  -- daggerfall
+    ["Eyes Of The Queen"]   = {-36.49, 2.00, 13.66}, -- orsinium
+    ["Fighters Guild"]      = {-53.29, 2.00, 5.62},  -- daggerfall
+    ["Mages Guild"]         = {-36.49, 2.00, 13.66}, -- orsinium
+    ["Outer Watch"]         = {-41.77, 2.00, 7.79},  -- wayrest
+    ["Psijic Order"]        = {-53.29, 2.00, 5.62},  -- daggerfall
+    ["Thieves Guild"]       = {-41.77, 2.00, 7.79},  -- wayrest
+    ["Undaunted"]           = {-36.49, 2.00, 13.66}, -- orsinium
+  },
+  ["Morrowind"]               = {
+    ["Circle Of Champions"] = {-52.05, 2.00, 3.25},   -- narsis
+    ["Dark Brotherhood"]    = {-36.43, 2.00, 12.24},  -- necrom
+    ["Eyes Of The Queen"]   = {-46.85, 2.00, 12.19},  -- vivec city
+    ["Fighters Guild"]      = {-52.05, 2.00, 3.25},   -- narsis
+    ["Mages Guild"]         = {-46.85, 2.00, 12.19},  -- vivec city
+    ["Outer Watch"]         = {-36.43, 2.00, 12.24},  -- necrom
+    ["Psijic Order"]        = {-52.05, 2.00, 3.25},   -- narsis
+    ["Thieves Guild"]       = {-46.85, 2.00, 12.19},  -- vivec city,
+    ["Undaunted"]           = {-36.43, 2.00, 12.24},  -- necrom
+  },
+  ["Skyrim"]                  = {
+    ["Circle Of Champions"] = {-52.85, 2.00, 6.63},   -- markarth (W)
+    ["Dark Brotherhood"]    = {-52.85, 2.00, 6.63},   -- markarth (W)
+    ["Eyes Of The Queen"]   = {-52.85, 2.00, 6.63},   -- markarth (W)
+    ["Fighters Guild"]      = {-41.17, 2.00, 17.68},  -- solitude (W)
+    ["Mages Guild"]         = {-41.17, 2.00, 17.68},  -- solitude (W)
+    ["Outer Watch"]         = {-42.29, 2.00, 17.94},  -- windhelm (E)
+    ["Psijic Order"]        = {-42.29, 2.00, 17.94},  -- windhelm (E)
+    ["Thieves Guild"]       = {-42.37, 2.00, 6.01},   -- riften (E)
+    ["Undaunted"]           = {-42.37, 2.00, 6.01},   -- riften (E)
+  },
+  ["Valenwood"]               = {
+    ["Circle Of Champions"] = {-37.28, 2.00, 2.99},   -- haven
+    ["Dark Brotherhood"]    = {-37.28, 2.00, 2.99},   -- haven
+    ["Eyes Of The Queen"]   = {-54.15, 2.00, 6.77},   -- woodhearth
+    ["Fighters Guild"]      = {-38.55, 2.00, 18.67},  -- arenthia
+    ["Mages Guild"]         = {-37.28, 2.00, 2.99},   -- haven
+    ["Outer Watch"]         = {-54.15, 2.00, 6.77},   -- woodhearth
+    ["Psijic Order"]        = {-54.15, 2.00, 6.77},   -- woodhearth
+    ["Thieves Guild"]       = {-38.55, 2.00, 18.67},  -- arenthia
+    ["Undaunted"]           = {-38.55, 2.00, 18.67},  -- arenthia
+  },
+}
+
+
+overland_mechanic_pages         = {
+  ["Black Marsh"]             = 2,
+  ["Cyrodiil"]                = 3,
+  ["High Rock"]               = 3,
+  ["Morrowind"]               = 3,
+  ["Skyrim"]                  = 3,
+  ["Valenwood"]               = 2,
+}
+
+
+
+function color_to_hex(color)
+  local r = math.floor(color[1] * 255)
+  local g = math.floor(color[2] * 255)
+  local b = math.floor(color[3] * 255)
+  return string.format("#%02X%02X%02X", r, g, b)
+end
+
+
+
+function label_die_result_remote(args)
+  local die_obj = args.die_obj
+  local rot_val = args.rot_val
+  label_die_result(die_obj, rot_val)
+end
+
+function label_die_result(die_obj, rot_val)
+  local name    = die_obj.getName()
+  local result  = nil
+  -- status
+  if name == "Status Effect" then
+    if rot_val == 1 then
+      result = "Stealth:\nThis unit can only be targeted by opposing units that were adjacent to it at the start of the current turn. After this unit deals damage, this die is removed."
+    elseif rot_val == 2 then
+      result = "Blind:\nThis unit has a range of 1, considers allied units to targetable, and can only target the strongest adjacent unit."
+    elseif rot_val == 3 then
+      result = "Daze:\nThis unit cannot roll dice on the same turn it moves, and it cannot move on the same turn it rolls dice. At the end of this unit's turn, remove this die."
+    elseif rot_val == 4 then
+      result = "Maim:\nWhen this unit rolls Combat skill dice, the total damage rolled is reduced by half, then rounded down. This effect does not apply to true damage."
+    elseif rot_val == 5 then
+      result = "Fear:\nThe effects of this unit's non-Combat skills are ignored. This effect does not apply to skill dice already in active slots or the cooldown track."
+    elseif rot_val == 6 then
+      result = "Bane:\nThis unit is dealt 1 true damage at the start of each of it's turns."
+    end
+  -- illusion
+  elseif name     == "[e2b9e5]Illusion[-]: Calm And Fury" then
+    if rot_val == 1 or rot_val == 2 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die in a hex in range. When an enemy would target you, you may place yourself in this die's hex, swapping positions with any unit that may be occupying it. Then, exhaust this die. The targeting unit now determines its target again, if possible."
+    elseif rot_val == 3 or rot_val == 4 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die with 1 HP chip in an unoccupied hex in range. Enemies treat this die as an adventurer and party members treat it as an occupied hex. When its HP is removed, exhaust this die."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e2b9e5]Illusion[-]: Mesmerizing Grasp" then
+    if rot_val < 5 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die on a targetable non-quest enemy. This enemy's range stat and movement are reduced to 1. When this unit is defeated, exhaust this die."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e2b9e5]Illusion[-]: Pacify" then
+    if rot_val == 1 or rot_val == 2 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die on a targetable non-quest enemy. The next time that enemy would engage, it skips its engage. Then, exhaust this die and apply a Daze status die to that enemy."
+    elseif rot_val == 3 or rot_val == 4 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die on a targetable non-quest enemy. The next time that enemy would engage, it skips its engage. Then, drain this die and apply a Blind status die to that enemy."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e2b9e5]Illusion[-]: Mayhem" then
+    if rot_val == 1 or rot_val == 2 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die with 4 HP chips in an unoccupied hex in range. Enemies treat this die as an adventurer and party members treat it as an occupied hex. When all of this die's HP is removed, drain this die and recover up to 3 non-Mage Icon type skill dice."
+    elseif rot_val == 3 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die with 7 HP chips in an unoccupied hex in range. Enemies treat this die as an adventurer and party members treat it as an occupied hex. When an enemy targets this die, roll 2 enemy Combat dice and deal that rolled damage to the enemy unit before it uses skills or engages. If that enemy is defeated, its turn ends. When all of this die's HP is removed, drain this die."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e2b9e5]Illusion[-]: Voice Of Rapture" then
+    if rot_val == 1 or rot_val == 2 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nRemove all status dice from all party members. Then, deal damage equal to the total number of status dice removed to all enemies in play."
+    elseif rot_val == 3 or rot_val == 4 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nRemove all status dice from 1 party member. Then, deal true damage equal to the total number of status dice removed to all enemies in play."
+    else
+      result = "+1 Tenacity"
+    end
+  -- acrobatics
+  elseif name == "[f8e28d]Acrobatics[-]: Fleet Phantom" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    elseif rot_val == 2 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, you may move up to 3 hexes at the start of your turn."
+    elseif rot_val == 3 or rot_val == 4 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, you may move up to 4 hexes at the start of your turn."
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, you may move up to 5 hexes at the start of your turn."
+    end
+  elseif name == "[f8e28d]Acrobatics[-]: Rapid Manuever" then
+    if rot_val == 1 or rot_val == 2 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, you may move through enemies. After moving, deal 2 damage to each enemy you moved through."
+    elseif rot_val == 3 or rot_val == 4 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, you may move through enemies. After moving, heal 1 HP for each enemy you moved through."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[f8e28d]Acrobatics[-]: Relentnessness" then
+    if rot_val  < 4 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, if you are in Light Weapon Battle Form or Heavy Weapon Battle Form at the end of your turn, you may roll 1 enemy Combat die against each adjacent enemy individually. Rolled damage is true damage."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[f8e28d]Acrobatics[-]: Wind Walker" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    elseif rot_val == 6 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, your non-enduring class abilities cost 2 fewer tenacity (to a minimum of 1)."
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, your non-enduring class abilities cost 1 fewer tenacity (to a minimum of 1)."
+    end
+  elseif name == "[f8e28d]Acrobatics[-]: Expert Evasion" then
+    if rot_val < 3 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, if you are dealt damage, you may prevent all of that damage and immediately recover this die."
+    elseif rot_val == 6 then
+      result = "+1 Tenacity"
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, when you are engaged by an enemy, you may gain up to 3 light fatigue. For each fatigue gained, you may treat 1 enemy Combat die as a miss."
+    end
+  elseif name == "[f8e28d]Acrobatics[-]: Duelist Rebuff" then
+    if rot_val == 1 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, if you are dealt damage by an adjacent enemy, you may prevent that damage and force the enemy to deal the damage to a different enemy adjacent to you instead. When this die would be recovered, drain it instead."
+    elseif rot_val > 4 then
+      result = "+1 Tenacity"
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, if you take damage from an enemy engage, you may deal the amount of damage taken to an adjacent enemy and immediately recover this die."
+    end
+  elseif name == "[f8e28d]Acrobatics[-]: Defiance" then
+    if rot_val < 5 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, once per engage, you may reroll any 1 of your skill dice that results in a Tenacity Icon. You still gain the tenacity from the initial result."
+    else
+      result = "+1 Tenacity"
+    end
+  -- shadow
+  elseif name == "[e5edc5]Shadow[-]: Shadow Cloak" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[006835]■[-] Active [006835]■[-]\nGain a Stealth status die when you place this die in an active slot. When engaging an enemy, you may exhaust this die to ignore 1 defense on your target."
+    elseif rot_val == 5 then
+      result = "[006835]■[-] Active [006835]■[-]\nGain a Stealth status die when you place this die in an active slot. When engaging an enemy, you may exhaust this die to ignore 2 defense on your target."
+    elseif rot_val == 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nGain 1 light fatigue. Then gain a Stealth status die."
+    end
+  elseif name == "[e5edc5]Shadow[-]: Refreshing Shadows" then
+    if rot_val < 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nGain 1 bonus HP for each unit affected by a Stealth status die."
+    else
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nRemove up to 2 light fatigue from your cooldown track for each unit affected by a Stealth status die."
+    end
+  elseif name == "[e5edc5]Shadow[-]: Path Of Darkness" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    elseif rot_val > 1 and rot_val < 5 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die in an unoccupied hex any number of hexes away in a straight line. At the start of any unit's turn, you may remove a Stealth status die from your cooldown track to place yourself in this die's hex and exhaust this die. If a unit is occupying this die's hex, place that unit in the closest unoccupied hex."
+    else
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die in an unoccupied hex any number of hexes away in a straight line. At the start of any unit's turn, you may remove a Stealth status die from your cooldown track to place yourself in this die's hex and exhaust this die. If a unit is occupying this die's hex, place that unit in the closest unoccupied hex and deal it 1 true damage."
+    end
+  elseif name == "[e5edc5]Shadow[-]: Shadow Barrier" then
+    if rot_val < 5 then
+      result = "[006835]■[-] Active [006835]■[-]\nAfter an adventurer takes damage, they may take 1 additional damage to gain a Stealth status die. Then, exhaust this die."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e5edc5]Shadow[-]: Apect Of Terror" then
+    if rot_val < 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nIf you currently have a Stealth status die in your cooldown track, you may remove it to apply a Fear status die to an adjacent enemy."
+    elseif rot_val > 3 and rot_val < 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nIf you currently have a Stealth status die in your cooldown track, you may remove it to apply a Fear status die to an enemy on your tile."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e5edc5]Shadow[-]: Dark Veil" then
+    if rot_val < 6 then
+      result = "[006835]■[-] Active [006835]■[-]\nAt the start of your turn, you may reduce this die by 1 gain a Stealth status die. If this would be reduced to 0, exhaust it."
+    else
+      result = "+1 Tenacity"
+    end
+  -- speech
+  elseif name == "[b6c4be]Speech[-]: Intimidating Presence" then
+    result = "[8a0512]●[-] Drain [8a0512]●[-]\nCombine the values of all Intimidating Presence dice rolled this engage. Remove an adjacent non-quest enemy with HP equal to or less than this value from battle (it is not considered defeated)."
+  elseif name == "[b6c4be]Speech[-]: Persuasive Will" then
+    result = "[8a0512]●[-] Drain [8a0512]●[-]\nCombine the values of all Persuasive Will dice rolled this engage. Choose an adjacent enemy with a level equal to or less than this value. This unit becomes a companion controlled by you. At the end of this round, this unit becomes an enemy again."
+  elseif name == "[b6c4be]Speech[-]: Authority" then
+    result = "[8a0512]●[-] Drain [8a0512]●[-]\nCombine the values of all Authority dice rolled this engage. Any single adventurer may gain tenacity equal to or less than this value. Reduce tenacity gained by 1 for each hex of distance between you and that adventurer."
+  -- legerdemain
+  elseif name == "[d6d495]Legerdemain[-]: Locksmith" then
+    if rot_val == 6 then
+      result = "+1 Tenacity"
+    else
+      result = "Adjust any rolled lockpick die by 1."
+    end
+  elseif name == "[d6d495]Legerdemain[-]: Finders Keepers" then
+    if rot_val == 1 then
+      result = "Set all rolled dice to the sides of your choice."
+    elseif rot_val == 2 then
+      result = "Flip 1 rolled die to its opposite side."
+    elseif rot_val == 3 or rot_val == 6 then
+      result = "You must resolve this result. Exhaust this die and gain 1 light fatigue."
+    elseif rot_val == 4 then
+      result = "Modify any rolled die by up to 2."
+    elseif rot_val == 5 then
+      result = "Gain 1 additional attempt for the current lockpick check."
+    end
+  elseif name == "[d6d495]Legerdemain[-]: Light Fingers" then
+    if rot_val < 3 then
+      result = "Gain 1 Common Item from the shop. You may roll this die again."
+    elseif rot_val == 3 then
+      result = "Gain 1 Legendary Item from the shop. You may roll this die again."
+    elseif rot_val == 4 then
+      result = "Gain 2 tenacity."
+    elseif rot_val == 5 then
+      result = "You must resolve this result. Exhaust this die and gain 1 light fatigue."
+    elseif rot_val == 6 then
+      result = "+1 Tenacity"
+    end
+  elseif name == "[d6d495]Legerdemain[-]: Friends In Low Places" then
+    if rot_val > 4 then
+      result = "+1 Tenacity"
+    else
+      result = "Gain 1 additional town action."
+    end
+  -- heavy armor
+  elseif name == "[df7e7b]Heavy Armor[-]: Resolve" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    elseif rot_val > 1 and rot_val < 5 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, when you are dealt damage by an adjacent enemy, you may prevent 1 damage."
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, when you are dealt damage by an adjacent enemy, you may prevent 2 damage."
+    end
+  elseif name == "[df7e7b]Heavy Armor[-]: Constitution" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    elseif rot_val > 1 and rot_val < 5 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, when you are dealt damage by a non-adjacent enemy, you may prevent 1 damage."
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, when you are dealt damage by a non-adjacent enemy, you may prevent 2 damage."
+    end
+  elseif name == "[df7e7b]Heavy Armor[-]: Immovable" then
+    if rot_val == 6  then
+      result = "+1 Tenacity"
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, after an adjacent enemy engages you, deal that enemy damage equal to the number of available Combat skill dice you have."
+    end
+  elseif name == "[df7e7b]Heavy Armor[-]: Ironclad" then
+    if rot_val < 5 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, Resolve and Constitution dice in your cooldown track each prevent 1 additional damage."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[df7e7b]Heavy Armor[-]: Unstoppable" then
+    if rot_val < 5 then
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, you may move 1 additional hex for each Heavy Armor skill die in your cooldown track, and you may move into hexes occupied by non-quest units. When you do, the unit occupying the hex is placed in the closest unoccupied hex."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[df7e7b]Heavy Armor[-]: Juggernaught" then
+    if rot_val == 6 then
+      result = "+1 Tenacity"
+    else
+      result = "[662992]◆[-] Cooldown Track [662992]◆[-]\nWhile this die is in your cooldown track, you may gain 1 light fatigue to gain 2 tenacity each time you change battle form."
+    end
+  -- two handed
+  elseif name == "[e6a463]Two Handed[-]: Wrecking Blow" then
+    if rot_val < 3 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target."
+    elseif rot_val > 2 and rot_val < 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 3 damage to your target. Then, gain 2 light fatigue or 1 overfatigue."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e6a463]Two Handed[-]: Onslaught" then
+    if rot_val < 3 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 4 damage to your target. After this engage, gain a Bane status die."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nDeal 5 damage to your target."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e6a463]Two Handed[-]: Momentum" then
+    if rot_val < 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target for each fatigue in your cooldown track."
+    elseif rot_val == 4 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nRemove up to 1 fatigue from your cooldown track for each adjacent enemy. Place 1 of the remove fatigue on each of those enemies. Enemies with fatigue on them cannot target you. At the end of the round, these fatigue dice are removed."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e6a463]Two Handed[-]: Executioner" then
+    if rot_val < 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nGain 2 light fatigue or 1 overfatigue to immediately defeat an adjacent non-quest enemy that has less HP than you do."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e6a463]Two Handed[-]: Balanced Blade" then
+    if rot_val < 3 then
+      result = "[006835]■[-] Active [006835]■[-]\nEach time you would gain an overfatigue, you may place it in an active slot, if possible. On your turn, if all of your active slots are full, you may drain this die and deal 2 damage to an adjacent enemy for each overfatigue in your active slots. Then, place all overfatigue in your active slots back in the supply."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[006835]■[-] Active [006835]■[-]\nEach time you would gain overfatigue, you may place it in an active slot, if possible. As soon as all active slots are full, exhaust this die and place all overfatigue in your active slots back in the supply."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[e6a463]Two Handed[-]: Cleave" then
+    if rot_val < 3 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal damage to your target equal to your current HP. Deal half of this damage (rounded up) to all other enemies adjacent to you."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal damage to your target equal to your current HP. Deal half of this damage (rounded up) to all other enemies adjacent to you."
+    else
+      result = "+1 Tenacity"
+    end
+  -- one hand and shield
+  elseif name == "[ada79a]One Hand And Shield[-]: Shield Discipline" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    elseif rot_val == 6 then
+      result = "[006835]■[-] Active [006835]■[-]\nWhen you place this die in an active slot, deal X damage to your target. When you are dealt damage by an enemy, you may exhaust this die to prevent 2 damage."
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nWhen you place this die in an active slot, deal X damage to your target. When you are dealt damage by an enemy, you may exhaust this die to prevent 1 damage."
+    end
+  elseif name == "[ada79a]One Hand And Shield[-]: Heroic Slash" then
+    if rot_val < 3 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target for each Shield Discipline die in your active slots."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nExhaust any number of Shield Discipline dice from your active slots and deal 3 damage to your target for each die exhausted this way."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[ada79a]One Hand And Shield[-]: Defensive Posture" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nAfter you are engaged by an adjacent enemy, roll 1 enemy Combat die for each damage dealt to you. Deal the rolled damage back to the enemy. Then, exhaust this die."
+    end
+  elseif name == "[ada79a]One Hand And Shield[-]: Shield Charge" then
+    if rot_val < 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nRecover any number of Shield Discipline dice from your active slots and cooldown track. Deal 1 damage to your target for each Shield Discipline die recovered this way."
+    else
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 1 damage to your target for each One Hand and Shield skill die you have trained."
+    end
+  elseif name == "[ada79a]One Hand And Shield[-]: Power Bash" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nAfter this engage, remove all Shield Discipline dice from your cooldown track and active slots. Then, declare a target and roll the Shield Discipline dice as a free engage, applying the results as normal."
+    end
+  -- restoring light
+  elseif name == "[bdb9ad]Restoring Light[-]: Purge" then
+    if rot_val == 6 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nAt any time, you may exhaust this die to remove 1 status die from a party member and heal them for 1 HP."
+    end
+  elseif name == "[bdb9ad]Restoring Light[-]: Hasty Prayer" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nHeal each adventurer for 2 HP."
+    end
+  elseif name == "[bdb9ad]Restoring Light[-]: Breath Of Life" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nSelect an adventurer in range and then roll X enemy Combat dice. Heal that adventurer for HP equal to the damage rolled."
+    end
+  elseif name == "[bdb9ad]Restoring Light[-]: Honor The Dead" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    else
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\nPlace this die in any adventurer's cooldown track. At the end of their turn, heal them for X HP and reduce this die by 1. If this die would be reduced to 0, apply a Stealth status die to them and drain this die."
+    end
+  elseif name == "[bdb9ad]Restoring Light[-]: Rushed Ceremony" then
+    if rot_val < 3 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nHeal each adventurer to their full HP. Deploy a level 5 enemy to the closest unoccupied hex to you."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nDrained Icon: Set your HP to 1. Heal a different party member of your choice to their full HP."
+    else
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nTake up to 3 HP chips from each adventurer and redistribute them among adventurers as you choose (may exceed Health stat)."
+    end
+  elseif name == "[bdb9ad]Restoring Light[-]: Rite Of Passage" then
+    if rot_val == 6 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nAfter resolving your Recovery step you may drain this die. Your turn immediately ends. For the rest of the round, you cannot lose HP or gain status dice. At the end of the round, heal all adventurers to their full HP."
+    end
+  elseif name == "[bdb9ad]Restoring Light[-]: Master Ritualist" then
+    if rot_val < 4 then
+      result = "[006835]■[-] Active [006835]■[-]\nAfter an adventurer is defeated, including yourself, you may immediately drain this die and set that adventurer's HP to 5 (may exceed Health stat)."
+    else
+      result = "+1 Tenacity"
+    end
+  -- destruction staff
+  elseif name == "[768ccd]Destruction Staff[-]: Force Shock" then
+    if rot_val < 3 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target."
+    elseif rot_val == 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 4 damage to your target and 1 true damage to any 1 adventurer."
+    elseif rot_val == 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nGain 2 tenacity and deal 1 true damage to any 1 adventurer."
+    elseif rot_val == 6 then
+      result = "+1 Tenacity"
+    end
+  elseif name == "[768ccd]Destruction Staff[-]: Wall Of Elements" then
+    if rot_val < 3 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nApply a Daze status die to up to 2 enemies in range, including quest enemies."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nApply a Maim status die to 1 enemy in range."
+    elseif rot_val == 5 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nApply a Fear status die to 1 enemy in range and deal 1 true damage to any 1 adventurer."
+    elseif rot_val == 6 then
+      result = "+1 Tenacity"
+    end
+  elseif name == "[768ccd]Destruction Staff[-]: Destructive Touch" then
+    if rot_val == 1 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDefeat a level 1 enemy."
+    elseif rot_val > 1 and rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nChoose a level 1/5 enemy. Deal true damage equal to that enemy's current HP to adventurers, divided among them as you choose. Then, defeat that enemy."
+    elseif rot_val == 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDefeat a level 1/5 enemy. Apply a Bane status die to any 1 adventurer."
+    elseif rot_val == 6 then
+      result = "+1 Tenacity"
+    end
+  elseif name == "[768ccd]Destruction Staff[-]: Pulsar" then
+    if rot_val < 3 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 true damage to your target. Then, apply a Blind status die to it. After this engage, gain a Blind status die yourself."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 true damage to your target and 1 true damage to each unit adjacent to your target. All units that take damage from this skill then gain a Blind status die. After this engage, gain a Blind status die yourself."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[768ccd]Destruction Staff[-]: Elemental Drain" then
+    if rot_val < 5 then
+      result = "[575fad]◆[-] Status Effect [575fad]◆[-]\n[575fad]◆[-] Status Effect [575fad]◆[-]\nApply this die to your target. When the enemy this die is applied to is defeated, apply this die to an enemy adjacent to it. Then, deal that new enemy 2 true damage. If there are no adjacent enemies when this skill would trigger, recover this die."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[768ccd]Destruction Staff[-]: Elemental Rage" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    elseif rot_val == 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nChoose a cache in range and deal a total of 5 damage distributed as you choose among units within 2 hexes of that cache. Then, discard the cache from play."
+    else
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nChoose a cache in range and deal a total of 7 damage distributed as you choose among units within 2 hexes of that cache. Then, discard the cache from play."
+    end
+  elseif name == "[768ccd]Destruction Staff[-]: Ancient Knowledge" then
+    if rot_val > 4 then
+      result = "+1 Tenacity"
+    else
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nFor each of your available Mage type skill dice, deal your target 1 damage and heal for 1 HP."
+    end
+  -- bow
+  elseif name == "[a099ad]Bow[-]: Snipe" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    elseif rot_val == 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target. Ignore 1 defense on your target for this engage."
+    else
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 1 damage to your target. Ignore 1 defense on your target for this engage."
+    end
+  elseif name == "[a099ad]Bow[-]: Volley" then
+    if rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal a total of 4 damage, distributed as you choose among enemies adjacent to you. Then, place yourself in an unoccupied hex 2-4 hexes away from your current hex."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[a099ad]Bow[-]: Acid Spray" then
+    if rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nSelect up to 3 targetable enemies. Roll 2 D6 for each. Apply a Bane status die to each enemy for whom you roll a total of 7 or higher."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[a099ad]Bow[-]: Vinedusk Training" then
+    if rot_val < 5 then
+      result = "[006835]■[-] Active [006835]■[-]\nAt the start of your turn, you may exhaust this die to recover up to 2 Bow skill dice, or up to 3 if they are all Snipe dice."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[a099ad]Bow[-]: Arrow Barrage" then
+    if rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target. Then, choose to either roll Arrow Barrage again or exhaust it."
+    elseif rot_val == 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nYou must resolve this result. You are dealt 2 true damage unless you drain all skill dice rolled during this engage."
+    elseif rot_val == 6 then
+      result = "+1 Tenacity"
+    end
+  elseif name == "[a099ad]Bow[-]: Rapid Fire" then
+    if rot_val < 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target for each Snipe die in your cooldown track prior to this engage."
+    elseif rot_val == 4 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 damage to your target for each Snipe die in your cooldown track prior to this engage. Then, recover those dice, replacing them with light fatigue."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[a099ad]Bow[-]: Scatter Shot" then
+    if rot_val < 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nAll damage dealt to your target this engage may also be dealt to another targetable enemy. Defense ignored as a result of Snipe dice may also be ignored for this enemy."
+    else
+      result = "+1 Tenacity"
+    end
+  -- daedric summoning
+  elseif name == "[b3d0d5]Daedric Summoning[-]: Daedric Curse" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    elseif rot_val == 3 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 1 true damage to an adjacent enemy."
+    elseif rot_val == 4 or rot_val == 5 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 2 true damage to an adjacent enemy."
+    elseif rot_val == 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nDeal 1 true damage to an adjacent enemy. Then, any single adventurer may trigger 1 of their class abilities that cost 2 tenacity or less for free."
+    end
+  elseif name == "[b3d0d5]Daedric Summoning[-]: Bound Armaments" then
+    if rot_val < 3 then
+      result = "[006835]■[-] Active [006835]■[-]\nAt the end of any unit's turn, you may choose an adventurer in Light Weapon Battle Form, Heavy Weapon Battle Form, or Ranged Weapon Battle Form to perform an engage, rolling 3 enemy Combat dice. This engage ignores enemy skill: Ethereal. Then, exhaust this die."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[006835]■[-] Active [006835]■[-]\nAt the end of any unit's turn, you may choose an adventurer in Light Weapon Icon, Heavy Weapon Icon, or Ranged Weapon Icon to perform an engage, rolling 2 of their available skill dice. If those dice would be exhausted, they are recovered instead. Then, exhaust this die."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[b3d0d5]Daedric Summoning[-]: Power Stone" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    elseif rot_val > 2 and rot_val ~= 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nYou may change the result of up to 1 other skill die you rolled this engage to a side of your choice."
+    elseif rot_val == 6 then
+      result = "[c86d01]★[-] Instant [c86d01]★[-]\nYou may change the result of up to 2 other skill dice you rolled this engage to a side of your choice."
+    end
+  elseif name == "[b3d0d5]Daedric Summoning[-]: Expert Summoner" then
+    if rot_val == 4 then
+      result = "[006835]■[-] Active [006835]■[-]\nThe Combat stat and movement of companions you control are increased by 1. After 1 of these companions engages, reduce this die by 1. If this die would be reduced to 0, exhaust it."
+    elseif rot_val == 5 then
+      result = "[006835]■[-] Active [006835]■[-]\nThe Combat stat and movement of companions you control are increased by 2. After 1 of these companions engages, reduce this die by 1. If this die would be reduced to 0, exhaust it."
+    elseif rot_val == 6 then
+      result = "[006835]■[-] Active [006835]■[-]\nThe Combat stat and movement of companions you control are increased by 3. After 1 of these companions engages, reduce this die by 1. If this die would be reduced to 0, exhaust it."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[b3d0d5]Daedric Summoning[-]: Summon" then
+    if rot_val < 3 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nDeploy companion unit: Clannfear to an unoccupied adjacent hex. The Clannfear is a companion controlled by you. This companion is removed at the end of battle."
+    elseif rot_val > 2 and rot_val < 5 then
+      result = "[8a0512]●[-] Drain [8a0512]●[-]\nDeploy companion unit: Attronach to an unoccupied adjacent hex. The Attronach is a companion controlled by you. This companion is removed at the end of battle."
+    else
+      result = "+1 Tenacity"
+    end
+  elseif name == "[b3d0d5]Daedric Summoning[-]: Tempered Soul" then
+    if rot_val < 5 then
+      result = "Select any level 1/5 enemy from the defeated stack. Deploy it with full HP to an unoccupied adjacent hex. This unit is now a companion controlled by you. This companion is removed at the end of battle."
+    else
+      result = "+1 Tenacity"
+    end
+  -- light armor
+  elseif name == "[b1d0f0]Light Armor[-]: Grace" then
+    if rot_val == 1 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nOnce per move action, you may reduce this die by 1 to add your Magicka to your Stamina when determining the number of hexes you may move."
+    end
+  elseif name == "[b1d0f0]Light Armor[-]: Spell Warding" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nOnce per turn, when engaged by an enemy, you may reduce this die by any number to prevent 1 damage. You may then recover a single Mage Icon type skill die equal in level to the value by which you reduced this die."
+    end
+  elseif name == "[b1d0f0]Light Armor[-]: Evocation" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nReduce this die by 1 to increase a different Light Armor die in any adventurer's active slot by 1."
+    end
+  elseif name == "[b1d0f0]Light Armor[-]: Enchant Weapon" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nWhen engaging in any battle form other than Magic Battle Form, reduce this die by 1 to reroll any 1 rolled skill die. If you do so, this engage also ignores enemy skill: Ethereal."
+    end
+  elseif name == "[b1d0f0]Light Armor[-]: Annulment" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nYou may reduce this die by 1 to prevent 1 true damage, by 2 to ignore gaining a status die, or by 3 to ignore all of a non-quest enemy's skills, either when engaging or when being engaged."
+    end
+  elseif name == "[b1d0f0]Light Armor[-]: Prodigy" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nDuring an Adventurers Rest step, you may reduce this by 1 to heal for 1 additional HP and recover 1 additional die."
+    end
+  elseif name == "[b1d0f0]Light Armor[-]: Concentration" then
+    if rot_val < 3 then
+      result = "+1 Tenacity"
+    else
+      result = "[006835]■[-] Active [006835]■[-]\nBefore you engage, you may reduce this die by 1 to add 2 enemy Combat dice to your roll, even if in Magic Battle Form. These dice deal damage to your target."
+    end
+  else
+    return
+  end
+  die_obj.setDescription(result)
+end
+
+
+function onObjectNumberTyped(object, player_color, number)
+  if object.type == "Dice" then
+    Wait.time(function()
+    object.setDescription("")
+    local rot_val = object.getRotationValue()
+    label_die_result(object, rot_val)
+    end, .5)
+  end
+end
+
+
+function onObjectRandomize(object, player_color)
+  if object.type ~= "Dice" then return end
+  object.setDescription("")
+  function coroutine_monitor_die()
+    repeat
+      if not object.resting then
+        coroutine.yield(0)
+      end
+    until object.resting
+
+    local value = object.getRotationValue()
+    object.setRotationValue(value)
+    label_die_result(object, value)
+    return 1
+  end
+  startLuaCoroutine(self, "coroutine_monitor_die")
+end
+
+
+function onObjectEnterZone(zone, obj)
+  if zone.hasTag('dice_zone') and obj.hasTag('dice_zone') then
+    local die_slot_bags = {
+      ["[f8e28d]Acrobatics[-]"]          = getObjectFromGUID("6d89c2"),
+      ["[a099ad]Bow[-]"]                 = getObjectFromGUID("db5580"),
+      ["Combat"]                         = getObjectFromGUID("441f00"),
+      ["[b3d0d5]Daedric Summoning[-]"]   = getObjectFromGUID("25be0c"),
+      ["[768ccd]Destruction Staff[-]"]   = getObjectFromGUID("3c306d"),
+      ["[df7e7b]Heavy Armor[-]"]         = getObjectFromGUID("10fcd4"),
+      ["[e2b9e5]Illusion[-]"]            = getObjectFromGUID("c09813"),
+      ["[d6d495]Legerdemain[-]"]         = getObjectFromGUID("c8b9dd"),
+      ["[b1d0f0]Light Armor[-]"]         = getObjectFromGUID("e0d41f"),
+      ["[ada79a]One Hand And Shield[-]"] = getObjectFromGUID("c1c1fa"),
+      ["[bdb9ad]Restoring Light[-]"]     = getObjectFromGUID("854dab"),
+      ["[e5edc5]Shadow[-]"]              = getObjectFromGUID("6ccfde"),
+      ["[b6c4be]Speech[-]"]              = getObjectFromGUID("049614"),
+      ["[e6a463]Two Handed[-]"]          = getObjectFromGUID("13826d"),
+    }
+  
+    if string.find(obj.getName(), "atigue") then return end
+    pos = nil
+    if not zone.hasTag('no_slot_tile') then
+      -- local rot_value = obj.getRotationValue()
+      -- obj.setRotation((rot_value == 1 and {270,0,0}) or (rot_value == 2 and {0,0,0}) or
+      --                 (rot_value == 3 and {0,0,270}) or (rot_value == 4 and {0,0,90}) or
+      --                 (rot_value == 5 and {0,0,180}) or (rot_value == 6 and {0,0,90}))
+      pos = zone.getPosition()
+      pos.y = 1.50
+      obj.setGMNotes(string.format("%.2f", pos.x) .. ", " .. string.format("%.2f", pos.y) .. ", " .. string.format("%.2f", pos.z))
+    end
+  end
+  if (zone.hasTag('skill_token_warrior') or zone.hasTag('skill_token_rogue') or zone.hasTag('skill_token_mage') or zone.hasTag('skill_token_combat')) and
+  (obj.hasTag('skill_token_warrior') or obj.hasTag('skill_token_rogue') or obj.hasTag('skill_token_mage') or obj.hasTag('skill_token_combat')) then
+    local skill_name    = string.match(obj.getName(), "^(.-) Skill Line Token$")
+    local skill_trained = false
+    local handzone      = nil
+    local tablezone     = nil
+    local color         = nil
+    if zone.hasTag('area_red') then
+      handzone  = getObjectFromGUID("d809c7")
+      tablezone = getObjectFromGUID("941163")
+      color     = "Red"
+    end
+    if zone.hasTag('area_orange') then
+      handzone  = getObjectFromGUID("ca36a0")
+      tablezone = getObjectFromGUID("c371f5")
+      color     = "Orange"
+    end
+    if zone.hasTag('area_blue') then
+      handzone  = getObjectFromGUID("ccdf9e")
+      tablezone = getObjectFromGUID("d1ec24")
+      color     = "Blue"
+    end
+    if zone.hasTag('area_green') then
+      handzone  = getObjectFromGUID("6e73a1")
+      tablezone = getObjectFromGUID("60d097")
+      color     = "Green"
+    end
+    if handzone == nil or tablezone == nil or color == nil then return end
+    local hand_objects = Player[color].getHandObjects()
+    for _, hand_object in pairs(hand_objects) do
+      if string.find(hand_object.getName(), skill_name) then
+        return
+      end
+    end
+    local table_objects = tablezone.getObjects()
+    for _, table_object in pairs(table_objects) do
+      if string.find(table_object.getName(), skill_name) and table_object.type == "Card" then
+        return
+      end
+    end
+    if skill_trained then return end
+    local skill_deck = nil
+    for _, object in pairs(getObjectFromGUID("6c3979").getObjects()) do
+      if object.type == "Deck" then
+        skill_deck = object
+      end
+    end
+    if skill_deck == nil then return end
+    local skill_card   = nil
+    local deck_objects = skill_deck.getObjects()
+    for _, deck_object in pairs(deck_objects) do
+      if deck_object.name == skill_name then
+        skill_card = skill_deck.takeObject({guid=deck_object.guid})
+        break
+      end
+    end
+    if skill_card == nil then return end
+    skill_card.setRotation(skill_card.getName() == "Combat" and {0, 180, 180} or {0, 180, 0})
+    skill_card.setPositionSmooth(handzone.getPosition(), false, true)
+    if skill_name ~= "Combat" then
+      if Player[color].steam_name ~= nil then
+        broadcastToAll("[" .. Color.fromString(color):toHex() .. "]" .. Player[color].steam_name .. "[-] has trained a new skill: " .. skill_name, "White")
+      else
+        broadcastToAll("[" .. Color.fromString(color):toHex() .. "]" .. color .. " Player[-] has trained a new skill: " .. skill_name, "White")
+      end
+    end
+  end
+end
+
+
+function onObjectLeaveContainer(bag, obj)
+  -- ensure all dice have 'dice_zone' tag upon entering play from bag
+  for _, v in pairs(supply_dice_bags) do
+    if bag.getGUID() == v and obj.type == "Dice" then
+      obj.addTag('dice_zone')
+    end
+  end
+end

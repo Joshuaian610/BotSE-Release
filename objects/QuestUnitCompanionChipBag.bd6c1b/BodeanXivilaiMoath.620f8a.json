@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673433073/2EC2D60A2DC56B1773F3DD307BE3CA6B6C5A7680/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673433073/2EC2D60A2DC56B1773F3DD307BE3CA6B6C5A7680/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Motivate:\nAt the start of this unit’s turn, all adjacent allied units gain 1 tenacity, and all adjacent opposing units lose 1 tenacity.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "620f8a",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[3]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/BodeanXivilaiMoath.620f8a.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Bodean / Xivilai Moath",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyDaedra_enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.881,
+    "posY": 2.205,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 176,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

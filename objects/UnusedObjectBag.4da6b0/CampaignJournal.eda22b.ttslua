@@ -1,0 +1,577 @@
+--Set this to true while editing and false when you have finished
+disableSave = false
+--Remember to set this to false once you are done making changes
+--Then, after you save & apply it, save your game too
+
+--Color information for button text (r,g,b, values of 0-1)
+buttonFontColor = {0,0,0}
+--Color information for button background
+buttonColor = {232/255, 213/255, 190/255}
+--Change scale of button (Avoid changing if possible)
+buttonScale = {0.1,0.1,0.1}
+
+--This is the button placement information
+defaultButtonData = {
+    --Add checkboxes
+    checkbox = {},
+    --Add counters that have a + and - button
+    counter = {},
+    --Add editable text boxes
+    textbox = {
+        --[[
+        pos       = the position (pasted from the helper tool)
+        rows      = how many lines of text you want for this box
+        width     = how wide the text box is
+        font_size = size of text. This and "rows" effect overall height
+        label     = what is shown when there is no text. "" = nothing
+        value     = text entered into box. "" = nothing
+        alignment = Number to indicate how you want text aligned
+                    (1=Automatic, 2=Left, 3=Center, 4=Right, 5=Justified)
+        ]]
+        -- Party Experience
+        {
+            pos       ={-0.63,0.1,-1.649},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Adventurer Names 1 (Top down)
+        {
+            pos       ={0.628,0.1,-1.649},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Adventurer Names 2
+        {
+            pos       ={0.628,0.1,-1.568},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Adventurer Names 3
+        {
+            pos       ={0.628,0.1,-1.486},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Adventurer Names 4
+        {
+            pos       ={0.628,0.1,-1.398},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 1 1
+        {
+            pos       ={-0.63,0.1,-1.115},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 1 2
+        {
+            pos       ={-0.63,0.1,-1.03},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 1 3
+        {
+            pos       ={-0.63,0.1,-0.946},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 1 4
+        {
+            pos       ={-0.63,0.1,-0.863},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 2 1
+        {
+            pos       ={0.628,0.1,-1.115},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 2 2
+        {
+            pos       ={0.628,0.1,-1.03},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 2 3
+        {
+            pos       ={0.628,0.1,-0.946},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Session Quest 2 4
+        {
+            pos       ={0.628,0.1,-0.863},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Major Keywords 1
+        {
+            pos       ={-0.63,0.1,-0.577},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Major Keywords 2
+        {
+            pos       ={-0.63,0.1,-0.493},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Major Keywords 3
+        {
+            pos       ={-0.63,0.1,-0.410},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Major Keywords 4
+        {
+            pos       ={-0.63,0.1,-0.326},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Minor Keywords 1
+        {
+            pos       ={0.628,0.1,-0.577},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Minor Keywords 2
+        {
+            pos       ={0.628,0.1,-0.493},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Minor Keywords 3
+        {
+            pos       ={0.628,0.1,-0.410},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Minor Keywords 4
+        {
+            pos       ={0.628,0.1,-0.326},
+            rows      = 1,
+            width     = 5500,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 1
+        {
+            pos       ={-0.01,0.1,0.403},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 2
+        {
+            pos       ={-0.01,0.1,0.509},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 3
+        {
+            pos       ={-0.01,0.1,0.615},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 4
+        {
+            pos       ={-0.01,0.1,0.721},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 5
+        {
+            pos       ={-0.01,0.1,0.827},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 6
+        {
+            pos       ={-0.01,0.1,0.933},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 7
+        {
+            pos       ={-0.01,0.1,1.039},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 8
+        {
+            pos       ={-0.01,0.1,1.145},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 9
+        {
+            pos       ={-0.01,0.1,1.251},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 10
+        {
+            pos       ={-0.01,0.1,1.357},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 11
+        {
+            pos       ={-0.01,0.1,1.463},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 12
+        {
+            pos       ={-0.01,0.1,1.569},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 13
+        {
+            pos       ={-0.01,0.1,1.675},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 14
+        {
+            pos       ={-0.01,0.1,1.781},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 15
+        {
+            pos       ={-0.01,0.1,1.887},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+        -- Notes 16
+        {
+            pos       ={-0.01,0.1,1.993},
+            rows      = 1,
+            width     = 13565,
+            font_size = 300,
+            label     = "",
+            value     = "",
+            alignment = 3
+        },
+    }
+}
+
+
+
+--Lua beyond this point, I recommend doing something more fun with your life
+
+
+
+--Save function
+function updateSave()
+    saved_data = JSON.encode(ref_buttonData)
+    if disableSave==true then saved_data="" end
+    self.script_state = saved_data
+end
+
+--Startup procedure
+function onload(saved_data)
+    if disableSave==true then saved_data="" end
+    if saved_data ~= "" then
+        local loaded_data = JSON.decode(saved_data)
+        ref_buttonData = loaded_data
+    else
+        ref_buttonData = defaultButtonData
+    end
+
+    spawnedButtonCount = 0
+    createCheckbox()
+    createCounter()
+    createTextbox()
+end
+
+
+
+--Click functions for buttons
+
+
+
+--Checks or unchecks the given box
+function click_checkbox(tableIndex, buttonIndex)
+    if ref_buttonData.checkbox[tableIndex].state == true then
+        ref_buttonData.checkbox[tableIndex].state = false
+        self.editButton({index=buttonIndex, label=""})
+    else
+        ref_buttonData.checkbox[tableIndex].state = true
+        self.editButton({index=buttonIndex, label=string.char(10008)})
+    end
+    updateSave()
+end
+
+--Applies value to given counter display
+function click_counter(tableIndex, buttonIndex, amount)
+    ref_buttonData.counter[tableIndex].value = ref_buttonData.counter[tableIndex].value + amount
+    self.editButton({index=buttonIndex, label=ref_buttonData.counter[tableIndex].value})
+    updateSave()
+end
+
+--Updates saved value for given text box
+function click_textbox(i, value, selected)
+    if selected == false then
+        ref_buttonData.textbox[i].value = value
+        updateSave()
+    end
+end
+
+--Dud function for if you have a background on a counter
+function click_none() end
+
+
+
+--Button creation
+
+
+
+--Makes checkboxes
+function createCheckbox()
+    for i, data in ipairs(ref_buttonData.checkbox) do
+        --Sets up reference function
+        local buttonNumber = spawnedButtonCount
+        local funcName = "checkbox"..i
+        local func = function() click_checkbox(i, buttonNumber) end
+        self.setVar(funcName, func)
+        --Sets up label
+        local label = ""
+        if data.state==true then label=string.char(10008) end
+        --Creates button and counts it
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=data.pos, height=data.size, width=data.size,
+            font_size=data.size, scale=buttonScale,
+            color=buttonColor, font_color=buttonFontColor
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+--Makes counters
+function createCounter()
+    for i, data in ipairs(ref_buttonData.counter) do
+        --Sets up display
+        local displayNumber = spawnedButtonCount
+        --Sets up label
+        local label = data.value
+        --Sets height/width for display
+        local size = data.size
+        if data.hideBG == true then size = 0 end
+        --Creates button and counts it
+        self.createButton({
+            label=label, click_function="click_none", function_owner=self,
+            position=data.pos, height=size, width=size,
+            font_size=data.size, scale=buttonScale,
+            color=buttonColor, font_color=buttonFontColor
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+
+        --Sets up add 1
+        local funcName = "counterAdd"..i
+        local func = function() click_counter(i, displayNumber, 1) end
+        self.setVar(funcName, func)
+        --Sets up label
+        local label = "+"
+        --Sets up position
+        local offsetDistance = (data.size/2 + data.size/4) * (buttonScale[1] * 0.002)
+        local pos = {data.pos[1] + offsetDistance, data.pos[2], data.pos[3]}
+        --Sets up size
+        local size = data.size / 2
+        --Creates button and counts it
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=pos, height=size, width=size,
+            font_size=size, scale=buttonScale,
+            color=buttonColor, font_color=buttonFontColor
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+
+        --Sets up subtract 1
+        local funcName = "counterSub"..i
+        local func = function() click_counter(i, displayNumber, -1) end
+        self.setVar(funcName, func)
+        --Sets up label
+        local label = "-"
+        --Set up position
+        local pos = {data.pos[1] - offsetDistance, data.pos[2], data.pos[3]}
+        --Creates button and counts it
+        self.createButton({
+            label=label, click_function=funcName, function_owner=self,
+            position=pos, height=size, width=size,
+            font_size=size, scale=buttonScale,
+            color=buttonColor, font_color=buttonFontColor
+        })
+        spawnedButtonCount = spawnedButtonCount + 1
+    end
+end
+
+function createTextbox()
+    for i, data in ipairs(ref_buttonData.textbox) do
+        --Sets up reference function
+        local funcName = "textbox"..i
+        local func = function(_,_,val,sel) click_textbox(i,val,sel) end
+        self.setVar(funcName, func)
+
+        self.createInput({
+            input_function = funcName,
+            function_owner = self,
+            label          = data.label,
+            alignment      = data.alignment,
+            position       = data.pos,
+            scale          = buttonScale,
+            width          = data.width,
+            height         = (data.font_size*data.rows)+24,
+            font_size      = data.font_size,
+            color          = buttonColor,
+            font_color     = buttonFontColor,
+            value          = data.value,
+        })
+    end
+end

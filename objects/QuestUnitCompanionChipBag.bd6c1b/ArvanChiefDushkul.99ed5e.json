@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673367315/EED199DFAF1F2D2CC30CF75620E993E95D74FE87/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673367315/EED199DFAF1F2D2CC30CF75620E993E95D74FE87/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "True Strike:\nIf all of this unit’s rolled enemy Combat dice result in a 1, this unit deals true damage.\n\nVindictive:\nThis unit increases its Combat stat by the number of opposing adventurers.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "99ed5e",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[3]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/ArvanChiefDushkul.99ed5e.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Arvan / Chief Dushkul",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.81,
+    "posY": 2.212,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 170,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

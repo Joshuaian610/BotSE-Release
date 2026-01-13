@@ -1,0 +1,85 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "ValenwoodReference2.10d9da",
+    "ValenwoodReference1.f03d35",
+    "ForestBlight.eb8967",
+    "ValenwoodDelves.a834ae",
+    "ValenwoodEncountersPeaceful.6552e3",
+    "ValenwoodEncountersConflict.0f7d9f",
+    "ValenwoodGazetteer.89eabf",
+    "ValenwoodOverlandMap.9dc837",
+    "WoodOrcMarauderWoodOrcBandit.87af65",
+    "ThunderbugHoarvor.e8e479",
+    "WoodElfStalkerWoodElfRanger.12f951",
+    "HollowGuardianHollowPredator.d56780"
+  ],
+  "ContainedObjects_path": "ProvinceBagValenwood.b3f303",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397040165/6FC40CD169B65FE782193347D89DB1472A2FAD33/",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418397039652/1938968F9CF2177CDC2139C311A7DCD23A5DF67C/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b3f303",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "ProvinceBagValenwood.b3f303.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Province Bag Valenwood",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 62.5,
+    "posY": 3.016,
+    "posZ": 28.504,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

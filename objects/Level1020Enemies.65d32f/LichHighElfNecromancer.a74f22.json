@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674052519/5D1C2BCB31A23EF988C4DEDD848527576AF958AA/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674052519/5D1C2BCB31A23EF988C4DEDD848527576AF958AA/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Native:\nThis unit has the skill specific to the current province.\n\nRot:\nAfter this unit is defeated by an adventurer, that adventurer gains 1 overfatigue.\n\nNecromancy:\nAt the end of this unit’s turn, deploy the top unit of the defeated stack to the closest unoccupied hex to this unit with player count HP. This new enemy does not take a turn this round.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "a74f22",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[7]",
+  "LuaScript_path": "Level1020Enemies.65d32f/LichHighElfNecromancer.a74f22.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Lich / High Elf Necromancer",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman_enemyDaedra",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.889,
+    "posY": 0.022,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0,
+        "y": 0.1,
+        "z": 0
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "http://i.imgur.com/0Wu3Hhf.png",
+    "WidthScale": 0
+  },
+  "Description": "Press + or - to set how many dice you would like to roll.\n\nPress the Print button to turn on/off printing.\n\nClick the number to roll the dice. On each roll, any previously rolled dice will be deleted.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "213685",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "{\"hmd\":1,\"pr\":false}",
+  "LuaScript_path": "EnemyCombatDiceRoller.213685.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "Enemy Combat Dice Roller",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 44.97,
+    "posY": 1.21,
+    "posZ": -14.84,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.5,
+    "scaleY": 1,
+    "scaleZ": 0.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

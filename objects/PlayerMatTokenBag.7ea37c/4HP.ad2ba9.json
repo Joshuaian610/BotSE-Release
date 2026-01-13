@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_path": "4HP.ad2ba9",
+  "CustomImage": {
+    "CustomToken": {
+      "MergeDistancePixels": 15,
+      "Stackable": false,
+      "StandUp": false,
+      "Thickness": 0.208215743
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28817515677675293/DCCDEA562B6EAAFF35F6B03CDDEAC125FCE953C9/",
+    "WidthScale": 0
+  },
+  "Description": "Change state for 5HP",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ad2ba9",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Token",
+  "Nickname": "4 HP",
+  "Snap": true,
+  "States_path": {
+    "1": "5HP.1708b6"
+  },
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 31.54,
+    "posY": 1.692,
+    "posZ": -15.406,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.23,
+    "scaleY": 1,
+    "scaleZ": 0.23
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

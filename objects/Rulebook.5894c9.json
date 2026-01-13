@@ -1,0 +1,51 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23522,
+    "g": 0.23522,
+    "r": 0.23522
+  },
+  "CustomPDF": {
+    "PDFPage": 0,
+    "PDFPageOffset": 0,
+    "PDFPassword": "",
+    "PDFUrl": "https://steamusercontent-a.akamaihd.net/ugc/28818234559180227/80E30BA044D38D294C3CB17364A8A3CF3E8BE74D/"
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "5894c9",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_PDF",
+  "Nickname": "Rulebook",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "Transform": {
+    "posX": 10.5,
+    "posY": 12.47,
+    "posZ": 54.3,
+    "rotX": 60,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 6.5,
+    "scaleY": 1,
+    "scaleZ": 6.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

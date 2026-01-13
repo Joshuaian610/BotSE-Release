@@ -1,0 +1,86 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "AncestralTomb.d9025a",
+    "FertileFields.4d47fe",
+    "VolcanicFissure.1f3dcf",
+    "MeltedArmory.087023",
+    "AshenSuite.078faf",
+    "Fungi-InfestedBarracks.7a4888",
+    "SlagFlow.abc688",
+    "Outpost.3f2bf4",
+    "DesertedHovel.96b05d",
+    "CharredGraveyard.02d08b"
+  ],
+  "ContainedObjects_path": "MorrowindDelves.97681a",
+  "CustomDeck": {
+    "86": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14147321131299159145/90079658D030D085023079157E8F478F4533DBFB/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10431566957499016573/52C1FB07AF485F683C4FAFD16E06DCAE19D99E59/",
+      "NumHeight": 2,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    8609,
+    8608,
+    8607,
+    8606,
+    8605,
+    8604,
+    8603,
+    8602,
+    8601,
+    8600
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "97681a",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Morrowind Delves",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "delve",
+    "obj_mw"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 32.837,
+    "posY": 3.016,
+    "posZ": 26.998,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

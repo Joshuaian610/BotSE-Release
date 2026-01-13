@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "OneFortheWilderqueen.b3b462",
+    "IntroducingArvan.2a5c70",
+    "JungleJumble.fd26ef",
+    "SharetheWoods.170db8",
+    "MoneyTree.8bac50",
+    "DeslandraWasRight.3a2223",
+    "ThouShaltNotWeed.e0d9c0",
+    "OutofSightOutofMind.9dc1c2"
+  ],
+  "ContainedObjects_path": "ValenwoodEncountersPeaceful.6552e3",
+  "CustomDeck": {
+    "100": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/16826218065801254954/5987197BEBA20F5C8705A048982AD88FCAF97670/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/11116523238038407701/A61A10614AB111ABAA97D6AA19C68A24C689D8E2/",
+      "NumHeight": 4,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    10015,
+    10014,
+    10013,
+    10012,
+    10011,
+    10010,
+    10009,
+    10008
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6552e3",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Valenwood Encounters Peaceful",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_peaceful",
+    "obj_vw"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 70.853,
+    "posY": 2.766,
+    "posZ": 45.741,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

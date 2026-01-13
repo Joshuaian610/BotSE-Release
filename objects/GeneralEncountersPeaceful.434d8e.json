@@ -1,0 +1,86 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "ParttheVeil.3ba1cf",
+    "HuntorGather.990e20",
+    "ForWhomtheTollSells.abb87b",
+    "FeatsofStrength.ca835c",
+    "SnareandSnareAlike.847b8e",
+    "FutureImperfect.9d958e",
+    "PeaceandQuiet.22cfb0",
+    "IllusionsofGrandeur.ff592a",
+    "QuestoftheBest.620e60",
+    "TheEightProvide.87ba15"
+  ],
+  "ContainedObjects_path": "GeneralEncountersPeaceful.434d8e",
+  "CustomDeck": {
+    "108": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15909500411437600158/A6A064E436A67F7B88CC65C144D2D52E823077ED/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10855492560291937561/D0D89EF86E19E6C413C27841FD94DE1205C6EB04/",
+      "NumHeight": 5,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    10819,
+    10818,
+    10817,
+    10816,
+    10815,
+    10814,
+    10813,
+    10812,
+    10811,
+    10810
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "434d8e",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "General Encounters Peaceful",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_peaceful",
+    "obj_ge"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 44.966,
+    "posY": 1.407,
+    "posZ": -8.252,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,3 @@
+function onObjectLeaveContainer(container, leave_object)
+    if container == self then leave_object.addTag('delve_card') end
+end

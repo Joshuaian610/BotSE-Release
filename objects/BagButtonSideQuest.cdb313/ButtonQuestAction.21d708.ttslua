@@ -1,0 +1,63 @@
+function onLoad()
+    create_all()
+end
+
+
+function create_all()
+    self.createButton({
+        label          = "",
+        click_function = "quest_action",
+        function_owner = self,
+        position       = {0.00, 0.31, 0.00},
+        height         = 995,
+        width          = 1165,
+        scale          = {x=1.00, y=1.00, z=1.00},
+        color          = {1, 1, 1, 0},
+        hover_color    = {1, 1, 1, .6},
+        tooltip        = "Click this button to take a Quest Board Town Action."
+    })
+end
+
+
+function animate_button()
+    self.clearButtons()
+    Wait.time(function() create_all() end, 1)
+    local pos = self.getPosition()
+    pos.y = pos.y - .29
+    self.setPosition(pos)
+    pos.y = pos.y + .29
+    self.setPositionSmooth(pos, false, false)
+end
+
+
+function quest_action()
+    animate_button()
+    local quest_deck = getObjectFromGUID("ba585a")
+    if quest_deck == nil then
+        for _, object in pairs(getObjectFromGUID("819f35").getObjects()) do
+            if object.type == "Deck" then quest_deck = object end
+        end
+    end
+    local pulled_quests_out = false
+    for _, object in pairs(getObjectFromGUID("b5dd6d").getObjects()) do
+        if object.hasTag('pulled_quest') then
+            pulled_quests_out = true
+            broadcastToAll("Clear all Side Quest cards from central play area before using this button.", "Orange")
+            return
+        end
+    end
+    if quest_deck ~= nil and not pulled_quests_out then
+        local quest_1 = quest_deck.takeObject()
+        Wait.frames(function()
+        quest_1.addTag('pulled_quest')
+        quest_1.setRotation({0, 180, 0})
+        quest_1.setPositionSmooth({-10.00, 1.70, 12.00})
+        end)
+        local quest_2 = quest_deck.takeObject()
+        Wait.frames(function()
+        quest_2.addTag('pulled_quest')
+        quest_2.setRotation({0, 180, 0})
+        quest_2.setPositionSmooth({-5.00, 1.70, 12.00})
+        end)
+    end
+end

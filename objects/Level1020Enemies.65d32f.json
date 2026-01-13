@@ -1,0 +1,89 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.183,
+        "y": 4.468,
+        "z": 0.306
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "WoodElfDeadeyeImperialEnforcer.d7cc8e",
+    "TitanOgre.3d38fb",
+    "StormAtronachBanekin.2ffcc3",
+    "NordPyromancerOrcWizard.3410e3",
+    "LichHighElfNecromancer.a74f22",
+    "LamiaDreugh.676c0f",
+    "KhajiitCutthroatDarkElfSentry.9a4d0b",
+    "HarpyGiantBat.b5c815",
+    "HajMotaGiantSnake.c5d302",
+    "FrostAtronachWraithOfCrows.c6d5cc",
+    "FlameAtronachScamps.e4a30c",
+    "GoblinButcherGoblinShaman.12bab0",
+    "GiantNordSwordmaster.0cff75",
+    "DremoraTroll.2a8fbb",
+    "BullMammothMammoth.fe4f53",
+    "BretonArchmageKhajiitCultist.f8ae81",
+    "ArgonianWarlordRedguardMercenary.504533"
+  ],
+  "ContainedObjects_path": "Level1020Enemies.65d32f",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396411641/CBF982CB5795E5393A18C20B2CE0313D12A31B17/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/28819418396410224/6094A8EDBD93D805AC560F4427C8602ED37817A5/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "Note: Returning objects to this bag via \"Search\" window, or setting this bag to \"Random\" order will break scripting!",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "65d32f",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "Level1020Enemies.65d32f.ttslua",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Level 10 / 20 Enemies",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.648,
+    "posY": -0.33,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.7,
+    "scaleY": 0.7,
+    "scaleZ": 0.7
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

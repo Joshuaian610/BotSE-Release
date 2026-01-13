@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.11299,
+    "g": 0.39199,
+    "r": 0.956
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/13527135292495733036/E4C15763E56217913EFA9649788C603FF866236E/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/13527135292495733036/E4C15763E56217913EFA9649788C603FF866236E/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "5ad694",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Pad Item 1 Orange",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -6.937,
+    "posY": 1.138,
+    "posZ": -25.367,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 2.22,
+    "scaleY": 1,
+    "scaleZ": 2.35
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,70 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 1.839,
+        "y": 0.304,
+        "z": 0.081
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.09399,
+    "g": 0.09999,
+    "r": 0.856
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.304167181,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/11095272869298612975/E850C89D5A1FBEC65DF432D5558D5F7DDBE3C37A/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/11095272869298612975/E850C89D5A1FBEC65DF432D5558D5F7DDBE3C37A/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b3df79",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Pad Roller Red",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_red"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -54.97,
+    "posY": 1.138,
+    "posZ": -20.8,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 3.12,
+    "scaleY": 1,
+    "scaleZ": 1.49
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

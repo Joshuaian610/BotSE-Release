@@ -1,0 +1,137 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomImage": {
+        "CustomToken": {
+          "MergeDistancePixels": 15,
+          "Stackable": false,
+          "StandUp": false,
+          "Thickness": 0.206132635
+        },
+        "ImageScalar": 1,
+        "ImageSecondaryURL": "",
+        "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234559015637/C8E2DE1683FA5551AAB9B7B5956BE47C35D13770/",
+        "WidthScale": 0
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "2847c9",
+      "Grid": false,
+      "GridProjection": false,
+      "Hands": true,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": true,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Token",
+      "Nickname": "Speech Skill Line Dice Bag",
+      "Snap": true,
+      "Sticky": true,
+      "Tags": [
+        "skill_token_rogue"
+      ],
+      "Tooltip": true,
+      "Transform": {
+        "posX": -4.35312266e-8,
+        "posY": 1.94368321e-9,
+        "posZ": 0.00277770241,
+        "rotX": -4.880551e-14,
+        "rotY": 0.00000523634662,
+        "rotZ": -2.035555e-13,
+        "scaleX": 0.286669135,
+        "scaleY": 4.851217,
+        "scaleZ": 0.285077035
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
+  "ColorDiffuse": {
+    "a": 0,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "b6c4beSpeech-Authority.e00eda",
+    "b6c4beSpeech-Authority.49eb9b",
+    "b6c4beSpeech-Authority.994f19",
+    "b6c4beSpeech-PersuasiveWill.c21338",
+    "b6c4beSpeech-PersuasiveWill.38ba78",
+    "b6c4beSpeech-IntimidatingPresence.a4201e",
+    "b6c4beSpeech-IntimidatingPresence.4e2de2",
+    "b6c4beSpeech-IntimidatingPresence.ef9b6d"
+  ],
+  "ContainedObjects_path": "SpeechSkillLineDiceBag.749ea0",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "",
+    "Convex": true,
+    "DiffuseURL": "",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/1666858152071991282/5C391C2599AE5F6972D6EFA7BFC04B41D6E821E3/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "749ea0",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Speech Skill Line Dice Bag",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "round_dice_bag"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -59.791,
+    "posY": 1.242,
+    "posZ": 9.729,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 3.49,
+    "scaleY": 0.21,
+    "scaleZ": 3.51
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

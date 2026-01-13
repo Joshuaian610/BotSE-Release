@@ -1,0 +1,54 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.78676,
+    "g": 0.78676,
+    "r": 0.78676
+  },
+  "CustomImage": {
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/18264153623958473211/2DA2170FD25FBFA87FB0113E8DEF8D6EAF885B07/",
+    "WidthScale": 2
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "107979",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "",
+  "LuaScript_path": "MainBoard.107979.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Board",
+  "Nickname": "Main Board",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 0.348,
+    "posY": 0.994,
+    "posZ": 2.406,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.84,
+    "scaleY": 1,
+    "scaleZ": 2.16
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

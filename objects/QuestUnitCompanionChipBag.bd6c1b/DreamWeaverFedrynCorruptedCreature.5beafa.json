@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673393819/1DFD3638CA12345A2946770B774702AAC25FE80F/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673393819/1DFD3638CA12345A2946770B774702AAC25FE80F/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Ethereal:\nWhen this unit is dealt damage by an adventurer not in magic battle form, this unit prevents player count damage.\n\nNative:\nThis unit has the skill specific to the current province.\n\nPenumbra:\nAfter this unit is defeated, it replaces the weakest allied non-quest unit and assumes that unit’s HP and status dice. The replaced unit is returned to its enemy bag.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "5beafa",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "QuestUnitCompanionChipBag.bd6c1b/DreamWeaverFedrynCorruptedCreature.5beafa.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Dream Weaver Fedryn / Corrupted Creature",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyBeast_enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.881,
+    "posY": 2.205,
+    "posZ": 0.912,
+    "rotX": 0,
+    "rotY": 176,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

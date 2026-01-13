@@ -1,0 +1,57 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.32941,
+    "r": 0
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/10561476861751554269/C02F8D89CC7EFD736342FDDB322393EDCAD2B861/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/17426203280028576411/6AF855818AF810A35A3334F025B297F3B4844289/",
+    "WidthScale": 0
+  },
+  "Description": "READY\n\nFlip to mark nearby Per Encounter Skill or Ability as Exhausted.\n(Will be marked as ready on Clear Battle)",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a177f9",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "PerEncounterSkillTrackerBag.028e33/PerEncounterSkillTracker.a177f9.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Per Encounter Skill Tracker",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 7.813,
+    "posY": 1.249,
+    "posZ": -33.579,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.25,
+    "scaleY": 1,
+    "scaleZ": 0.25
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

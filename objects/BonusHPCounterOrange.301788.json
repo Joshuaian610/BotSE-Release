@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0,
+    "r": 0.84843
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.203739792,
+      "Type": 2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582865174/A52E7748EE3C307114297E39DDA46984F30DE03F/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582865174/A52E7748EE3C307114297E39DDA46984F30DE03F/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "301788",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "[0]",
+  "LuaScript_path": "BonusHPCounterOrange.301788.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Bonus HP Counter Orange",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": -26.76,
+    "posY": 1.138,
+    "posZ": -21.6,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.71,
+    "scaleY": 1,
+    "scaleZ": 0.71
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

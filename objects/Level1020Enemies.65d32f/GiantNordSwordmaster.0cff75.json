@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673625578/C5A200936542A3AD53674DA50F1A58080567788B/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673625578/C5A200936542A3AD53674DA50F1A58080567788B/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "Description": "Chilblain:\nAfter this unit is engaged by an adventurer who is not using a weapon item that adventurer gains light fatigue equal to player count.\n\nShatter:\nEach turn, the first time this unit is engaged by an adventurer who is not overtaxing a weapon that adventurer must discard a weapon from a ready slot after the engage.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "0cff75",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[10]",
+  "LuaScript_path": "Level1020Enemies.65d32f/GiantNordSwordmaster.0cff75.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Giant / Nord Swordmaster",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHigh",
+    "enemyHuman",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.96,
+    "posY": 0.008,
+    "posZ": 11.974,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.18,
+    "scaleY": 0.59,
+    "scaleZ": 1.18
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
