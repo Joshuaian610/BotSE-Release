@@ -771,13 +771,6 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
 end
 
 
-function nullFunc()
-
-  -- this is just a dummy no action function to fire if peDisplay day button indicator is clicked
-  return
-end
-
-
 function setupTownEncounter(provinceMapName, townName)
 
   -- this function handles the setup of town encounters and everything related
@@ -2219,18 +2212,22 @@ function setupConflict1(card, _, _)
   -- if isUnstable is true, need to get which current province map is out (can't use getCurrentProvince because I need to differentiate eastern and western skyrim) is out, and determine if partyToken is located on an Unstable space per the data in posEncounters
   if not isUnstable then
     local isOnUnstable = checkIfUnstable()
-    if isOnUnstable then broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange") return end
+    if isOnUnstable and -- only trigger if card has unstable option
+    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" then
+      broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
+      return
+    end
   end
   
   card.clearButtons()
   card.addTag('conflict_selected')
 
   if conflictType == "Clash" then
+    log("setUpConflict1() deploying: " .. cardName)
     deployClash(cardName, 1)
   elseif conflictType == "Delve" then
     deployDelve(cardName, 1)
   end
-
 end
 
 
@@ -2274,8 +2271,11 @@ function setupConflict2(card, _, _)
   -- if isUnstable is true, need to get which current province map is out (can't use getCurrentProvince because I need to differentiate eastern and western skyrim) is out, and determine if partyToken is located on an Unstable space per the data in posEncounters
   if not isUnstable then
     local isOnUnstable = checkIfUnstable()
-    log("isOnUnstable: " .. tostring(isOnUnstable))
-    if isOnUnstable then broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange") return end
+    if isOnUnstable and -- only trigger if card has unstable option
+    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" then
+      broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
+      return
+    end
   end
   
   card.clearButtons()
@@ -2488,7 +2488,7 @@ function deployClash(clashName, optionNumber)
     }
     spacesEnemies = {
       posClashSpaces["column3"][3],
-      posClashSpaces["column3"][1],      
+      posClashSpaces["column3"][1],
       posClashSpaces["column1"][3],
       posClashSpaces["column3"][2],
       posClashSpaces["column2"][3],
@@ -2611,9 +2611,6 @@ function deployClash(clashName, optionNumber)
       posClashSpaces["column1"][1],
       posClashSpaces["column3"][1],
       posClashSpaces["column4"][4],
-      -- below will only be used in 3+ playerCount
-      posClashSpaces["column1"][2],
-      posClashSpaces["column7"][1],
     }
     spacesEnemies = {
       posClashSpaces["column3"][3],
@@ -2637,6 +2634,31 @@ function deployClash(clashName, optionNumber)
   end)
 
   local bagCacheChips = getObjectbyName("Cache Chip Bag")
+
+  -- special cache handling per encounter
+  local playerCount = getObjectbyName("Button Player Count").getVar('val')
+
+  -- Captured!: needs to flip common caches to legendary at 3+ players
+  if cardName == "Captured!" and playerCount > 2 then
+    rotCaches = {
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+    }    
+  end
+
+  -- Keep Away needs to deploy correct number of caches, 3+ players = 5, otherwise = 3
+  if cardName == "Keep Away" and playerCount > 2 then
+     spacesCaches = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column1"][2],
+      posClashSpaces["column7"][1],
+    }
+  end
+
   for i = 1, #spacesCaches do
     bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
   end
@@ -2689,16 +2711,14 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
 
   -- this function handles the individual enemy setup requirements for any given clash
   local currentCalculatedEP = getObjectbyName("Button Calculated EP").getVar('val')
-  log("currentCalculatedEP: " .. currentCalculatedEP)
   local playerCount = getObjectbyName("Button Player Count").getVar('val')
-  log("playerCount: " .. playerCount)
   local chipBreakdown = getChipBreakdown(currentCalculatedEP)
-  log(chipBreakdown)
   local bagLow, bagHigh = getObjectbyName("Level 1 / 5 Enemies"), getObjectbyName("Level 10 / 20 Enemies")
   bagLow.shuffle()
   bagHigh.shuffle()
   local enemyCount = 0
 
+  -- GENERAL ENCOUNTERS
   if clashName == "Wabbajack Attack" then
     -- before deploying EP, add khajiit marauder (<3) or khajiit cultist to enemy pool and deploy
     local extraEnemy = playerCount < 3 and "Khajiit Marauder" or "Khajiit Cultist"
@@ -2764,7 +2784,90 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
     end, 1)
 
   elseif clashName == "The Wacky Box of Wonders" then
-    -- check if unstable
+    -- check if unstable to determine if 3 or 4 fatigue is needed
+    local isUnstable = checkIfUnstable()
+    local fatigueCount = isUnstable and 4 or 3
+    local bagLightFatigue = getObjectbyName("Fatigue Dice Bag")
+    -- somehow determine which adv mats are actually in use
+    local seatedColors = {"Red", "Orange", "Blue", "Green"}
+    local actuallySeatedColors = {}
+    for i = 1, 4 do
+      local matExists = false
+      local buttonExists = false
+      for _, object in pairs(getObjects()) do
+        -- detect if player mat exists
+        if object.getName() == seatedColors[i] .. " Adventurer Mat" then
+          matExists = true
+          break
+        end
+      end
+
+      -- if mat exists, check for button (should not be there if actually seated)
+      if matExists then
+        for _, obj in pairs(getObjects()) do
+          if obj.getName() == "Button Clear Playerarea" and obj.getGMNotes() == seatedColors[i] then
+            buttonExists = true
+            break
+          end
+        end
+      end
+
+      -- once veriied player is seated at location, draw and add fatigue dice to cooldown track
+      if matExists and not buttonExists then
+        local waitTimer = 0
+        for j = 1, fatigueCount do
+          if #bagLightFatigue.getObjects() > 0 then
+            Wait.time(function()
+
+              local lightFatigue = bagLightFatigue.takeObject()
+              placeDieToTrack(seatedColors[i], lightFatigue, "Cooldown")
+
+            end, waitTimer)
+
+          else
+            broadcastToAll("Light Fatigue supply out, handle Wacky Box of Wonders Setup manually.", "Orange")
+            return
+          end
+          waitTimer = waitTimer + .50
+        end
+
+        -- wait for fatigue dice to place, then draw, roll, & place status effect die to cooldown track
+        Wait.time(function()
+          
+          local bagStatusDice = getObjectbyName("Status Effect Dice Bag")
+          if #bagStatusDice.getObjects() < 1 then
+            broadcastToAll("Unable to take a Status Die - Supply is empty!", "Orange")
+            return
+          else
+            local statusEffectDie = bagStatusDice.takeObject()
+            local dieResults = {"Stealth", "Blind", "Daze", "Maim", "Fear", "Bane"}
+            
+            Wait.frames(function()
+              placeDieToTrack(seatedColors[i], statusEffectDie, "Roll")
+
+              Wait.time(function()
+                statusEffectDie.randomize()
+                Wait.condition(
+                  function()
+                    statusEffectDie.setRotationValue(statusEffectDie.getRotationValue())
+                    if Player[seatedColors[i]].steam_name ~= nil then
+                      broadcastToAll("[" .. Color.fromString(seatedColors[i]):toHex() .. "]" .. Player[seatedColors[i]].steam_name .. "[-] has rolled: " .. dieResults[statusEffectDie.getRotationValue()], "White")
+                    else
+                      broadcastToAll("[" .. Color.fromString(seatedColors[i]):toHex() .. "]" .. seatedColors[i] .. " Player[-]  has rolled: " .. dieResults[statusEffectDie.getRotationValue()], "White")
+                    end
+                    Wait.time(function()
+                      placeDieToTrack(seatedColors[i], statusEffectDie, "Cooldown")
+                    end, .5)
+                  end,
+                  function() return statusEffectDie.resting end
+                )
+              end, .5)
+            end)
+          end
+
+        end, 2.5)
+      end
+    end
     -- gain light fatigue, then, roll status die and place to CD track
     -- first enemy deployed must be a human type
     local firstEnemyDrawn = false
@@ -2839,9 +2942,338 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
       end
     end, 1)
 
-      
+
+  elseif clashName == "Highwaymen" then
+    -- only extra setup required is to broadcast a reminder to remove a cache chip at 3+ players
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- broadcast reminder to remove cache chip if 3+    
+    if playerCount > 2 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: Remember to select a cache chip to remove.", "White")
+    end
     
+  elseif clashName == "Captured!" then
+    -- only extra setup required is cache related (common caches should be legendary instead at 3+ player count), so, normal enemy deployment otherwise
 
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+
+  elseif clashName == "Unsullied Pool" then
+    -- use as many beasts as possible while deploying EP, at 3+ players, will need to adjust HP +2 on enemies, and broadcast reminder to flip lvl 1s to 5s
+
+    -- deploy EP
+    local toModifyHP = {}
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            local chip20 = deployEnemyType(20, "Beast", spacesEnemies[index])
+            Wait.frames(function()
+              if chip20 == nil then chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }}) end
+              Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip20) end)
+            end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            local chip10 = deployEnemyType(10, "Beast", spacesEnemies[index])
+            Wait.frames(function()
+              if chip10 == nil then chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }}) end
+              Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip10) end)
+            end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            local chip5 = deployEnemyType(5, "Beast", spacesEnemies[index])
+            Wait.frames(function()
+              if chip5 == nil then chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }}) end
+              Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip5) end)
+            end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            local chip1 = deployEnemyType(1, "Beast", spacesEnemies[index])
+            Wait.frames(function()
+              if chip1 == nil then chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }}) end
+              Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip1) end)
+            end)
+          end
+        end
+      end
+
+      -- broadcast Reminder to flip playerCount enemies from 1 to 5
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Flip " .. playerCount .. " level 1 enemies to lvl 5 side if possible, keeping same HP values (will need to use counter after flip).", "White")
+    end, 1)
+
+    -- at 3+ players, increase all deployed chips HP by 2
+    if playerCount > 2 then
+      Wait.time(function()
+        
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]3+ Players[-]: Enemy HP values are increased by 2.", "White")
+        for _, chip in pairs(toModifyHP) do
+          local oldVal = chip.getVar('val')
+          local newVal = oldVal + 2
+          local bagScript = getObjectbyName("Defeated Monsters Bag")
+          bagScript.call('set_val_remote', {chipObj=chip, val=newVal})
+        end
+      
+      end, 3)
+    end
+
+  elseif clashName == "Black Market Economics" then
+
+    -- if optionNumber == 1, need to deploy a level 5 or 10 (3+ players) enemy last
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      -- handle extra enemy
+      local bagExtraEnemyDraw = getObjectbyName(playerCount > 2 and "Level 10 / 20 Enemies" or "Level 1 / 5 Enemies")
+      if enemyCount < 8 then
+        local extraEnemy = bagExtraEnemyDraw.takeObject({rotation = playerCount > 2 and { 0, 180, 180 } or { 0, 180, 0 }})
+        enemyCount = enemyCount + 1
+        local index = enemyCount
+        Wait.frames(function() extraEnemy.setPositionSmooth(spacesEnemies[index], false, true) end)
+      else
+
+      end
+    end, 1)
+
+  elseif clashName == "Keep Away" then    
+    -- normal enemy deployment, 3+ players need extra caches deployed
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+  
+  -- BM ENCOUNTERS
+  elseif clashName == "Captive Audience" then
+    -- add level 5 dark elf marauder to EP and deploy it first
+    -- if weather is rainy or flooding, each adventurer drains 1 available skill die
+    -- if weather is flooding, each adventurer also gains 1 overfatigue
+    -- (will need some method of detecting current weather)
+    -- 3+ players: remove 1 cache (broadcast reminder)
+
+  elseif clashName == "Origin of the Species" then
+    -- add playerCount level 1 enemies to EP and deploy them last
+    -- first enemy deployed must be a beast type and it's health stat is doubled, maybe highlight red or something
+    -- 3+ players: add quest unit skill Vindictive to first beast enemy
+
+  elseif clashName == "Keep Ayleid on It" then
+
+  elseif clashName == "Deal or Die" then
+
+  elseif clashName == "Corrupted Communion" then
+
+  elseif clashName == "Captives of House Telvanni" then
+
+  -- CY ENCOUNTERS
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
 
   elseif clashName == "" then
 
@@ -2849,6 +3281,46 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
 
   elseif clashName == "" then
 
+  -- HR ENCOUNTERS
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  -- MW ENCOUNTERS
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  -- SK ENCOUNTERS
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  elseif clashName == "" then
+
+  -- VW ENCOUNTERS
   elseif clashName == "" then
 
   elseif clashName == "" then
@@ -2865,56 +3337,52 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
 end
 
 
-function deployEnemyType(enemyLevel, enemyType, position)  
+function deployEnemyType(enemyLevel, enemyType, position)
   log("running deployEnemyType for enemyLevel: " .. enemyLevel .. ", enemyType: " .. enemyType)
-  Wait.time(function()
-    -- this function handles a clash enemy draw that is required to be of a special type
-    local enemyChipSide = (enemyLevel == 1 or enemyLevel == 10) and "Low" or "High"
-    local rotDrawnEnemy  = enemyChipSide == "Low" and { 0, 180, 180 } or { 0, 180, 0 }
-    log("rotDrawnEnemy:")
-    log(rotDrawnEnemy)
-    local validTags      = { enemyHuman = true, enemyBeast = true, enemyDaedra = true }
-    local bagEnemyDraw = (enemyLevel == 1 or enemyLevel == 5) and getObjectbyName("Level 1 / 5 Enemies") or getObjectbyName("Level 10 / 20 Enemies")
-    log("bagEnemyDraw: " .. bagEnemyDraw.getName())
+  local chipFound = false
 
-    local chip = nil
+  -- this function handles a clash enemy draw that is required to be of a special type
+  local enemyChipSide = (enemyLevel == 1 or enemyLevel == 10) and "Low" or "High"
+  local rotDrawnEnemy  = enemyChipSide == "Low" and { 0, 180, 180 } or { 0, 180, 0 }
+  local validTags      = { enemyHuman = true, enemyBeast = true, enemyDaedra = true }
+  local bagEnemyDraw = (enemyLevel == 1 or enemyLevel == 5) and getObjectbyName("Level 1 / 5 Enemies") or getObjectbyName("Level 10 / 20 Enemies")
+  bagEnemyDraw.shuffle()
 
-    for _, object in pairs(bagEnemyDraw.getObjects()) do
-      local objTags = object.tags
+  local chip = nil
 
-      for _, tag in ipairs(objTags) do
-        local tagLeft, tagRight = tag:match("([^_]+)_([^_]+)")
-        local primaryTag
+  for _, object in pairs(bagEnemyDraw.getObjects()) do
+    local objTags = object.tags
 
-        if tagLeft and tagRight then
-          if validTags[tagLeft] and validTags[tagRight] then
-            primaryTag = (enemyChipSide == "Low") and tagLeft or tagRight
-          else
-            primaryTag = nil
-          end
+    for _, tag in ipairs(objTags) do
+      local tagLeft, tagRight = tag:match("([^_]+)_([^_]+)")
+      local primaryTag
+
+      if tagLeft and tagRight then
+        if validTags[tagLeft] and validTags[tagRight] then
+          primaryTag = (enemyChipSide == "Low") and tagLeft or tagRight
         else
-          primaryTag = validTags[tag] and tag or nil
+          primaryTag = nil
         end
-
-        if primaryTag
-        and ((primaryTag == "enemyHuman"  and enemyType == "Human")
-        or (primaryTag == "enemyBeast"  and enemyType == "Beast")
-        or (primaryTag == "enemyDaedra" and enemyType == "Daedra")) then
-
-          chip = bagEnemyDraw.takeObject({ rotation = rotDrawnEnemy, guid = object.guid })
-          chip.setVar('fresh_out_of_bag')
-          Wait.frames(function()          
-            chip.setPositionSmooth(position, false, true)
-          end)
-
-          break
-
-        end
+      else
+        primaryTag = validTags[tag] and tag or nil
       end
 
-      if chip then break end
+      if primaryTag
+      and ((primaryTag == "enemyHuman"  and enemyType == "Human")
+      or (primaryTag == "enemyBeast"  and enemyType == "Beast")
+      or (primaryTag == "enemyDaedra" and enemyType == "Daedra")) then
+
+        chip = bagEnemyDraw.takeObject({ rotation = rotDrawnEnemy, guid = object.guid })
+        chip.setVar('fresh_out_of_bag')
+        Wait.frames(function() chip.setPositionSmooth(position, false, true) end)
+        chipFound = true
+        break
+
+      end
     end
 
-    if chip then return chip else return nil end
-  end, 1)
+    if chip then break end
+  end
+  log("deployEnemyType() found chip: " .. chip.getName())
+  return chip
 end

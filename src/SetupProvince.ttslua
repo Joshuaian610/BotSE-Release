@@ -421,12 +421,14 @@ function cleanupProvince(button, _, _)
   Wait.time(function()
 
     if encPeacefulDeck then
+      log("running peaceful deck stuff")
       for _, object in pairs(encPeacefulDeck.getObjects()) do
         local tags = object.tags
         if tags then
           for _, tag in pairs(tags) do
             if tag == provinceTag then
               local replaceTarget = encPeacefulDeck.takeObject({guid = object.guid})
+              log("peaceful replace target: " .. replaceTarget.getName())
               if replaceTarget then
                 Wait.frames(function() replaceTarget.setPosition(posPeacefulDiscard) end)
               end

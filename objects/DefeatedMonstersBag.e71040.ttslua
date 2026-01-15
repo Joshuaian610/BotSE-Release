@@ -349,7 +349,7 @@ end
 
 
 function set_val_remote(args)
-    local chip_obj = args.chip_obj
+    local chip_obj = args.chipObj
     local val      = args.val
     set_val(chip_obj, val)
 end

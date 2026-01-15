@@ -1175,3 +1175,9 @@ function onObjectLeaveContainer(bag, obj)
     end
   end
 end
+
+
+function nullFunc()
+  -- this is just a dummy no action function
+  return
+end

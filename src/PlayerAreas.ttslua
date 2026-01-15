@@ -114,12 +114,6 @@ function initButtonPackCounter(obj, bagCount)
 end
 
 
-function nullFunc()
-  -- no action function to handle clicks of the pack counters
-  return
-end
-
-
 function animateButtonsPlayerArea(obj)
   obj.clearButtons()
   local name = obj.getName()
