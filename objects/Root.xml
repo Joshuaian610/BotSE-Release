@@ -1,1 +1,95 @@
 <!-- Xml UI. See documentation: https://api.tabletopsimulator.com/ui/introUI/ -->
+
+<!--===================== Red Player Panel =====================-->
+
+<Panel width="190" height="90" rectAlignment="LowerRight" offsetXY="-10 100">
+    <VerticalLayout>
+        <Image id="player_panel_Red" image="https://steamusercontent-a.akamaihd.net/ugc/11768033117233226443/12FA8A7072386D71A14C09E0B783D46A4922BCDA/" width="190" height="90"/>
+    </VerticalLayout>
+</Panel>
+
+<Panel width="90" height="90" rectAlignment="LowerRight" offsetXY="-110 100">
+    <VerticalLayout>
+        <HorizontalLayout>
+            <Image id="player_race_Red" image="https://steamusercontent-a.akamaihd.net/ugc/18433127840467639981/1CAD26BFDFB1D6AD46BDBC9E13E84F84B33BA320/" width="90" height="90"/>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Panel>
+
+<!-- Buttons -->
+
+<Panel width="80" height="80" rectAlignment="LowerRight" offsetXY="-115 105">
+    <VerticalLayout>
+        <Button onClick="jumpToTokenRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
+    </VerticalLayout>
+</Panel>
+
+<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-63 145">
+    <Button onClick="updateBonusHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
+        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_Red">0</Text>
+    </Button>
+</Panel>
+
+<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-63 101">
+    <Button onClick="updateHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
+        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="hp_Red">0</Text>
+    </Button>
+</Panel>
+
+<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-11 145">
+    <Button onClick="updateTenacityRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
+        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="tenacity_Red">0</Text>
+    </Button>
+</Panel>
+
+<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-11 101">
+    <Button onClick="updateXPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
+        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="xp_Red">0</Text>
+    </Button>
+</Panel>
+
+<!--=========================================================================-->
+
+<!-- <Panel width="211" height="100" rectAlignment="LowerRight" offsetXY="-10 210">
+    <VerticalLayout>
+        <Image id="player_panel_red" image="https://steamusercontent-a.akamaihd.net/ugc/16747946383617987223/0B43085C3328E8B230B1A9980EFEB72FB3CE1C84/" width="211" height="100"/>
+    </VerticalLayout>
+</Panel>
+
+<Panel width="211" height="100" rectAlignment="LowerRight" offsetXY="-10 320">
+    <VerticalLayout>
+        <Image id="player_panel_red" image="https://steamusercontent-a.akamaihd.net/ugc/16747946383617987223/0B43085C3328E8B230B1A9980EFEB72FB3CE1C84/" width="211" height="100"/>
+    </VerticalLayout>
+</Panel>
+
+<Panel width="211" height="100" rectAlignment="LowerRight" offsetXY="-10 430">
+    <VerticalLayout>
+        <Image id="player_panel_red" image="https://steamusercontent-a.akamaihd.net/ugc/16747946383617987223/0B43085C3328E8B230B1A9980EFEB72FB3CE1C84/" width="211" height="100"/>
+    </VerticalLayout>
+</Panel> -->
+
+
+
+<!-- <Panel width="100" height="100" rectAlignment="LowerRight" offsetXY="-210 210">
+    <VerticalLayout>
+        <HorizontalLayout>
+            <Image id="logo" image="https://steamusercontent-a.akamaihd.net/ugc/10119755478266530588/E9CC156F7A83A9C57EE20576EDD56974973C3314/" width="100" height="100"/>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Panel>
+
+<Panel width="100" height="100" rectAlignment="LowerRight" offsetXY="-210 320">
+    <VerticalLayout>
+        <HorizontalLayout>
+            <Image id="logo" image="https://steamusercontent-a.akamaihd.net/ugc/17488495706575629662/B2536C9017BD53AAACBC39FD5DA553CFDC385497/" width="100" height="100"/>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Panel>
+
+<Panel width="100" height="100" rectAlignment="LowerRight" offsetXY="-210 430">
+    <VerticalLayout>
+        <HorizontalLayout>
+            <Image id="logo" image="https://steamusercontent-a.akamaihd.net/ugc/13167173870834902061/B34630907A033E32F8B550A333F3D1E2A77D6BDA/" width="100" height="100"/>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Panel> -->

@@ -14,6 +14,9 @@ function onload(saved_data)
     hover_color = {255/255, 140/255, 85/255, 255}
     press_color = {255/255, 180/255, 140/255, 255}
     create_all()
+
+    -- Store reference to self in Global
+    Global.setVar("hp_counter_Orange", self)
 end -- end function onload()
 
 

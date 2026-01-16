@@ -710,6 +710,8 @@ function deploy_race_items(button_obj, color, race_type)
     clone_chip.clearButtons()
     clone_chip.addTag(color_tag)
     clone_chip.addTag('player_chip')
+    
+    
     end, 0.2)
     end, 1)
 end

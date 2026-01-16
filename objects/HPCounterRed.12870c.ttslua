@@ -14,7 +14,15 @@ function onload(saved_data)
     hover_color = {255/255, 77/255, 77/255, 255}
     press_color = {255/255, 128/255, 128/255, 255}
     create_all()
+    update_player_panel()
+    
+    -- Store reference to self in Global
+    Global.setVar("hp_counter_Red", self)
 end -- end function onload()
+
+function update_player_panel()
+    Global.UI.setValue("hp_Red", tostring(val))
+end
 
 
 function update_save()
@@ -87,6 +95,10 @@ function add_subtract(_obj, playercolor, alt_click)
     end
     update_chip(val)
 end -- end function add_subtract()
+
+function add_subtract_call(params)
+    add_subtract(nil, params.playercolor, params.alt_click)
+end
 
 
 function subtract()

@@ -6,9 +6,7 @@ require("SetupProvince")
 require("HandleEnemies")
 require("HandleEncounters")
 require("PlayerAreas")
-
-
-
+require("PlayerPanel")
 
 function onLoad()
 

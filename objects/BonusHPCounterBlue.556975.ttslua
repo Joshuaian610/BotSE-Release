@@ -10,6 +10,8 @@ function onload(saved_data)
         end
     end
     create_all()
+    -- Store reference to self in Global
+    Global.setVar("bonus_hp_counter_Blue", self)
 end -- end function onload()
 
 

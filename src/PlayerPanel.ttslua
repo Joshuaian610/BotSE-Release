@@ -1,0 +1,169 @@
+function updateHP(playerColor, mouseClick, set)
+    -- Update HP Counter
+    local counter = Global.getVar("hp_counter_" .. playerColor)
+
+    counter.call("add_subtract_call", {
+        playercolor = playerColor,
+        alt_click   = tonumber(mouseClick) == -2
+    })
+    
+    -- Update XML button value
+    local health = Global.UI.getValue("hp_" .. playerColor)
+
+    if tonumber(mouseClick) == -1 then
+      health = tonumber(health) + 1
+    elseif tonumber(mouseClick) == -2 then
+      health = tonumber(health) - 1
+    end
+
+    if health < 0 then
+      health = 0
+    end
+
+    Global.UI.setValue("hp_" .. playerColor, tostring(health))
+end
+
+function updateBonusHP(playerColor, mouseClick, set)
+    -- Update Bonus HP Counter
+    local counter = Global.getVar("bonus_hp_counter_" .. playerColor)
+    print(counter)
+    counter.call("add_subtract_call", {
+        playercolor = playerColor,
+        alt_click   = tonumber(mouseClick) == -2
+    })
+    
+    -- Update XML button value
+    local bonusHP = Global.UI.getValue("bonus_hp_" .. playerColor)
+
+    if tonumber(mouseClick) == -1 then
+      bonusHP = tonumber(bonusHP) + 1
+    elseif tonumber(mouseClick) == -2 then
+      bonusHP = tonumber(bonusHP) - 1
+    end
+
+    if bonusHP < 0 then
+      bonusHP = 0
+    end
+
+    Global.UI.setValue("bonus_hp_" .. playerColor, tostring(bonusHP))
+end
+
+function updateTenacity(playerColor, mouseClick, set)
+    -- Update Tenacity Counter
+
+    -- Update XML button value
+    local tenacity = Global.UI.getValue("tenacity_" .. playerColor)
+
+    if tonumber(mouseClick) == -1 then
+      tenacity = tonumber(tenacity) + 1
+    elseif tonumber(mouseClick) == -2 then
+      tenacity = tonumber(tenacity) - 1
+    end
+
+    if tenacity < 0 then
+      tenacity = 0
+    end
+
+    Global.UI.setValue("tenacity_" .. playerColor, tostring(tenacity))
+end
+
+function updateXP(playerColor, mouseClick, set)
+    -- Update XP Counter
+
+    -- Update XML button value
+    local xp = Global.UI.getValue("xp_" .. playerColor)
+
+    if tonumber(mouseClick) == -1 then
+      xp = tonumber(xp) + 1
+    elseif tonumber(mouseClick) == -2 then
+      xp = tonumber(xp) - 1
+    end
+
+    if xp < 0 then
+      xp = 0
+    end
+
+    Global.UI.setValue("xp_" .. playerColor, tostring(xp))
+end
+
+function updateHPRed(player, mouseClick)
+    updateHP(player.color, mouseClick, false)
+end
+
+function updateBonusHPRed(player, mouseClick)
+    updateBonusHP(player.color, mouseClick, false)
+end
+
+function updateTenacityRed(player, mouseClick)
+    updateTenacity(player.color, mouseClick, false)
+end
+
+function updateXPRed(player, mouseClick)
+    updateXP(player.color, mouseClick, false)
+end
+
+function updateHPOrange(player, mouseClick)
+    updateHP(player.color, mouseClick, false)
+end
+
+function updateBonusHPOrange(player, mouseClick)
+    updateBonusHP(player.color, mouseClick, false)
+end
+
+function updateTenacityOrange(player, mouseClick)
+    updateTenacity(player.color, mouseClick, false)
+end
+
+function updateXPOrange(player, mouseClick)
+    updateXP(player.color, mouseClick, false)
+end
+
+function updateHPBlue(player, mouseClick)
+    updateHP(player.color, mouseClick, false)
+end
+
+function updateBonusHPBlue(player, mouseClick)
+    updateBonusHP(player.color, mouseClick, false)
+end
+
+function updateTenacityBlue(player, mouseClick)
+    updateTenacity(player.color, mouseClick, false)
+end
+
+function updateXPBlue(player, mouseClick)
+    updateXP(player.color, mouseClick, false)
+end
+
+function updateHPGreen(player, mouseClick)
+    updateHP(player.color, mouseClick, false)
+end
+
+function updateBonusHPGreen(player, mouseClick)
+    updateBonusHP(player.color, mouseClick, false)
+end
+
+function updateTenacityGreen(player, mouseClick)
+    updateTenacity(player.color, mouseClick, false)
+end
+
+function updateXPGreen(player, mouseClick)
+    updateXP(player.color, mouseClick, false)
+end
+
+-- Call functions for updating UI buttons upon loading saved data
+
+function setHP(params)
+    updateHP(params.playerColor, params.mouseClick, params.value)
+end
+
+function setBonusHP(params)
+    updateBonusHP(params.playerColor, params.mouseClick, params.value)
+end
+
+function setTenacity(params)
+    updateTenacity(params.playerColor, params.mouseClick, params.value)
+end
+
+function setXP(params)
+    updateXP(params.playerColor, params.mouseClick, params.value)
+end
