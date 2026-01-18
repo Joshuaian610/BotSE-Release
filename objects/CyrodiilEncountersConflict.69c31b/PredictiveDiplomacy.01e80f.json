@@ -5,17 +5,17 @@
     "z": 0
   },
   "Autoraise": true,
-  "CardID": 10904,
+  "CardID": 15305,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
   "CustomDeck": {
-    "109": {
+    "96": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12500676703668836315/6F5527938F4789C05FB2EE04DA47B10B3030BF38/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/15355676036581618610/BD7346BEA063F22ABB5763CE095EDACA8B1C714E/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -25,7 +25,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "a4c90e",
+  "GUID": "01e80f",
   "Grid": false,
   "GridProjection": false,
   "Hands": true,
@@ -37,20 +37,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Card",
-  "Nickname": "Delving with the Dead",
+  "Nickname": "Predictive Diplomacy",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_hr",
-    "symbol0"
+    "obj_cy"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 0.36,
-    "posY": 1.685,
-    "posZ": 4.794,
+    "posX": -26.724,
+    "posY": 1.675,
+    "posZ": 16.409,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

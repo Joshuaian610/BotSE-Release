@@ -11,21 +11,21 @@
     "r": 0.71324
   },
   "ContainedObjects_order": [
-    "AnchorsAway!.4a8284",
-    "TraderstotheCause.c9db15",
-    "PredictiveDiplomacy.01e80f",
-    "CastYourLot!.251cc1",
-    "ThePoorly-LitBrotherhood.845807",
-    "ChampionoftheDowntrodden.485eba",
-    "HeroesforHire.22b033",
-    "WarProfiteering.08f21a"
+    "MysteryUnderMorrowind.40fc93",
+    "NoTresspassing.be514b",
+    "YoursfortheTaking.86b365",
+    "AugmentedArms.f4fee0",
+    "DealsinDwemer.054ef9",
+    "EggMineNoEggsMine!.5f0117",
+    "NotMushroomtoMove.670112",
+    "WrongSideoftheLaw.ace7b2"
   ],
-  "ContainedObjects_path": "CyrodiilEncountersConflict.69c31b",
+  "ContainedObjects_path": "MorrowindEncountersConflict.58f598",
   "CustomDeck": {
-    "96": {
+    "98": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13055726025316600992/6E3EF47B82146F42CB79DF28019E1148E7162119/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/17271010864148035403/D622CE70D93DD690CE44B330AA855847E121D094/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -33,19 +33,19 @@
     }
   },
   "DeckIDs": [
-    9607,
-    9606,
-    9605,
-    9604,
-    9603,
-    9602,
-    9601,
-    9600
+    9807,
+    9806,
+    9805,
+    9804,
+    9803,
+    9802,
+    9801,
+    9800
   ],
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "69c31b",
+  "GUID": "58f598",
   "Grid": false,
   "GridProjection": false,
   "Hands": false,
@@ -57,19 +57,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Deck",
-  "Nickname": "Cyrodiil Encounters Conflict",
+  "Nickname": "Morrowind Encounters Conflict",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_cy"
+    "obj_mw"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 7.267,
-    "posY": 2.966,
-    "posZ": 38.419,
+    "posX": 33.247,
+    "posY": 1.757,
+    "posZ": 41.241,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

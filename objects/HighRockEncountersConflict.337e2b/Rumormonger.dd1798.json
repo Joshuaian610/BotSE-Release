@@ -5,17 +5,17 @@
     "z": 0
   },
   "Autoraise": true,
-  "CardID": 9606,
+  "CardID": 29407,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
   "CustomDeck": {
-    "96": {
+    "109": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12500676703668836315/6F5527938F4789C05FB2EE04DA47B10B3030BF38/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/15355676036581618610/BD7346BEA063F22ABB5763CE095EDACA8B1C714E/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -25,7 +25,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "c9db15",
+  "GUID": "dd1798",
   "Grid": false,
   "GridProjection": false,
   "Hands": true,
@@ -37,19 +37,20 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Card",
-  "Nickname": "Traders to the Cause",
+  "Nickname": "Rumormonger",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_cy"
+    "obj_hr",
+    "symbol0"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -26.343,
-    "posY": 1.641,
-    "posZ": 16.469,
+    "posX": 0.047,
+    "posY": 1.6,
+    "posZ": 4.666,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

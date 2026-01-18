@@ -17,7 +17,7 @@
     "AnyFortinaHarrowstorm.0128ad",
     "PhalangesofFate.ce43d3",
     "MudcrabCrossing.72f83a",
-    "AStormofFIsts.399a11",
+    "AStormofFists.399a11",
     "ColdDiscomfort.e08437"
   ],
   "ContainedObjects_path": "SkyrimEncountersConflict.b6077a",
@@ -67,9 +67,9 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 77.713,
-    "posY": 2.767,
-    "posZ": 40.403,
+    "posX": 48.064,
+    "posY": 1.757,
+    "posZ": 40.827,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

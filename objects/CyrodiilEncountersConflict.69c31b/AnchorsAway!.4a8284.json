@@ -5,17 +5,17 @@
     "z": 0
   },
   "Autoraise": true,
-  "CardID": 9901,
+  "CardID": 15307,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
   "CustomDeck": {
-    "99": {
+    "96": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/11260863950803286905/5091961AB1E0FDF6CBF00270AA0F112B4A9F632B/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16426218121781352516/218F6F090E09750098D638B0198BF07B7662CB99/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -25,7 +25,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "399a11",
+  "GUID": "4a8284",
   "Grid": false,
   "GridProjection": false,
   "Hands": true,
@@ -37,19 +37,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Card",
-  "Nickname": "A Storm of FIsts",
+  "Nickname": "Anchors, Away!",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_sk"
+    "obj_cy"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -2.536,
-    "posY": 1.714,
-    "posZ": 6.097,
+    "posX": -26.65,
+    "posY": 1.6,
+    "posZ": 16.615,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

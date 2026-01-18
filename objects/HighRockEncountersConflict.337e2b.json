@@ -5,14 +5,24 @@
     "z": 0
   },
   "Autoraise": true,
-  "CardID": 10907,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
+  "ContainedObjects_order": [
+    "Rumormonger.dd1798",
+    "NoUnrestfortheWicked.974b69",
+    "CaveofConflict.9b5f17",
+    "DelvingwiththeDead.a4c90e",
+    "RookstotheLeftMidnighttotheRight.51325d",
+    "PitStop.b6c677",
+    "BorderBattle.b884a6",
+    "SupineandSupernal.2eaa53"
+  ],
+  "ContainedObjects_path": "HighRockEncountersConflict.337e2b",
   "CustomDeck": {
-    "109": {
+    "294": {
       "BackIsHidden": true,
       "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12500676703668836315/6F5527938F4789C05FB2EE04DA47B10B3030BF38/",
       "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/15355676036581618610/BD7346BEA063F22ABB5763CE095EDACA8B1C714E/",
@@ -22,13 +32,23 @@
       "UniqueBack": true
     }
   },
+  "DeckIDs": [
+    29407,
+    29406,
+    29405,
+    29404,
+    29403,
+    29402,
+    29401,
+    29400
+  ],
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "dd1798",
+  "GUID": "337e2b",
   "Grid": false,
   "GridProjection": false,
-  "Hands": true,
+  "Hands": false,
   "HideWhenFaceDown": false,
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
@@ -36,8 +56,8 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Name": "Card",
-  "Nickname": "Rumormonger",
+  "Name": "Deck",
+  "Nickname": "High Rock Encounters Conflict",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
@@ -48,9 +68,9 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 0.047,
-    "posY": 1.6,
-    "posZ": 4.666,
+    "posX": -32.604,
+    "posY": 1.757,
+    "posZ": 41.168,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

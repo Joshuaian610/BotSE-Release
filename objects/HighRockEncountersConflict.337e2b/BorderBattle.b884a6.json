@@ -5,22 +5,12 @@
     "z": 0
   },
   "Autoraise": true,
+  "CardID": 29401,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
-  "ContainedObjects_order": [
-    "Rumormonger.dd1798",
-    "NoUnrestfortheWicked.974b69",
-    "CaveofConflict.9b5f17",
-    "DelvingwiththeDead.a4c90e",
-    "RookstotheLEftMidnighttotheRight.51325d",
-    "PitStop.b6c677",
-    "BorderBattle.b884a6",
-    "SupineandSupernal.2eaa53"
-  ],
-  "ContainedObjects_path": "HighRockEncountersConflict.337e2b",
   "CustomDeck": {
     "109": {
       "BackIsHidden": true,
@@ -32,23 +22,13 @@
       "UniqueBack": true
     }
   },
-  "DeckIDs": [
-    10907,
-    10906,
-    10905,
-    10904,
-    10903,
-    10902,
-    10901,
-    10900
-  ],
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "337e2b",
+  "GUID": "b884a6",
   "Grid": false,
   "GridProjection": false,
-  "Hands": false,
+  "Hands": true,
   "HideWhenFaceDown": false,
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
@@ -56,8 +36,8 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Name": "Deck",
-  "Nickname": "High Rock Encounters Conflict",
+  "Name": "Card",
+  "Nickname": "Border Battle",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
@@ -68,9 +48,9 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 33.463,
-    "posY": 5.963,
-    "posZ": 24.3,
+    "posX": -0.359,
+    "posY": 1.714,
+    "posZ": 4.545,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

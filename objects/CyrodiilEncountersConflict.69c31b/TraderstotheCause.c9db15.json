@@ -5,17 +5,17 @@
     "z": 0
   },
   "Autoraise": true,
-  "CardID": 9806,
+  "CardID": 15306,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
   "CustomDeck": {
-    "98": {
+    "96": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13055726025316600992/6E3EF47B82146F42CB79DF28019E1148E7162119/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/17271010864148035403/D622CE70D93DD690CE44B330AA855847E121D094/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -25,7 +25,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "be514b",
+  "GUID": "c9db15",
   "Grid": false,
   "GridProjection": false,
   "Hands": true,
@@ -37,19 +37,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Card",
-  "Nickname": "No Tresspassingg",
+  "Nickname": "Traders to the Cause",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_mw"
+    "obj_cy"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -20.597,
+    "posX": -26.343,
     "posY": 1.641,
-    "posZ": 2.451,
+    "posZ": 16.469,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

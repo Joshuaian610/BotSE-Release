@@ -5,17 +5,17 @@
     "z": 0
   },
   "Autoraise": true,
-  "CardID": 9600,
+  "CardID": 9901,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
   "CustomDeck": {
-    "96": {
+    "99": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/18209422950023887614/3AA8171D8C73F1BA604614D16857EDBFBFDA4473/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12814993984067075888/398F3B4ABE878183BAC9CBF0AB2E285B72803774/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/11260863950803286905/5091961AB1E0FDF6CBF00270AA0F112B4A9F632B/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16426218121781352516/218F6F090E09750098D638B0198BF07B7662CB99/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -25,7 +25,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "f1febb",
+  "GUID": "399a11",
   "Grid": false,
   "GridProjection": false,
   "Hands": true,
@@ -37,19 +37,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Card",
-  "Nickname": "Captives of House Telvanni",
+  "Nickname": "A Storm of Fists",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_bm"
+    "obj_sk"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -23.955,
-    "posY": 1.724,
-    "posZ": 0.101,
+    "posX": 55.95,
+    "posY": 2.721,
+    "posZ": 45.973,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

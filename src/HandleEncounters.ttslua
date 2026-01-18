@@ -474,7 +474,7 @@ end
 function initButtonsConflictSelect(obj)
   obj.clearButtons()
 
-  local posButton1, heightButton1, posButton2, heightButton2, posButton3, heightButton3 = getConflictDetails(obj.getName())
+  local posButton1, heightButton1, posButton2, heightButton2, posButton3, heightButton3 = getConflictButtonDetails(obj.getName())
 
   obj.createButton({
     label          = "",
@@ -2076,7 +2076,7 @@ function onObjectRotate(object, spin, flip, playerColor, oldSpin, oldFlip)
 end
 
 
-function getConflictDetails(cardName)
+function getConflictButtonDetails(cardName)
 
   -- this function returns the height and position values for the conflict select buttons, based on card name
   -- will return nil for value if button does not exist on card (1 to 3 buttons possible per card)
@@ -2087,7 +2087,7 @@ function getConflictDetails(cardName)
   local heightButton2 = nil
   local heightButton3 = nil
   
-  -- general conflict encounters
+  -- GENERAL CONFLICT ENCOUNTERS
   if cardName == "Wabbajack Attack" then
     posButton1 = { -0.02, -0.21, -1.29 }
     heightButton1 = 60
@@ -2144,10 +2144,267 @@ function getConflictDetails(cardName)
     posButton1 = { -0.02, -0.21, -1.28 }
     heightButton1 = 60
 
+  -- BLACK MARSH CONFLICT ENCOUNTERS
+  elseif cardName == "Captives of House Telvanni" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
 
+  elseif cardName == "Corrupted Communion" then
+    posButton1 = { -0.01, -0.21, -1.23 }
+    heightButton1 = 70
 
+  elseif cardName == "Deal or Die" then
+    posButton1 = { -0.01, -0.21, -1.22 }
+    heightButton1 = 70
+    posButton2 = { -0.01, -0.21, 0.87 }
+    heightButton2 = 60
+  
+  elseif cardName == "Uncharted Xanmeer" then
+    posButton1 = { -0.01, -0.21, -1.228 }
+    heightButton1 = 70
+    posButton2 = { -0.01, -0.21, 0.468 }
+    heightButton2 = 60
+  
+  elseif cardName == "Keep Ayleid on It" then
+    posButton1 = { -0.01, -0.21, -1.262 }
+    heightButton1 = 60
 
+  elseif cardName == "Origin of the Species" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
 
+  elseif cardName == "Captive Audience" then
+    posButton1 = { -0.01, -0.21, -1.275 }
+    heightButton1 = 60
+
+  elseif cardName == "A Pirate's Death For Ye" then
+    posButton1 = { 0.00, -0.21, -1.223 }
+    heightButton1 = 60
+    posButton2 = { 0.00, -0.21, 0.17 }
+    heightButton2 = 200
+
+  -- CYRODIIL CONFLICT ENCOUNTERS
+  elseif cardName == "War Profiteering" then
+    posButton1 = { 0.00, -0.21, -1.265 }
+    heightButton1 = 60
+    posButton2 = { 0.00, -0.21, -0.015 }
+    heightButton2 = 60
+    posButton3 = { 0.00, -0.21, .95 }
+    heightButton3 = 60
+
+  elseif cardName == "Heroes for Hire" then
+    posButton1 = { -0.01, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.50 }
+    heightButton2 = 60
+
+  elseif cardName == "Champion of the Downtrodden" then
+    posButton1 = { -0.01, -0.21, -1.28 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, 0.835 }
+    heightButton2 = 60
+  
+  elseif cardName == "The Poorly-Lit Brotherhood" then
+    posButton1 = { -0.01, -0.21, -1.218 }
+    heightButton1 = 90
+    posButton2 = { -0.01, -0.21, -0.28 }
+    heightButton2 = 200
+    posButton3 = { -0.01, -0.21, 0.535 }
+    heightButton3 = 90
+  
+  elseif cardName == "Cast Your Lot!" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+
+  elseif cardName == "Predictive Diplomacy" then
+    posButton1 = { -0.01, -0.21, -1.275 }
+    heightButton1 = 60
+
+  elseif cardName == "Traders to the Cause" then
+    posButton1 = { -0.01, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.40 }
+    heightButton2 = 60
+
+  elseif cardName == "Anchors, Away!" then
+    posButton1 = { 0.00, -0.21, -1.26 }
+    heightButton1 = 60
+
+  -- HIGH ROCK CONFLICT ENCOUNTERS
+  elseif cardName == "Supine and Supernal" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.6 }
+    heightButton2 = 60
+
+  elseif cardName == "Border Battle" then
+    posButton1 = { -0.01, -0.21, -1.22 }
+    heightButton1 = 90
+    posButton2 = { -0.01, -0.21, -0.365 }
+    heightButton2 = 90
+
+  elseif cardName == "Pit Stop" then
+    posButton1 = { -0.01, -0.21, -1.265 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, 0.54 }
+    heightButton2 = 60
+
+  elseif cardName == "Rooks to the Left, Midnight to the Right" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+  
+  elseif cardName == "Delving with the Dead" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, 0.50 }
+    heightButton2 = 90
+  
+  elseif cardName == "Cave of Conflict" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.592 }
+    heightButton2 = 60
+     posButton3 = { -0.01, -0.21, 0.18 }
+    heightButton3 = 60
+
+  elseif cardName == "No Unrest for the Wicked" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.24 }
+    heightButton2 = 60
+
+  elseif cardName == "Rumormonger" then
+    posButton1 = { -0.01, -0.21, -1.275 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.37 }
+    heightButton2 = 60
+
+  -- MORROWIND CONFLICT ENCOUNTERS
+  elseif cardName == "Wrong Side of the Law" then
+    posButton1 = { -0.01, -0.21, -1.225 }
+    heightButton1 = 60
+
+  elseif cardName == "Not Mushroom to Move" then
+    posButton1 = { -0.01, -0.21, -1.265 }
+    heightButton1 = 60
+
+  elseif cardName == "Egg Mine? No, Eggs Mine!" then
+    posButton1 = { -0.01, -0.21, -1.265 }
+    heightButton1 = 60
+  
+  elseif cardName == "Deals in Dwemer" then
+    posButton1 = { 0.00, -0.21, -1.199 }
+    heightButton1 = 90
+    posButton2 = { 0.00, -0.21, -0.342 }
+    heightButton2 = 60
+  
+  elseif cardName == "Augmented Arms" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+
+  elseif cardName == "Yours for the Taking" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+
+  elseif cardName == "No Tresspassing" then
+    posButton1 = { 0.00, -0.21, -1.22 }
+    heightButton1 = 90
+    posButton2 = { 0.00, -0.21, 0.42 }
+    heightButton2 = 200
+
+  elseif cardName == "Mystery Under Morrowind" then
+    posButton1 = { 0.00, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { 0.00, -0.21, 0.543 }
+    heightButton2 = 90
+
+  -- SKYRIM CONFLICT ENCOUNTERS
+  elseif cardName == "Cold Discomfort" then
+    posButton1 = { -0.01, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, 0.70 }
+    heightButton2 = 90
+
+  elseif cardName == "A Storm of Fists" then
+    posButton1 = { -0.01, -0.21, -1.21 }
+    heightButton1 = 90
+
+  elseif cardName == "Mudcrab Crossing" then
+    posButton1 = { -0.01, -0.21, -1.21 }
+    heightButton1 = 90
+  
+  elseif cardName == "Phalanges of Fate" then
+    posButton1 = { -0.01, -0.21, -1.20 }
+    heightButton1 = 90
+    posButton2 = { -0.01, -0.21, 0.865 }
+    heightButton2 = 60
+  
+  elseif cardName == "Any Fort in a Harrowstorm" then
+    posButton1 = { -0.01, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, 0.12 }
+    heightButton2 = 60
+
+  elseif cardName == "Compass of Cruelty" then
+    posButton1 = { -0.01, -0.21, -1.20 }
+    heightButton1 = 90
+
+  elseif cardName == "Maniacal Monolith" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+
+  elseif cardName == "Good Finds are Hard to Help" then
+    posButton1 = { -0.01, -0.21, -1.26 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, 0.589 }
+    heightButton2 = 60
+
+  -- VALENWOOD CONFLICT ENCOUNTERS
+  elseif cardName == "Forest Fatalities" then
+    posButton1 = { -0.01, -0.21, -1.27 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.712 }
+    heightButton2 = 60
+
+  elseif cardName == "Altar Your Destiny" then
+    posButton1 = { -0.01, -0.21, -1.28 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, 0.717 }
+    heightButton2 = 60
+
+  elseif cardName == "Heeding the Call" then
+    posButton1 = { -0.01, -0.21, -1.28 }
+    heightButton1 = 60
+  
+  elseif cardName == "An Enemy In Need" then
+    posButton1 = { 0.00, -0.21, -1.232 }
+    heightButton1 = 120
+    posButton2 = { 0.00, -0.21, -0.468 }
+    heightButton2 = 120
+  
+  elseif cardName == "Vine Snared" then
+    posButton1 = { -0.01, -0.21, -1.230 }
+    heightButton1 = 120
+    posButton2 = { -0.01, -0.21, 0.717 }
+    heightButton2 = 60
+
+  elseif cardName == "Dead Mer Tell No Tales" then
+    posButton1 = { 0.00, -0.21, -1.28 }
+    heightButton1 = 60
+    posButton2 = { 0.00, -0.21, 0.11 }
+    heightButton2 = 60
+
+  elseif cardName == "Competitive Arvantage" then
+    posButton1 = { -0.01, -0.21, -1.285 }
+    heightButton1 = 60
+    posButton2 = { 0.00, -0.21, 0.20 }
+    heightButton2 = 60
+
+  elseif cardName == "Parting the Veiled" then
+    posButton1 = { -0.01, -0.21, -1.28 }
+    heightButton1 = 60
+    posButton2 = { -0.01, -0.21, -0.572 }
+    heightButton2 = 120
 
   end
   return posButton1, heightButton1, posButton2, heightButton2, posButton3, heightButton3
@@ -2163,7 +2420,8 @@ function setupConflict1(card, _, _)
   local ttip = ""
   local isUnstable = false
   local conflictType = nil
-  -- general conflict encounters
+
+  -- GENERAL CONFLICT ENCOUNTERS
   if cardName == "Wabbajack Attack" then
     ttip = "Don't get Cheesed!"
     conflictType = "Clash"
@@ -2207,13 +2465,221 @@ function setupConflict1(card, _, _)
     ttip = "These [i]do[/i] look pretty sharp..."
     conflictType = "Clash"
 
+  -- BLACK MARSH CONFLICT ENCOUNTERS
+  elseif cardName == "Captives of House Telvanni" then
+    ttip = "The locks seem to be loose..."
+    conflictType = "Clash"
+
+  elseif cardName == "Corrupted Communion" then
+    ttip = "You judge the weight of a non-fatal blow."
+    conflictType = "Clash"
+
+  elseif cardName == "Deal or Die" then
+    ttip = "You decide to push their luck a little lower."
+    isUnstable = true
+    conflictType = "Clash"
+  
+  elseif cardName == "Uncharted Xanmeer" then
+    ttip = "Who knows what secrets lie beneath the bog?"
+    conflictType = "Delve"
+  
+  elseif cardName == "Keep Ayleid on It" then
+    ttip = "A simple look won't hurt..."
+    conflictType = "Clash"
+
+  elseif cardName == "Origin of the Species" then
+    ttip = "Stop the poachers."
+    conflictType = "Clash"
+
+  elseif cardName == "Captive Audience" then
+    ttip = "Free the captives!"
+    conflictType = "Clash"
+
+  elseif cardName == "A Pirate's Death For Ye" then
+    ttip = "Follow the map to an underground hoard."
+    conflictType = "Delve"
+
+  -- CYRODIIL CONFLICT ENCOUNTERS
+  elseif cardName == "War Profiteering" then
+    ttip = "Power Broker."
+    conflictType = "Delve"
+
+  elseif cardName == "Heroes for Hire" then
+    ttip = "Enlist (temporarily)."
+    conflictType = "Clash"
+
+  elseif cardName == "Champion of the Downtrodden" then
+    ttip = "Defend the village."
+    isUnstable = true
+    conflictType = "Clash"
+  
+  elseif cardName == "The Poorly-Lit Brotherhood" then
+    ttip = "Imitate their stealthy movements."
+    conflictType = "Delve"
+  
+  elseif cardName == "Cast Your Lot!" then
+    ttip = "Go it alone."
+    conflictType = "Clash"
+
+  elseif cardName == "Predictive Diplomacy" then
+    ttip = "Make your move."
+    conflictType = "Clash"
+
+  elseif cardName == "Traders to the Cause" then
+    ttip = "Control the flow."
+    conflictType = "Clash"
+
+  elseif cardName == "Anchors, Away!" then
+    ttip = "Sever the link to Oblivion."
+    conflictType = "Clash"
+
+  -- HIGH ROCK CONFLICT ENCOUNTERS
+  elseif cardName == "Supine and Supernal" then
+    ttip = "Wake me up inside!"
+    conflictType = "Clash"
+
+  elseif cardName == "Border Battle" then
+    ttip = "Power politics on the edge of the Covenant."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Pit Stop" then
+    ttip = "Last an hour in the brawl-pit."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Rooks to the Left, Midnight to the Right" then
+    ttip = "Stuck in the middle."
+    conflictType = "Clash"
+  
+  elseif cardName == "Delving with the Dead" then
+    ttip = "Grave consequences await."
+    conflictType = "Delve"
+  
+  elseif cardName == "Cave of Conflict" then
+    ttip = "Side with the Orcs."
+    conflictType = "Delve"
+
+  elseif cardName == "No Unrest for the Wicked" then
+    ttip = "Take the invaders head-on."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Rumormonger" then
+    ttip = "Pretend to be \"The Plague.\""
+    conflictType = "Clash"
+
+  -- MORROWIND CONFLICT ENCOUNTERS
+  elseif cardName == "Wrong Side of the Law" then
+    ttip = "Can you wriggle out of your remaining chains?"
+    conflictType = "Clash"
+
+  elseif cardName == "Not Mushroom to Move" then
+    ttip = "Food fight."
+    conflictType = "Clash"
+
+  elseif cardName == "Egg Mine? No, Eggs Mine!" then
+    ttip = "Egg Scramble"
+    conflictType = "Clash"
+  
+  elseif cardName == "Deals in Dwemer" then
+    ttip = "Follow these trustworthy folk to the cave"
+    isUnstable = true
+    conflictType = "Clash"
+  
+  elseif cardName == "Augmented Arms" then
+    ttip = "This stuff is dangerous!"
+    conflictType = "Clash"
+
+  elseif cardName == "Yours for the Taking" then
+    ttip = "You can take `em!"
+    conflictType = "Clash"
+
+  elseif cardName == "No Tresspassing" then
+    ttip = "Scribs cry at morning, diggers take warning."
+    conflictType = "Delve"
+
+  elseif cardName == "Mystery Under Morrowind" then
+    ttip = "These chambers are moving!"
+    conflictType = "Delve"
+
+  -- SKYRIM CONFLICT ENCOUNTERS
+  elseif cardName == "Cold Discomfort" then
+    ttip = "Frozen resolve."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "A Storm of Fists" then
+    ttip = "The only tribute you'll give is your blade."
+    conflictType = "Clash"
+
+  elseif cardName == "Mudcrab Crossing" then
+    ttip = "Mudcrabs are a man's (or mer's, or beastfolk's) best friend."
+    conflictType = "Clash"
+  
+  elseif cardName == "Phalanges of Fate" then
+    ttip = "The odds have to be pretty low, right? Right?"
+    conflictType = "Delve"
+  
+  elseif cardName == "Any Fort in a Harrowstorm" then
+    ttip = "Keep Moving In"
+    conflictType = "Delve"
+
+  elseif cardName == "Compass of Cruelty" then
+    ttip = "The snow is always whiter on the other side."
+    conflictType = "Clash"
+
+  elseif cardName == "Maniacal Monolith" then
+    ttip = "Off to a rocky start."
+    conflictType = "Clash"
+
+  elseif cardName == "Good Finds are Hard to Help" then
+    ttip = "Defend free trade!"
+    conflictType = "Clash"
+
+  -- VALENWOOD CONFLICT ENCOUNTERS
+  elseif cardName == "Forest Fatalities" then
+    ttip = "Spy the enemy."
+    conflictType = "Clash"
+
+  elseif cardName == "Altar Your Destiny" then
+    ttip = "Blood offering."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Heeding the Call" then
+    ttip = "Fearlessness is frightening."
+    conflictType = "Clash"
+  
+  elseif cardName == "An Enemy In Need" then
+    ttip = "Just make this quick and move on!"
+    conflictType = "Clash"
+  
+  elseif cardName == "Vine Snared" then
+    ttip = "You can... pant, pant... handle this!"
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Dead Mer Tell No Tales" then
+    ttip = "Professional plunderers."
+    conflictType = "Delve"
+
+  elseif cardName == "Competitive Arvantage" then
+    ttip = "Sure, why not?"
+    conflictType = "Delve"
+
+  elseif cardName == "Parting the Veiled" then
+    ttip = "Rush in with indignation!"
+    conflictType = "Clash"
+
   end
 
   -- if isUnstable is true, need to get which current province map is out (can't use getCurrentProvince because I need to differentiate eastern and western skyrim) is out, and determine if partyToken is located on an Unstable space per the data in posEncounters
   if not isUnstable then
     local isOnUnstable = checkIfUnstable()
     if isOnUnstable and -- only trigger if card has unstable option
-    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" then
+    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
+    cardName == "Deal or Die" then
       broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
       return
     end
@@ -2238,7 +2704,8 @@ function setupConflict2(card, _, _)
   local ttip = ""
   local isUnstable = false
   local conflictType = nil
-  -- general conflict encounters
+
+  -- GENERAL CONFLICT ENCOUNTERS
   if cardName == "Wabbajack Attack" then
     ttip = "Too late!"
     isUnstable = true
@@ -2266,13 +2733,128 @@ function setupConflict2(card, _, _)
     ttip = "Fight first, treasure later."
     conflictType = "Clash"
 
+  -- BLACK MARSH CONFLICT ENCOUNTERS
+  elseif cardName == "Deal or Die" then
+    ttip = "Strike a deal."
+
+  elseif cardName == "Uncharted Xanmeer" then
+    ttip = "Let some other fools take the risk."
+
+  elseif cardName == "A Pirate's Death For Ye" then
+    ttip = "Someone hardier than you would pay good money for a map like this..."
+
+  -- CYRODIIL CONFLICT ENCOUNTERS
+  elseif cardName == "War Profiteering" then
+    ttip = "Pension plan."
+    conflictType = "Delve"
+
+  elseif cardName == "Heroes for Hire" then
+    ttip = "Go dark."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Champion of the Downtrodden" then
+    ttip = "Leave them to their fate."
+  
+  elseif cardName == "The Poorly-Lit Brotherhood" then
+    ttip = "Make a break for it, taking a few flesh wounds in the process."
+ 
+  elseif cardName == "Traders to the Cause" then
+    ttip = "Destroy their wares."
+    isUnstable = true
+    conflictType = "Clash"
+
+  -- HIGH ROCK CONFLICT ENCOUNTERS
+  elseif cardName == "Supine and Supernal" then
+    ttip = "You can't wake up!"
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Border Battle" then
+    ttip = "Just survive. Kings can worry about who goes where."
+    conflictType = "Clash"
+
+  elseif cardName == "Pit Stop" then
+    ttip = "Looks more like a maul pit."
+  
+  elseif cardName == "Delving with the Dead" then
+    ttip = "One brush with vomit is enough for today."
+  
+  elseif cardName == "Cave of Conflict" then
+    ttip = "Side with the Bretons."
+    conflictType = "Delve"
+
+  elseif cardName == "No Unrest for the Wicked" then
+    ttip = "Set traps in the rubble."
+    conflictType = "Clash"
+
+  elseif cardName == "Rumormonger" then
+    ttip = "Just be yourself!"
+    conflictType = "Clash"
+
+  -- MORROWIND CONFLICT ENCOUNTERS
+
+  elseif cardName == "Deals in Dwemer" then
+    ttip = "Call the treasure hunters out as the swindlers they are."
+    conflictType = "Clash"
+
+  elseif cardName == "No Tresspassing" then
+    ttip = "Skitter out of there as fast as you can, lest something follows you..."
+
+  elseif cardName == "Mystery Under Morrowind" then
+    ttip = "Some secrets are best left unlearned."
+
+  -- SKYRIM CONFLICT ENCOUNTERS
+  elseif cardName == "Cold Discomfort" then
+    ttip = "Make a dash for the closest campfire."
+      
+  elseif cardName == "Phalanges of Fate" then
+    ttip = "Eh, best not to tempt fate."
+  
+  elseif cardName == "Any Fort in a Harrowstorm" then
+    ttip = "It looks cold in there."
+
+  elseif cardName == "Good Finds are Hard to Help" then
+    ttip = "Slashed throats, slashed prices."
+    isUnstable = true
+
+  -- VALENWOOD CONFLICT ENCOUNTERS
+  elseif cardName == "Forest Fatalities" then
+    ttip = "Spied by the enemy."
+    isUnstable = true
+    conflictType = "Clash"
+
+  elseif cardName == "Altar Your Destiny" then
+    ttip = "Material offering."
+
+  elseif cardName == "An Enemy In Need" then
+    ttip = "Hopefully, someone sees your good deed."
+    isUnstable = true
+    conflictType = "Clash"
+  
+  elseif cardName == "Vine Snared" then
+    ttip = "Cutpurse and run."
+
+  elseif cardName == "Dead Mer Tell No Tales" then
+    ttip = "Ransom your life."
+    isUnstable = true    
+
+  elseif cardName == "Competitive Arvantage" then
+    ttip = "Trap Arvan within the delve."
+    isUnstable = true
+
+  elseif cardName == "Parting the Veiled" then
+    ttip = "Caution and stealth will leave no trace."
+    conflictType = "Clash"
+
   end
 
   -- if isUnstable is true, need to get which current province map is out (can't use getCurrentProvince because I need to differentiate eastern and western skyrim) is out, and determine if partyToken is located on an Unstable space per the data in posEncounters
   if not isUnstable then
     local isOnUnstable = checkIfUnstable()
     if isOnUnstable and -- only trigger if card has unstable option
-    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" then
+    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
+    cardName == "Deal or Die" then
       broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
       return
     end
@@ -2291,7 +2873,46 @@ end
 
 
 function setupConflict3(card, _, _)
+  -- this function handles the setup of the second conflict encounter card option
 
+  local ttip = ""
+  local isUnstable = false
+  local conflictType = nil
+
+  -- CYRODIIL CONFLICT ENCOUNTERS
+  if cardName == "War Profiteering" then
+    ttip = "Give peace a chance."
+  
+  elseif cardName == "The Poorly-Lit Brotherhood" then
+    ttip = "Call out, \"Hey, we're on the same team!\""
+
+  -- HIGH ROCK CONFLICT ENCOUNTERS
+  elseif cardName == "Caves of Conflict" then
+    ttip = "Side with neither."
+    isUnstable = true
+    conflictType = "Delve"
+
+  end
+
+  -- if isUnstable is true, need to get which current province map is out (can't use getCurrentProvince because I need to differentiate eastern and western skyrim) is out, and determine if partyToken is located on an Unstable space per the data in posEncounters
+  if not isUnstable then
+    local isOnUnstable = checkIfUnstable()
+    if isOnUnstable and -- only trigger if card has unstable option
+    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
+    cardName == "Deal or Die" then
+      broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
+      return
+    end
+  end
+  
+  card.clearButtons()
+  card.addTag('conflict_selected')
+
+  if conflictType == "Clash" then
+    deployClash(cardName, 2)
+  elseif conflictType == "Delve" then
+    deployDelve(cardName, 2)
+  end
 end
 
 
@@ -2337,9 +2958,12 @@ function checkIfUnstable()
 end
 
 
-function deployClash(clashName, optionNumber)
+function deployClash(cardName, optionNumber)
+
+  log("deployClash(" .. cardName .. ", " .. optionNumber .. ") RUNNING")
 
   -- this function handles the setup of clash conflict encounters
+  local playerCount = getObjectbyName("Button Player Count").getVar('val')
 
   -- spaces declared top to bottom, left to right, column by column
   posClashSpaces = {
@@ -2407,7 +3031,7 @@ function deployClash(clashName, optionNumber)
   if currentProvince == "" or currentProvince == nil then log("deployClash(): currentProvince not found") return end
 
   -- randomly select mat from possible pool based on current province
-  local matPool     = {
+  local matPool = {
     ["Black Marsh"] = {"A", "B", "C"},
     ["Cyrodiil"]    = {"A", "B"},
     ["High Rock"]   = {"A", "D"},
@@ -2424,21 +3048,46 @@ function deployClash(clashName, optionNumber)
   if not bagClashMat then log("deployClash(): bagClashMat not found") return end
   if not bagEntranceTile then log("deployClash(): bagEntranceTile not found") return end
 
-  -- pull selected mat from bag, place
-  local rotClashMat = { 0, 0, 0 }
-  local posClashMat = { 2.05, 1.71, 2.41 }
-  local clashMat = nil
-  for _, object in pairs(bagClashMat.getObjects()) do
-    if object.name == "Clash Mat" and object.gm_notes == selectedMat then
-      clashMat = bagClashMat.takeObject({guid = object.guid})
+  -- pull selected mat from bag, place (if clash mat required, most conflict encounters will require clash mat)
+  if cardName ~= "Keep Ayleid on It" then
+    local rotClashMat = { 0, 0, 0 }
+    local posClashMat = { 2.05, 1.71, 2.41 }
+    local clashMat = nil
+    for _, object in pairs(bagClashMat.getObjects()) do
+      if object.name == "Clash Mat" and object.gm_notes == selectedMat then
+        clashMat = bagClashMat.takeObject({guid = object.guid})
+      end
+    end
+    if clashMat == nil then log("deployClash(): clashMat not found") return end
+    Wait.frames(function()
+      clashMat.setRotation(rotClashMat)
+      clashMat.setPosition(posClashMat)
+      clashMat.setLock(true)
+    end)
+
+  elseif cardName == "Keep Ayleid on It" then
+    local bag19Hex = getObjectbyName("19 Hex Bag")
+    local rot19Hex = { 0, 60, 0 }
+    local pos19Hex = { -2.05, 1.87, 2.41 }
+    local bag3Hex = getObjectbyName("3 Hex Bag")
+    local rot3Hex = { 0, 240, 0 }
+    local pos3Hex = {{ 6.15, 1.87, 9.51 }, { 6.15, 1.87, -4.69 }}
+
+    local tile19Hex = bag19Hex.takeObject()
+    Wait.frames(function()
+      tile19Hex.setRotation(rot19Hex)
+      tile19Hex.setPosition(pos19Hex)
+      tile19Hex.setLock(true)
+    end)
+    for i = 1, 2 do
+      local tile3Hex = bag3Hex.takeObject()
+      Wait.frames(function()
+        tile3Hex.setRotation(rot3Hex)
+        tile3Hex.setPosition(pos3Hex[i])
+        tile3Hex.setLock(true)
+      end)
     end
   end
-  if clashMat == nil then log("deployClash(): clashMat not found") return end
-  Wait.frames(function()
-    clashMat.setRotation(rotClashMat)
-    clashMat.setPosition(posClashMat)
-    clashMat.setLock(true)
-  end)
 
   -- get rotation, position of entrance tile per encounter name
   -- also get tables for cache and enemy placement
@@ -2450,7 +3099,7 @@ function deployClash(clashName, optionNumber)
   local rotLegendaryCaches = { 0, 180, 180 }
   local spacesEnemies = {}
   
-  -- general encounters
+  -- GENERAL ENCOUNTERS
   if cardName == "Wabbajack Attack" then
     rotEntranceTile = { 0, 300, 0 }
     posEntranceTile = { -12.30, 1.87, 2.41 }
@@ -2622,6 +3271,855 @@ function deployClash(clashName, optionNumber)
       posClashSpaces["column5"][1],
       posClashSpaces["column4"][2],
     }
+  
+  -- BLACK MARSH CONFLICT ENCOUNTERS
+  elseif cardName == "Captives of House Telvanni" then
+    rotEntranceTile = { 0, 180, 0 }
+    posEntranceTile = { 9.22, 1.87, -6.46 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column5"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column7"][3],
+    }
+
+  elseif cardName == "Corrupted Communion" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column5"][3],
+    }
+
+  elseif cardName == "Deal or Die" then
+    rotEntranceTile = { 0, 240, 0 }
+    posEntranceTile = { -7.18, 1.87, -6.46 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column6"][2],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column5"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][3],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column4"][5],
+    }
+  
+  elseif cardName == "Keep Ayleid on It" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column3"][5],
+      { 7.17, 1.84, 11.29 },
+      { 7.17, 1.84, -6.46 },
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][3],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column1"][2],
+    }
+
+  elseif cardName == "Origin of the Species" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column2"][4],
+      posClashSpaces["column5"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][3],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column2"][2],
+    }
+
+  elseif cardName == "Captive Audience" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][2],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column3"][2],
+      posClashSpaces["column3"][4],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column1"][3],
+    }
+
+  -- CYRODIIL CONFLICT ENCOUNTERS
+ 
+  elseif cardName == "Heroes for Hire" then
+    rotEntranceTile = { 0, 240, 0 }
+    posEntranceTile = { -7.18, 1.87, -6.46 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column4"][2],
+      posClashSpaces["column4"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column3"][4],
+    }
+
+  elseif cardName == "Champion of the Downtrodden" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][3],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column7"][2],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column7"][1],
+    }
+  
+  elseif cardName == "Cast Your Lot!" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column6"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column5"][5],
+    }
+
+  elseif cardName == "Predictive Diplomacy" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][2],
+    }
+    spacesEnemies = {
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column7"][1],
+    }
+
+  elseif cardName == "Traders to the Cause" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column5"][3],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][2],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column5"][4],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column7"][2],
+    }
+
+  elseif cardName == "Anchors, Away!" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][3],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column3"][1],
+    }
+
+  -- HIGH ROCK CONFLICT ENCOUNTERS
+  elseif cardName == "Supine and Supernal" then
+    rotEntranceTile = { 0, 240, 0 }
+    posEntranceTile = { -7.18, 1.87, -6.46 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column4"][2],
+      posClashSpaces["column4"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column7"][1],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column3"][5],
+    }
+
+  elseif cardName == "Border Battle" then
+    rotEntranceTile = { 0, 180, 0 }
+    posEntranceTile = { 0.00, 1.87, -8.24 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column7"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column2"][2],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column7"][1],
+      posClashSpaces["column1"][1],
+    }
+
+  elseif cardName == "Pit Stop" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column7"][1],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column5"][4],
+    }
+
+  elseif cardName == "Rooks to the Left, Midnight to the Right" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = {-12.30, 1.87, 2.41}
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column7"][2],
+    }
+    spacesEnemies = {
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+    }
+  
+  elseif cardName == "No Unrest for the Wicked" then
+    rotEntranceTile = { 0, 180, 0 }
+    posEntranceTile = { 9.22, 1.87, -6.46 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][4],
+      posClashSpaces["column5"][2],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column7"][1],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column1"][2],
+      posClashSpaces["column5"][4],
+    }
+
+  elseif cardName == "Rumormonger" then
+    rotEntranceTile = { 0, 240, 0 }
+    posEntranceTile = { 2.05, 1.87, -8.24 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column7"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column2"][2],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column4"][3],
+    }
+
+  -- MORROWIND CONFLICT ENCOUNTERS
+  elseif cardName == "Wrong Side of the Law" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column7"][1],
+      posClashSpaces["column7"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][2],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column3"][1],
+    }
+
+  elseif cardName == "Not Mushroom to Move" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][2],
+      posClashSpaces["column6"][2],
+    }
+    spacesEnemies = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+    }
+
+  elseif cardName == "Egg Mine? No, Eggs Mine!" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 5.96 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,      
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][3],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column7"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][5],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column1"][2],
+      posClashSpaces["column7"][2],
+    }
+  
+  elseif cardName == "Deals in Dwemer" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.4 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column4"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column7"][1],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+    }
+  
+  elseif cardName == "Augmented Arms" then
+    rotEntranceTile = { 0, 180, 0 }
+    posEntranceTile = { 9.22, 1.87, -6.46 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      -- positioned off clash mat since players have choice where to place
+      { 13.32, 1.59, -2.91 },
+      { 3.32, 1.59, 0.64 },
+      { 13.32, 1.59, 4.19 },
+      { 17.42, 1.59, 4.19 },
+      { 17.42, 1.59, 0.64 },
+      { 17.42, 1.59, -2.91 },
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][4],
+      posClashSpaces["column3"][4],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column3"][2],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column2"][2],
+    }
+
+  elseif cardName == "Yours for the Taking" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -6.15, 2.12, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column5"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][2],
+      posClashSpaces["column3"][4],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column5"][4],
+    }
+
+  -- SKYRIM CONFLICT ENCOUNTERS
+  elseif cardName == "Cold Discomfort" then
+    rotEntranceTile = { 0, 0, 0 }
+    posEntranceTile = { -7.18, 1.87, 11.29 }
+    rotCaches = {
+      rotCommonCaches,
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][2],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column1"][2],
+      posClashSpaces["column3"][4],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column7"][3],
+    }
+
+  elseif cardName == "A Storm of Fists" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column2"][3],
+      posClashSpaces["column6"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][2],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column7"][2],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column2"][2],
+      posClashSpaces["column1"][2],
+      posClashSpaces["column4"][3],
+    }
+
+  elseif cardName == "Mudcrab Crossing" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][5],
+      posClashSpaces["column5"][1],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][3],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column6"][1],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column6"][4],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][4],
+    }
+    
+  elseif cardName == "Compass of Cruelty" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column7"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][2],
+      posClashSpaces["column5"][4],
+      posClashSpaces["column4"][2],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column6"][3],
+      posClashSpaces["column3"][2],
+      posClashSpaces["column3"][4],
+    }
+
+  elseif cardName == "Maniacal Monolith" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][3],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column2"][2],
+      posClashSpaces["column2"][3],
+      posClashSpaces["column7"][2],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column5"][3],
+    }
+
+  elseif cardName == "Good Finds are Hard to Help" then
+    rotEntranceTile = { 0, 240, 0 }
+    posEntranceTile = { -7.18, 1.87, -6.46 }
+    rotCaches = {
+    }
+    spacesCaches = {
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][3],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column5"][4],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column7"][2],
+    }
+
+  -- VALENWOOD CONFLICT ENCOUNTERS
+  elseif cardName == "Forest Fatalities" then
+    rotEntranceTile = { 0, 240, 0 }
+    posEntranceTile = { -7.18, 1.87, -6.46 }
+    rotCaches = {
+      rotCommonCaches,
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][1],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column7"][2],
+    }
+    spacesEnemies = {
+      posClashSpaces["column5"][3],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column2"][1],
+    }
+
+  elseif cardName == "Altar Your Destiny" then
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][2],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][5],
+    }
+    spacesEnemies = {
+      { 19.47, 2.00, -2.91 },
+      { 19.47, 2.00, 0.64 },
+      { 19.47, 2.00, 4.19 },
+      { 19.47, 2.00, 7.74 },
+      { 23.57, 2.00, 7.74 },
+      { 23.57, 2.00, 4.19 },
+      { 23.57, 2.00, 0.64 },
+      { 23.57, 2.00, -2.91 },
+    }
+
+  elseif cardName == "Heeding the Call" then
+    rotEntranceTile = { 0, 180, 0 }
+    posEntranceTile = { 9.22, 1.87, -6.46 }
+    rotCaches = {
+      rotLegendaryCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column3"][4],
+      posClashSpaces["column4"][3],
+      posClashSpaces["column5"][2],
+      posClashSpaces["column5"][3],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column6"][2],
+      posClashSpaces["column3"][3],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][4],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column3"][2],
+    }
+  
+  elseif cardName == "An Enemy In Need" then
+    rotEntranceTile = { 0, 0, 0 }
+    posEntranceTile = { 0.00, 1.87, 0.00 }
+    rotCaches = {
+      rotCommonCaches,
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column6"][4],
+    }
+    spacesEnemies = {
+      posClashSpaces["column1"][3],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column7"][3],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column4"][1],
+    }
+  
+  elseif cardName == "Vine Snared" then
+    rotEntranceTile = { 0, 0, 0 }
+    posEntranceTile = { 0.00, 1.87, 0.00 }
+    rotCaches = {
+      rotCommonCaches,
+      rotCommonCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column1"][2],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+    }
+    spacesEnemies = {
+      posClashSpaces["column4"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column3"][2],
+      posClashSpaces["column3"][4],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column2"][4],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column1"][3],
+    }
+
+  
+  
+  elseif cardName == "Parting the Veiled" then
+    rotEntranceTile = { 0, 0, 0 }
+    posEntranceTile = { 0.00, 1.87, 0.00 }
+    rotCaches = {
+      rotCommonCaches,
+      rotLegendaryCaches,
+      rotCommonCaches,
+    }
+    spacesCaches = {
+      posClashSpaces["column5"][1],
+      posClashSpaces["column5"][3],
+      posClashSpaces["column5"][5],
+    }
+    spacesEnemies = {
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column7"][2],
+      posClashSpaces["column1"][2],
+      posClashSpaces["column2"][1],
+      posClashSpaces["column4"][4],
+      posClashSpaces["column4"][1],
+      posClashSpaces["column2"][4],
+    }
+
   end
 
   local bagEntranceTiles = getObjectbyName("Entrance Tile Bag")
@@ -2638,14 +4136,14 @@ function deployClash(clashName, optionNumber)
   -- special cache handling per encounter
   local playerCount = getObjectbyName("Button Player Count").getVar('val')
 
-  -- Captured!: needs to flip common caches to legendary at 3+ players
+  -- Captured! needs to flip common caches to legendary at 3+ players
   if cardName == "Captured!" and playerCount > 2 then
     rotCaches = {
       rotLegendaryCaches,
       rotLegendaryCaches,
       rotLegendaryCaches,
       rotLegendaryCaches,
-    }    
+    }
   end
 
   -- Keep Away needs to deploy correct number of caches, 3+ players = 5, otherwise = 3
@@ -2659,13 +4157,22 @@ function deployClash(clashName, optionNumber)
     }
   end
 
-  for i = 1, #spacesCaches do
-    bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
-  end
+  Wait.time(function()
 
-  Wait.time(function() deployClashEnemies(clashName, spacesEnemies, optionNumber) end, 1)
+    if cardName == "Keep Ayleid on It" then
+      for i = 1, playerCount+1 do
+        bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+      end
+    else
+      for i = 1, #spacesCaches do        
+        bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+      end
+    end
+  end, 1)
 
-  broadcastToAll("Clash has begun: " .. clashName, "White")
+  Wait.time(function() deployClashEnemies(cardName, spacesEnemies, optionNumber) end, 2)
+
+  broadcastToAll("Clash has begun: " .. cardName, "White")
 
 end
 
@@ -2707,7 +4214,7 @@ function getChipBreakdown(value)
 end
 
 
-function deployClashEnemies(clashName, spacesEnemies, optionNumber)
+function deployClashEnemies(cardName, spacesEnemies, optionNumber)
 
   -- this function handles the individual enemy setup requirements for any given clash
   local currentCalculatedEP = getObjectbyName("Button Calculated EP").getVar('val')
@@ -2719,7 +4226,7 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
   local enemyCount = 0
 
   -- GENERAL ENCOUNTERS
-  if clashName == "Wabbajack Attack" then
+  if cardName == "Wabbajack Attack" then
     -- before deploying EP, add khajiit marauder (<3) or khajiit cultist to enemy pool and deploy
     local extraEnemy = playerCount < 3 and "Khajiit Marauder" or "Khajiit Cultist"
     local extraBag = playerCount < 3 and bagLow or bagHigh
@@ -2783,7 +4290,7 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
       end
     end, 1)
 
-  elseif clashName == "The Wacky Box of Wonders" then
+  elseif cardName == "The Wacky Box of Wonders" then
     -- check if unstable to determine if 3 or 4 fatigue is needed
     local isUnstable = checkIfUnstable()
     local fatigueCount = isUnstable and 4 or 3
@@ -2943,7 +4450,7 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
     end, 1)
 
 
-  elseif clashName == "Highwaymen" then
+  elseif cardName == "Highwaymen" then
     -- only extra setup required is to broadcast a reminder to remove a cache chip at 3+ players
 
     -- deploy EP
@@ -2999,7 +4506,7 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
       broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: Remember to select a cache chip to remove.", "White")
     end
     
-  elseif clashName == "Captured!" then
+  elseif cardName == "Captured!" then
     -- only extra setup required is cache related (common caches should be legendary instead at 3+ player count), so, normal enemy deployment otherwise
 
     -- deploy EP
@@ -3051,7 +4558,7 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
     end, 1)
 
 
-  elseif clashName == "Unsullied Pool" then
+  elseif cardName == "Unsullied Pool" then
     -- use as many beasts as possible while deploying EP, at 3+ players, will need to adjust HP +2 on enemies, and broadcast reminder to flip lvl 1s to 5s
 
     -- deploy EP
@@ -3133,7 +4640,7 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
       end, 3)
     end
 
-  elseif clashName == "Black Market Economics" then
+  elseif cardName == "Black Market Economics" then
 
     -- if optionNumber == 1, need to deploy a level 5 or 10 (3+ players) enemy last
 
@@ -3196,7 +4703,8 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
       end
     end, 1)
 
-  elseif clashName == "Keep Away" then    
+  elseif cardName == "Keep Away" then
+  
     -- normal enemy deployment, 3+ players need extra caches deployed
 
     -- deploy EP
@@ -3248,90 +4756,648 @@ function deployClashEnemies(clashName, spacesEnemies, optionNumber)
     end, 1)
   
   -- BM ENCOUNTERS
-  elseif clashName == "Captive Audience" then
-    -- add level 5 dark elf marauder to EP and deploy it first
-    -- if weather is rainy or flooding, each adventurer drains 1 available skill die
-    -- if weather is flooding, each adventurer also gains 1 overfatigue
-    -- (will need some method of detecting current weather)
-    -- 3+ players: remove 1 cache (broadcast reminder)
+  elseif cardName == "Captives of House Telvanni" then
+    -- broadcast reminder that all adventurers need to make a lockpick check (1-5-2) with 3 attempts
+    -- and also broadcast reminder if weather is flooding that adventurers have 2 fewer attempts during lockpick checks
+    local attemptCount = checkWeather() == "Flooding" and 1 or 3
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: All adventurers must make an initial lockpick check 1-5-2 (" .. attemptCount .. ").", "White")
+    Wait.time(function()
+      if checkWeather() == "Flooding" then
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Current weather is flooding, adventurers will have 2 fewer attempts during lockpick checks.", "White")        
+      end
+      if playerCount > 2 then
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: Adventurers gain overfatigue instead of light fatigue when adjusting lockpick dice.", "White")
+      end
+    end, 1)
 
-  elseif clashName == "Origin of the Species" then
-    -- add playerCount level 1 enemies to EP and deploy them last
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif cardName == "Corrupted Communion" then
+    local weatherToken = nil
+    -- set weather to flooding
+    for _, object in pairs(getObjects()) do
+      if object.getName() == "Book Overland Token" and object.getDescription() == "Weather Gauge" then
+        weatherToken = object
+      end
+    end
+    if weatherToken == nil then log("deployClashEnemies() weatherToken not found") return end
+
+    -- after deploying EP, deploy additional level 1 enemies to remaining unoccupied enemy hexes
+    local deployedChips = {}
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            if enemyCount <= 4 then
+              table.insert(deployedChips, chip20)
+            end
+
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            if enemyCount <= 4 then
+              table.insert(deployedChips, chip10)
+            end
+
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            if enemyCount <= 4 then
+              table.insert(deployedChips, chip5)
+            end
+
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            if enemyCount <= 4 then
+              table.insert(deployedChips, chip1)
+            end
+
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      -- fill remaining empty spaces with level 1s
+      if enemyCount < 8 then
+        for index = enemyCount + 1, 8 do
+          local chip1extra = bagLow.takeObject({rotation = { 0, 180, 180 }})
+          -- include filler chips for first 4 status dice logic
+          if index <= 4 then
+            table.insert(deployedChips, chip1extra)
+          end
+          Wait.frames(function() chip1extra.setPositionSmooth(spacesEnemies[index], false, true) end)
+        end
+      end
+
+    end, 1)
+
+    -- apply blind status die to first 4 enemies deployed
+    Wait.time(function()
+
+      local bagStatusEffectDice = getObjectbyName("Status Effect Dice Bag")
+      
+      for _, chip in ipairs(deployedChips) do
+        
+        local chipPos = chip.getPosition()
+        local diePos = { chipPos.x, 4, chipPos.z }
+
+        local statusDie = bagStatusEffectDice.takeObject({
+          rotation = { 0, 0, 0 }
+        })
+
+        Wait.frames(function()
+          statusDie.setPositionSmooth(diePos, false, true)
+          statusDie.setDescription("Blind:\nThis unit has a range of 1, considers allied units to targetable, and can only target the strongest adjacent unit.")
+        end)
+        
+      end
+
+    end, 2)
+
+    -- if unstable, broadcast reminder to flip playerCount lvl 1 enemies to level 5, adjusting their HP
+    if checkIfUnstable() then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Party token is currently at unstable location, the party will need to flip up to " .. playerCount ..  " level 1 enemies.", "White")        
+    end
+
+  elseif cardName == "Deal or Die" then
+    -- no odd setup stuff outside of maybe broadcasting a reminder if weather is flooding
+    if checkWeather() == "Flooding" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Weather is currently Flooding, unit may only move 1 hex during their movement actions.", "White")
+    end
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif cardName == "Keep Ayleid on It" then
+
+    local deployedChips = {}
+    local initialCalculatedEP = currentCalculatedEP
+    local epSpent = 0
+
+    Wait.time(function()
+
+      -- 20s
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < playerCount then
+            local chipValue = 20
+            local chip20 = bagHigh.takeObject({rotation = {0,180,0}})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function()
+              chip20.setPositionSmooth(spacesEnemies[index], false, true)
+              table.insert(deployedChips, chip20)
+            end)
+            currentCalculatedEP = currentCalculatedEP - chipValue
+            epSpent = epSpent + chipValue
+          end
+        end
+      end
+
+      -- 10s
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < playerCount then
+            local chipValue = 10
+            local chip10 = bagHigh.takeObject({rotation = {0,180,180}})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function()
+              chip10.setPositionSmooth(spacesEnemies[index], false, true)
+              table.insert(deployedChips, chip10)
+            end)
+            currentCalculatedEP = currentCalculatedEP - chipValue
+            epSpent = epSpent + chipValue
+          end
+        end
+      end
+
+      -- 5s
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < playerCount then
+            local chipValue = 5
+            local chip5 = bagLow.takeObject({rotation = {0,180,0}})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function()
+              chip5.setPositionSmooth(spacesEnemies[index], false, true)
+              table.insert(deployedChips, chip5)
+            end)
+            currentCalculatedEP = currentCalculatedEP - chipValue
+            epSpent = epSpent + chipValue
+          end
+        end
+      end
+
+      -- 1s
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < playerCount then
+            local chipValue = 1
+            local chip1 = bagLow.takeObject({rotation = {0,180,180}})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function()
+              chip1.setPositionSmooth(spacesEnemies[index], false, true)
+              table.insert(deployedChips, chip1)
+            end)
+            currentCalculatedEP = currentCalculatedEP - chipValue
+            epSpent = epSpent + chipValue
+          end
+        end
+      end
+
+      -- final HP calc AFTER all EP deductions are complete
+      Wait.time(function()
+
+        local remainingEP = initialCalculatedEP - epSpent
+        local hpIncrease = math.floor(remainingEP / 5)
+
+        for _, chip in ipairs(deployedChips) do
+          local oldVal = chip.getVar('val')
+          local newVal = oldVal + hpIncrease
+          local bagScript = getObjectbyName("Defeated Monsters Bag")
+          bagScript.call('set_val_remote', {chipObj=chip, val=newVal})
+        end
+
+        broadcastToAll(
+          "[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: " ..
+          remainingEP .. " remaining in Calculated EP after deployment, increasing HP by " .. hpIncrease .. ".",
+          "White"
+        )
+
+      end, 2)
+
+    end, 1)
+
+
+  elseif cardName == "Origin of the Species" then
     -- first enemy deployed must be a beast type and it's health stat is doubled, maybe highlight red or something
     -- 3+ players: add quest unit skill Vindictive to first beast enemy
+    local firstEnemyDrawn = false
+    local vindictiveDescription = "\n\nVindictive:\nThis unit increases its Combat stat by the number of opposing adventurers."
+    Wait.time(function()
 
-  elseif clashName == "Keep Ayleid on It" then
+      -- 20 EP chips
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          local chip20 = nil
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
 
-  elseif clashName == "Deal or Die" then
+            if firstEnemyDrawn then
+              chip20 = bagHigh.takeObject({rotation = {0,180,0}})
+              Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+            else
+              chip20 = deployEnemyType(20, "Beast", spacesEnemies[index])
+              firstEnemyDrawn = true
+              Wait.time(function()
+              
+                local oldVal = chip20.getVar('val')
+                local newVal = oldVal * 2
+                local bagScript = getObjectbyName("Defeated Monsters Bag")
+                bagScript.call('set_val_remote', {chipObj=chip20, val=newVal})
+                chip20.highlightOn("Red")
+                if playerCount > 2 then                  
+                  chip20.setDescription(chip20.getDescription() .. vindictiveDescription)
+                  broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
+                end
 
-  elseif clashName == "Corrupted Communion" then
+              end, 1)
+            end
 
-  elseif clashName == "Captives of House Telvanni" then
+          end
+        end
+      end
+
+      -- 10 EP chips
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          local chip10 = nil
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            if firstEnemyDrawn then
+              chip10 = bagHigh.takeObject({rotation = {0,180,180}})
+              Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+            else
+              chip10 = deployEnemyType(10, "Beast", spacesEnemies[index])
+              firstEnemyDrawn = true
+              Wait.time(function()
+              
+                local oldVal = chip10.getVar('val')
+                local newVal = oldVal * 2
+                local bagScript = getObjectbyName("Defeated Monsters Bag")
+                bagScript.call('set_val_remote', {chipObj=chip10, val=newVal})
+                chip10.highlightOn("Red")
+                if playerCount > 2 then                  
+                  chip10.setDescription(chip10.getDescription() .. vindictiveDescription)
+                  broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
+                end
+
+              end, 1)
+            end
+          end
+        end
+      end
+
+      -- 5 EP chips
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          local chip5 = nil
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            if firstEnemyDrawn then
+              chip5 = bagLow.takeObject({rotation = {0,180,0}})
+              Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+            else
+              chip5 = deployEnemyType(5, "Beast", spacesEnemies[index])
+              firstEnemyDrawn = true
+              Wait.time(function()
+              
+                local oldVal = chip5.getVar('val')
+                local newVal = oldVal * 2
+                local bagScript = getObjectbyName("Defeated Monsters Bag")
+                bagScript.call('set_val_remote', {chipObj=chip5, val=newVal})
+                chip5.highlightOn("Red")
+                if playerCount > 2 then                  
+                  chip5.setDescription(chip5.getDescription() .. vindictiveDescription)
+                  broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
+                end
+
+              end, 1)
+            end
+          end
+        end
+      end
+
+      -- 1 EP chips
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          local chip1 = nil
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            if firstEnemyDrawn then
+              chip1 = bagLow.takeObject({rotation = {0,180,180}})
+              Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+            else
+              chip1 = deployEnemyType(1, "Beast", spacesEnemies[index])
+              firstEnemyDrawn = true
+              Wait.time(function()
+              
+                local oldVal = chip1.getVar('val')
+                local newVal = oldVal * 2
+                local bagScript = getObjectbyName("Defeated Monsters Bag")
+                bagScript.call('set_val_remote', {chipObj=chip1, val=newVal})
+                chip1.highlightOn("Red")
+                if playerCount > 2 then                  
+                  chip1.setDescription(chip1.getDescription() .. vindictiveDescription)
+                  broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
+                end
+
+              end, 1)
+            end
+          end
+        end
+      end
+
+      -- now deploy playerCount level 1 enemies, up to 8 total enemies
+      local lvl1DeployCount = playerCount
+
+      Wait.time(function()
+        for i = 1, lvl1DeployCount do
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            local chip1 = bagLow.takeObject({rotation = {0,180,180}})
+            Wait.frames(function()
+              chip1.setPositionSmooth(spacesEnemies[index], false, true)
+            end)
+          end
+        end
+      end, 1.5)
+
+    end, 1)
+ 
+  elseif cardName == "Captive Audience" then
+    -- add level 5 dark elf marauder to EP and deploy it first
+    local extraEnemy = "Dark Elf Marauder"
+    local extraBag = bagLow
+    local extraRot = { 0, 180, 0 }
+    for _, object in pairs(extraBag.getObjects()) do
+      if object.name:find(extraEnemy) then
+        local chipExtraEnemy = extraBag.takeObject({guid = object.guid, rotation = extraRot})
+        enemyCount = 1
+        Wait.frames(function()
+          -- chipExtraEnemy.setVar('fresh_out_of_bag')
+          chipExtraEnemy.setPositionSmooth(spacesEnemies[enemyCount], false, true)
+        end)
+        break
+      end
+    end
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- if weather is rainy or flooding, each adventurer drains 1 available skill die (broadcast reminder)
+    -- if weather is flooding, each adventurer also gains 1 overfatigue
+    local currentWeather = checkWeather()
+    if currentWeather == "Rainy" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Current weather in Black Marsh is Rainy - Adventurers select 1 available skill die to drain.", "White")
+    elseif currentWeather == "Flooding" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Current weather in Black Marsh is Flooding - Adventurers select 1 available skill die to drain (manually), and also gain 1 overfatigue.", "White")
+    end
+
+    -- 3+ players: remove 1 cache (broadcast reminder)
+    if playerCount > 2 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: Remember to select a cache chip to remove.", "White")
+    end
+
+  
 
   -- CY ENCOUNTERS
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
   -- HR ENCOUNTERS
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
   -- MW ENCOUNTERS
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
   -- SK ENCOUNTERS
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
   -- VW ENCOUNTERS
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
-  elseif clashName == "" then
+  elseif cardName == "" then
 
   end
 end
@@ -3383,6 +5449,44 @@ function deployEnemyType(enemyLevel, enemyType, position)
 
     if chip then break end
   end
-  log("deployEnemyType() found chip: " .. chip.getName())
   return chip
+end
+
+
+function checkWeather()
+  
+  -- this function checks current weather during black marsh province encounters, returns nil if unable to determine
+  local isBM = false
+  local currentWeather = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "" then
+      isBM = true
+    end
+  end
+  if not isBM then log("checkWeather(): not currently Black Marsh in play") return nil end
+
+  local weatherToken = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Book Overland Token" and object.getDescription() == "Weather Gauge" then
+      weatherToken = object
+    end
+  end
+  if weatherToken == nil then log("checkWeather(): unable to find Weather Gauge token") return nil end
+
+  local tolerance = 0.50
+  local posWeatherToken = weatherToken.getPosition()
+  local posX     = {
+    ["Sunny"]    = -37.40,
+    ["Rainy"]    = -36.10,
+    ["Flooding"] = -34.79,
+  }
+
+  -- use X axis position via tolerance to determine current weather
+  for weatherType, posVal in pairs(posX) do
+    if math.abs(posWeatherToken.x - posVal) <= tolerance then
+      currentWeather = weatherType
+      break
+    end
+  end
+  return currentWeather
 end

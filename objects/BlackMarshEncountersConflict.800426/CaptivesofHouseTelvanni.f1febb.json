@@ -5,7 +5,7 @@
     "z": 0
   },
   "Autoraise": true,
-  "CardID": 9602,
+  "CardID": 9600,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
@@ -14,8 +14,8 @@
   "CustomDeck": {
     "96": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/18209422950023887614/3AA8171D8C73F1BA604614D16857EDBFBFDA4473/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12814993984067075888/398F3B4ABE878183BAC9CBF0AB2E285B72803774/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -25,7 +25,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "485eba",
+  "GUID": "f1febb",
   "Grid": false,
   "GridProjection": false,
   "Hands": true,
@@ -37,19 +37,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Card",
-  "Nickname": "Champion of the Downtrodden",
+  "Nickname": "Captives of House Telvanni",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_cy"
+    "obj_bm"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -27.022,
-    "posY": 1.704,
-    "posZ": 16.545,
+    "posX": -38.759,
+    "posY": 1.58,
+    "posZ": 3.399,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
