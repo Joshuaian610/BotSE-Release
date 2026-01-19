@@ -1,3 +1,130 @@
+player_panel_positions = {
+    "5 100",
+    "5 220",
+    "5 340",
+    "5 460",
+}
+
+player_panel_characters = {
+    ["argonian_a"] = "https://steamusercontent-a.akamaihd.net/ugc/12918959323190219131/FB3E4F626DC8D6E409611AD70A3F250B8C654120/",
+    ["argonian_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/15967014092899356860/9F61ED682EA5B67620F2D325E308A5C12C353346/",
+    ["argonian_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/13673201085140095294/26DED537A1C3394BAFADECE6D9FE282F3FA847BE/",
+    ["argonian_b_"] = "https://steamusercontent-a.akamaihd.net/ugc/10434426788609579929/D85D51A9F42FB537DA0C3DBD00CB2636C588EEE2/",
+    ["breton_a"] = "https://steamusercontent-a.akamaihd.net/ugc/14569510140827117262/BDCC2033AE6222043B6FD55DB026A9149D6FEA1C/",
+    ["breton_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/13592027349548979709/E955A7BC00DF60D7D631E1E68B872B66BBE76D8F/",
+    ["breton_b"] = "https://steamusercontent-a.akamaihd.net/ugc/15324566186183551903/EADD93F214A0C9B0EC1AFDF5D5CAF8EB0512FB27/",
+    ["breton_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/16447782668089045168/3E706DCA2176AE6F2B8D97D6C36918AE5F851088/",
+    ["d_elf_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/15378227884485317026/9559247D0092707631981C0BA737367007B896E9/",
+    ["d_elf_a"] = "https://steamusercontent-a.akamaihd.net/ugc/15392422725130908444/CAF4B14AB6A35DE82CE356BC8DB2E8406A7D7C29/",
+    ["d_elf_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/16315138319564359226/5B4367EC69FCA29C8CF4C858381DFC92B1E35602/",
+    ["d_elf_b"] = "https://steamusercontent-a.akamaihd.net/ugc/16982989162679428947/7A1BCC16FD43B97EC1B9ACA778D8480270B911CB/",
+    ["h_elf_a"] = "https://steamusercontent-a.akamaihd.net/ugc/17018228388472746393/476EACEF53F7DC7E28F9BE1890E8A24C19C64FFC/",
+    ["h_elf_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/13394848149674385311/4A63ECE99506C6941603F08CCCCEC287364FC108/",
+    ["h_elf_b"] = "https://steamusercontent-a.akamaihd.net/ugc/12293167163234930675/470EC84F13FC035D6E28245C1B4ADD7969B2CF3C/",
+    ["h_elf_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/16922026709303429629/3A8C8E9FA204D368928081943771732A73F64615/",
+    ["imperial_a"] = "https://steamusercontent-a.akamaihd.net/ugc/14382525175929334027/0A4D4A9920A4CBAE64B124B07898E62C0759EA3C/",
+    ["imperial_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/10064530004238376703/3495F9B3C582648A0E32857CFBA662EFA2EDDA67/",
+    ["imperial_b"] = "https://steamusercontent-a.akamaihd.net/ugc/13718174574674380463/74755509DCB79CE2E35118570C57360740230AB7/",
+    ["imperial_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/10749726080477215225/5F859E09912B416C08929D2C7588706FFF99428E/",
+    ["khajiit_a"] = "https://steamusercontent-a.akamaihd.net/ugc/9287139985748570994/DEB3F611F009C545EF449627A64371C7FFB344B3/",
+    ["khajiit_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/14802698671884652006/98A88CF466AFD70D89DDCA71768C8D3FC1016C34/",
+    ["khajiit_b"] = "https://steamusercontent-a.akamaihd.net/ugc/17923624809526291672/7164AC1E8BB51D27CF1D75101498F3E6DA5D5950/",
+    ["khajiit_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/14109382069257614995/EFEA2B45E22EF66E506591D5646BD2B71C46E580/",
+    ["nord_a"] = "https://steamusercontent-a.akamaihd.net/ugc/16830428090868475131/DD5722F15F1B7D679EEE29B4AB36C48CBCF9968D/",
+    ["nord_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/16505014782797305231/E5B495AC80C8B191BBF46F1417F0E1E7B249971C/",
+    ["nord_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/12819207660649551966/9B2C49CB05789F9DB635D98019CBFFBECBF82263/",
+    ["nord_b"] = "https://steamusercontent-a.akamaihd.net/ugc/15954326775986781161/41A4BBD1A07FA7953A258EEF12515538C667FA78/",
+    ["orc_a"] = "https://steamusercontent-a.akamaihd.net/ugc/12881603483605680441/FF4A8B14135C3B290F2FA27B84C7C969E082A827/",
+    ["orc_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/14547645525207806870/6BB5BC0D03FF2C644DA7BC2B8CCAA0F99937EAD9/",
+    ["orc_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/12407958470470500339/C7111618440FC2A5892518636B175E96A3781C88/",
+    ["orc_b"] = "https://steamusercontent-a.akamaihd.net/ugc/17314967113704393074/FCD7A4AAE754C0803C757C9207BE7BC9CE1F539C/",
+    ["redguard_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/16651677811176810341/CE8207BE447935B7C74ED727510CD394FDDAAA3B/",
+    ["redguard_a"] = "https://steamusercontent-a.akamaihd.net/ugc/15589013601941140117/E9CC156F7A83A9C57EE20576EDD56974973C3314/",
+    ["redguard_b"] = "https://steamusercontent-a.akamaihd.net/ugc/16984656137016317365/B2536C9017BD53AAACBC39FD5DA553CFDC385497/",
+    ["redguard_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/10035688932510632239/B242FB7513F28D81110DFCAB09684782541B13D5/",
+    ["w_elf_a"] = "https://steamusercontent-a.akamaihd.net/ugc/11502805145932313036/1CAD26BFDFB1D6AD46BDBC9E13E84F84B33BA320/",
+    ["w_elf_a_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/11317458522148584564/4DE852B11ECF3AEF53E316162199E1CDBB7B0C83/",
+    ["w_elf_b_flipped"] = "https://steamusercontent-a.akamaihd.net/ugc/17805194556912141957/2DF61F9ED2440D52251EF32075858B4A57F69FB0/",
+    ["w_elf_b"] = "https://steamusercontent-a.akamaihd.net/ugc/17600021509274992373/B34630907A033E32F8B550A333F3D1E2A77D6BDA/",
+}
+
+function initializePlayerPanel(params)
+    print("Initializing player panel for color: " .. params.color)
+    local playerChip = params.playerChip
+    local color = params.color
+
+    -- This function can be called to initialize player panel UI elements if needed
+    local playerColor = color:gsub("^%l", string.upper)
+    
+    local race_tag = nil
+
+    for _, tag in ipairs(playerChip.getTags()) do
+        if string.find(tag, "_a") or string.find(tag, "_b") then
+            race_tag = tag
+
+            if playerChip.hasTag("flipped") then
+                race_tag = race_tag .. "_flipped"
+            end
+            break
+        end
+    end
+
+    Global.UI.setAttribute("player_race_" .. playerColor, "image", player_panel_characters[race_tag])
+
+    -- Update health
+    local counter = Global.getVar("hp_counter_" .. playerColor)
+
+    Global.UI.setValue("hp_" .. playerColor, tostring(counter.getVar("val")))
+
+    -- register panel data
+    local playerPanelData = Global.getVar("player_panel_data")
+    local positionIndex = playerPanelData.call('registerData', {
+        color = playerColor,
+        race_tag = race_tag,
+        chip = playerChip
+    })
+
+    -- Set position of panel
+    print("Setting position of panel for color: " .. playerColor .. " to index: " .. positionIndex)
+    Global.UI.setAttribute("player_panel_" .. playerColor, "offsetXY", player_panel_positions[positionIndex])
+
+    -- Make panel visible
+    Global.UI.setAttribute("player_panel_" .. playerColor, "active", true)
+end
+
+function syncPanel(playerColor)
+    syncHP(playerColor)
+    syncBonusHP(playerColor)
+    syncTenacity(playerColor)
+    syncXP(playerColor)
+end
+
+function syncHP(playerColor)
+    local counter = Global.getVar("hp_counter_" .. playerColor)
+
+    Global.UI.setValue("hp_" .. playerColor, tostring(counter.getVar("val")))
+end
+
+function syncBonusHP(playerColor)
+    local counter = Global.getVar("bonus_hp_counter_" .. playerColor)
+
+    Global.UI.setValue("bonus_hp_" .. playerColor, tostring(counter.getVar("val")))
+end
+
+function syncTenacity(playerColor)
+    local marker = Global.getVar("tenacity_tracker_" .. playerColor)
+    local tenacity = marker.getVar('val')
+
+    Global.UI.setValue("tenacity_" .. playerColor, tostring(tenacity))
+end
+
+function syncXP(playerColor)
+    local marker = Global.getVar("xp_tracker_" .. playerColor)
+    local xp = marker.getVar('val')
+
+    Global.UI.setValue("xp_" .. playerColor, tostring(xp))
+end
+
 function updateHP(playerColor, mouseClick, set)
     -- Update HP Counter
     local counter = Global.getVar("hp_counter_" .. playerColor)
@@ -48,106 +175,194 @@ function updateBonusHP(playerColor, mouseClick, set)
     Global.UI.setValue("bonus_hp_" .. playerColor, tostring(bonusHP))
 end
 
-function updateTenacity(playerColor, mouseClick, set)
-    -- Update Tenacity Counter
-
-    -- Update XML button value
-    local tenacity = Global.UI.getValue("tenacity_" .. playerColor)
+function updateTenacityMarkerAndPanel(playerColor, mouseClick)
+    -- get tenacity marker object and move it to the correct zone
+    local marker = Global.getVar("tenacity_tracker_" .. playerColor)
+    local tenacity = marker.getVar('val')
 
     if tonumber(mouseClick) == -1 then
-      tenacity = tonumber(tenacity) + 1
+        tenacity = tonumber(tenacity) + 1
     elseif tonumber(mouseClick) == -2 then
-      tenacity = tonumber(tenacity) - 1
+        tenacity = tonumber(tenacity) - 1
     end
 
     if tenacity < 0 then
-      tenacity = 0
+        tenacity = 0
+    elseif tenacity > 5 then
+        tenacity = 5
     end
+
+    local nextZone = Global.getVar("zone_tenacity_" .. playerColor .. "_" .. tostring(tenacity))
+    
+    local pos = nextZone.getPosition()
+    marker.setPosition({
+        x = pos.x,
+        y = 2.05,
+        z = pos.z
+    })
+
+    marker.setRotation({0, 180, 0})
+
+    marker.call('setVal', tenacity)
 
     Global.UI.setValue("tenacity_" .. playerColor, tostring(tenacity))
 end
 
-function updateXP(playerColor, mouseClick, set)
-    -- Update XP Counter
+function updateTenacity(playerColor, mouseClick, set, value)
+    local tenacity = Global.UI.getValue("tenacity_" .. playerColor)
 
-    -- Update XML button value
-    local xp = Global.UI.getValue("xp_" .. playerColor)
+    if value then
+        tenacity = tonumber(value)
+    else
+        if tonumber(mouseClick) == -1 then
+            tenacity = tonumber(tenacity) + 1
+        elseif tonumber(mouseClick) == -2 then
+            tenacity = tonumber(tenacity) - 1
+        end
+
+        if tenacity < 0 then
+            tenacity = 0
+        elseif tenacity > 5 then
+            tenacity = 5
+        end
+    end
+
+    for _, target in ipairs(set) do
+        if target == 'panel' then
+            Global.UI.setValue("tenacity_" .. playerColor, tostring(tenacity))
+        end
+        if target == 'marker' then
+            -- get tenacity marker object and move it to the correct zone
+        end
+    end
+end
+
+function updateXPMarkerAndPanel(playerColor, mouseClick)
+    -- get xp marker object and move it to the correct zone
+    local marker = Global.getVar("xp_tracker_" .. playerColor)
+    local xp = marker.getVar('val')
 
     if tonumber(mouseClick) == -1 then
-      xp = tonumber(xp) + 1
+        xp = tonumber(xp) + 1
     elseif tonumber(mouseClick) == -2 then
-      xp = tonumber(xp) - 1
+        xp = tonumber(xp) - 1
     end
 
     if xp < 0 then
-      xp = 0
+        xp = 0
+    elseif xp > 99 then
+        xp = 99
     end
+
+    if xp <= 3 then
+        local nextZone = Global.getVar("zone_xp_" .. playerColor .. "_" .. tostring(xp))
+
+        local pos = nextZone.getPosition()
+        marker.setPosition({
+            x = pos.x,
+            y = 2.05,
+            z = pos.z
+        })
+
+        marker.setRotation({0, 180, 0})
+    end
+
+    marker.call('setVal', xp)
 
     Global.UI.setValue("xp_" .. playerColor, tostring(xp))
 end
 
+function updateXP(playerColor, mouseClick, set, value)
+    local xp = Global.UI.getValue("xp_" .. playerColor)
+
+    if value then
+        xp = tonumber(value)
+    else
+        if tonumber(mouseClick) == -1 then
+            xp = tonumber(xp) + 1
+        elseif tonumber(mouseClick) == -2 then
+            xp = tonumber(xp) - 1
+        end
+
+        if xp < 0 then
+            xp = 0
+        elseif xp > 99 then
+            xp = 99
+        end
+    end
+
+    for _, target in ipairs(set) do
+        if target == 'panel' then
+            Global.UI.setValue("xp_" .. playerColor, tostring(xp))
+        end
+        if target == 'marker' then
+            -- get xp marker object and move it to the correct zone
+        end
+    end
+end
+
 function updateHPRed(player, mouseClick)
-    updateHP(player.color, mouseClick, false)
+    updateHP("Red", mouseClick, false)
 end
 
 function updateBonusHPRed(player, mouseClick)
-    updateBonusHP(player.color, mouseClick, false)
+    updateBonusHP("Red", mouseClick, false)
 end
 
 function updateTenacityRed(player, mouseClick)
-    updateTenacity(player.color, mouseClick, false)
+    updateTenacityMarkerAndPanel("Red", mouseClick)
 end
 
 function updateXPRed(player, mouseClick)
-    updateXP(player.color, mouseClick, false)
+    updateXPMarkerAndPanel("Red", mouseClick)
 end
 
 function updateHPOrange(player, mouseClick)
-    updateHP(player.color, mouseClick, false)
+    updateHP("Orange", mouseClick, false)
 end
 
 function updateBonusHPOrange(player, mouseClick)
-    updateBonusHP(player.color, mouseClick, false)
+    updateBonusHP("Orange", mouseClick, false)
 end
 
 function updateTenacityOrange(player, mouseClick)
-    updateTenacity(player.color, mouseClick, false)
+    updateTenacityMarkerAndPanel("Orange", mouseClick)
 end
 
 function updateXPOrange(player, mouseClick)
-    updateXP(player.color, mouseClick, false)
+    updateXPMarkerAndPanel("Orange", mouseClick)
 end
 
 function updateHPBlue(player, mouseClick)
-    updateHP(player.color, mouseClick, false)
+    updateHP("Blue", mouseClick, false)
 end
 
 function updateBonusHPBlue(player, mouseClick)
-    updateBonusHP(player.color, mouseClick, false)
+    updateBonusHP("Blue", mouseClick, false)
 end
 
 function updateTenacityBlue(player, mouseClick)
-    updateTenacity(player.color, mouseClick, false)
+    updateTenacityMarkerAndPanel("Blue", mouseClick)
 end
 
 function updateXPBlue(player, mouseClick)
-    updateXP(player.color, mouseClick, false)
+    updateXPMarkerAndPanel("Blue", mouseClick)
 end
 
 function updateHPGreen(player, mouseClick)
-    updateHP(player.color, mouseClick, false)
+    updateHP("Green", mouseClick, false)
 end
 
 function updateBonusHPGreen(player, mouseClick)
-    updateBonusHP(player.color, mouseClick, false)
+    updateBonusHP("Green", mouseClick, false)
 end
 
 function updateTenacityGreen(player, mouseClick)
-    updateTenacity(player.color, mouseClick, false)
+    updateTenacityMarkerAndPanel("Green", mouseClick)
 end
 
 function updateXPGreen(player, mouseClick)
-    updateXP(player.color, mouseClick, false)
+    updateXPMarkerAndPanel("Green", mouseClick)
 end
 
 -- Call functions for updating UI buttons upon loading saved data
@@ -161,9 +376,9 @@ function setBonusHP(params)
 end
 
 function setTenacity(params)
-    updateTenacity(params.playerColor, params.mouseClick, params.value)
+    updateTenacity(params.playerColor, params.mouseClick, params.set, params.value)
 end
 
 function setXP(params)
-    updateXP(params.playerColor, params.mouseClick, params.value)
+    updateXP(params.playerColor, params.mouseClick, params.set, params.value)
 end

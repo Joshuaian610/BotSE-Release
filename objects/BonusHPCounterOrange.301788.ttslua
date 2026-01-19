@@ -10,9 +10,14 @@ function onload(saved_data)
         end
     end
     create_all()
+    update_player_panel()
     -- Store reference to self in Global
     Global.setVar("bonus_hp_counter_Orange", self)
 end -- end function onload()
+
+function update_player_panel()
+    Global.UI.setValue("bonus_hp_Orange", tostring(val))
+end
 
 
 function update_save()
@@ -60,6 +65,10 @@ function add_subtract(_obj, playercolor, alt_click)
         update_save()
     end
 end -- end function add_subtract()
+
+function add_subtract_call(params)
+    add_subtract(nil, params.playercolor, params.alt_click)
+end -- end function add_subtract_call()
 
 function subtract()
     new_value = math.min(math.max(val -1, MIN_VALUE), MAX_VALUE)

@@ -1,0 +1,7 @@
+
+function onLoad()
+    local color = self.getGMNotes()
+    local slot = string.sub(self.getName(), -1)
+    
+    Global.setVar("zone_xp_" .. color .. "_" .. slot, self)
+end

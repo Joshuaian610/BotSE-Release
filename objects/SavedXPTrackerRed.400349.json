@@ -24,7 +24,7 @@
   },
   "Description": "",
   "DragSelectable": true,
-  "GMNotes": "",
+  "GMNotes": "Red",
   "GUID": "400349",
   "Grid": false,
   "GridProjection": false,
@@ -33,8 +33,8 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": false,
-  "LuaScript": "",
-  "LuaScriptState": "",
+  "LuaScriptState": "[0]",
+  "LuaScript_path": "SavedXPTrackerRed.400349.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Token",
   "Nickname": "Saved XP Tracker Red",
@@ -42,13 +42,14 @@
   "Sticky": true,
   "Tags": [
     "mat_marker",
-    "player_red"
+    "player_red",
+    "xp_marker"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -51.824,
+    "posX": -51.816,
     "posY": 1.972,
-    "posZ": -24.111,
+    "posZ": -24.16,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

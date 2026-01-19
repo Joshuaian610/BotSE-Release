@@ -1,0 +1,50 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0.5098,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "Red",
+  "GUID": "95cf4a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "[0]",
+  "LuaScript_path": "ZoneXPRedSlot2.95cf4a.ttslua",
+  "MeasureMovement": false,
+  "Name": "ScriptingTrigger",
+  "Nickname": "Zone XP Red Slot 2",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "mat_marker",
+    "xp_marker"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -50.43,
+    "posY": 1.25,
+    "posZ": -24.11,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.2,
+    "scaleY": 0.5,
+    "scaleZ": 0.2
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

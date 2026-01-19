@@ -14,10 +14,15 @@ function onload(saved_data)
     hover_color = {100/255, 170/255, 255/255, 255}
     press_color = {160/255, 205/255, 255/255, 255}
     create_all()
+    update_player_panel()
 
     -- Store reference to self in Global
     Global.setVar("hp_counter_Blue", self)
 end -- end function onload()
+
+function update_player_panel()
+    Global.UI.setValue("hp_Blue", tostring(val))
+end
 
 
 function update_save()
@@ -72,7 +77,7 @@ function update_chip(val)
             if chip == nil then
                 return
             else
-                getObjectFromGUID("e71040").call('set_val_remote', {chip_obj=chip, val=val})
+                getObjectFromGUID("e71040").call('set_val_remote', {chipObj=chip, val=val})
             end
         end
     end
@@ -90,6 +95,10 @@ function add_subtract(_obj, playercolor, alt_click)
     end
     update_chip(val)
 end -- end function add_subtract()
+
+function add_subtract_call(params)
+    add_subtract(nil, params.playercolor, params.alt_click)
+end
 
 
 function subtract()

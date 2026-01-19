@@ -1182,6 +1182,12 @@ function onObjectEnterZone(zone, obj)
       end
     end
   end
+  if (zone.hasTag('tenacity_marker') and obj.hasTag('tenacity_marker')) then
+    handleTenacityMarkerEntry(zone, obj)
+  end
+  if (zone.hasTag('xp_marker') and obj.hasTag('xp_marker')) then
+    handleXPMarkerEntry(zone, obj)
+  end
 end
 
 

@@ -1,0 +1,50 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "a": 0.5098,
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "Red",
+  "GUID": "566861",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "[0]",
+  "LuaScript_path": "ZoneTenacityRedSlot1.566861.ttslua",
+  "MeasureMovement": false,
+  "Name": "ScriptingTrigger",
+  "Nickname": "Zone Tenacity Red Slot 1",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "mat_marker",
+    "tenacity_marker"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -52.59,
+    "posY": 1.25,
+    "posZ": -30.88,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.2,
+    "scaleY": 0.5,
+    "scaleZ": 0.2
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

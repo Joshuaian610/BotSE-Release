@@ -77,7 +77,8 @@ function update_chip(val)
             if chip == nil then
                 return
             else
-                getObjectFromGUID("e71040").call('set_val_remote', {chip_obj=chip, val=val})
+                print(chip)
+                getObjectFromGUID("e71040").call('set_val_remote', {chipObj=chip, val=val})
             end
         end
     end

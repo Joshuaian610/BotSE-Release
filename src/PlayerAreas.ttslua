@@ -1089,3 +1089,27 @@ function rollDice(button, _, _)
   end
   startLuaCoroutine(self, "coroutineMonitorGroup")
 end
+
+function handleTenacityMarkerEntry(zone, object)
+  local tenacityValue = string.sub(zone.getName(), -1)
+  
+  setTenacity({
+    playerColor = zone.getGMNotes(),
+    set = {'panel'},
+    value = tenacityValue
+  })
+
+  object.call('setVal', tonumber(tenacityValue))
+end
+
+function handleXPMarkerEntry(zone, object)
+  local xpValue = string.sub(zone.getName(), -1)
+  
+  setXP({
+    playerColor = zone.getGMNotes(),
+    set = {'panel'},
+    value = xpValue
+  })
+
+  object.call('setVal', tonumber(xpValue))
+end

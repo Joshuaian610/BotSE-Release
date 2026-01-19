@@ -383,6 +383,14 @@
     {
       "displayed": "enemyHigh",
       "normalized": "enemyhigh"
+    },
+    {
+      "displayed": "tenacity_marker",
+      "normalized": "tenacity_marker"
+    },
+    {
+      "displayed": "xp_marker",
+      "normalized": "xp_marker"
     }
   ]
 }

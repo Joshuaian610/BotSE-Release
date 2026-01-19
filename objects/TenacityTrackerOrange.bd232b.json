@@ -24,7 +24,7 @@
   },
   "Description": "",
   "DragSelectable": true,
-  "GMNotes": "",
+  "GMNotes": "Orange",
   "GUID": "bd232b",
   "Grid": false,
   "GridProjection": false,
@@ -33,8 +33,8 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": false,
-  "LuaScript": "",
-  "LuaScriptState": "",
+  "LuaScriptState": "[0]",
+  "LuaScript_path": "TenacityTrackerOrange.bd232b.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Token",
   "Nickname": "Tenacity Tracker Orange",
@@ -42,13 +42,14 @@
   "Sticky": true,
   "Tags": [
     "mat_marker",
-    "player_orange"
+    "player_orange",
+    "tenacity_marker"
   ],
   "Tooltip": true,
   "Transform": {
     "posX": -17.72,
     "posY": 1.995,
-    "posZ": -30.913,
+    "posZ": -30.914,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

@@ -1,0 +1,97 @@
+
+function onload(saved_data)
+    player_panel_order = {}
+    player_race_Red = ""
+    player_race_Orange = ""
+    player_race_Blue = ""
+    player_race_Green = ""
+    player_chip_Red = ""
+    player_chip_Orange = ""
+    player_chip_Blue = ""
+    player_chip_Green = ""
+
+    if saved_data ~= "" then
+        local loaded_data = JSON.decode(saved_data)
+        if loaded_data ~= nil then
+            player_panel_order = loaded_data[1]
+            player_race_Red = loaded_data[2]
+            player_race_Orange = loaded_data[3]
+            player_race_Blue = loaded_data[4]
+            player_race_Green = loaded_data[5]
+            player_chip_Red = loaded_data[6]
+            player_chip_Orange = loaded_data[7]
+            player_chip_Blue = loaded_data[8]
+            player_chip_Green = loaded_data[9]
+        end
+        updatePlayerPanelsWithSavedData()
+    end
+
+    Global.setVar("player_panel_data", self)
+    
+end -- end function onload()
+
+function updatePlayerPanelsWithSavedData()
+    print("Updating player panels with saved data...")
+    local player_panel_positions = Global.getTable("player_panel_positions")
+    local player_panel_characters = Global.getTable("player_panel_characters")
+
+    for i, color in ipairs(player_panel_order) do
+        print("Updating panel for color: " .. color)
+        -- set position of panel
+        Global.UI.setAttribute("player_panel_" .. color, "offsetXY", player_panel_positions[i])
+
+        -- update panel race
+        Global.UI.setAttribute("player_race_".. color, "image", player_panel_characters[self.getVar("player_race_" .. color)])
+
+        -- update panel values
+        Global.call("syncPanel", color)          
+
+        -- make panel visible
+        Global.UI.setAttribute("player_panel_" .. color, "active", true)
+    end
+end
+
+
+function update_save()
+    local data_to_save = {
+        player_panel_order,
+        player_race_Red,
+        player_race_Orange,
+        player_race_Blue,
+        player_race_Green,
+        player_chip_Red.guid,
+        player_chip_Orange.guid,
+        player_chip_Blue.guid,
+        player_chip_Green.guid
+    }
+    saved_data = JSON.encode(data_to_save)
+    self.script_state = saved_data
+end -- end function update_save()
+
+function registerData(params)
+    local color = params.color
+    local race_tag = params.race_tag
+    local chip_object = params.chip
+
+    self.setVar('player_race_' .. color, race_tag)
+    self.setVar('player_chip_' .. color, chip_object.guid)
+    table.insert(player_panel_order, color)
+    update_save()
+
+    return #player_panel_order
+end
+
+function addPlayerToPanelOrder(color)
+    table.insert(player_panel_order, color)
+    update_save()
+end
+
+function setPlayerRace(color, race_tag)
+    self.setVar("player_race_" .. color, race_tag)
+    update_save()
+end
+
+function setPlayerChip(color, chip_object)
+    self.setVar("player_chip_" .. color, chip_object.guid)
+    update_save()
+end
