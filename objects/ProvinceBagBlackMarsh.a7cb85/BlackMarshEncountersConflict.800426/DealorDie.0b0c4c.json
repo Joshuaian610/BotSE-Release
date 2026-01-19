@@ -5,22 +5,12 @@
     "z": 0
   },
   "Autoraise": true,
+  "CardID": 29502,
   "ColorDiffuse": {
     "b": 0.71324,
     "g": 0.71324,
     "r": 0.71324
   },
-  "ContainedObjects_order": [
-    "APiratesDeathForYe.221d09",
-    "CaptiveAudience.476798",
-    "OriginoftheSpecies.294ebe",
-    "KeepAyleidonIt.2bbc43",
-    "UnchartedXanmeer.cfec06",
-    "DealorDie.0b0c4c",
-    "CorruptedCommunion.8b14d9",
-    "CaptivesofHouseTelvanni.f1febb"
-  ],
-  "ContainedObjects_path": "BlackMarshEncountersConflict.800426",
   "CustomDeck": {
     "96": {
       "BackIsHidden": true,
@@ -32,23 +22,13 @@
       "UniqueBack": true
     }
   },
-  "DeckIDs": [
-    9607,
-    9606,
-    9605,
-    9604,
-    9603,
-    9602,
-    9601,
-    9600
-  ],
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "800426",
+  "GUID": "0b0c4c",
   "Grid": false,
   "GridProjection": false,
-  "Hands": false,
+  "Hands": true,
   "HideWhenFaceDown": false,
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
@@ -56,8 +36,8 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Name": "Deck",
-  "Nickname": "Black Marsh Encounters Conflict",
+  "Name": "Card",
+  "Nickname": "Deal or Die",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
@@ -67,9 +47,9 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -42.62,
-    "posY": 1.397,
-    "posZ": -25.37,
+    "posX": -24.039,
+    "posY": 1.704,
+    "posZ": 0.271,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

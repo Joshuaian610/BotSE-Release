@@ -184,13 +184,22 @@ function clear_battle()
         end
         end, 3)
     end
-    -- return enemy skill, status dice
+    -- return enemy skill, status dice, destruct cloned arrow tokens (freaking CM Predictive Diplomacy)
     for _, object in pairs(getObjectFromGUID("b5dd6d").getObjects()) do
-        if object.type == "Dice" and object.getName() == "Enemy Combat" then
-            Global.call('return_enemy_die_clear_battle', {die_obj=object})
+        if object.getName() == "Enemy Combat" then
+            getObjectFromGUID("3154b3").putObject(object)
         end
-        if object.type == "Dice" and object.getName() == "Status Effect" then
-            Global.call('return_enemy_die_clear_battle', {die_obj=object})
+        if object.getName() == "Status Effect" then
+            getObjectFromGUID("97bfab").putObject(object)
+        end
+        if object.getName() == "Fatigue" then
+            getObjectFromGUID("058b91").putObject(object)
+        end
+        if object.getName() == "Overfatigue" then
+            getObjectFromGUID("1e81c4").putObject(object)
+        end
+        if object.getGMNotes() == "Cloned Token" then
+            object.destruct()
         end
     end
     -- reset round counter

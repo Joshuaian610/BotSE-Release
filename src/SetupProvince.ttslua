@@ -1492,6 +1492,7 @@ function setupBackdrop(provinceName, provinceBag)
   local rotBackdrop = { 60, 180, 0 }
   local posCampaignJournal = { 10.96, 12.47, 54.30 }
   local posReferenceLeft = { 31.86, 12.47, 54.30 }
+  local rotReferenceRight = { 60, 180, 180 }
   local posReferenceRight = { 53.00, 12.47, 54.30 }
   local posProvinceGazetteer = { -9.14, 12.47, 54.30 }
   local posBackdropItems = {
@@ -1506,6 +1507,7 @@ function setupBackdrop(provinceName, provinceBag)
 
     for i = 1, 4 do
       extraBackdropItems[i].setLock(true)
+      if extraBackdropItems[i].getName() == "Reference Right" then rotBackdrop = rotReferenceRight end
       extraBackdropItems[i].setRotation(rotBackdrop)
       extraBackdropItems[i].setPositionSmooth(posBackdropItems[i], false, true)
     end

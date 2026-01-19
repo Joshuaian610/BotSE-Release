@@ -1,3 +1,5 @@
+local SearchLib = require("util/SearchLib")
+
 local namePairs = {
     ["Wood Elf Marauder"] = "Wood Elf Bandit",
     ["Wispmother"] = "Wisp",
@@ -329,6 +331,28 @@ function add_subtract(args)
         local bag_obj = getObjectFromGUID(chip_obj.getGMNotes())
         local bag_pos = bag_obj.getPosition()
         bag_pos.y = bag_pos.y + 5
+        -- clear any status dice or arrow tokens on chip
+        local chip_pos = chip_obj.getPosition()
+        local tolerance = 1
+        for _, object in pairs(getObjects()) do
+            if object.getGMNotes() == "Cloned Token" then                
+                local obj_pos = object.getPosition()
+                if math.abs(obj_pos.x - chip_pos.x) <= tolerance
+                and math.abs(obj_pos.y - chip_pos.y) <= tolerance
+                and math.abs(obj_pos.z - chip_pos.z) <= tolerance then
+                    object.destroy()
+                end
+            end
+            if object.getName() == "Status Effect" then
+                local obj_pos = object.getPosition()
+                if math.abs(obj_pos.x - chip_pos.x) <= tolerance
+                and math.abs(obj_pos.y - chip_pos.y) <= tolerance
+                and math.abs(obj_pos.z - chip_pos.z) <= tolerance then
+                    getObjectFromGUID("97bfab").putObject(object)
+                end
+            end
+        end
+
         clear_old_chips(chip_obj)
         chip_obj.setPosition(bag_pos)
         broadcastToAll(chip_obj.getName() .. " has been defeated, and returned to the 'Defeated Monsters' bag!", "White")

@@ -2699,6 +2699,8 @@ end
 
 function setupConflict2(card, _, _)
 
+  cardName = card.getName()
+
   -- this function handles the setup of the second conflict encounter card option
 
   local ttip = ""
@@ -2868,11 +2870,12 @@ function setupConflict2(card, _, _)
   elseif conflictType == "Delve" then
     deployDelve(cardName, 2)
   end
-
 end
 
 
 function setupConflict3(card, _, _)
+
+  cardName = card.getName()
   -- this function handles the setup of the second conflict encounter card option
 
   local ttip = ""
@@ -5330,22 +5333,561 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
     -- 3+ players: remove 1 cache (broadcast reminder)
     if playerCount > 2 then
       broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: Remember to select a cache chip to remove.", "White")
+    end  
+
+  -- CY ENCOUNTERS 
+  elseif cardName == "Heroes for Hire" then
+    -- OPTION 1
+    -- add playerCount level 1 enemies to the EP and deploy them last
+    -- OPTION 2
+    -- decrease calculatedEP by 2 (minimum of 1)
+    if optionNumber == 2 then
+      currentCalculatedEP = currentCalculatedEP - 2
+      if currentCalculatedEP < 1 then currentCalculatedEP = 1 end
+      chipBreakdown = getChipBreakdown(currentCalculatedEP)
     end
 
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- now deploy playerCount level 1 enemies, up to 8 total enemies
+    if optionNumber == 1 then
+      local lvl1DeployCount = playerCount
+      Wait.time(function()
+
+        for i = 1, lvl1DeployCount do
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            local chip1 = bagLow.takeObject({rotation = {0,180,180}})
+            Wait.frames(function()
+              chip1.setPositionSmooth(spacesEnemies[index], false, true)
+            end)
+          end
+        end
+
+      end, 1.5)
+    end
+
+
+  elseif cardName == "Champion of the Downtrodden" then
+    -- place 5 - playerCount generic counters with 4 HP next to entrance tile
+    local posCounters = {
+      {-11.28, 1.75, 7.74},
+      {-11.28, 1.75, 4.19},
+      {-11.28, 1.75, 0.64},
+      {-11.28, 1.75, -2.91},
+    }
+    local bagCounter = getObjectbyName("Generic Counter Bag")
+    local counterCount = 5 - playerCount
+
+    for i = 1, counterCount do
+      local counter = bagCounter.takeObject()
+      Wait.frames(function()
+        counter.setRotation({ 0, 180, 0 })
+        counter.setPosition(posCounters[i])
+        counter.call('set_val', 4)
+      end)
+    end
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif cardName == "Cast Your Lot!" then
+    -- need a checkDominantFaction() function, similar to checkWeather() was in BM
+    local dominantFaction = checkDominantFaction()
+    if dominantFaction == nil then log("deployClashEnemies() .. dominantFaction is nil") return end
+    -- broadcast effect of dominant faction
+    local factionEffect = {
+      ["Empire"]        = "Empire Remnant - Adventurers cannot change battle forms (you still choose a battle form at the start of battle).",
+      ["DC"]            = "Daggerfall Covenant - Enemies increase their Combat stat by 1.",
+      ["EP"]            = "Ebonheart Pact - Enemies deploy with +2 HP.",
+      ["AD"]            = "Aldmeri Dominion - Adventurers cannot roll more than 3 dice per engage.", 
+    }
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Current Dominant Faction is " .. factionEffect[dominantFaction], "White")
+    
+    -- deploy EP, add chips to table for potential HP adjustment later
+    local toModifyHP = {}
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip20) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip10) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip5) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip1) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- if pact dominant, add 2 HP to every enemy    
+    if dominantFaction == "EP" then
+      Wait.time(function()
+
+        for _, chip in pairs(toModifyHP) do
+          local oldVal = chip.getVar('val')
+          local newVal = oldVal + 2
+          local bagScript = getObjectbyName("Defeated Monsters Bag")
+          bagScript.call('set_val_remote', {chipObj=chip, val=newVal})
+        end
+
+      end, 2)
+    end
+
+  elseif cardName == "Predictive Diplomacy" then
+    -- add playerCount to calculated EP
+    currentCalculatedEP = currentCalculatedEP + playerCount
+
+    Wait.time(function()
+
+      -- hexes that require arrow tokens
+      local arrowHexes = { [1]=true, [4]=true, [6]=true, [8]=true }
+
+      -- pull ONE base arrow token
+      local tokenBag = getObjectbyName("Overland Token Bag")
+      local baseArrowToken = nil
+      for _, object in pairs(tokenBag.getObjects()) do
+        if object.name == "Arrow Overland Token" then
+          baseArrowToken = tokenBag.takeObject({ guid = object.guid })
+          Wait.time(function() tokenBag.putObject(baseArrowToken) end, 2)
+          break
+        end
+      end
+
+      -- drop arrow token clone on chip if in correct hex
+      local function handleArrowToken(chipObj, index)
+      if not arrowHexes[index] or not baseArrowToken then return end
+
+        Wait.time(function()
+
+          local clone = baseArrowToken.clone({})          
+          local posChip = chipObj.getPosition()
+          posChip.y = 3.50
+          posChip.z = posChip.z + 0.58
+
+          -- place clone on chip
+          Wait.frames(function()
+            if clone then
+              clone.setGMNotes("Cloned Token")
+              clone.setRotation({ 0, 330, 0 })
+              clone.setPosition({x=posChip.x, y=posChip.y, z=posChip.z})
+            end
+          end)
+
+        end, 2)
+      end
+
+      -- deploy chip and handle arrow token
+      local function deployChip(chipObj)
+        enemyCount = enemyCount + 1
+        local index = enemyCount
+        Wait.frames(function()
+          chipObj.setPositionSmooth(spacesEnemies[index], false, true)
+          handleArrowToken(chipObj, index)
+        end)
+      end
+
+      -- deploy 20-value chips
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            deployChip(bagHigh.takeObject({ rotation = {0,180,0} }))
+          end
+        end
+      end
+
+      -- deploy 10-value chips
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            deployChip(bagHigh.takeObject({ rotation = {0,180,180} }))
+          end
+        end
+      end
+
+      -- deploy 5-value chips
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            deployChip(bagLow.takeObject({ rotation = {0,180,0} }))
+          end
+        end
+      end
+
+      -- deploy 1-value chips
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            deployChip(bagLow.takeObject({ rotation = {0,180,180} }))
+          end
+        end
+      end
+
+      -- add extra level-1 if only one enemy deployed
+      Wait.time(function()
+        if enemyCount == 1 then
+          deployChip(bagLow.takeObject({ rotation = {0,180,180} }))
+        end
+
+        -- return the base arrow token
+        if baseArrowToken then
+          baseArrowToken.putObject(tokenBag)
+        end
+      end, 2.2)
+
+    end, 1)
+
+    -- checkDominantFaction(), broadcast goal
+    local dominantFaction = checkDominantFaction()
+    if dominantFaction == nil then log("deployClashEnemies() .. dominantFaction is nil") return end
+    -- broadcast effect of dominant faction
+    local factionEffect = {
+      ["Empire"]        = "Empire Remnant - Conquer. All enemies reduce their defense stat to 0.",
+      ["DC"]            = "Daggerfall Covenant - Eliminate enemies without [Arrow] tokens.",
+      ["EP"]            = "Ebonheart Pact - Conquer. All enemies reduce their defense stat to 0",
+      ["AD"]            = "Aldmeri Dominion - Eliminate enemies with [Arrow] tokens.", 
+    }
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Current Dominant Faction is " .. factionEffect[dominantFaction], "White")
+
+  elseif cardName == "Traders to the Cause" then
+    local toModifyHP = {}
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip20) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip10) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip5) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip1) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- OPTION 1
+    -- simply broadcast effect
+    if optionNumber == 1 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Each time an adventurer defeats an enemy while overtaxing a [Weapon], they may move the battlefront token 1 space in any direction.", "White")
+
+    -- OPTION 2
+    elseif optionNumber == 2 then      
+      -- checkIfUnstable(), enemies deploy with 1/2 additional HP
+      local isUnstable = checkIfUnstable()
+      local extraHP = checkIfUnstable() == true and 2 or 1
+      Wait.time(function()
+
+        for _, chip in pairs(toModifyHP) do
+          local oldVal = chip.getVar('val')
+          local newVal = oldVal + extraHP
+          local bagScript = getObjectbyName("Defeated Monsters Bag")
+          bagScript.call('set_val_remote', {chipObj=chip, val=newVal})
+        end
+
+      end, 2)
+      -- broadcast effect
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Enemies deploy with +" .. extraHP .. " HP. Each time an adventurer overtaxes a [Weapon] or [Armor], they gain 1 tenacity.", "White")
+    end
+
+  elseif cardName == "Anchors, Away!" then
+    -- after deploying enemies, pull and place another calculatedEP's worth of enemies near mat, defaulting to daedra if possible
   
+    -- first deploy EP
+    Wait.time(function()
 
-  -- CY ENCOUNTERS
-  elseif cardName == "" then
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
 
-  elseif cardName == "" then
+    -- second daedra preferring deploy EP (what, they don't know about second EP deploy?!)
+    local posExtraEnemies = {
+      { -11.28, 2.50, 14.84 },
+      { -11.28, 2.50, 11.29 },
+      { -11.28, 2.50, 7.74 },
+      { -11.28, 2.50, 4.19 },
+      { -11.28, 2.50, 0.64 },
+      { -11.28, 2.50, -2.91 },
+      { -11.28, 2.50, -6.46 },
+      { -11.28, 2.50, -10.02 },
+    }
+    local secondEnemyCount = 0
+    Wait.time(function()
 
-  elseif cardName == "" then
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if secondEnemyCount < 8 then
+            secondEnemyCount = secondEnemyCount + 1
+            local index = secondEnemyCount
+            local chip20 = deployEnemyType(20, "Daedra", posExtraEnemies[index])
+            if not chip20 then
+              chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            end            
+            Wait.frames(function() chip20.setPositionSmooth(posExtraEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if secondEnemyCount < 8 then
+            secondEnemyCount = secondEnemyCount + 1
+            local index = secondEnemyCount
+            local chip10 = deployEnemyType(10, "Daedra", posExtraEnemies[index])
+            if not chip10 then
+              chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            end            
+            Wait.frames(function() chip10.setPositionSmooth(posExtraEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if secondEnemyCount < 8 then
+            secondEnemyCount = secondEnemyCount + 1
+            local index = secondEnemyCount
+            local chip5 = deployEnemyType(5, "Daedra", posExtraEnemies[index])
+            if not chip5 then
+              chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            end            
+            Wait.frames(function() chip5.setPositionSmooth(posExtraEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if secondEnemyCount < 8 then
+            secondEnemyCount = secondEnemyCount + 1
+            local index = secondEnemyCount
+            local chip1 = deployEnemyType(1, "Daedra", posExtraEnemies[index])
+            if not chip1 then
+              chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            end            
+            Wait.frames(function() chip1.setPositionSmooth(posExtraEnemies[index], false, true) end)
+          end
+        end
+      end
+
+    end, 2)
+
+    -- pull generic counter, set to playerCount * 3, place to hex A (column1, row 2)
+    Wait.time(function()
+
+      local rotCounter = { 0, 180, 0 }
+      local posCounter = {-8.20, 2.00, 2.41}
+      local bagCounter = getObjectbyName("Generic Counter Bag")
+      local darkAnchorCounter = bagCounter.takeObject()
+      local counterVal = playerCount * 3
+      Wait.frames(function()
+        darkAnchorCounter.setRotation(rotCounter)
+        darkAnchorCounter.setPosition(posCounter)
+        darkAnchorCounter.call('set_val', counterVal)
+      end)
+
+    end, 2)
+
 
   -- HR ENCOUNTERS
   elseif cardName == "" then
@@ -5489,4 +6031,37 @@ function checkWeather()
     end
   end
   return currentWeather
+end
+
+
+function checkDominantFaction()
+
+  -- this function handles the check of current dominant faction in cyrodiil, returns faction or nil
+  local dominantFaction = nil
+  local dominantFactionToken = nil
+  local posFactions = {
+    ["Empire"]      = { -54.43, 1.69, 0.72 },
+    ["DC"]          = { -54.40, 1.69, 5.70 },
+    ["EP"]          = { -50.90, 1.69, 4.22 },
+    ["AD"]          = { -49.46, 1.69, 0.71 },    
+  }
+
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Scroll Overland Token" and object.getDescription() == "Dominant Faction Token" then
+      dominantFactionToken = object
+    end
+  end
+  if dominantFactionToken == nil then log("checkDominantFaction(): dominantFactionToken not found") return nil end
+  
+  local posToken = dominantFactionToken.getPosition()
+  local tolerance = 0.50
+  -- determine token's current faction via position
+  for factionName, posFaction in pairs(posFactions) do
+    if math.abs(posToken.x - posFaction[1]) <= tolerance
+    and math.abs(posToken.z - posFaction[3]) <= tolerance then
+      dominantFaction = factionName    
+      break
+    end
+  end
+ return dominantFaction
 end

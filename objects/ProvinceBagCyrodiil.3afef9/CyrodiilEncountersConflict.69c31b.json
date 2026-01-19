@@ -11,21 +11,21 @@
     "r": 0.71324
   },
   "ContainedObjects_order": [
-    "Rumormonger.dd1798",
-    "NoUnrestfortheWicked.974b69",
-    "CaveofConflict.9b5f17",
-    "DelvingwiththeDead.a4c90e",
-    "RookstotheLeftMidnighttotheRight.51325d",
-    "PitStop.b6c677",
-    "BorderBattle.b884a6",
-    "SupineandSupernal.2eaa53"
+    "AnchorsAway!.4a8284",
+    "TraderstotheCause.c9db15",
+    "PredictiveDiplomacy.01e80f",
+    "CastYourLot!.251cc1",
+    "ThePoorly-LitBrotherhood.845807",
+    "ChampionoftheDowntrodden.485eba",
+    "HeroesforHire.22b033",
+    "WarProfiteering.08f21a"
   ],
-  "ContainedObjects_path": "HighRockEncountersConflict.337e2b",
+  "ContainedObjects_path": "CyrodiilEncountersConflict.69c31b",
   "CustomDeck": {
-    "294": {
+    "153": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12500676703668836315/6F5527938F4789C05FB2EE04DA47B10B3030BF38/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/15355676036581618610/BD7346BEA063F22ABB5763CE095EDACA8B1C714E/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12169640792147360258/7B858FF0F2C6E31824AB203CA97F404E3727B859/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13422799553669375929/D37F9425118C03696BE55AEC44D79AE4FB172BA5/",
       "NumHeight": 4,
       "NumWidth": 4,
       "Type": 0,
@@ -33,19 +33,19 @@
     }
   },
   "DeckIDs": [
-    29407,
-    29406,
-    29405,
-    29404,
-    29403,
-    29402,
-    29401,
-    29400
+    15307,
+    15306,
+    15305,
+    15304,
+    15303,
+    15302,
+    15301,
+    15300
   ],
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "337e2b",
+  "GUID": "69c31b",
   "Grid": false,
   "GridProjection": false,
   "Hands": false,
@@ -57,20 +57,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Deck",
-  "Nickname": "High Rock Encounters Conflict",
+  "Nickname": "Cyrodiil Encounters Conflict",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "enc_conflict",
-    "obj_hr",
-    "symbol0"
+    "obj_cy"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -42.62,
-    "posY": 1.397,
-    "posZ": -25.37,
+    "posX": 102.016,
+    "posY": 2.979,
+    "posZ": 47.472,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
