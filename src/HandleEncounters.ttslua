@@ -3052,7 +3052,7 @@ function deployClash(cardName, optionNumber)
   if not bagEntranceTile then log("deployClash(): bagEntranceTile not found") return end
 
   -- pull selected mat from bag, place (if clash mat required, most conflict encounters will require clash mat)
-  if cardName ~= "Keep Ayleid on It" then
+  if cardName ~= "Keep Ayleid on It" and cardName ~= "Pit Stop" then
     local rotClashMat = { 0, 0, 0 }
     local posClashMat = { 2.05, 1.71, 2.41 }
     local clashMat = nil
@@ -3090,7 +3090,48 @@ function deployClash(cardName, optionNumber)
         tile3Hex.setLock(true)
       end)
     end
+    
+  elseif cardName == "Pit Stop" then
+    local bag19Hex = getObjectbyName("19 Hex Bag")
+    local rot19Hex = { 0, 60, 0 }
+    local pos19Hex = { 4.10, 1.87, 2.41 }
+    local tile19Hex = bag19Hex.takeObject()
+    Wait.frames(function()
+      tile19Hex.setRotation(rot19Hex)
+      tile19Hex.setPosition(pos19Hex)
+      tile19Hex.setLock(true)
+    end)
   end
+
+  -- wait 1 second for clash mat to place, then pull and place any required obstacles
+  Wait.time(function()
+
+    local bagObstacle = getObjectbyName("Obstacle Hex Bag")
+
+    if cardName == "No Unrest for the Wicked" then
+      local rot3HexObstacle = { 0, 0, 0 }
+      local pos3HexObstacle = {
+        { -6.15, 2.97, -1.14 },
+        { -3.08, 2.97, 7.74 },
+        { 6.15, 2.97, 2.41 },
+      }
+      for i = 1, 3 do
+        local obstacle3Hex = nil
+        for _, object in pairs(bagObstacle.getObjects()) do
+          if object.name == "3 Hex Obstacle" then
+            obstacle3Hex = bagObstacle.takeObject({guid=object.guid})
+            break
+          end
+        end
+        if obstacle3Hex ~= nil then
+          obstacle3Hex.setRotation(rot3HexObstacle)
+          obstacle3Hex.setPosition(pos3HexObstacle[i])
+          obstacle3Hex.setLock(true)
+        end
+      end
+    end   
+
+  end, 1)
 
   -- get rotation, position of entrance tile per encounter name
   -- also get tables for cache and enemy placement
@@ -3614,9 +3655,9 @@ function deployClash(cardName, optionNumber)
       posClashSpaces["column5"][1],
       posClashSpaces["column5"][5],
       posClashSpaces["column7"][1],
-      posClashSpaces["column3"][3],
+      posClashSpaces["column3"][4],
       posClashSpaces["column7"][3],
-      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][2],
       posClashSpaces["column5"][2],
       posClashSpaces["column5"][4],
     }
@@ -5890,17 +5931,555 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
 
 
   -- HR ENCOUNTERS
-  elseif cardName == "" then
+  elseif cardName == "Supine and Supernal" then
+    -- will leave it up to player to police option 1, but,
+    -- if optionNumber 2, each adventurer gets a daze die, round counter starts at 2
+    -- will need checkUnrest() function, if unrest >= tense, round counter starts at 3 insteas
+    local currentRound = 1
+    if optionNumber == 2 then
 
-  elseif cardName == "" then
+      -- somehow determine which adv mats are actually in use
+      local seatedColors = {"Red", "Orange", "Blue", "Green"}
+      local actuallySeatedColors = {}
+      for i = 1, 4 do
+        local matExists = false
+        local buttonExists = false
+        for _, object in pairs(getObjects()) do
 
-  elseif cardName == "" then
+          -- detect if player mat exists
+          if object.getName() == seatedColors[i] .. " Adventurer Mat" then
+            matExists = true
+            break
+          end
+        end
 
-  elseif cardName == "" then
+        -- if mat exists, check for button (should not be there if actually seated)
+        if matExists then
+          for _, obj in pairs(getObjects()) do
+            if obj.getName() == "Button Clear Playerarea" and obj.getGMNotes() == seatedColors[i] then
+              buttonExists = true
+              break
+            end
+          end
+        end
 
-  elseif cardName == "" then
+        -- handle daze die
+        if matExists and not buttonExists then        
+          local bagStatusDice = getObjectbyName("Status Effect Dice Bag")
+          if #bagStatusDice.getObjects() < 1 then
+            broadcastToAll("Unable to take a Status Die - Supply is empty!", "Orange")
+            return
+          else
+            local statusEffectDie = bagStatusDice.takeObject()
+            
+            Wait.frames(function()
+              statusEffectDie.setRotation({ 0, 0, 270 })
+              statusEffectDie.setDescription("Daze:\nThis unit cannot roll dice on the same turn it moves, and it cannot move on the same turn it rolls dice. At the end of this unit's turn, remove this die.")
+              placeDieToTrack(seatedColors[i], statusEffectDie, "Cooldown")            
+            end)
+          end        
+        end
+      end
 
-  elseif cardName == "" then
+      -- handle round counter stuff
+      local currentUnrest, unrestString = checkUnrest()
+      if currentUnrest == nil then log("deployClashEnemies(): currentUnrest not found") return end
+      if unrestString == nil then log("deployClashEnemies(): unrestString not found") return end
+
+      if currentUnrest > 2 then
+        currentRound = 3
+      else
+        currentRound = 2
+      end
+
+      -- if required, set round counter to new round
+      local rotDie = { { 270, 0, 0 }, { 0, 0, 0 }, { 0, 0, 270 }, { 0, 0, 90 }, { 0, 0, 180 }, { 90, 0, 0 } }
+      local die = getObjectbyName("Round Counter")
+      die.setRotationSmooth(rotDie[currentRound], false, false)
+      local roundCounter = getObjectbyName("Battle Round Counter")
+      roundCounter.call('set_val', currentRound)
+
+      -- broadcast round change reminder
+      if currentRound ~= 1 then
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Due to encounter effect, the battle round counter has been set to " .. currentRound .. ".", "White")
+      end
+    end
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+
+  elseif cardName == "Border Battle" then
+    -- checkUnrest()
+    local currentUnrest, unrestString = checkUnrest()    
+    -- OPTION 1
+    if optionNumber == 1 then
+      -- add current unrest value to the calculatedEP
+      currentCalculatedEP = currentCalculatedEP + currentUnrest
+      chipBreakdown = getChipBreakdown(currentCalculatedEP)
+      -- checkIfUnstable, broadcast reminder to gain 3 tenacity
+      local isUnstable = checkIfUnstable()
+      if not isUnstable then
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Party token in unstable location, each adventurer gains 3 tenacity.", "White")
+      end    
+    
+    -- OPTION 2
+    elseif optionNumber == 2 then
+      -- increase unrest by 1
+      moveUnrest(1)
+    end
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+
+  elseif cardName == "Pit Stop" then
+    -- no special action required here, requires nonstandard actions in deployClash()
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif cardName == "Rooks to the Left, Midnight to the Right" then
+    -- use as many humanoid enemies as possible while deploying
+    Wait.time(function()
+
+      -- hexes that require arrow tokens
+      local arrowHexes = { [1]=true, [4]=true, [5]=true, [7]=true }
+
+      -- pull ONE base arrow token
+      local tokenBag = getObjectbyName("Overland Token Bag")
+      local baseArrowToken = nil
+      for _, object in pairs(tokenBag.getObjects()) do
+        if object.name == "Arrow Overland Token" then
+          baseArrowToken = tokenBag.takeObject({ guid = object.guid })
+          break
+        end
+      end
+
+      -- drop arrow token clone on chip if in correct hex
+      local function handleArrowToken(chipObj, index)
+        if not arrowHexes[index] or not baseArrowToken then return end
+
+        Wait.time(function()
+
+          local clone = baseArrowToken.clone({})          
+          local posChip = chipObj.getPosition()
+          posChip.y = 3.50
+          posChip.z = posChip.z + 0.58
+
+          -- place clone on chip
+          Wait.frames(function()
+            if clone then
+              clone.setGMNotes("Cloned Token")
+              clone.setRotation({ 0, 330, 0 })
+              clone.setPosition({x=posChip.x, y=posChip.y, z=posChip.z})
+            end
+          end)
+
+        end, 2)
+      end
+
+      -- deploy chip and handle arrow token
+      local function deployChip(chipObj)
+        enemyCount = enemyCount + 1
+        local index = enemyCount
+        Wait.frames(function()
+          chipObj.setPositionSmooth(spacesEnemies[index], false, true)
+          handleArrowToken(chipObj, index)
+        end)
+      end
+
+      -- 20 EP chips
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = deployEnemyType(20, "Human", spacesEnemies[enemyCount + 1])
+            if chip20 == nil then
+              chip20 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            end
+            deployChip(chip20)
+          end
+        end
+      end
+
+      -- 10 EP chips
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = deployEnemyType(10, "Human", spacesEnemies[enemyCount + 1])
+            if chip10 == nil then
+              chip10 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            end
+            deployChip(chip10)
+          end
+        end
+      end
+
+      -- 5 EP chips
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = deployEnemyType(5, "Human", spacesEnemies[enemyCount + 1])
+            if chip5 == nil then
+              chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            end
+            deployChip(chip5)
+          end          
+        end
+      end
+
+      -- 1 EP chips
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = deployEnemyType(1, "Human", spacesEnemies[enemyCount + 1])
+            if chip1 == nil then
+              chip1 = bagLow.takeObject({rotation = { 0, 180, 180}})
+            end
+            deployChip(chip1)
+          end          
+        end
+      end
+
+      -- after deploying, deploy an additional level 1 enemy to each remaining unoccupied numbered hex
+      local lvl1DeployCount = 8 - enemyCount
+
+      Wait.time(function()
+        for i = 1, lvl1DeployCount do
+          if enemyCount < 8 then
+            local chip1 = deployEnemyType(1, "Human", spacesEnemies[enemyCount + 1])
+            if chip1 == nil then
+              chip1 = bagLow.takeObject({rotation = {0,180,180}})
+            end
+
+            -- wait a frame before deploying, so the chip exists in the world
+            Wait.frames(function()
+              deployChip(chip1)
+            end)
+          end
+        end
+
+        -- return the base arrow token
+        if baseArrowToken then
+          Wait.time(function()
+            tokenBag.putObject(baseArrowToken)
+          end, 2)
+        end
+
+      end, 1.5)
+
+    end, 1)
+    
+    -- if 3+ players, broadcast reminder to flip playerCount level 1 enemies to level 5
+    if playerCount > 2 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: The party will need to flip up to " .. playerCount ..  " level 1 enemies to their level 5 sides.", "White")        
+    end
+
+  elseif cardName == "No Unrest for the Wicked" then
+    local currentUnrest, unrestString = checkUnrest()
+    -- OPTION 1
+    -- first checkIfUnstable(), add unrest by 2 if so before adding HP
+    -- checkUnrest(), determine +HP amount
+    if optionNumber == 1 then
+      local isUnstable = checkIfUnstable()
+      if isUnstable then
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder [-]: Party token is currently on unstable space - Unreast increases by 2 via encounter effect.", "White")
+        moveUnrest(2)
+      end      
+
+    -- OPTION 2
+    -- simply increase unrest by 2, then normal deploy
+    elseif optionNumber == 2 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder [-]: Unreast increases by 2 via encounter effect. You cannot retreat from this battle.", "White")
+      moveUnrest(2)
+    end
+
+    -- deploy EP
+    local toModifyHP = {}
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip20) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip10) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip5) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip1) end)
+          end
+        end
+      end
+    end, 1)
+
+    if optionNumber == 1 then
+      Wait.time(function()
+
+        currentUnrest, unrestString = checkUnrest()
+        local hpModifyValue = {
+          ["Peaceful"]      = 1,
+          ["Tense"]         = 2,
+          ["Dangerous"]     = 3,
+          ["Chaotic"]       = 5
+        }
+        for _, chip in pairs(toModifyHP) do
+          local oldVal = chip.getVar('val')
+          local newVal = oldVal + hpModifyValue[unrestString]
+          local bagScript = getObjectbyName("Defeated Monsters Bag")
+          bagScript.call('set_val_remote', {chipObj=chip, val=newVal})
+        end
+
+      end, 2)
+    end
+
+  elseif cardName == "Rumormonger" then
+    -- OPTION 1
+    -- checkUnrest(), determine HP modify amount
+    local currentUnrest, unrestString = checkUnrest()  
+    local hpModify = 0
+    if optionNumber == 1 then
+      local hpUnrestModify  = {
+        ["Peaceful"]  = 0,
+        ["Tense"]     = -1,
+        ["Dangerous"] = -2,
+        ["Chaotic"]   = -3
+      }
+      hpModify = hpUnrestModify[unrestString]
+      -- broadcast reminder about not being able to retreat, and how much HP is being modified by
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Unrest level is currently " .. unrestString .. ", HP will be modified by " .. hpModify .. ".", "White")
+
+    -- OPTION 2
+    -- broadcast reminder about reducing unrest by 2 if successful
+    elseif optionNumber == 2 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: If this clash is successful, reduce unrest by 2.", "White")
+    end
+
+    -- deploy EP
+    local toModifyHP = {}
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip20) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip10) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip5) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip1) end)
+          end
+        end
+      end
+    end, 1)
+
+    Wait.time(function()
+      for _, chip in pairs(toModifyHP) do
+        local oldVal = chip.getVar('val')
+        local newVal = oldVal + hpModify
+        if newVal < 1 then newVal = 1 end
+        local bagScript = getObjectbyName("Defeated Monsters Bag")
+        bagScript.call('set_val_remote', {chipObj=chip, val=newVal})
+      end
+
+    end, 2)
+    
 
   -- MW ENCOUNTERS
   elseif cardName == "" then
@@ -5981,8 +6560,13 @@ function deployEnemyType(enemyLevel, enemyType, position)
       or (primaryTag == "enemyDaedra" and enemyType == "Daedra")) then
 
         chip = bagEnemyDraw.takeObject({ rotation = rotDrawnEnemy, guid = object.guid })
-        chip.setVar('fresh_out_of_bag')
-        Wait.frames(function() chip.setPositionSmooth(position, false, true) end)
+        Wait.time(function()
+
+          chip.clearButtons()
+          chip.setVar('just_flipped', true)
+
+        end, 2)
+        -- Wait.frames(function() chip.setPositionSmooth(position, false, true) end)
         chipFound = true
         break
 
@@ -6064,4 +6648,91 @@ function checkDominantFaction()
     end
   end
  return dominantFaction
+end
+
+
+function checkUnrest()
+
+  -- this function handles the check of current unrest in high rock, returns number value, level string
+  local unrestCount = 0
+  local unrestString = ""
+  local posUnrest = {
+    {-47.29, 1.69, 0.75},
+    {-45.97, 1.69, 0.75},
+    {-44.65, 1.69, 0.75},
+    {-43.09, 1.69, 0.75},
+    {-41.75, 1.69, 0.75},
+    {-40.20, 1.69, 0.72},
+    {-38.88, 1.69, 0.72},
+    {-37.30, 1.69, 0.73},
+    {-35.99, 1.69, 0.72},
+    {-34.65, 1.69, 0.72},
+  }
+  local tolerance = 0.50
+  local tokenUnrest = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Book Overland Token" and object.getDescription() == "Unrest Token" then
+      tokenUnrest = object
+    end
+  end
+  if tokenUnrest == nil then log("checkUnrest(): tokenUnrest not found") return nil, nil end
+
+  -- using tolerance method, determine which index of posUnrest the token is on, if any
+  local posToken = tokenUnrest.getPosition()
+  for index, posVal in pairs(posUnrest) do
+    if math.abs(posToken.x - posVal[1]) <= tolerance
+    and math.abs(posToken.z - posVal[3]) <= tolerance then
+      unrestCount = index - 1
+      break
+    end
+  end
+
+  -- set unrestString per current numerical unrestCount value
+  if unrestCount < 3 then
+    unrestString = "Peaceful"
+  elseif unrestCount == 3 or unrestCount == 4 then
+    unrestString = "Tense"
+  elseif unrestCount == 5 or unrestCount == 6 then
+    unrestString = "Dangerous"
+  elseif unrestCount > 6 then
+    unrestString = "Chaotic"
+  end
+
+  return unrestCount, unrestString
+end
+
+
+function moveUnrest(count) -- use negative numbers for backwards
+
+  local oldCount, _ = checkUnrest()
+  local newCount = oldCount + count
+  if newCount < 0 then newCount = 0 end
+  if newCount > 9 then newCount = 9 end
+  local posUnrest = {
+    {-47.29, 1.69, 0.75},
+    {-45.97, 1.69, 0.75},
+    {-44.65, 1.69, 0.75},
+    {-43.09, 1.69, 0.75},
+    {-41.75, 1.69, 0.75},
+    {-40.20, 1.69, 0.72},
+    {-38.88, 1.69, 0.72},
+    {-37.30, 1.69, 0.73},
+    {-35.99, 1.69, 0.72},
+    {-34.65, 1.69, 0.72},
+  }
+  local tokenUnrest = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Book Overland Token" and object.getDescription() == "Unrest Token" then
+      tokenUnrest = object
+    end
+  end
+  if tokenUnrest == nil then log("moveUnrest(): tokenUnrest not found") return end
+
+  Wait.frames(function()
+    tokenUnrest.setPosition(posUnrest[newCount + 1])
+  end)
+
+  local _, unrestString = checkUnrest()
+
+  broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Unrest level is now " .. unrestString .. " (from " .. oldCount .. " to " .. newCount .. ").", "White")
 end
