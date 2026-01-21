@@ -55,6 +55,7 @@ posEncounters                     = {
       { -42.59, 1.69, 14.02 },
       { -46.49, 1.69, 17.81 },
       { -43.90, 1.69, 17.77 },
+      { -53.02, 1.69, 12.53 },
     },
   },
 
@@ -3052,7 +3053,7 @@ function deployClash(cardName, optionNumber)
   if not bagEntranceTile then log("deployClash(): bagEntranceTile not found") return end
 
   -- pull selected mat from bag, place (if clash mat required, most conflict encounters will require clash mat)
-  if cardName ~= "Keep Ayleid on It" and cardName ~= "Pit Stop" then
+  if cardName ~= "Keep Ayleid on It" and cardName ~= "Pit Stop" and cardName ~= "Yours for the Taking" then
     local rotClashMat = { 0, 0, 0 }
     local posClashMat = { 2.05, 1.71, 2.41 }
     local clashMat = nil
@@ -3101,6 +3102,29 @@ function deployClash(cardName, optionNumber)
       tile19Hex.setPosition(pos19Hex)
       tile19Hex.setLock(true)
     end)
+  
+  elseif cardName == "Yours for the Taking" then
+    local bag7Hex = getObjectbyName("7 Hex Bag")
+    local rot7Hex = { 0, 60, 0 }
+    local pos7Hex = { 4.10, 1.59, 2.41 }
+    local bag3Hex = getObjectbyName("3 Hex Bag")
+    local rot3Hex = { 0, 0, 0 }
+    local pos3Hex = { { -3.07, 1.87, 7.74 }, {-3.08, 1.87, -2.91} }
+
+    local tile7Hex = bag7Hex.takeObject()
+    Wait.frames(function()
+      tile7Hex.setRotation(rot7Hex)
+      tile7Hex.setPosition(pos7Hex)
+      tile7Hex.setLock(true)
+    end)
+    for i = 1, 2 do
+      local tile3Hex = bag3Hex.takeObject()
+      Wait.frames(function()
+        tile3Hex.setRotation(rot3Hex)
+        tile3Hex.setPosition(pos3Hex[i])
+        tile3Hex.setLock(true)
+      end)
+    end
   end
 
   -- wait 1 second for clash mat to place, then pull and place any required obstacles
@@ -3129,6 +3153,21 @@ function deployClash(cardName, optionNumber)
           obstacle3Hex.setLock(true)
         end
       end
+    elseif cardName == "Not Mushroom to Move" then
+      local rot7HexObstacle = { 0, 300, 0 }
+      local pos7HexObstacle = { 1.02, 1.84, 4.19 }
+      local obstacle7Hex = nil
+        for _, object in pairs(bagObstacle.getObjects()) do
+          if object.name == "7 Hex Obstacle" then
+            obstacle7Hex = bagObstacle.takeObject({guid=object.guid})
+            break
+          end
+        end
+        if obstacle7Hex ~= nil then
+          obstacle7Hex.setRotation(rot7HexObstacle)
+          obstacle7Hex.setPosition(pos7HexObstacle)
+          obstacle7Hex.setLock(true)
+        end
     end   
 
   end, 1)
@@ -3847,7 +3886,7 @@ function deployClash(cardName, optionNumber)
     spacesCaches = {
       -- positioned off clash mat since players have choice where to place
       { 13.32, 1.59, -2.91 },
-      { 3.32, 1.59, 0.64 },
+      { 13.32, 1.59, 0.64 },
       { 13.32, 1.59, 4.19 },
       { 17.42, 1.59, 4.19 },
       { 17.42, 1.59, 0.64 },
@@ -3866,7 +3905,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Yours for the Taking" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -6.15, 2.12, 2.41 }
+    posEntranceTile = { -6.15, 1.87, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
     }
@@ -4190,6 +4229,19 @@ function deployClash(cardName, optionNumber)
     }
   end
 
+  -- Augmented Arms need to flip common to legendary if on an unstable space
+  local isUnstable = checkIfUnstable()
+  if cardName == "Augmented Arms" and isUnstable then
+    rotCaches = {
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+      rotLegendaryCaches,
+    }
+  end
+
   -- Keep Away needs to deploy correct number of caches, 3+ players = 5, otherwise = 3
   if cardName == "Keep Away" and playerCount > 2 then
      spacesCaches = {
@@ -4203,13 +4255,28 @@ function deployClash(cardName, optionNumber)
 
   Wait.time(function()
 
-    if cardName == "Keep Ayleid on It" then
+    if cardName == "Keep Ayleid on It" then      
       for i = 1, playerCount+1 do
-        bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+        local highlightColor = rotCaches[i] == rotCommonCaches and "Green" or "Orange"
+        local cache = bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+        Wait.frames(function() cache.highlightOn(highlightColor) end)
       end
+
+    elseif cardName == "Deals in Dwemer" and optionNumber == 2 then
+      log("Deals in Dwemer: skipping cache placement")
+
+    elseif cardName == "Augmented Arms" then
+      for i = 1, playerCount+2 do
+        local highlightColor = rotCaches[i] == rotCommonCaches and "Green" or "Orange"
+        local cache = bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+        Wait.frames(function() cache.highlightOn(highlightColor) end)
+      end
+
     else
-      for i = 1, #spacesCaches do        
-        bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+      for i = 1, #spacesCaches do
+        local highlightColor = rotCaches[i] == rotCommonCaches and "Green" or "Orange"
+        local cache = bagCacheChips.takeObject({rotation = rotCaches[i], position = spacesCaches[i], smooth = true})
+        Wait.frames(function() cache.highlightOn(highlightColor) end)
       end
     end
   end, 1)
@@ -6482,17 +6549,456 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
     
 
   -- MW ENCOUNTERS
-  elseif cardName == "" then
+  elseif cardName == "Wrong Side of the Law" then
+    -- check if unstable, broadcast reminder to choose adventurer to be prisoner (include lockpick check)
+    local lockpickString = checkIfUnstable() == false and "5-4-3" or "6-4-1"
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Choose an adventurer to be the prisoner for this clash. On their turn, they must make a (" .. lockpickString .. ") (2 attempts) lockpick check to avoid being captive.", "White")
 
-  elseif cardName == "" then
+    -- deploy EP
+    local toModifyHP = {}
+    Wait.time(function()
 
-  elseif cardName == "" then
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip20) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip10) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip5) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(toModifyHP, chip1) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- check if occupying anchre egg mine, if so enemies get +2 HP, broadcast reminder
+    local isAnchre = checkIfAnchre()
+    if isAnchre then
+      Wait.time(function()
+
+        -- broadcast
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Party token is occupying Anchre Egg Mine - All enemies gain +2 HP via encounter effect.", "White")
+
+        -- add HP
+        for _, chip in pairs(toModifyHP) do
+          local oldVal = chip.getVar('val')
+          local newVal = oldVal + 2
+          local bagScript = getObjectbyName("Defeated Monsters Bag")
+          bagScript.call('set_val_remote', {chipObj=chip, val=newVal})
+        end
+
+      end, 2)
+      
+    end
+
+  elseif cardName == "Not Mushroom to Move" then
+    -- requires obstacle placed (in deployClash)
+    -- add level 5 orc marauder (lvl 10 orc wizard if 3+ players) to ep, deploy first
+    -- before deploying EP, add khajiit marauder (<3) or khajiit cultist to enemy pool and deploy
+    local extraEnemy = playerCount < 3 and "Orc Marauder" or "Orc Wizard"
+    local extraBag = playerCount < 3 and bagLow or bagHigh
+    local extraRot = extraEnemy == "Orc Marauder" and { 0, 180, 0 } or { 0, 180, 180 }
+    for _, object in pairs(extraBag.getObjects()) do
+      if object.name:find(extraEnemy) then
+        local chipExtraEnemy = extraBag.takeObject({guid = object.guid, rotation = extraRot})
+        enemyCount = 1
+        Wait.frames(function()
+          -- chipExtraEnemy.setVar('fresh_out_of_bag')
+          chipExtraEnemy.setPositionSmooth(spacesEnemies[enemyCount], false, true)
+        end)
+        break
+      end
+    end
+    -- deploy rest of EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- checkIfUnstable, if so broadcast reminder that enemies go before adventurers each round
+    if checkIfUnstable() then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Party token is on unstable space, enemies go before adventurers each round.", "White")
+    end
+
+  elseif cardName == "Egg Mine? No, Eggs Mine!" then
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- pull generic counters, place just offset above the cache chips, set to 6-playerCount, set description or gmnotes
+    Wait.time(function()
+
+      local cacheChips = {}    
+      local checkZone = getObjectFromGUID("b5dd6d")
+      local bagCounter = getObjectbyName("Generic Counter Bag")
+      local counterVal = 6 - playerCount
+      for _, object in pairs(checkZone.getObjects()) do
+        if object.getName() == "Cache Chip" then        
+          table.insert(cacheChips, object)
+        end
+      end
+      for i = 1, #cacheChips do
+        local posCounter = cacheChips[i].getPosition()
+        posCounter.y = 2.50
+        local counter = bagCounter.takeObject()
+        Wait.frames(function()
+          counter.setPosition(posCounter)
+          counter.call('set_val', counterVal)
+          counter.setGMNotes("Egg Counter")
+        end)
+      end
+
+    end, 2)
+
+    -- ifUnstable, on round end, do check for description or gmnotes added, remove HP value by 1, broadcast
+    -- (currently that script lives on battle round counter object)
+    -- check if occupying Anchre Egg Mine, broadcast about reward as bonus XP
+    local isAnchre = checkIfAnchre()
+    if isAnchre then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Party token is occupying Anchre Egg Mine - Treat 1 XP of the encounter reward as bonus HP.", "White")
+    end
+
+  elseif cardName == "Deals in Dwemer" then
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- OPTION 1
+    if optionNumber == 1 then
+      -- set round counter to playerCount
+      local rotDie = { { 270, 0, 0 }, { 0, 0, 0 }, { 0, 0, 270 }, { 0, 0, 90 }, { 0, 0, 180 }, { 90, 0, 0 } }
+      local die = getObjectbyName("Round Counter")
+      die.setRotationSmooth(rotDie[playerCount], false, false)
+      local roundCounter = getObjectbyName("Battle Round Counter")
+      roundCounter.call('set_val', playerCount)
+
+      -- add playerCount level 1 enemies to the EP and deploy them last
+      local lvl1DeployCount = playerCount
+      Wait.time(function()
+
+        for i = 1, lvl1DeployCount do
+          if enemyCount < 8 then
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+
+            local chip1 = bagLow.takeObject({rotation = {0,180,180}})
+            Wait.frames(function()
+              chip1.setPositionSmooth(spacesEnemies[index], false, true)
+            end)
+          end
+        end
+
+      end, 1.5)
+
+      -- broadcast reminder about enemies going before adventurers each round, and cannot retreat
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Enemies go before adventurers each round, and the party cannot retreat from this battle.", "White")
+    end
+    -- OPTION 2
+    -- will need to add check in deployClash() before placing caches    
+
+  elseif cardName == "Augmented Arms" then
+    -- place playerCount + 2 caches next to clash mat, broadcast reminder to manually place
+    local cacheCount = playerCount + 2
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Manually place " .. cacheCount .. "X caches.", "White")
+    
+    -- checkIfUnstable, if so do legendary caches, happens in deployClash()
+    -- if not occupying tormented spire, broadcast reminder about discarding item
+    local partyToken = getObjectbyName("Party Overland Token")
+    if partyToken == nil then log("deployClashEnemies(): Augmented Arms partyToken not found") return false end
+
+    local posSpire = { -50.72, 1.69, 5.54 }
+    local tolerance = 0.50
+    local posToken = partyToken.getPosition()
+    if math.abs(posToken.x - posSpire[1]) <= tolerance
+    and math.abs(posToken.z - posSpire[3]) <= tolerance then      
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Party token is on Tormented Spire - Items from caches are not discarded.", "White")
+    else
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Party token is not on Tormented Spire - Items from caches must be discarded.", "White")
+    end
+
+    -- clear battle button scripting checks to see if card is in slot, auto advance the dig track and broadcast if so
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)    
+
+  elseif cardName == "Yours for the Taking" then
+    -- will require a nonstandard clash map, in deployClash()
+    -- 3+ players set round counter to playerCount, broadcast
+    if playerCount > 2 then
+      local rotDie = { { 270, 0, 0 }, { 0, 0, 0 }, { 0, 0, 270 }, { 0, 0, 90 }, { 0, 0, 180 }, { 90, 0, 0 } }
+      local die = getObjectbyName("Round Counter")
+      die.setRotationSmooth(rotDie[playerCount], false, false)
+      local roundCounter = getObjectbyName("Battle Round Counter")
+      roundCounter.call('set_val', playerCount)
+    end
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: This encounter is failed if the cache remains at the end of the battle.", "White")
+    Wait.time(function() broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: Round counter set to " .. playerCount .. ".", "White") end, .50)
+
+    -- ifUnstable, add current dig and excavation values to currentEP before deploy, broadcast
+    local isUnstable = checkIfUnstable()
+    if isUnstable then
+      Wait.time(function() broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "] Party token is on unstable space - adding current dig and excavation values to calculated EP.", "White") end, 1)
+    end
+    local currentDig = checkDig()
+    local currentExc = checkExcavation()
+    currentCalculatedEP = currentCalculatedEP + currentDig + currentExc
+    chipBreakdown = getChipBreakdown(currentCalculatedEP)
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
 
   -- SK ENCOUNTERS
   elseif cardName == "" then
@@ -6702,23 +7208,23 @@ function checkUnrest()
 end
 
 
-function moveUnrest(count) -- use negative numbers for backwards
+function moveUnrest(count)
 
   local oldCount, _ = checkUnrest()
   local newCount = oldCount + count
   if newCount < 0 then newCount = 0 end
   if newCount > 9 then newCount = 9 end
   local posUnrest = {
-    {-47.29, 1.69, 0.75},
-    {-45.97, 1.69, 0.75},
-    {-44.65, 1.69, 0.75},
-    {-43.09, 1.69, 0.75},
-    {-41.75, 1.69, 0.75},
-    {-40.20, 1.69, 0.72},
-    {-38.88, 1.69, 0.72},
-    {-37.30, 1.69, 0.73},
-    {-35.99, 1.69, 0.72},
-    {-34.65, 1.69, 0.72},
+    { -47.29, 1.69, 0.75 },
+    { -45.97, 1.69, 0.75 },
+    { -44.65, 1.69, 0.75 },
+    { -43.09, 1.69, 0.75 },
+    { -41.75, 1.69, 0.75 },
+    { -40.20, 1.69, 0.72 },
+    { -38.88, 1.69, 0.72 },
+    { -37.30, 1.69, 0.73 },
+    { -35.99, 1.69, 0.72 },
+    { -34.65, 1.69, 0.72 },
   }
   local tokenUnrest = nil
   for _, object in pairs(getObjects()) do
@@ -6736,3 +7242,149 @@ function moveUnrest(count) -- use negative numbers for backwards
 
   broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Unrest level is now " .. unrestString .. " (from " .. oldCount .. " to " .. newCount .. ").", "White")
 end
+
+
+function checkDig()
+
+  -- same as checkUnrest() but for MW dig track (returns single number value)
+  local digCount = 0
+  local posDig = {
+    { -46.92, 1.69, 0.72 },
+    { -45.62, 1.69, 0.73 },
+    { -44.30, 1.69, 0.73 },
+    { -42.97, 1.69, 0.72 },
+  }
+  local tolerance = 0.50
+  local tokenDig = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Book Overland Token" and object.getDescription() == "Dig Token" then
+      tokenDig = object
+    end
+  end
+  if tokenDig == nil then log("checkDig(): tokenDig not found") return nil, nil end
+
+  -- using tolerance method, determine which index of posDig the token is on, if any
+  local posToken = tokenDig.getPosition()
+  for index, posVal in pairs(posDig) do
+    if math.abs(posToken.x - posVal[1]) <= tolerance
+    and math.abs(posToken.z - posVal[3]) <= tolerance then
+      digCount = index - 1
+      break
+    end
+  end
+  return digCount
+end
+
+
+function checkExcavation()
+
+  -- same as checkDig() but for MW excavation track
+  local excCount = 0
+  local posExc = {
+    { -41.36, 1.69, 0.72 },
+    { -40.04, 1.69, 0.72 },
+    { -38.72, 1.69, 0.72 },
+    { -37.40, 1.69, 0.72 },
+    { -36.08, 1.69, 0.72 },
+    { -34.82, 1.69, 0.72 },
+  }
+  local tolerance = 0.50
+  local tokenExc = nil
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Book Overland Token" and object.getDescription() == "Excavation Token" then
+      tokenExc = object
+    end
+  end
+  if tokenExc == nil then log("checkDig(): tokenExc not found") return nil, nil end
+
+  -- using tolerance method, determine which index of posDig the token is on, if any
+  local posToken = tokenExc.getPosition()
+  for index, posVal in pairs(posExc) do
+    if math.abs(posToken.x - posVal[1]) <= tolerance
+    and math.abs(posToken.z - posVal[3]) <= tolerance then
+      excCount = index - 1
+      break
+    end
+  end
+  return excCount
+end
+
+
+function moveDig(count)
+
+  -- this function handles the movement of the dig track, and excavation track if required
+  local posDig = {
+    { -46.92, 1.69, 0.72 },
+    { -45.62, 1.69, 0.73 },
+    { -44.30, 1.69, 0.73 },
+    { -42.97, 1.69, 0.72 },
+  }
+  local posExc = {
+    { -41.36, 1.69, 0.72 },
+    { -40.04, 1.69, 0.72 },
+    { -38.72, 1.69, 0.72 },
+    { -37.40, 1.69, 0.72 },
+    { -36.08, 1.69, 0.72 },
+    { -34.82, 1.69, 0.72 },
+  }
+  local oldDig = checkDig()
+  local oldExc = checkExcavation()
+  local newDig = oldDig + count
+  local newExc = 0
+
+  local digToken = nil
+  local excToken = nil
+
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Book Overland Token" and object.getDescription() == "Dig Token" then
+      digToken = object
+    end
+    if object.getName() == "Book Overland Token" and object.getDescription() == "Excavation Token" then
+      excToken = object
+    end
+  end
+  if digToken == nil then log("moveDig(): digToken not found") return end
+  if excToken == nil then log("moveDig(): excToken not found") return end
+  
+  -- handle newDig being off the track, and increasing excavation track by 1
+  if newDig > 4 then
+    -- broadcast alert about the dig track increasing off the track, and excavation track increasing by 1
+    newExc = oldExc + 1
+    if newExc > 5 then newExc = 5 end
+    Wait.time(function()
+
+      if oldExc == 5 then
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Dig track has moved off the track (from " .. oldDig .. "), excavation track is already full.", "White")
+      else
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Dig track has moved off the track (from " .. oldDig .. "), excavation track increases by 1 (from " .. oldExc .. " to " .. newExc .. ").", "White")
+        -- move excavation tracker
+        excToken.setPosition(posExc[newExc+1])
+      end
+
+    end, .5)
+    newDig = 0
+  else
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Dig track has moved from " .. oldExc .. " to " .. newExc .. ".", "White")
+  end
+  -- move dig tracker
+  digToken.setPosition(posDig[newDig+1])
+end
+
+
+function checkIfAnchre()
+
+  -- helper for MW, a few clashes check if party token is on Anchre Egg Mine site
+  local partyToken = getObjectbyName("Party Overland Token")
+  if partyToken == nil then log("checkIfAnchre(): partyToken not found") return false end
+
+  local posAnchre = { -37.79, 1.69, 10.01 }
+  local tolerance = 0.50
+  local posToken = partyToken.getPosition()
+  if math.abs(posToken.x - posAnchre[1]) <= tolerance
+  and math.abs(posToken.z - posAnchre[3]) <= tolerance then
+    return true
+  else
+    return false
+  end
+end
+

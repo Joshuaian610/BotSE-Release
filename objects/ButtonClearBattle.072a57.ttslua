@@ -31,7 +31,35 @@ end
 
 function clear_battle()
     animate_button()
-    local table_objs = getAllObjects()
+    local table_objs = getObjects()
+
+    -- handle special case MW Augmented Arms end of battle stuff (need to do first while caches are still on table)
+    local checkActiveEncounterZone = getObjectFromGUID("8347e9")
+    
+    local isAugmentedArms = false
+    for _, object in pairs(checkActiveEncounterZone.getObjects()) do
+        if object.getName() == "Augmented Arms" then
+            isAugmentedArms = true
+        end
+    end
+    if isAugmentedArms then
+        local checkBattleZone = getObjectFromGUID("b5dd6d")
+        local cacheCount = 0
+        for _, object in pairs(checkBattleZone.getObjects()) do
+            if object.getName() == "Cache Chip" then
+                cacheCount = cacheCount + 1
+            end
+        end
+        if cacheCount > 0 then
+            Global.call('moveDig', cacheCount)
+            broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: End of encounter effect increases dig track by the number of remaining caches, " .. cacheCount .. ".", "White")
+        else
+            broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: No remaining caches, end of encounter effect does not modify dig track.", "White")
+        end
+    end
+
+    
+
     -- associate player chips with race cards, place player chips back to cards (not smoothly) if found
     local race_card = nil -- lolol
     local race_tag  = nil
@@ -304,7 +332,7 @@ function clear_battle()
                 end
             end
         end
-    end
+    end    
 end
 
 

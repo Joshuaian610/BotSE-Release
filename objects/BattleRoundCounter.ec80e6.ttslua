@@ -55,13 +55,41 @@ function add_subtract(_obj, playercolor, alt_click)
         update_val()
         update_save()
     end
-    -- check if Wabbajack Attack clash is active, run effect if so
-    local zoneActiveEncounter = getObjectFromGUID("8347e9")
-    for _, object in pairs(zoneActiveEncounter.getObjects()) do
-        if object.getName() == "Wabbajack Attack" then
-            wabbajackChangePlaces()
+    -- check if GE Wabbajack Attack clash is active, run effect if so
+    if not alt_click then
+        local zoneActiveEncounter = getObjectFromGUID("8347e9")
+        for _, object in pairs(zoneActiveEncounter.getObjects()) do
+            if object.getName() == "Wabbajack Attack" then
+                wabbajackChangePlaces()
+            end
         end
     end
+
+    -- check for MW Egg Mine? No, Eggs Mine! egg counters, decrement by 1 and broadcast
+    local isUnstable = checkIfUnstable()
+    if not alt_click and isUnstable then
+        local zoneBattle = getObjectFromGUID("b5dd6d")
+        local eggTokensFound = false
+        for _, object in pairs(zoneBattle.getObjects()) do
+            if object.getGMNotes() == "Egg Counter" then
+                local counter = object
+                local oldVal = counter.getVar('val')
+                local newVal = oldVal - 1
+                if oldVal > 0 then
+                    eggTokensFound = true
+                end
+                
+                if newVal < 0 then newVal = 0 end
+                counter.call('set_val', newVal)
+            end
+        end
+
+        -- broadcast
+        if eggTokensFound then
+            broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Current clash \"Egg Mine? No, Eggs Mine!\" end of round effect causes all eggs to take 1 damage.", "White")     
+        end
+    end
+    
     -- set die to matching rotation
     local die = getObjectFromGUID("f1cfea")
     die.setRotationSmooth((val == 1 and {270,0,0}) or (val == 2 and {0,0,0}) or (val == 3 and {0,0,270}) or
@@ -262,3 +290,46 @@ function getObjectbyName(name)
   log("getObjectbyName() object not found: " .. name)
   return nil
 end
+
+
+function checkIfUnstable()
+  -- this function checks and returns if the party token is located at an unstable space
+  local posEncounters = Global.getTable('posEncounters')
+  local isOnUnstable = false
+  local partyToken = getObjectbyName("Party Overland Token")
+  if not partyToken then log("checkIfUnstable(): partyToken not found") return end
+  local partyPos = partyToken.getPosition()
+  local zone = getObjectFromGUID("64c0a4")
+  local provinceMapName = nil
+
+  for _, obj in ipairs(zone.getObjects()) do
+    local name = obj.getName()
+    local match = string.match(name, "^(.-) Overland Map$")
+    if match and posEncounters[match] then
+      provinceMapName = match
+      break
+    end
+  end
+  if not provinceMapName then
+    broadcastToAll("No Province Map Found. Set up encounter manually", "Orange")
+    return
+  end  
+  
+  local encounterPositions = posEncounters[provinceMapName]
+  if not encounterPositions then log("checkIfUnstable(): encounterPositions not found for " .. provinceMapName) return false end
+
+  local unstableList = encounterPositions["Unstable"]
+  if not unstableList then log("checkIfUnstable(): Unstable list missing for " .. provinceMapName) return false end
+
+  local tolerance = 0.5
+
+  for _, encounterPos in ipairs(unstableList) do
+    if (math.abs(partyPos.x - encounterPos[1]) < tolerance)
+    and (math.abs(partyPos.z - encounterPos[3]) < tolerance) then
+      return true
+    end
+  end
+
+  return false
+end
+
