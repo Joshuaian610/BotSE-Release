@@ -1,5 +1,12 @@
 {
   "ComponentTags_path": "ComponentTags.json",
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?id=11mZQ0WYi6Ilb73JdbFEf6j28Yn8aZrN5"
+    }
+  ],
   "DecalPallet_path": "DecalPallet.json",
   "GameComplexity": "Medium Complexity",
   "GameMode": "The Elder Scrolls: BotSE",
@@ -334,18 +341,10 @@
     "ZoneActiveEncounter.8347e9",
     "FirstPlayer.80a3f9",
     "BattleRoundCounter.ec80e6",
-    "BonusHPCounterOrange.301788",
-    "HPCounterOrange.a6b220",
     "ZonePlayerRacepadRed.2dc97f",
     "ZonePlayerRacepadOrange.57cafb",
     "ZonePlayerRacepadBlue.aebe2d",
     "ZonePlayerRacepadGreen.9708d1",
-    "BonusHPCounterRed.74cd20",
-    "HPCounterRed.12870c",
-    "BonusHPCounterBlue.556975",
-    "HPCounterBlue.68b5c6",
-    "BonusHPTrackerGreen.1cd796",
-    "HPCounterGreen.a8ecfa",
     "OverlandMapDayTrackerBag.52d44e",
     "PadSideQuest4.1cd4c3",
     "PadSideQuest3.c9c1c8",
@@ -877,7 +876,15 @@
     "ZoneXPGreenSlot1.1aa45e",
     "ZoneXPGreenSlot2.10143b",
     "ZoneXPGreenSlot3.641806",
-    "PlayerPanelData.245faf"
+    "PlayerPanelData.245faf",
+    "BonusHPCounterOrange.301788",
+    "HPCounterRed.12870c",
+    "HPCounterBlue.68b5c6",
+    "HPCounterGreen.a8ecfa",
+    "BonusHPCounterBlue.556975",
+    "BonusHPTrackerGreen.1cd796",
+    "BonusHPCounterRed.74cd20",
+    "HPCounterOrange.a6b220"
   ],
   "PlayArea": 0.5,
   "PlayerCounts": [

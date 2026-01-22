@@ -6,9 +6,9 @@
   },
   "Autoraise": true,
   "ColorDiffuse": {
-    "b": 0,
-    "g": 0,
-    "r": 0.84843
+    "b": 0.113,
+    "g": 0.392,
+    "r": 0.956
   },
   "CustomImage": {
     "CustomTile": {
@@ -18,13 +18,13 @@
       "Type": 2
     },
     "ImageScalar": 1,
-    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582865174/A52E7748EE3C307114297E39DDA46984F30DE03F/",
-    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/28818234582865174/A52E7748EE3C307114297E39DDA46984F30DE03F/",
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/11539941928071351783/D001DF333D93C1B6A0359B9E3A9726800FE69D15/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/11539941928071351783/D001DF333D93C1B6A0359B9E3A9726800FE69D15/",
     "WidthScale": 0
   },
   "Description": "",
   "DragSelectable": true,
-  "GMNotes": "",
+  "GMNotes": "Orange",
   "GUID": "301788",
   "Grid": false,
   "GridProjection": false,
@@ -33,8 +33,8 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": true,
+  "LuaScript": "require(\"objects/BonusHPCounter\")",
   "LuaScriptState": "[0]",
-  "LuaScript_path": "BonusHPCounterOrange.301788.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
   "Nickname": "Bonus HP Counter Orange",
@@ -57,5 +57,5 @@
     "scaleZ": 0.71
   },
   "Value": 0,
-  "XmlUI": ""
+  "XmlUI": "\u003cInclude src=\"objects/BonusHPCounter.xml\"/\u003e"
 }

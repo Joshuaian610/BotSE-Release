@@ -7,6 +7,12 @@ require("HandleEnemies")
 require("HandleEncounters")
 require("PlayerAreas")
 require("PlayerPanel")
+require("XMLUtils")
+require("UtilityButtons")
+
+function requireScript(name)
+  require(name)
+end
 
 function onLoad()
 
@@ -1183,6 +1189,7 @@ function onObjectEnterZone(zone, obj)
     end
   end
   if (zone.hasTag('tenacity_marker') and obj.hasTag('tenacity_marker')) then
+    
     handleTenacityMarkerEntry(zone, obj)
   end
   if (zone.hasTag('xp_marker') and obj.hasTag('xp_marker')) then

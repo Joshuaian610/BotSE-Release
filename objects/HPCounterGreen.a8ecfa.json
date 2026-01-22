@@ -15,16 +15,16 @@
       "Stackable": false,
       "Stretch": true,
       "Thickness": 0.200000048,
-      "Type": 3
+      "Type": 2
     },
     "ImageScalar": 1,
-    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/11120791387266350110/E5AA7DF8F0422F6FF0F48141447C1D0E765CB7E0/",
-    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/11120791387266350110/E5AA7DF8F0422F6FF0F48141447C1D0E765CB7E0/",
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/9526985581876170163/D54241E67837B2BC479E029D726469E89405D4B5/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/9526985581876170163/D54241E67837B2BC479E029D726469E89405D4B5/",
     "WidthScale": 0
   },
   "Description": "",
   "DragSelectable": true,
-  "GMNotes": "",
+  "GMNotes": "Green",
   "GUID": "a8ecfa",
   "Grid": false,
   "GridProjection": false,
@@ -33,8 +33,8 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": true,
+  "LuaScript": "require(\"objects/HPCounter\")",
   "LuaScriptState": "[4]",
-  "LuaScript_path": "HPCounterGreen.a8ecfa.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
   "Nickname": "HP Counter Green",
@@ -52,10 +52,10 @@
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
-    "scaleX": 0.51,
+    "scaleX": 0.71,
     "scaleY": 1,
-    "scaleZ": 0.51
+    "scaleZ": 0.71
   },
   "Value": 0,
-  "XmlUI": ""
+  "XmlUI": "\u003cInclude src=\"objects/HPCounter.xml\"/\u003e"
 }

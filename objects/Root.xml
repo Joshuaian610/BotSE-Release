@@ -1,31 +1,72 @@
 <!-- Xml UI. See documentation: https://api.tabletopsimulator.com/ui/introUI/ -->
+<!--======================= Defaults ========================-->
+<Defaults>
+    <Text class="player_panel_text" font="Fonts/Planewalker Bold.otf" fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF"/>
+
+    <Button class="utility_button" height="50" color="#FFFFFF" textShadow="#000000" textOutline="#000000" tooltipFontSize="18" rectAlignment="MiddleRight"/>
+    <Text class="utility_button_text" font="Fonts/Planewalker Bold.otf" fontSize="18" fontStyle="Bold" outline="#00000000" shadow="#00000000" color="#000000"/>
+</Defaults>
+
+<!--==================== Utility Buttons ====================-->
+<Panel id="utility_buttons_panel" width="720" height="50" rectAlignment="LowerRight" offsetXY="-85 10" color="#00000000" visibility="Red|Orange|Blue|Green">
+    <Button id="cooldownButton" width="120" offsetXY="-485 0" onClick="cooldown" class="utility_button" tooltip="Perform the beginning of turn Cooldown action" tooltipPosition="Above">
+        <Text class="utility_button_text">Cooldown</Text>
+    </Button>
+
+    <Button id="collapseButton" width="200" offsetXY="-285 0" onClick="collapseCooldownRow" class="utility_button" tooltip="Collapse your Cooldown Track to clean up gaps" tooltipPosition="Above">
+        <Text class="utility_button_text">Collapse CD Row</Text>
+    </Button>
+
+    <Button id="fatigueButton" width="130" offsetXY="-155 0" onClick="gainLightFatigue" class="utility_button" tooltip="Add a Light Fatigue dice to your Cooldown Track" tooltipPosition="Above">
+        <Text class="utility_button_text">+ Fatigue</Text>
+    </Button>
+
+    <Button id="overfatigueButton" width="155" offsetXY="0 0" onClick="gainOverfatigue" class="utility_button" tooltip="Add an Overfatigue dice to your Cooldown Track" tooltipPosition="Above">
+        <Text class="utility_button_text">+ Overfatigue</Text>
+    </Button>
+</Panel>
 
 <!--===================== Player Panels =====================-->
-
-<Panel id="player_panel_Red" width="210" height="100" rectAlignment="LowerRight" offsetXY="5 100" color="#da191844" active="false">
-    <Image image="https://steamusercontent-a.akamaihd.net/ugc/11768033117233226443/12FA8A7072386D71A14C09E0B783D46A4922BCDA/" width="190" height="90" offsetXY="-5 0"/>
-    <Panel width="90" height="90" rectAlignment="MiddleLeft" offsetXY="5 0">
-        <Image id="player_race_Red" image="https://steamusercontent-a.akamaihd.net/ugc/18433127840467639981/1CAD26BFDFB1D6AD46BDBC9E13E84F84B33BA320/" width="90" height="90"/>
-        <Button width="90" onClick="jumpToTokenRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
+<Panel id="player_panel_Red" rectAlignment="LowerRight" offsetXY="5 100" active="false">
+    <Panel id="player_panel_Red" width="210" height="100" rectAlignment="LowerRight" color="#da191844">
+        <Image image="https://steamusercontent-a.akamaihd.net/ugc/11768033117233226443/12FA8A7072386D71A14C09E0B783D46A4922BCDA/" width="190" height="90" offsetXY="-5 0"/>
+        <Panel width="90" height="90" rectAlignment="MiddleLeft" offsetXY="5 0">
+            <Image id="player_race_Red" image="https://steamusercontent-a.akamaihd.net/ugc/15498981467720330739/3FDD87C2753B09E397F5C76E44EB744AD42239EC/" width="90" height="90"/>
+            <Button width="90" onClick="jumpToTokenRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
+        </Panel>
+        <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 50">
+            <Button onClick="updateBonusHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
+                <Text class="player_panel_text" id="bonus_hp_Red">0</Text>
+            </Button>
+        </Panel>
+        <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 7">
+            <Button onClick="updateHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
+                <Text class="player_panel_text" id="hp_Red">0</Text>
+            </Button>
+        </Panel>
+        <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 50">
+            <Button onClick="updateTenacityRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
+                <Text class="player_panel_text" id="tenacity_Red">0</Text>
+            </Button>
+        </Panel>
+        <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 7">
+            <Button onClick="updateXPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
+                <Text class="player_panel_text" id="xp_Red">0</Text>
+            </Button>
+        </Panel>
     </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 50">
-        <Button onClick="updateBonusHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_Red">0</Text>
+    <Panel id="utility_buttons_Red" active="false" rectAlignment="LowerRight" offsetXY="0 -50" color="#33333333" width="210" height="50">
+        <Button width="105" height="20" color="#FFFFFFFF" offsetXY="-53 12">
+            <Text font="Fonts/Planewalker Bold.otf" fontSize="14" fontStyle="Bold" color="#000000" id="fatigue_button_Red">Cooldown</Text>
         </Button>
-    </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 7">
-        <Button onClick="updateHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="hp_Red">0</Text>
+        <Button width="105" height="20" color="#FFFFFFFF" offsetXY="53 12">
+            <Text font="Fonts/Planewalker Bold.otf" fontSize="14" fontStyle="Bold" color="#000000" id="fatigue_button_Red">Collapse</Text>
         </Button>
-    </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 50">
-        <Button onClick="updateTenacityRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="tenacity_Red">0</Text>
+        <Button width="105" height="20" color="#FFFFFFFF" offsetXY="-53 -12">
+            <Text font="Fonts/Planewalker Bold.otf" fontSize="14" fontStyle="Bold" color="#000000" id="fatigue_button_Red">+ Fatigue</Text>
         </Button>
-    </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 7">
-        <Button onClick="updateXPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="xp_Red">0</Text>
+        <Button width="105" height="20" color="#FFFFFFFF" offsetXY="53 -12">
+            <Text font="Fonts/Planewalker Bold.otf" fontSize="14" fontStyle="Bold" color="#000000" id="fatigue_button_Red">+ Overfatigue</Text>
         </Button>
     </Panel>
 </Panel>
@@ -33,27 +74,27 @@
 <Panel id="player_panel_Orange" width="210" height="100" rectAlignment="LowerRight" offsetXY="5 220" color="#f4641d44" active="false">
     <Image image="https://steamusercontent-a.akamaihd.net/ugc/11768033117233226443/12FA8A7072386D71A14C09E0B783D46A4922BCDA/" width="190" height="90" offsetXY="-5 0"/>
     <Panel width="90" height="90" rectAlignment="MiddleLeft" offsetXY="5 0">
-        <Image id="player_race_Orange" image="https://steamusercontent-a.akamaihd.net/ugc/18433127840467639981/1CAD26BFDFB1D6AD46BDBC9E13E84F84B33BA320/" width="90" height="90"/>
+        <Image id="player_race_Orange" image="https://steamusercontent-a.akamaihd.net/ugc/15498981467720330739/3FDD87C2753B09E397F5C76E44EB744AD42239EC/" width="90" height="90"/>
         <Button width="90" onClick="jumpToTokenOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
     </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 50">
+    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 50">
         <Button onClick="updateBonusHPOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_Orange">0</Text>
+            <Text class="player_panel_text" id="bonus_hp_Orange">0</Text>
         </Button>
     </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 7">
+    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 7">
         <Button onClick="updateHPOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="hp_Orange">0</Text>
+            <Text class="player_panel_text" id="hp_Orange">0</Text>
         </Button>
     </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 50">
+    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 50">
         <Button onClick="updateTenacityOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="tenacity_Orange">0</Text>
+            <Text class="player_panel_text" id="tenacity_Orange">0</Text>
         </Button>
     </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 7">
+    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 7">
         <Button onClick="updateXPOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="xp_Orange">0</Text>
+            <Text class="player_panel_text" id="xp_Orange">0</Text>
         </Button>
     </Panel>
 </Panel>
@@ -61,27 +102,27 @@
 <Panel id="player_panel_Blue" width="210" height="100" rectAlignment="LowerRight" offsetXY="5 340" color="#1f87ff44" active="false">
     <Image image="https://steamusercontent-a.akamaihd.net/ugc/11768033117233226443/12FA8A7072386D71A14C09E0B783D46A4922BCDA/" width="190" height="90" offsetXY="-5 0"/>
     <Panel width="90" height="90" rectAlignment="MiddleLeft" offsetXY="5 0">
-        <Image id="player_race_Blue" image="https://steamusercontent-a.akamaihd.net/ugc/18433127840467639981/1CAD26BFDFB1D6AD46BDBC9E13E84F84B33BA320/" width="90" height="90"/>
+        <Image id="player_race_Blue" image="https://steamusercontent-a.akamaihd.net/ugc/15498981467720330739/3FDD87C2753B09E397F5C76E44EB744AD42239EC/" width="90" height="90"/>
         <Button width="90" onClick="jumpToTokenBlue" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
     </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 50">
+    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 50">
         <Button onClick="updateBonusHPBlue" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_Blue">0</Text>
+            <Text class="player_panel_text" id="bonus_hp_Blue">0</Text>
         </Button>
     </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 7">
+    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 7">
         <Button onClick="updateHPBlue" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="hp_Blue">0</Text>
+            <Text class="player_panel_text" id="hp_Blue">0</Text>
         </Button>
     </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 50">
+    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 50">
         <Button onClick="updateTenacityBlue" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="tenacity_Blue">0</Text>
+            <Text class="player_panel_text" id="tenacity_Blue">0</Text>
         </Button>
     </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 7">
+    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 7">
         <Button onClick="updateXPBlue" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="xp_Blue">0</Text>
+            <Text class="player_panel_text" id="xp_Blue">0</Text>
         </Button>
     </Panel>
 </Panel>
@@ -89,147 +130,29 @@
 <Panel id="player_panel_Green" width="210" height="100" rectAlignment="LowerRight" offsetXY="5 460" color="#31b32b44" active="false">
     <Image image="https://steamusercontent-a.akamaihd.net/ugc/11768033117233226443/12FA8A7072386D71A14C09E0B783D46A4922BCDA/" width="190" height="90" offsetXY="-5 0"/>
     <Panel width="90" height="90" rectAlignment="MiddleLeft" offsetXY="5 0">
-        <Image id="player_race_Green" image="https://steamusercontent-a.akamaihd.net/ugc/18433127840467639981/1CAD26BFDFB1D6AD46BDBC9E13E84F84B33BA320/" width="90" height="90"/>
+        <Image id="player_race_Green" image="https://steamusercontent-a.akamaihd.net/ugc/15498981467720330739/3FDD87C2753B09E397F5C76E44EB744AD42239EC/" width="90" height="90"/>
         <Button width="90" onClick="jumpToTokenGreen" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
     </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 50">
+    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 50">
         <Button onClick="updateBonusHPGreen" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_Green">0</Text>
+            <Text class="player_panel_text" id="bonus_hp_Green">0</Text>
         </Button>
     </Panel>
-    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70 7">
+    <Panel width="38" height="42" rectAlignment="LowerRight" offsetXY="-70.7 7">
         <Button onClick="updateHPGreen" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="hp_Green">0</Text>
+            <Text class="player_panel_text" id="hp_Green">0</Text>
         </Button>
     </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 50">
+    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 50">
         <Button onClick="updateTenacityGreen" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="tenacity_Green">0</Text>
+            <Text class="player_panel_text" id="tenacity_Green">0</Text>
         </Button>
     </Panel>
-    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-16 7">
+    <Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-17 7">
         <Button onClick="updateXPGreen" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
-            <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="xp_Green">0</Text>
+            <Text class="player_panel_text" id="xp_Green">0</Text>
         </Button>
     </Panel>
 </Panel>
 
-<!--====================== Race Icons =======================-->
-
-<!-- <Panel width="90" height="90" rectAlignment="LowerRight" offsetXY="-110 105">
-    <VerticalLayout>
-        <HorizontalLayout>
-            <Image id="player_race_Red" image="https://steamusercontent-a.akamaihd.net/ugc/18433127840467639981/1CAD26BFDFB1D6AD46BDBC9E13E84F84B33BA320/" width="90" height="90"/>
-        </HorizontalLayout>
-    </VerticalLayout>
-</Panel> -->
-
-<!--====================== Buttons =======================-->
-
-<!-- Red Player Buttons -->
-<!-- <Panel width="80" height="80" rectAlignment="LowerRight" offsetXY="-115 110">
-    <VerticalLayout>
-        <Button onClick="jumpToTokenRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
-    </VerticalLayout>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-63 150">
-    <Button onClick="updateBonusHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_Red">0</Text>
-    </Button>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-63 106">
-    <Button onClick="updateHPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="hp_Red">0</Text>
-    </Button>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-11 150">
-    <Button onClick="updateTenacityRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="tenacity_Red">0</Text>
-    </Button>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-11 106">
-    <Button onClick="updateXPRed" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="xp_Red">0</Text>
-    </Button>
-</Panel> -->
-
-<!-- Orange Player Buttons -->
-<!-- <Panel width="80" height="80" rectAlignment="LowerRight" offsetXY="-115 230">
-    <VerticalLayout>
-        <Button onClick="jumpToTokenOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Jump to Token" tooltipPosition="Above"></Button>    
-    </VerticalLayout>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-63 270">
-    <Button onClick="updateBonusHPOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Bonus HP" tooltipPosition="Above">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_Orange">0</Text>
-    </Button>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-63 106">
-    <Button onClick="updateHPOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update HP" tooltipPosition="Below">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="hp_Orange">0</Text>
-    </Button>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-11 150">
-    <Button onClick="updateTenacityOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update Tenacity" tooltipPosition="Above">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="tenacity_Orange">0</Text>
-    </Button>
-</Panel>
-
-<Panel width="42" height="42" rectAlignment="LowerRight" offsetXY="-11 106">
-    <Button onClick="updateXPOrange" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Update XP" tooltipPosition="Below">
-        <Text fontSize="22" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="xp_Orange">0</Text>
-    </Button>
-</Panel> -->
-
-<!--=========================================================================-->
-
-<!-- <Panel width="211" height="100" rectAlignment="LowerRight" offsetXY="-10 210">
-    <VerticalLayout>
-        <Image id="player_panel_red" image="https://steamusercontent-a.akamaihd.net/ugc/16747946383617987223/0B43085C3328E8B230B1A9980EFEB72FB3CE1C84/" width="211" height="100"/>
-    </VerticalLayout>
-</Panel>
-
-<Panel width="211" height="100" rectAlignment="LowerRight" offsetXY="-10 320">
-    <VerticalLayout>
-        <Image id="player_panel_red" image="https://steamusercontent-a.akamaihd.net/ugc/16747946383617987223/0B43085C3328E8B230B1A9980EFEB72FB3CE1C84/" width="211" height="100"/>
-    </VerticalLayout>
-</Panel>
-
-<Panel width="211" height="100" rectAlignment="LowerRight" offsetXY="-10 430">
-    <VerticalLayout>
-        <Image id="player_panel_red" image="https://steamusercontent-a.akamaihd.net/ugc/16747946383617987223/0B43085C3328E8B230B1A9980EFEB72FB3CE1C84/" width="211" height="100"/>
-    </VerticalLayout>
-</Panel> -->
-
-
-
-<!-- <Panel width="100" height="100" rectAlignment="LowerRight" offsetXY="-210 210">
-    <VerticalLayout>
-        <HorizontalLayout>
-            <Image id="logo" image="https://steamusercontent-a.akamaihd.net/ugc/10119755478266530588/E9CC156F7A83A9C57EE20576EDD56974973C3314/" width="100" height="100"/>
-        </HorizontalLayout>
-    </VerticalLayout>
-</Panel>
-
-<Panel width="100" height="100" rectAlignment="LowerRight" offsetXY="-210 320">
-    <VerticalLayout>
-        <HorizontalLayout>
-            <Image id="logo" image="https://steamusercontent-a.akamaihd.net/ugc/17488495706575629662/B2536C9017BD53AAACBC39FD5DA553CFDC385497/" width="100" height="100"/>
-        </HorizontalLayout>
-    </VerticalLayout>
-</Panel>
-
-<Panel width="100" height="100" rectAlignment="LowerRight" offsetXY="-210 430">
-    <VerticalLayout>
-        <HorizontalLayout>
-            <Image id="logo" image="https://steamusercontent-a.akamaihd.net/ugc/13167173870834902061/B34630907A033E32F8B550A333F3D1E2A77D6BDA/" width="100" height="100"/>
-        </HorizontalLayout>
-    </VerticalLayout>
-</Panel> -->
+<!--===================== End Player Panels =====================-->

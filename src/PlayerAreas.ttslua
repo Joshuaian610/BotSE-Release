@@ -146,12 +146,14 @@ function animateButtonsPlayerArea(obj)
   obj.setPositionSmooth(pos, false, false)
 end
 
-
+-- this function handles the button click of the player area cooldown buttons
 function cooldownAction(button, _, _)
-
-  -- this function handles the button click of the player area cooldown buttons
-
   local playerColor = button.getGMNotes()
+
+  doCooldownAction(playerColor)
+end
+
+function doCooldownAction(playerColor)
   local pegZones = {
     ["Red"] = getObjectFromGUID("472e65"),
     ["Orange"] = getObjectFromGUID("1d162c"),
@@ -198,6 +200,10 @@ function cooldownAction(button, _, _)
       { 52.19, 1.97, -30.93 },
     },
   }
+
+  if not pegZone then
+    return
+  end
   
   -- determine current cooldown amount via detection of CD peg on playerColor's mat
   local tolerance = 0.3
@@ -756,7 +762,10 @@ function addFatigue(button, _, _)
 
   -- this function handles the Take Fatigue button clicks
   animateButtonsPlayerArea(button)
-  local playerColor = button.getGMNotes()
+  doAddFatigue(button.getGMNotes())
+end
+
+function doAddFatigue(playerColor)
   local targetDie = nil
   local targetBag = nil
   local fatigueDie = nil
@@ -797,7 +806,10 @@ function addOverfatigue(button, _, _)
 
   -- this function handles the Take Overfatigue button clicks
   animateButtonsPlayerArea(button)
-  local playerColor = button.getGMNotes()
+  doAddOverfatigue(button.getGMNotes())
+end
+
+function doAddOverfatigue(playerColor)
   local overfatigueDie = nil
   local bagOverfatigueDice = getObjectbyName("Overfatigue Dice Bag")
   if #bagOverfatigueDice.getObjects() > 0 then

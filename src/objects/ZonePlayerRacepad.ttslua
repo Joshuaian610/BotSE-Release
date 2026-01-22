@@ -1,0 +1,5 @@
+function onLoad()
+    local color = self.getGMNotes()
+    
+    Global.setVar("zone_racepad_" .. color, self)
+end

@@ -1,0 +1,15 @@
+function cooldown(player, value)
+    doCooldownAction(player.color)
+end
+
+function collapseCooldownRow(player, value, id)
+    compressTrack(player.color, "Cooldown")
+end
+
+function gainLightFatigue(player, value)
+    doAddFatigue(player.color)
+end
+
+function gainOverfatigue(player, value)
+    doAddOverfatigue(player.color)
+end

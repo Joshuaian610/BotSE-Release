@@ -33,8 +33,8 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": false,
+  "LuaScript": "require(\"objects/TenacityTracker\")",
   "LuaScriptState": "[0]",
-  "LuaScript_path": "TenacityTrackerBlue.889e2c.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Token",
   "Nickname": "Tenacity Tracker Blue",
@@ -42,7 +42,8 @@
   "Sticky": true,
   "Tags": [
     "mat_marker",
-    "player_blue"
+    "player_blue",
+    "tenacity_marker"
   ],
   "Tooltip": true,
   "Transform": {

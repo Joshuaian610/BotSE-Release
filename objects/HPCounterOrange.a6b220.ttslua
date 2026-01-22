@@ -1,6 +1,8 @@
 MIN_VALUE        = 0
 MAX_VALUE        = 99
 
+--require('XMLUtils')
+
 
 function onload(saved_data)
     val = 0
@@ -13,7 +15,7 @@ function onload(saved_data)
     color       = {244/255, 100/255, 29/255, 255}
     hover_color = {255/255, 140/255, 85/255, 255}
     press_color = {255/255, 180/255, 140/255, 255}
-    create_all()
+    --create_all()
     update_player_panel()
 
     -- Store reference to self in Global
@@ -24,6 +26,13 @@ function update_player_panel()
     Global.UI.setValue("hp_Orange", tostring(val))
 end
 
+function showTooltip(player, value, id)
+    self.UI.setAttribute("hp_counter_tooltip", "active", "true")
+end
+
+function hideTooltip(player, value, id)
+    self.UI.setAttribute("hp_counter_tooltip", "active", "false")
+end
 
 function update_save()
     local data_to_save = {val}
@@ -38,9 +47,9 @@ function create_all()
         click_function = "add_subtract",
         function_owner = self,
         position       = {0.00, 0.21, 0.00},
-        height         = 1000,
-        width          = 1000,
-        font_size      = 1100,
+        height         = 600,
+        width          = 600,
+        font_size      = 500,
         scale          = {x=1.00, y=1.00, z=1.00},
         font_color     = {1, 1, 1},
         color          = color,

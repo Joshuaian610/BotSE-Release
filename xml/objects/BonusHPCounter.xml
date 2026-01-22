@@ -1,0 +1,16 @@
+<Panel width="200" height="200" color="#00000000" rotation="0 0 180">
+    <Button onMouseEnter="showTooltip" onMouseExit="hideTooltip" onClick="onClick" color="#FFFFFF00" position="0 -5 -21" textShadow="#000000" textOutline="#000000">
+        <Text font="Fonts/Planewalker Bold.otf" fontSize="72" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="counter">0</Text>
+    </Button>
+</Panel>
+
+<Panel id="counter_tooltip" active="false">
+    <Panel width="200" height="50" color="#00000066" rotation="10 0 180" position="0 -125 -28">
+        <Text font="Fonts/Planewalker Bold.otf" fontSize="18" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_label">Bonus HP Counter</Text>
+    </Panel>
+    <Panel width="225" height="50" color="#00000066" rotation="10 0 180" position="0 125 -28">
+        <Text font="Fonts/Planewalker Bold.otf" fontSize="18" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF" id="bonus_hp_label_2">
+            Left Click to increment&#10;Right Click to decrement
+        </Text>
+    </Panel>
+</Panel>

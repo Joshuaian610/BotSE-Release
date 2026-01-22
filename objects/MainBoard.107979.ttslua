@@ -714,7 +714,7 @@ function deploy_race_items(button_obj, color, race_type)
     if button_obj_rot.z > 135 and button_obj_rot.z < 225 then
         clone_chip.addTag('flipped')
     end
-    print('hello')
+    
     Global.call('initializePlayerPanel', {
         playerChip = clone_chip,
         color = color,

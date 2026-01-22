@@ -49,7 +49,6 @@ player_panel_characters = {
 }
 
 function initializePlayerPanel(params)
-    print("Initializing player panel for color: " .. params.color)
     local playerChip = params.playerChip
     local color = params.color
 
@@ -85,7 +84,6 @@ function initializePlayerPanel(params)
     })
 
     -- Set position of panel
-    print("Setting position of panel for color: " .. playerColor .. " to index: " .. positionIndex)
     Global.UI.setAttribute("player_panel_" .. playerColor, "offsetXY", player_panel_positions[positionIndex])
 
     -- Make panel visible
@@ -125,6 +123,55 @@ function syncXP(playerColor)
     Global.UI.setValue("xp_" .. playerColor, tostring(xp))
 end
 
+function jumpToTokenRed(player, mouseClick)
+
+    jumpToToken(player, mouseClick, "Red")
+end
+
+function jumpToTokenOrange(player, mouseClick)
+
+    jumpToToken(player, mouseClick, "Orange")
+end
+
+function jumpToTokenBlue(player, mouseClick)
+
+    jumpToToken(player, mouseClick, "Blue")
+end
+
+function jumpToTokenGreen(player, mouseClick)
+
+    jumpToToken(player, mouseClick, "Green")
+end
+
+function jumpToToken(player, mouseClick, tokenOwner)
+    -- Implement the logic to jump to the token for the specified player color
+    local zone = Global.getVar("zone_racepad_" .. tokenOwner)
+    local chip = nil
+
+    for _, object in pairs(zone.getObjects()) do
+        if object.type == "Card" and
+        (object.getName() == "Argonian" or object.getName() == "Breton"  or object.getName() == "Dark Elf" or
+        object.getName() == "High Elf" or object.getName() == "Imperial" or object.getName() == "Khajiit" or
+        object.getName() == "Nord" or object.getName() == "Orc" or object.getName() == "Redguard" or object.getName() == "Wood Elf") then
+            for _, all_object in pairs(getAllObjects()) do
+                if all_object.getName() == object.getName() and all_object.hasTag('player_' .. string.lower(tokenOwner)) then
+                    chip = all_object
+                end
+            end
+            if chip == nil then
+                return
+            else
+                player.lookAt({
+                    position = chip.getPosition(),
+                    pitch    = 60,
+                    yaw      = 0,
+                    distance = 25
+                })
+            end
+        end
+    end
+end
+
 function updateHP(playerColor, mouseClick, set)
     -- Update HP Counter
     local counter = Global.getVar("hp_counter_" .. playerColor)
@@ -153,7 +200,7 @@ end
 function updateBonusHP(playerColor, mouseClick, set)
     -- Update Bonus HP Counter
     local counter = Global.getVar("bonus_hp_counter_" .. playerColor)
-    print(counter)
+    
     counter.call("add_subtract_call", {
         playercolor = playerColor,
         alt_click   = tonumber(mouseClick) == -2

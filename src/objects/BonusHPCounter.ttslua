@@ -1,0 +1,37 @@
+BASE_VAL = 0
+
+require("objects/base/CounterBase")
+
+function onload()
+    -- Store reference to self in Global
+    Global.setVar("bonus_hp_counter_" .. self.getGMNotes(), self)
+end -- end function onload()
+
+function update_player_panel()
+    Global.UI.setValue("bonus_hp_" .. self.getGMNotes(), tostring(val))
+end
+
+-- Update function when chip xml reworked
+function update_chip(val)
+    -- check race card zone to determine which race card, rotation, associate with chip icon/rotation
+    -- local playerColor = self.getGMNotes()
+    -- local zone = Global.getVar("zone_racepad_" .. playerColor)
+    -- local chip = nil
+    -- for _, object in pairs(zone.getObjects()) do
+    --     if object.type == "Card" and
+    --     (object.getName() == "Argonian" or object.getName() == "Breton"  or object.getName() == "Dark Elf" or
+    --     object.getName() == "High Elf" or object.getName() == "Imperial" or object.getName() == "Khajiit" or
+    --     object.getName() == "Nord" or object.getName() == "Orc" or object.getName() == "Redguard" or object.getName() == "Wood Elf") then
+    --         for _, all_object in pairs(getAllObjects()) do
+    --             if all_object.getName() == object.getName() and all_object.hasTag('player_' .. string.lower(playerColor)) then
+    --                 chip = all_object
+    --             end
+    --         end
+    --         if chip == nil then
+    --             return
+    --         else
+    --             getObjectFromGUID("e71040").call('set_val_remote', {chipObj=chip, val=val})
+    --         end
+    --     end
+    -- end
+end

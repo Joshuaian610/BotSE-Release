@@ -1,0 +1,7 @@
+function showTooltip(player, value, id)
+    Global.UI.setAttribute("hp_counter_tooltip", "active", "true")
+end
+
+function hideTooltip(player, value, id)
+    Global.UI.setAttribute("hp_counter_tooltip", "active", "false")
+end
