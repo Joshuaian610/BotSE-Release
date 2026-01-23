@@ -171,6 +171,9 @@ function onObjectSpawn(obj)
   elseif name == "Button Roll Dice" then
     initButtonPlayerRollDice(obj)
 
+  elseif name == "Button Siege Battle" then
+    initButtonSiegeBattle(obj)
+
   elseif name:find(" Player Pack") then
     updatePackCounter(obj)
 
@@ -186,6 +189,23 @@ function getObjectbyName(name)
   end
   log("getObjectbyName() object not found: " .. name)
   return nil
+end
+
+function animateButtonsGeneric(obj)
+  obj.clearButtons()
+  local name = obj.getName()
+  Wait.time(function()
+
+    if name == "Button Siege Battle" then
+      initButtonSiegeBattle(obj)
+    end
+
+  end, 1)
+  local pos = obj.getPosition()
+  pos.y = pos.y - .29
+  obj.setPosition(pos)
+  pos.y = pos.y + .29
+  obj.setPositionSmooth(pos, false, false)
 end
 
 posCooldownDice = {

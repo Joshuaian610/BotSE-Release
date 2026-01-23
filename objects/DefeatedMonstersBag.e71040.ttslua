@@ -158,7 +158,7 @@ function chip_onload(args)
         rotation       = {290.00, 0.00, 180.00}
     end
     chip_obj.addContextMenuItem("Player Companion", function(player_color) mark_player_companion(player_color, chip_obj) end)
-    chip_obj.addContextMenuItem("Party Companion", function(player_color) mark_party_companion(player_color, chip_obj) end)
+    chip_obj.addContextMenuItem("Party Companion", function(player_color) mark_party_companion(chip_obj) end)
     chip_obj.addContextMenuItem("Enemy", function(_) mark_enemy(_, chip_obj) end)
     chip_obj.addContextMenuItem("Set HP 0", function(_) set_hp_0(_, chip_obj) end)
     Wait.time(function()
@@ -183,7 +183,10 @@ function mark_player_companion(player_color, object)
     getObjectFromGUID("18de0f").call('create_counter_remote', {position=position, rotation=rotation, chip_obj=object})
 end
 
-function mark_party_companion(player_color, object)
+
+
+
+function mark_party_companion(object)
     for _,tag in ipairs({'player_red','player_orange','player_blue','player_green'}) do
         if object.hasTag(tag) then object.removeTag(tag) end
     end

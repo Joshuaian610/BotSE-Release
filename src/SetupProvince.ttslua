@@ -1111,9 +1111,6 @@ function placeProvinceExtras(provinceName, provinceBag)
       genericCounter.setName("Icy Buildup Counter")
       genericCounter.call('set_val', 0)
     end)
-    
-
-
 
   elseif provinceName == "Valenwood" then
     -- Valenwood: pull, place, and shuffle Forest Blight deck
@@ -1618,11 +1615,29 @@ function selectGuild(button, _, _)
   if provinceBag == nil then log("selectGuild(): Province Bag not found") return end
   local guildName = button.getName()
 
-  -- if skyrim, determine if western or eastern
+  -- if skyrim, determine if western or eastern, place siege battle setup button
   local skyrimProvince = nil
   if provinceName == "Skyrim" then
    skyrimProvince = (guildName == "Thieves Guild" or guildName == "Undaunted" or
                      guildName == "Outer Watch" or guildName == "Psijic Order") and "Eastern Skyrim" or "Western Skyrim"
+
+    -- pull, place Skyrim Siege Battle button
+    local rotButtonSiege = { 0, 180, 0 }
+    local posButtonSiege = { -53.22, 1.59, 2.75 }
+    Wait.time(function()
+      
+      for _, object in pairs(provinceBag.getObjects()) do
+        if object.name == "Button Siege Battle" then
+          local buttonSiege = provinceBag.takeObject({guid=object.guid})
+          Wait.frames(function()
+            buttonSiege.setRotation(rotButtonSiege)
+            buttonSiege.setPosition(posButtonSiege)
+            buttonSiege.setLock(true)
+          end)
+        end
+      end
+      
+    end, 1)
   end
 
   -- pull & place overland map, related tokens

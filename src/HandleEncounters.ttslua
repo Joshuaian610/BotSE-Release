@@ -525,6 +525,25 @@ function initButtonsConflictSelect(obj)
 end
 
 
+function initButtonSiegeBattle(obj)
+
+  obj.clearButtons()
+
+  obj.createButton({
+    label          = "",
+    click_function = "siegeBattle",
+    function_owner = self,
+    position       = { 0.00, 0.31, 0.00 },
+    height         = 990,
+    width          = 1890,
+    scale          = { 1, 1, 1 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Clicking this button builds a clash encounter for a Skyrim Town Siege battle.\n\nClicking this button while the party is located outside of a town space will assume a Traveling Caravan setup."
+  })
+end
+
+
 function animateButtonsEncounter(obj)
   -- this function handles the animation of the switch between setup and cleanup encounter buttons
 
@@ -2820,6 +2839,7 @@ function setupConflict2(card, _, _)
   elseif cardName == "Good Finds are Hard to Help" then
     ttip = "Slashed throats, slashed prices."
     isUnstable = true
+    conflictType = "Clash"
 
   -- VALENWOOD CONFLICT ENCOUNTERS
   elseif cardName == "Forest Fatalities" then
@@ -3022,10 +3042,11 @@ function deployClash(cardName, optionNumber)
     },
   }
   
-  -- first verify there's no clash mats on table
-  for _, object in pairs(getObjects()) do
-    if object.getName() == "Clash Mat" then
-      broadcastToAll("Please clear previous clash up, then rebuild current clash manually.", "Orange")
+  -- first verify there's no clash mats or gazetteers on table
+  local checkZoneBattle = getObjectFromGUID("b5dd6d")
+  for _, object in pairs(checkZoneBattle.getObjects()) do
+    if object.getName() == "Clash Mat" or object.getName():find("Gazetteer") then
+      broadcastToAll("Clear previous encounter before using this button.", "Orange")
       return
     end
   end
@@ -3053,7 +3074,7 @@ function deployClash(cardName, optionNumber)
   if not bagEntranceTile then log("deployClash(): bagEntranceTile not found") return end
 
   -- pull selected mat from bag, place (if clash mat required, most conflict encounters will require clash mat)
-  if cardName ~= "Keep Ayleid on It" and cardName ~= "Pit Stop" and cardName ~= "Yours for the Taking" then
+  if cardName ~= "Keep Ayleid on It" and cardName ~= "Pit Stop" and cardName ~= "Yours for the Taking" and not (cardName == "Good Finds are Hard to Help" and optionNumber == 2) then 
     local rotClashMat = { 0, 0, 0 }
     local posClashMat = { 2.05, 1.71, 2.41 }
     local clashMat = nil
@@ -3153,22 +3174,27 @@ function deployClash(cardName, optionNumber)
           obstacle3Hex.setLock(true)
         end
       end
+
     elseif cardName == "Not Mushroom to Move" then
       local rot7HexObstacle = { 0, 300, 0 }
       local pos7HexObstacle = { 1.02, 1.84, 4.19 }
       local obstacle7Hex = nil
-        for _, object in pairs(bagObstacle.getObjects()) do
-          if object.name == "7 Hex Obstacle" then
-            obstacle7Hex = bagObstacle.takeObject({guid=object.guid})
-            break
-          end
+      for _, object in pairs(bagObstacle.getObjects()) do
+        if object.name == "7 Hex Obstacle" then
+          obstacle7Hex = bagObstacle.takeObject({guid=object.guid})
+          break
         end
-        if obstacle7Hex ~= nil then
-          obstacle7Hex.setRotation(rot7HexObstacle)
-          obstacle7Hex.setPosition(pos7HexObstacle)
-          obstacle7Hex.setLock(true)
-        end
-    end   
+      end
+      if obstacle7Hex ~= nil then
+        obstacle7Hex.setRotation(rot7HexObstacle)
+        obstacle7Hex.setPosition(pos7HexObstacle)
+        obstacle7Hex.setLock(true)
+      end
+
+    elseif cardName == "SK Siege Encounter" then
+      deploySkyrimTown()
+
+    end
 
   end, 1)
 
@@ -4039,10 +4065,8 @@ function deployClash(cardName, optionNumber)
   elseif cardName == "Good Finds are Hard to Help" then
     rotEntranceTile = { 0, 240, 0 }
     posEntranceTile = { -7.18, 1.87, -6.46 }
-    rotCaches = {
-    }
-    spacesCaches = {
-    }
+    rotCaches = {}
+    spacesCaches = {}
     spacesEnemies = {
       posClashSpaces["column5"][3],
       posClashSpaces["column5"][5],
@@ -4051,6 +4075,22 @@ function deployClash(cardName, optionNumber)
       posClashSpaces["column5"][2],
       posClashSpaces["column5"][4],
       posClashSpaces["column1"][1],
+      posClashSpaces["column7"][2],
+    }
+
+  elseif cardName == "SK Siege Encounter" then
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.30, 1.87, 2.41 }
+    rotCaches = {}
+    spacesCaches = {}
+    spacesEnemies = {
+      posClashSpaces["column3"][3],
+      posClashSpaces["column5"][5],
+      posClashSpaces["column1"][1],
+      posClashSpaces["column5"][1],
+      posClashSpaces["column1"][3],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column3"][1],
       posClashSpaces["column7"][2],
     }
 
@@ -4205,14 +4245,16 @@ function deployClash(cardName, optionNumber)
 
   end
 
-  local bagEntranceTiles = getObjectbyName("Entrance Tile Bag")
-  local entranceTile = bagEntranceTiles.takeObject()
+  if not (cardName == "Good Finds are Hard to Help" and optionNumber == 2) then 
+    local bagEntranceTiles = getObjectbyName("Entrance Tile Bag")
+    local entranceTile = bagEntranceTiles.takeObject()
 
-  Wait.frames(function()
-    entranceTile.setRotation(rotEntranceTile)
-    entranceTile.setPosition(posEntranceTile)
-    entranceTile.setLock(true)
-  end)
+    Wait.frames(function()
+      entranceTile.setRotation(rotEntranceTile)
+      entranceTile.setPosition(posEntranceTile)
+      entranceTile.setLock(true)
+    end)
+  end
 
   local bagCacheChips = getObjectbyName("Cache Chip Bag")
 
@@ -4283,7 +4325,7 @@ function deployClash(cardName, optionNumber)
 
   Wait.time(function() deployClashEnemies(cardName, spacesEnemies, optionNumber) end, 2)
 
-  broadcastToAll("Clash has begun: " .. cardName, "White")
+  broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Clash has begun[-]: " .. cardName, "White")
 
 end
 
@@ -4353,6 +4395,7 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
         break
       end
     end
+
     -- deploy rest of EP
     Wait.time(function()
 
@@ -7001,17 +7044,522 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
     end, 1)
 
   -- SK ENCOUNTERS
-  elseif cardName == "" then
+  elseif cardName == "Cold Discomfort" then    
+    -- set round counter to playerCount + 1
+    local rotDie = { { 270, 0, 0 }, { 0, 0, 0 }, { 0, 0, 270 }, { 0, 0, 90 }, { 0, 0, 180 }, { 90, 0, 0 } }
+    local die = getObjectbyName("Round Counter")
+    die.setRotationSmooth(rotDie[playerCount+1], false, false)
+    local roundCounter = getObjectbyName("Battle Round Counter")
+    roundCounter.call('set_val', playerCount+1)
 
-  elseif cardName == "" then
+    -- broadcast reminder about not being able to reteat from this battle
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: You cannot retreat from this battle.", "White")
 
-  elseif cardName == "" then
+    -- deploy EP
+    Wait.time(function()
 
-  elseif cardName == "" then
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif cardName == "A Storm of Fists" then
+    -- add lvl 10 nord swordmaster to EP, deploy first   
+    -- 3+ players = lvl 20 nord pyromancer instead
+    local extraEnemy = playerCount < 3 and "Nord Swordmaster" or "Nord Pyromancer"
+    local extraBag = bagHigh
+    local extraRot = extraEnemy == "Nord Swordmaster" and { 0, 180, 180 } or { 0, 180, 0 }
+    for _, object in pairs(extraBag.getObjects()) do
+      if object.name:find(extraEnemy) then
+        local chipExtraEnemy = extraBag.takeObject({guid = object.guid, rotation = extraRot})
+        enemyCount = 1
+        Wait.frames(function()
+          -- chipExtraEnemy.setVar('fresh_out_of_bag')
+          chipExtraEnemy.setPositionSmooth(spacesEnemies[enemyCount], false, true)
+        end)
+        break
+      end
+    end
+
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- broadcast reminder about nord XXX doing damage, and the session 1 thing
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: When " .. extraEnemy .. " causes an adventurer to take damage, the adventurer must discard a [Weapon] from either their ready slots or their pack, if possible.", "White")
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: If it is currently Session 1, reduce the " .. extraEnemy .. "'s defense stat by 1.", "White")
+
+  elseif cardName == "Mudcrab Crossing" then
+    -- deploy lvl 1 mudcrab with +1 HP to hex A, make party companion counter on it
+    local rotMudcrab = { 0, 180, 180 }
+    local posMudcrab = { -8.09, 2.50, 2.47 }
+    local chipMudcrab = nil
+    for _, object in pairs(bagLow.getObjects()) do
+      if object.name:find("Mudcrab") then
+        chipMudcrab = bagLow.takeObject({guid=object.guid, rotation=rotMudcrab})
+        Wait.frames(function()
+          chipMudcrab.setPosition(posMudcrab)
+        end)
+      end
+    end
+    Wait.time(function()
+    
+      local oldVal = chipMudcrab.getVar('val')
+      local newVal = oldVal + 1
+      local bagScript = getObjectbyName("Defeated Monsters Bag")
+      bagScript.call('set_val_remote', {chipObj=chipMudcrab, val=newVal})
+
+      -- mark mudcrab as party companion
+      Wait.time(function()
+
+        bagScript.call('mark_party_companion', chipMudcrab)
+
+      end, .50)
+    end, 1)
+
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+    
+    -- broadcast reminder to check encounter card for targeting rules changes
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Check encounter card for updated enemy targeting effects and other encounter specific rules.", "White")
+
+  elseif cardName == "Compass of Cruelty" then
+    -- fuck me. will need check of which province map is in play, eastern or western
+    -- determine whether current province map is Eastern or Western Skyrim
+    local zone = getObjectFromGUID("64c0a4")
+    local skyrimProvince = nil    
+    for _, obj in ipairs(zone.getObjects()) do
+      local name = obj.getName()
+      skyrimProvince = (name == "Western Skyrim Overland Map" and "Western") or (name == "Eastern Skyrim Overland Map" and "Eastern")
+    end
+    if skyrimProvince == nil then log("deployClashEnemies() Compass of Cruelty: Unable to determine skyrim province.", "Orange") return end
+    
+    -- will need check on enemy deployments, make changes (skills to chips) or broadcast reminder (increasing combat)
+    -- 3+ players all enemies get the extra skill, otherwise only humanoids
+    local extraTTip = skyrimProvince == "Eastern" and "\n\nSwift:\nThis unit’s movement is equal to the current round (Fatigue Rounds = 6)." or
+                      skyrimProvince == "Western" and "\n\nChilblain:\nAfter this unit is engaged by an adventurer who is not using a weapon item that adventurer gains light fatigue equal to player count."
+    local is3Plus = playerCount > 2 and true or false
+
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+            Wait.time(function()
+              
+              local tags = chip20.getTags()
+              local hasEnemyHuman = false
+              for _, t in ipairs(tags) do
+                if t:match("_enemyHuman$") or t == "enemyHuman" then
+                  hasEnemyHuman = true
+                  break
+                end
+              end
+              local desc = chip20.getDescription()
+              if (not is3Plus and hasEnemyHuman) or is3Plus then
+                chip20.setDescription(desc .. extraTTip)
+              end
+
+            end, 1)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+            Wait.time(function()
+              
+              local tags = chip10.getTags()
+              local hasEnemyHuman = false
+              for _, t in ipairs(tags) do
+                if t:match("^enemyHuman_") or t == "enemyHuman" then
+                  hasEnemyHuman = true
+                  break
+                end
+              end
+              local desc = chip10.getDescription()
+              if (not is3Plus and hasEnemyHuman) or is3Plus then
+                chip10.setDescription(desc .. extraTTip)
+              end
+              
+            end, 1)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+            Wait.time(function()
+              
+              local tags = chip5.getTags()
+              local hasEnemyHuman = false
+              for _, t in ipairs(tags) do
+                if t:match("_enemyHuman$") or t == "enemyHuman" then
+                  hasEnemyHuman = true
+                  break
+                end
+              end
+              local desc = chip5.getDescription()
+              if (not is3Plus and hasEnemyHuman) or is3Plus then
+                chip5.setDescription(desc .. extraTTip)
+              end
+              
+            end, 1)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+            Wait.time(function()
+              
+              local tags = chip1.getTags()
+              local hasEnemyHuman = false
+              for _, t in ipairs(tags) do
+                if t:match("^enemyHuman") or t == "enemyHuman" then
+                  hasEnemyHuman = true
+                  break
+                end
+              end
+              local desc = chip1.getDescription()
+              if (not is3Plus and hasEnemyHuman) or is3Plus then
+                chip1.setDescription(desc .. extraTTip)
+              end
+              
+            end, 1)
+          end
+        end
+      end
+    end, 1)
+
+    -- broadcast reminder
+    if is3Plus and skyrimProvince == "Eastern" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: All non quest enemies gain quest unit skill: Swift. All Argonian, Nord, and Dark Elf enemies increase their combat stat by 1.", "White")
+    elseif not is3Plus and skyrimProvince == "Eastern" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: All [Humanoid] enemies gain quest unit skill: Swift. All Argonian, Nord, and Dark Elf enemies increase their combat stat by 1.", "White")
+    elseif is3Plus and skyrimProvince == "Western" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: All non quest enemies gain quest unit skill: Chilblain.", "White")
+    elseif not is3Plus and skyrimProvince == "Western" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: All [Humanoid] enemies gain quest unit skill: Chilblain.", "White")
+    end
+
+  elseif cardName == "Maniacal Monolith" then
+    -- pull generic counter to hex A, set to playerCount * 5
+    local rotCounter = { 0, 180, 0 }
+    local posCounter = { 10.25, 2.00, 2.41 }
+    local bagCounter = getObjectbyName("Generic Counter Bag")
+    local monolithCounter = bagCounter.takeObject()
+    Wait.frames(function()
+      monolithCounter.setRotation(rotCounter)
+      monolithCounter.setPosition(posCounter)
+      monolithCounter.call('set_val', playerCount * 5)
+    end)
+    -- checkIfUnstable, if so broadcast reminder about monolith defeat requirement
+    if checkIfUnstable() then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: The encounter is failed unless the monolith is defeated at the end of round 5.", "White")
+    end
+
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif cardName == "Good Finds are Hard to Help" then
+    -- OPTION 1
+    -- broadcast reminder about enemy defeat effect
+    if optionNumber == 1 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Each time an adventurer defeats an enemy, they may draw 1 [Common Item].", "White")
+
+      Wait.time(function()
+
+        if chipBreakdown[20] > 0 then
+          for i = 1, chipBreakdown[20] do
+            if enemyCount < 8 then
+              local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+              enemyCount = enemyCount + 1
+              local index = enemyCount
+              Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+            end
+          end
+        end
+
+        if chipBreakdown[10] > 0 then
+          for i = 1, chipBreakdown[10] do
+            if enemyCount < 8 then
+              local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+              enemyCount = enemyCount + 1
+              local index = enemyCount
+              Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+            end
+          end
+        end
+
+        if chipBreakdown[5] > 0 then
+          for i = 1, chipBreakdown[5] do
+            if enemyCount < 8 then
+              local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+              enemyCount = enemyCount + 1
+              local index = enemyCount
+              Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+            end
+          end
+        end
+
+        if chipBreakdown[1] > 0 then
+          for i = 1, chipBreakdown[1] do
+            if enemyCount < 8 then
+              local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+              enemyCount = enemyCount + 1
+              local index = enemyCount
+              Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+            end
+          end
+        end
+      end, 1)
+
+    -- OPTION 2
+    elseif optionNumber == 2 then
+      -- broadcast reminder that town encounter will need to be set up manually after siege battle
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Click the Setup Siege Battle button on province map to set up Siege battle. Traveling Caravan town encounter must be manually set up after battle.", "White")
+    end
+
+  elseif cardName == "SK Siege Encounter" then
+    -- requires obstacle placement (and also description tooltip updates / also a clear of obstacle descrptions in clear battle )
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
 
   -- VW ENCOUNTERS
   elseif cardName == "" then
@@ -7388,3 +7936,284 @@ function checkIfAnchre()
   end
 end
 
+
+function siegeBattle(button, _, _)
+  animateButtonsGeneric(button)
+  deployClash("SK Siege Encounter", 1)
+
+end
+
+function deploySkyrimTown()
+  local townData = {
+    ["Traveling Caravan"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = false,
+    },
+    ["Dragon Bridge"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = false,
+      ["Inn"]             = true,
+    },
+    ["Dusktown"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Fort Amol"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Fort Morvunskar"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = false,
+      ["Inn"]             = true,
+    },
+    ["Fullhelm Fort"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Ivarstead"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Jorunn's Stand"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = false,
+    },
+    ["Karthwasten"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = false,
+      ["Inn"]             = false,
+    },
+    ["Karthwatch"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = false,
+      ["Inn"]             = true,
+    },
+    ["Kilkreath Temple"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = false,
+      ["Inn"]             = true,
+    },
+    ["Lost Valley Redoubt"] = {
+      ["Trainers"]        = false,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = true,
+      ["Inn"]             = false,
+    },
+    ["Markarth"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Mistwatch"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = false,
+      ["Inn"]             = false,
+    },
+    ["Mor Khazgur"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = false,
+    },
+    ["Morthal"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Nimalten"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Rebel's Retreat"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = true,
+      ["Inn"]             = false,
+    },
+    ["Riften"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Shor's Stone"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["The Silver Cormorant"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = false,
+      ["Inn"]             = true,
+    },
+    ["Skald's Retreat"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = false,
+      ["Inn"]             = true,
+    },
+    ["Solitude"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Windhelm"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = true,
+      ["Shop"]            = true,
+      ["Inn"]             = true,
+    },
+    ["Wittestadr"] = {
+      ["Trainers"]        = true,
+      ["Guild Kiosk"]     = false,
+      ["Shop"]            = false,
+      ["Inn"]             = true,
+    },
+  }
+
+  -- tiles that always deploy
+  local alwaysTile = {
+    ["Town Square"] = true,
+  }
+
+  local rotHex = { 0, 300, 0 }
+  local pos3Hex = {
+    { 2.05, 2.72, 13.06 },
+    { 2.05, 2.97, 2.41 },
+    { 2.05, 2.72, -8.24 },
+  }
+  local ttip3Hex = {
+    "Trainers",
+    "Town Square",
+    "Guild Kiosk",
+  }
+  local pos7Hex = {
+    { 13.32, 1.59, 11.29 },
+    { 13.32, 1.59, -6.46 },
+  }
+  local ttip7Hex = {
+    "Shop",
+    "Inn",
+  }
+
+  -- determine whether current province map is Eastern or Western Skyrim
+  local zone = getObjectFromGUID("64c0a4")
+  local provinceMapName = nil
+  for _, obj in ipairs(zone.getObjects()) do
+    local name = obj.getName()
+    local match = string.match(name, "^(.-) Overland Map$")
+    if match and posEncounters[match] then
+      provinceMapName = match
+      break
+    end
+  end
+  if not provinceMapName then
+    broadcastToAll("No Province Map Found. Set up encounter manually", "Orange")
+    return
+  end
+
+  -- get partyToken, determine its position 
+  local partyToken = getObjectbyName("Party Overland Token")
+  if not partyToken then
+    broadcastToAll("Party Overland Token not found - Set up encounter manually.", "Orange")
+    return
+  end
+  local pos = partyToken.getPosition()
+  local x, y = pos.x, pos.z
+  local data = posEncounters[provinceMapName]
+  local tol = 0.3
+
+  -- determine name of town for layout
+  local townName = nil
+  for category, entries in pairs(data) do    
+    for name, coords in pairs(entries) do
+      if math.abs(coords[1] - x) <= tol and math.abs(coords[3] - y) <= tol then
+        if category == "Town" then
+          townName = name
+        end
+      end
+    end
+  end
+  if not townName then
+    townName = "Traveling Caravan"
+  end
+
+  -- merge alwaysTile layout
+  local layout = townData[townName] or townData["Traveling Caravan"]
+  for k, v in pairs(alwaysTile) do
+    layout[k] = v
+  end
+
+  local bagObstacle = getObjectbyName("Obstacle Hex Bag")
+
+  -- pull, place 3 hex tiles if required
+  for i = 1, 3 do
+    local hexName = ttip3Hex[i]
+    if layout[hexName] then
+      local hex3 = nil
+      for _, object in pairs(bagObstacle.getObjects()) do
+        if object.name == "Skyrim Siege " .. hexName then
+          hex3 = bagObstacle.takeObject({guid=object.guid})
+          break
+        end
+      end
+      if hex3 ~= nil then
+        hex3.setRotation(rotHex)
+        hex3.setPositionSmooth(pos3Hex[i], false, false)
+        hex3.setLock(true)
+        hex3.setDescription(ttip3Hex[i])
+      end
+    end
+  end
+
+  -- pull, place 7 hex tiles if required
+  for i = 1, 2 do
+    local hexName = ttip7Hex[i]
+    if layout[hexName] then
+      local hex7 = nil
+      for _, object in pairs(bagObstacle.getObjects()) do
+        if object.name == "Skyrim Siege " .. hexName then
+          hex7 = bagObstacle.takeObject({guid=object.guid})
+          break
+        end
+      end
+      if hex7 ~= nil then
+        hex7.setRotation(rotHex)
+        hex7.setPositionSmooth(pos7Hex[i], false, false)
+        hex7.setLock(true)
+        hex7.setDescription(ttip7Hex[i])
+      end
+    end
+  end
+  
+  -- broadcast
+  Wait.time(function()
+    broadcastToAll("[" .. Color.fromString("Yellow"):toHex() .. "]" .. townName .. "[-] Skyrim Siege encounter has been set up.")
+  end, 2)
+end

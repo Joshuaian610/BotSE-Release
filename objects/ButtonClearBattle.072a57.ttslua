@@ -168,7 +168,7 @@ function clear_battle()
         if object.hasTag('hex_7') and object ~= nil then object.setLock(false) getObjectFromGUID("653ab4").putObject(object) end
         if object.hasTag('hex_6') and object ~= nil then object.setLock(false) getObjectFromGUID("655ebe").putObject(object) end
         if object.hasTag('hex_3') and object ~= nil then object.setLock(false) getObjectFromGUID("609125").putObject(object) end
-        if object.hasTag('hex_obstacle') and object ~= nil then object.setLock(false) getObjectFromGUID("b005db").putObject(object) end
+        if object.hasTag('hex_obstacle') and object ~= nil then object.setLock(false) object.setDescription("") getObjectFromGUID("b005db").putObject(object) end
         -- destruct any remaining loose HP chips
         Wait.time(function() if object.hasTag('hp_chip') and object ~= nil then object.destruct() end end, 1)
     end

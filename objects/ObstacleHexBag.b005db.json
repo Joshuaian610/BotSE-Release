@@ -89,6 +89,11 @@
     "r": 1
   },
   "ContainedObjects_order": [
+    "SkyrimSiegeShop.a4d309",
+    "SkyrimSiegeInn.e45873",
+    "SkyrimSiegeTrainers.f9b6a8",
+    "SkyrimSiegeTownSquare.2ea3c4",
+    "SkyrimSiegeGuildKiosk.6891ef",
     "19HexObstacle.760ca9",
     "7HexObstacle.b0e62e",
     "7HexObstacle.414a6c",

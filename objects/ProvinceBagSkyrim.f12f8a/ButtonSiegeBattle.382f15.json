@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.23525,
+    "g": 0.23525,
+    "r": 0.23525
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.302635819,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/13593957794045191434/42DCA94723EB5E721A446123D0A947A5C7B62FAB/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/13593957794045191434/42DCA94723EB5E721A446123D0A947A5C7B62FAB/",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "Orange",
+  "GUID": "382f15",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Button Siege Battle",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "non_int",
+    "player_orange"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 63.437,
+    "posY": 5.903,
+    "posZ": 24.412,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.45,
+    "scaleY": 1,
+    "scaleZ": 0.45
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
