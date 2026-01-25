@@ -2698,8 +2698,12 @@ function setupConflict1(card, _, _)
   if not isUnstable then
     local isOnUnstable = checkIfUnstable()
     if isOnUnstable and -- only trigger if card has unstable option
-    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
-    cardName == "Deal or Die" then
+    (cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
+    cardName == "Deal or Die" or cardName == "Traders to the Cause" or cardName == "Heroes for Hire" or cardName == "Champion of the Downtrodden" or
+    cardName == "No Unrest for the Wicked" or cardName == "Cave of Conflict" or cardName == "Supine and Supernal" or cardName == "Border Battle" or
+    cardName == "Pit Stop" or cardName == "Deals in Dwemer" or cardName == "Good Finds are Hard to Help" or cardName == "Cold Discomfort" or
+    cardName == "Parting the Veiled" or cardName == "Competitive Arvantage" or cardName == "Dead Mer Tell No Tales" or cardName == "Vine Snared" or
+    cardName == "An Enemy In Need" or cardName == "Altar Your Destiny" or cardName == "Forest Fatalities") then
       broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
       return
     end
@@ -2876,8 +2880,12 @@ function setupConflict2(card, _, _)
   if not isUnstable then
     local isOnUnstable = checkIfUnstable()
     if isOnUnstable and -- only trigger if card has unstable option
-    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
-    cardName == "Deal or Die" then
+    (cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
+    cardName == "Deal or Die" or cardName == "Traders to the Cause" or cardName == "Heroes for Hire" or cardName == "Champion of the Downtrodden" or
+    cardName == "No Unrest for the Wicked" or cardName == "Cave of Conflict" or cardName == "Supine and Supernal" or cardName == "Border Battle" or
+    cardName == "Pit Stop" or cardName == "Deals in Dwemer" or cardName == "Good Finds are Hard to Help" or cardName == "Cold Discomfort" or
+    cardName == "Parting the Veiled" or cardName == "Competitive Arvantage" or cardName == "Dead Mer Tell No Tales" or cardName == "Vine Snared" or
+    cardName == "An Enemy In Need" or cardName == "Altar Your Destiny" or cardName == "Forest Fatalities") then
       broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
       return
     end
@@ -2922,8 +2930,12 @@ function setupConflict3(card, _, _)
   if not isUnstable then
     local isOnUnstable = checkIfUnstable()
     if isOnUnstable and -- only trigger if card has unstable option
-    cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
-    cardName == "Deal or Die" then
+    (cardName == "Wabbajack Attack" or cardName == "Highwaymen" or cardName == "Captured!" or cardName == "Unsullied Pool" or
+    cardName == "Deal or Die" or cardName == "Traders to the Cause" or cardName == "Heroes for Hire" or cardName == "Champion of the Downtrodden" or
+    cardName == "No Unrest for the Wicked" or cardName == "Cave of Conflict" or cardName == "Supine and Supernal" or cardName == "Border Battle" or
+    cardName == "Pit Stop" or cardName == "Deals in Dwemer" or cardName == "Good Finds are Hard to Help" or cardName == "Cold Discomfort" or
+    cardName == "Parting the Veiled" or cardName == "Competitive Arvantage" or cardName == "Dead Mer Tell No Tales" or cardName == "Vine Snared" or
+    cardName == "An Enemy In Need" or cardName == "Altar Your Destiny" or cardName == "Forest Fatalities") then
       broadcastToAll("Party Token located in Unstable space - Unstable option must be selected.", "Orange")
       return
     end
@@ -3130,7 +3142,7 @@ function deployClash(cardName, optionNumber)
     local pos7Hex = { 4.10, 1.59, 2.41 }
     local bag3Hex = getObjectbyName("3 Hex Bag")
     local rot3Hex = { 0, 0, 0 }
-    local pos3Hex = { { -3.07, 1.87, 7.74 }, {-3.08, 1.87, -2.91} }
+    local pos3Hex = { { -3.07, 1.87, 7.74 }, { -3.08, 1.87, -2.91 } }
 
     local tile7Hex = bag7Hex.takeObject()
     Wait.frames(function()
@@ -3193,6 +3205,24 @@ function deployClash(cardName, optionNumber)
 
     elseif cardName == "SK Siege Encounter" then
       deploySkyrimTown()
+
+    elseif cardName == "An Enemy In Need" then
+      local rot3HexObstacle = { { 0, 300, 0 }, { 0, 0, 0 }, { 0, 300, 0 } }
+      local pos3HexObstacle = { { -1.02, 2.97, -2.91 }, { 0.00, 2.97, 2.41 }, { 8.20, 2.97, 5.96 } }
+      for i = 1, 3 do
+        local obstacle3Hex = nil
+        for _, object in pairs(bagObstacle.getObjects()) do
+          if object.name == "3 Hex Obstacle" then
+            obstacle3Hex = bagObstacle.takeObject({guid=object.guid})
+            break
+          end
+        end
+        if obstacle3Hex ~= nil then
+          obstacle3Hex.setRotation(rot3HexObstacle[i])
+          obstacle3Hex.setPosition(pos3HexObstacle[i])
+          obstacle3Hex.setLock(true)
+        end
+      end
 
     end
 
@@ -4109,9 +4139,9 @@ function deployClash(cardName, optionNumber)
       posClashSpaces["column7"][2],
     }
     spacesEnemies = {
-      posClashSpaces["column5"][3],
-      posClashSpaces["column5"][5],
-      posClashSpaces["column1"][1],
+      posClashSpaces["column3"][1],
+      posClashSpaces["column3"][5],
+      posClashSpaces["column1"][3],
       posClashSpaces["column5"][3],
       posClashSpaces["column7"][3],
       posClashSpaces["column5"][5],
@@ -4170,8 +4200,8 @@ function deployClash(cardName, optionNumber)
     }
   
   elseif cardName == "An Enemy In Need" then
-    rotEntranceTile = { 0, 0, 0 }
-    posEntranceTile = { 0.00, 1.87, 0.00 }
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -4194,8 +4224,8 @@ function deployClash(cardName, optionNumber)
     }
   
   elseif cardName == "Vine Snared" then
-    rotEntranceTile = { 0, 0, 0 }
-    posEntranceTile = { 0.00, 1.87, 0.00 }
+    rotEntranceTile = { 0, 120, 0 }
+    posEntranceTile = { 14.35, 1.87, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -4220,8 +4250,8 @@ function deployClash(cardName, optionNumber)
   
   
   elseif cardName == "Parting the Veiled" then
-    rotEntranceTile = { 0, 0, 0 }
-    posEntranceTile = { 0.00, 1.87, 0.00 }
+    rotEntranceTile = { 0, 300, 0 }
+    posEntranceTile = { -12.32, 1.87, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -7562,18 +7592,464 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
     end, 1)
 
   -- VW ENCOUNTERS
-  elseif cardName == "" then
+  elseif cardName == "Forest Fatalities" then
+    -- deploy EP
+    local enemyList = {}
+    Wait.time(function()
 
-  elseif cardName == "" then
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip20) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip10) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip5) end)
+          end
+        end
+      end
 
-  elseif cardName == "" then
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip1) end)
+          end
+        end
+      end
+    end, 1)
 
-  elseif cardName == "" then
+    -- OPTION 1
+    -- normal setup, broadcast reminder about being able to deploy to any unoccupied hex
+    if optionNumber == 1 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Adventurers may deploy to any unoccupied hex.", "White")
 
+    -- OPTION 2
+    -- place arrows on playerCount number of enemies, highest possible
+    elseif optionNumber == 2 then
+      Wait.time(function()
+
+        -- pull ONE base arrow token
+        local tokenBag = getObjectbyName("Overland Token Bag")
+        local baseArrowToken = nil
+        for _, object in pairs(tokenBag.getObjects()) do
+          if object.name == "Arrow Overland Token" then
+            baseArrowToken = tokenBag.takeObject({ guid = object.guid })
+            Wait.time(function() tokenBag.putObject(baseArrowToken) end, 2)
+            break
+          end
+        end
+
+        for i = 1, playerCount do
+          Wait.time(function()
+
+            local clone = baseArrowToken.clone({})          
+            local posChip = enemyList[i].getPosition()
+            posChip.y = 3.50
+            posChip.z = posChip.z + 0.58
+
+            -- place clone on chip
+            Wait.frames(function()
+              if clone then
+                clone.setGMNotes("Cloned Token")
+                clone.setRotation({ 0, 330, 0 })
+                clone.setPosition({x=posChip.x, y=posChip.y, z=posChip.z})
+              end
+            end)
+          end, 2)
+        end
+      end, 1)
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Arrow token enemies take their turns before adventurers each round.", "White")
+    end
+
+  elseif cardName == "Altar Your Destiny" then
+    -- deploy EP aside mat instead of spacesEnemies
+    local enemyList = {}
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip20) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip10) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip5) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) table.insert(enemyList, chip1) end)
+          end
+        end
+      end
+      
+      Wait.time(function()
+
+        -- sum HP of those enemies
+        local sumHP = 0
+        for i = 1, #enemyList do
+          sumHP = sumHP + enemyList[i].getVar('val')
+        end
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Encounter effect combined health stats[-]: " .. sumHP .. ".", "White")
+
+        -- deploy level 10, give HP of those enemies
+        local lvl10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+        Wait.frames(function() lvl10.setPosition({ -2.08, 2.00, 2.41 }) end)
+        Wait.time(function()
+          
+          local bagScript = getObjectbyName("Defeated Monsters Bag")
+          bagScript.call('set_val_remote', {chipObj=lvl10, val=sumHP})
+
+        end, 2)
+
+        -- broadcast reminder about stalwart and session 1 ignore defense stat
+        if lvl10.getDescription():find("Stalwart") then
+          broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Ignore enemy skill Stalwart." .. sumHP .. ".", "White")
+        end
+        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: If you are in session 1, also ignore the enemy's defense.", "White")
+
+      end, 1)
+
+    end, 1)        
+
+  elseif cardName == "Heeding the Call" then
+    -- increase calculatedEP by playerCount * 2
+    currentCalculatedEP = currentCalculatedEP + (playerCount * 2)
+    chipBreakdown = getChipBreakdown(currentCalculatedEP)
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- broadcast reminder about fear status die on enemy defeat
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: When an enemy is defeated, apply a Fear status die to an enemy of a lower level, if possible.", "White")
+
+    -- need to pull and place arvan, set as party companion
+    local bagQuestChip = getObjectbyName("Quest Unit / Companion Chip Bag")
+    local posArvan = { 13.32, 2.00, -2.91 }
+    local chipArvan = nil
+    for _, object in pairs(bagQuestChip.getObjects()) do
+      if object.name:find("Arvan") then
+        chipArvan = bagQuestChip.takeObject({guid=object.guid, rotation={ 0, 180, 0 }})
+      end
+    end
+    if chipArvan ~= nil then
+      Wait.frames(function() chipArvan.setPosition(posArvan) end)
+    end
+    Wait.time(function()
+
+      local bagScript = getObjectbyName("Defeated Monsters Bag")
+      bagScript.call('mark_party_companion', chipArvan)
+
+    end, 2)
+
+    -- broadcast reminder about arvan defeating enemy effect
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: When Arvan defeats an enemy, set it aside.", "White")
+
+    -- broadcast reminder about resistance keyword
+    Wait.time(function() broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: At the end of the encounter, gain keyword: Resistance for each enemy set aside.", "White") end, 1)
+
+  elseif cardName == "An Enemy In Need" then
+    --  obstacle placement in deployClash()    
+    -- add Arvan to EP, deploy him first    
+    local extraBag = getObjectbyName("Quest Unit / Companion Chip Bag")
+    local extraRot = { 0, 180, 0 }
+    for _, object in pairs(extraBag.getObjects()) do
+      if object.name:find("Arvan") then
+        local chipExtraEnemy = extraBag.takeObject({guid = object.guid, rotation = extraRot})
+        enemyCount = 1
+        Wait.frames(function()
+          chipExtraEnemy.setPositionSmooth(spacesEnemies[enemyCount], false, true)
+        end)
+        break
+      end
+    end
+
+    -- deploy rest of EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+    -- OPTION 1    
+    -- broadcast reminder about ignoring conflict influence track
+    if optionNumber == 1 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Ignore the Conflict Influence Track during this battle.", "White")
+
+    elseif optionNumber == 2 then     
+    -- OPTION 2
+    -- broadcast reminder about unlocking caches
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: When a cache is unlocked, you may choose to discard the gained item to reduce an influence track by up to 2.", "White")
+    end
+
+  elseif cardName == "Vine Snared" then
+    -- broadcast reminder about fatigue etc
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: For each hex an adventurer moves into during their move action, they must gain light fatigue equal to the number of items in their ready slots.", "White")
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
+
+  elseif cardName == "Parting the Veiled" then
+    -- OPTION 1
+    -- pull, place Arvan, make companion
+    -- increase influence tracks by playerCount
+    if optionNumber == 1 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Increase influence tracks by a collective total of ".. playerCount .. ".", "White")
+      local bagQuestChip = getObjectbyName("Quest Unit / Companion Chip Bag")
+      local posArvan = { -11.28, 1.59, -2.91 }
+      local chipArvan = nil
+      for _, object in pairs(bagQuestChip.getObjects()) do
+        if object.name:find("Arvan") then
+          chipArvan = bagQuestChip.takeObject({guid=object.guid, rotation={ 0, 180, 0 }})
+        end
+      end
+      if chipArvan ~= nil then
+        Wait.frames(function() chipArvan.setPosition(posArvan) end)
+      end
+      Wait.time(function()
+
+        local bagScript = getObjectbyName("Defeated Monsters Bag")
+        bagScript.call('mark_party_companion', chipArvan)
+
+      end, 2)
+
+    -- OPTION 2
+    -- broadcast about skipping round 1 recovery
+    -- also broadcast about reducing influence track and skipping activate province step
+    elseif optionNumber == 2 then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Each adventurer skips their recovery step during Round 1.", "White")
+      Wait.time(function() broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: If this encounter is successful, reduce the influence track of your choice by up to 2 and skip today's Activate Province step.", "White") end, 1)
+    end
+
+    -- deploy EP
+    Wait.time(function()
+
+      if chipBreakdown[20] > 0 then
+        for i = 1, chipBreakdown[20] do
+          if enemyCount < 8 then
+            local chip20 = bagHigh.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip20.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[10] > 0 then
+        for i = 1, chipBreakdown[10] do
+          if enemyCount < 8 then
+            local chip10 = bagHigh.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip10.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[5] > 0 then
+        for i = 1, chipBreakdown[5] do
+          if enemyCount < 8 then
+            local chip5 = bagLow.takeObject({rotation = { 0, 180, 0 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip5.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+
+      if chipBreakdown[1] > 0 then
+        for i = 1, chipBreakdown[1] do
+          if enemyCount < 8 then
+            local chip1 = bagLow.takeObject({rotation = { 0, 180, 180 }})
+            enemyCount = enemyCount + 1
+            local index = enemyCount
+            Wait.frames(function() chip1.setPositionSmooth(spacesEnemies[index], false, true) end)
+          end
+        end
+      end
+    end, 1)
   end
 end
 
