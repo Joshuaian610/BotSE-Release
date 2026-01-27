@@ -1,65 +1,68 @@
-function onLoad()
-    pads = {
-        Red    = {pad_guid="660d40", exhaust="75fa51", drain="dd6802", active="ab36fd", supply="379fb7", row="0e3030"},
-        Orange = {pad_guid="bb347b", exhaust="51a307", drain="669908", active="f1ab4b", supply="d1cd41", row="9e4f25"},
-        Blue   = {pad_guid="743dfb", exhaust="fa754c", drain="9b2b8e", active="01227b", supply="f5b249", row="a12695"},
-        Green  = {pad_guid="ee5c47", exhaust="0260a5", drain="9862e7", active="13e3dc", supply="09f684", row="1e6ac3"},
-    }
-end
+function onObjectCollisionEnter(info) _G['collision_handler']('Red', info) end
 
 
-function onObjectCollisionEnter(info)
-    handle_collision({self_color="Red", info=info})
-end
+-- function onLoad()
+--     pads = {
+--         Red    = {pad_guid="660d40", exhaust="75fa51", drain="dd6802", active="ab36fd", supply="379fb7", row="0e3030"},
+--         Orange = {pad_guid="bb347b", exhaust="51a307", drain="669908", active="f1ab4b", supply="d1cd41", row="9e4f25"},
+--         Blue   = {pad_guid="743dfb", exhaust="fa754c", drain="9b2b8e", active="01227b", supply="f5b249", row="a12695"},
+--         Green  = {pad_guid="ee5c47", exhaust="0260a5", drain="9862e7", active="13e3dc", supply="09f684", row="1e6ac3"},
+--     }
+-- end
 
 
-function handle_collision(args)
-    local color = args.self_color
-    local info  = args.info
-    local die   = info.collision_object
-    if die.tag ~= "Dice" then return end
-    local data = pads[color]
-    local zone_exhaust = getObjectFromGUID(data.exhaust)
-    if zone_exhaust then
-        for _, obj in pairs(zone_exhaust.getObjects()) do
-            if obj == die then
-                Global.call('place_cooldown_die_remote', {playercolor=color, die_obj=die})
-                return
-            end
-        end
-    end
-    local zone_drain = getObjectFromGUID(data.drain)
-    if zone_drain then
-        for _, obj in pairs(zone_drain.getObjects()) do
-            if obj == die then
-                Global.call('get_drain_slots_remote', {playercolor=color, die_obj=die})
-                return
-            end
-        end
-    end
-end
+-- function onObjectCollisionEnter(info)
+--     handle_collision({self_color="Red", info=info})
+-- end
 
 
-function onObjectEnterScriptingZone(zone, object)
-    if object.tag ~= "Dice" then return end
-    local zone_guid = zone.getGUID()
-    for color, data in pairs(pads) do
-        if data.exhaust == zone_guid then
-            Global.call('place_cooldown_die_remote', {playercolor=color, die_obj=object})
-            return
-        elseif data.drain == zone_guid then
-            Global.call('get_drain_slots_remote', {playercolor=color, die_obj=object})
-            return
-        elseif data.active == zone_guid then
-            Global.call('get_active_slots_remote', {playercolor=color, die_obj=object})
-            return
-        elseif data.supply == zone_guid then
-            -- broadcastToAll("New dice coordinates not yet coded in, please return die to supply manually for now.", "Orange")
-            Global.call('return_supply_die_remote', {color=color, die_obj=object})
-            return
-        elseif data.row == zone_guid then
-            Global.call('return_home_die_remote', {color=color, die_obj=object})
-            return
-        end
-    end
-end
+-- function handle_collision(args)
+--     local color = args.self_color
+--     local info  = args.info
+--     local die   = info.collision_object
+--     if die.tag ~= "Dice" then return end
+--     local data = pads[color]
+--     local zone_exhaust = getObjectFromGUID(data.exhaust)
+--     if zone_exhaust then
+--         for _, obj in pairs(zone_exhaust.getObjects()) do
+--             if obj == die then
+--                 Global.call('place_cooldown_die_remote', {playercolor=color, die_obj=die})
+--                 return
+--             end
+--         end
+--     end
+--     local zone_drain = getObjectFromGUID(data.drain)
+--     if zone_drain then
+--         for _, obj in pairs(zone_drain.getObjects()) do
+--             if obj == die then
+--                 Global.call('get_drain_slots_remote', {playercolor=color, die_obj=die})
+--                 return
+--             end
+--         end
+--     end
+-- end
+
+
+-- function onObjectEnterScriptingZone(zone, object)
+--     if object.tag ~= "Dice" then return end
+--     local zone_guid = zone.getGUID()
+--     for color, data in pairs(pads) do
+--         if data.exhaust == zone_guid then
+--             Global.call('placeDieToTrack', {playercolor=color, die_obj=object})
+--             return
+--         elseif data.drain == zone_guid then
+--             Global.call('get_drain_slots_remote', {playercolor=color, die_obj=object})
+--             return
+--         elseif data.active == zone_guid then
+--             Global.call('get_active_slots_remote', {playercolor=color, die_obj=object})
+--             return
+--         elseif data.supply == zone_guid then
+--             -- broadcastToAll("New dice coordinates not yet coded in, please return die to supply manually for now.", "Orange")
+--             Global.call('return_supply_die_remote', {color=color, die_obj=object})
+--             return
+--         elseif data.row == zone_guid then
+--             Global.call('return_home_die_remote', {color=color, die_obj=object})
+--             return
+--         end
+--     end
+-- end

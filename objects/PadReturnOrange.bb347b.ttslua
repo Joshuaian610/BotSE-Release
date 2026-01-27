@@ -1,1 +1,1 @@
-function onObjectCollisionEnter(info) _G['collision_handler']('Orange', info) end
+function onObjectCollisionEnter(info)  Global.call('collision_handler', {playerColor='Orange', info=info}) end

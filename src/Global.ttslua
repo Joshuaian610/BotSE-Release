@@ -51,57 +51,86 @@ function onLoad()
   local buttonCleanup = getObjectbyName("Button Cleanup Session")
 
   if showCleanupButton then    
-  buttonCleanup.setRotation(rotCleanupButton)
-  buttonCleanup.setPosition(posCleanupButton)
+    buttonCleanup.setRotation(rotCleanupButton)
+    buttonCleanup.setPosition(posCleanupButton)
   else
-  buttonCleanup.setRotation(rotCleanupButton)
-  posCleanupButton = { -65.55, -2.00, 41.31 }
-  buttonCleanup.setPosition(posCleanupButton)
-  buttonCleanup.clearButtons()
+    buttonCleanup.setRotation(rotCleanupButton)
+    posCleanupButton = { -65.55, -2.00, 41.31 }
+    buttonCleanup.setPosition(posCleanupButton)
+    buttonCleanup.clearButtons()
   end
 
   for _, object in pairs(getObjects()) do
-  if object.getName() == "Confirm" and object.hasTag('btn_confirm') then
-    local pos = object.getPosition()
-    if showConfirmButtons then
-      pos.y = 1.14
-    else
-      pos.y = -1.00
+    if object.getName() == "Confirm" and object.hasTag('btn_confirm') then
+      local pos = object.getPosition()
+      if showConfirmButtons then
+        pos.y = 1.14
+      else
+        pos.y = -1.00
+      end
+      object.setPosition(pos)
     end
-    object.setPosition(pos)
-  end
   end
 
   if invis then
-  for i = 1, 18 do
-    getObjectFromGUID(invisBags[i]).setInvisibleTo({"Red", "Orange", "Blue", "Green", "White", "Grey"})
-  end
+    for i = 1, 18 do
+      getObjectFromGUID(invisBags[i]).setInvisibleTo({"Red", "Orange", "Blue", "Green", "White", "Grey"})
+    end
   end
 
-  -- addHotkey("Place Die To Roll Area", function(playercolor, object, _, is_key_up)
-  -- if is_key_up == false then get_roll_slots(playercolor, object) end
-  -- end, true)
-  -- addHotkey("Exhaust Die To Cooldown Track", function(playercolor, object, _, is_key_up)
-  -- if is_key_up == false then get_cooldown_slots(playercolor, object) end
-  -- end, true)
-  -- addHotkey("Drain Die", function(playercolor, object, _, is_key_up)
-  -- if is_key_up == false then get_drain_slots(playercolor, object) end
-  -- end, true)
-  -- addHotkey("Place Die to Active Slot", function(playercolor, object, _, is_key_up)
-  -- if is_key_up == false then get_active_slots(playercolor, object) end
-  -- end, true)
-  -- addHotkey("Return Die to Supply", function(playerColor, object, _, is_key_up)
-  -- if is_key_up == false then returnSupplyDie(playerColor, object) end
-  -- end, true)
-  -- addHotkey("Return Die to Skill Row", function(playerColor, object, _, is_key_up)
-  -- if is_key_up == false then returnHomeDie(playerColor, object) end
-  -- end, true)
-  -- addHotkey("Summon Enemy Combat Die", function(playercolor, object, pointerPosition, is_key_up)
-  -- if is_key_up == false and object == nil then summonEnemyCombat(playercolor, _, pointerPosition) end
-  -- end, true)
-  -- addHotkey("Summon Status Die", function(playercolor, object, pointerPosition, is_key_up)
-  -- if is_key_up == false and object == nil then summon_status(playercolor, _, pointerPosition) end
-  -- end, true)
+  addHotkey("Place Die To Roll Area", function(playerColor, object, _, is_key_up)
+    if is_key_up == false then
+      if object.type ~= "Dice" then return end
+      placeDieToTrack(playerColor, object, "Roll")
+    end
+  end, true)
+
+  addHotkey("Exhaust Die To Cooldown Track", function(playerColor, object, _, is_key_up)
+    if is_key_up == false then
+      if object.type ~= "Dice" then return end
+      placeDieToTrack(playerColor, object, "Cooldown")
+    end
+  end, true)
+
+  addHotkey("Drain Die", function(playerColor, object, _, is_key_up)
+    if is_key_up == false then
+      if object.type ~= "Dice" then return end
+      placeDieToTrack(playerColor, object, "Drain")
+    end
+  end, true)
+
+  addHotkey("Place Die to Active Slot", function(playerColor, object, _, is_key_up)
+    if is_key_up == false then
+      if object.type ~= "Dice" then return end
+      placeActiveDie(playerColor, object)
+    end
+  end, true)
+
+  addHotkey("Return Die to Supply", function(playerColor, object, _, is_key_up)
+    if is_key_up == false then
+      if object.type ~= "Dice" then return end
+      returnSupplyDie(playerColor, object)
+    end
+  end, true)
+
+  addHotkey("Return Die to Skill Row", function(playerColor, object, _, is_key_up)
+    if is_key_up == false then
+      if object.type ~= "Dice" then return end
+      returnHomeDie(playerColor, object)
+    end
+  end, true)
+
+  addHotkey("Summon Enemy Combat Die", function(playerColor, object, pointerPosition, is_key_up)
+    if is_key_up == false and object == nil then
+      summonEnemyCombat(playerColor, _, pointerPosition)
+    end
+  end, true)
+  
+  addHotkey("Summon Status Die", function(playerColor, object, pointerPosition, is_key_up)
+    if is_key_up == false and object == nil then
+      summonStatusEffect(playerColor, _, pointerPosition)
+    end
+  end, true)
 end
 
 function onObjectSpawn(obj)
@@ -181,6 +210,9 @@ function onObjectSpawn(obj)
   elseif name:find(" Player Pack") then
     updatePackCounter(obj)
 
+  elseif name == "Button Dungeon Map" then
+    initButtonDungeonMap(obj)
+
   end
 end
 
@@ -202,6 +234,8 @@ function animateButtonsGeneric(obj)
 
     if name == "Button Siege Battle" then
       initButtonSiegeBattle(obj)
+    elseif name == "Button Dungeon Map" then
+      initButtonDungeonMap(obj)
     end
 
   end, 1)
@@ -456,7 +490,7 @@ posGuildStarts                  = {
 }
 
 
-overland_mechanic_pages         = {
+overland_mechanic_pages       = {
   ["Black Marsh"]             = 2,
   ["Cyrodiil"]                = 3,
   ["High Rock"]               = 3,

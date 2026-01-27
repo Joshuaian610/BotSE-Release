@@ -1,4 +1,4 @@
-
+local SearchLib = require("util/SearchLib")
 
 
 function initButtonCooldownAction(obj)
@@ -921,11 +921,73 @@ function onScriptingButtonDown(index, playerColor)
 
   -- place die to player roll pad
   elseif index == 10 then
-    if not dieObj or dieObj.type ~= "Dice" then return end
-    log("hotkey found die: " .. dieObj.getName())
+    if not dieObj or dieObj.type ~= "Dice" then return end    
     placeDieToTrack(playerColor, dieObj, "Roll")
   end
 end
+
+
+function onObjectEnterScriptingZone(zone, object)
+  if object.tag ~= "Dice" then return end
+
+  local die = object
+
+  -- wait until die is resting
+  Wait.condition(function()
+    -- local tables
+    local pads = {
+      ["Red"]    = {pad_guid="660d40", exhaust="75fa51", drain="dd6802", active="ab36fd", supply="379fb7", row="0e3030"},
+      ["Orange"] = {pad_guid="bb347b", exhaust="51a307", drain="669908", active="f1ab4b", supply="d1cd41", row="9e4f25"},
+      ["Blue"]   = {pad_guid="743dfb", exhaust="fa754c", drain="9b2b8e", active="01227b", supply="f5b249", row="a12695"},
+      ["Green"]  = {pad_guid="ee5c47", exhaust="0260a5", drain="9862e7", active="13e3dc", supply="09f684", row="1e6ac3"},
+    }
+
+    -- determine player color and pad type
+    local playerColor = nil
+    local padType = nil
+    for color, data in pairs(pads) do
+      if zone.getGUID() == data.exhaust then
+        playerColor = color
+        padType = "exhaust"
+        break
+      elseif zone.getGUID() == data.drain then
+        playerColor = color
+        padType = "drain"
+        break
+      elseif zone.getGUID() == data.active then
+        playerColor = color
+        padType = "active"
+        break
+      elseif zone.getGUID() == data.supply then
+        playerColor = color
+        padType = "supply"
+        break
+      elseif zone.getGUID() == data.row then
+        playerColor = color
+        padType = "row"
+        break
+      end
+    end
+    if not playerColor then return end
+
+    -- route die to correct handler
+    if padType == "exhaust" then
+      placeDieToTrack(playerColor, die, "Cooldown")
+    elseif padType == "drain" then
+      placeDieToTrack(playerColor, die, "Drain")
+    elseif padType == "active" then
+      placeActiveDie(playerColor, die)
+    elseif padType == "supply" then
+      returnSupplyDie(playerColor, die)
+    elseif padType == "row" then
+      returnHomeDie(playerColor, die)
+    end
+
+  end, function() return die.resting end)
+end
+
+
+
 
 
 function summonEnemyCombat(playerColor, _, posPointer)
