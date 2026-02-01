@@ -46,12 +46,12 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 74.643,
-    "posY": 1.711,
-    "posZ": -14.713,
+    "posX": 59.617,
+    "posY": 1.677,
+    "posZ": 3.315,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 0,
+    "rotZ": 180,
     "scaleX": 2.05,
     "scaleY": 1,
     "scaleZ": 2.05
