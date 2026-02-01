@@ -7,6 +7,7 @@ require("HandleEnemies")
 require("HandleEncounters")
 require("PlayerAreas")
 require("PlayerPanel")
+require("TrackerPanel")
 require("XMLUtils")
 require("UtilityButtons")
 

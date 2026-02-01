@@ -1,0 +1,55 @@
+
+BATTLE_ROUND_IMAGES = {
+    "https://steamusercontent-a.akamaihd.net/ugc/17750762718706963308/561A0A435AB35D9249FFE4E4E801C97D5E9B0C03/",
+    "https://steamusercontent-a.akamaihd.net/ugc/10803447778070458462/6E7E077A8E20B59F70963416B8C1BB1103820C44/",
+    "https://steamusercontent-a.akamaihd.net/ugc/13502294421972222960/1DB278CE0A7C360A5AE291CC747C9679E76B4E67/",
+    "https://steamusercontent-a.akamaihd.net/ugc/17868162629828349909/0314B020BE41DC53352DCCB6BCE35ADA49570609/",
+    "https://steamusercontent-a.akamaihd.net/ugc/11627460538490486568/6E31C229A58646F751CD029C68FC88DF1E0A906D/",
+    "https://steamusercontent-a.akamaihd.net/ugc/16913554649309094531/6790A976409BA3269E3ADBEB4C3212EEDB4E7687/"
+}
+
+function updateDayTracker(player, mouseClick)
+    -- Update Day Tracker
+    local dayCounter = Global.getVar("day_tracker_counter")
+    if dayCounter ~= nil then
+        dayCounter.call("add_subtract_call", {
+            playercolor = player.color,
+            alt_click   = tonumber(mouseClick) == -2
+        })
+    end
+end
+
+function updateBattleRoundTracker(player, mouseClick)
+    -- Update Battle Tracker
+    local battleCounter = Global.getVar("battle_tracker_counter")
+    if battleCounter ~= nil then
+        battleCounter.call("add_subtract_call", {
+            playercolor = player.color,
+            alt_click   = tonumber(mouseClick) == -2
+        })
+    else
+        battleCounter = Global.getVar("battle_round_counter_fatigue")
+        if battleCounter ~= nil then
+            battleCounter.call("fatigue_or_reset_call", {
+                playercolor = player.color,
+                alt_click   = tonumber(mouseClick) == -2
+            })
+        end
+    end
+end
+
+function updateBattleRoundPanel(round)
+    -- Update Battle Round Tracker Panel Image
+    Global.UI.setAttribute("battle_round_tracker_image", "image", BATTLE_ROUND_IMAGES[math.min(math.max(round, 1), #BATTLE_ROUND_IMAGES)])
+end
+
+function updatePartyXPTracker(player, mouseClick)
+    -- Update Party XP Tracker
+    local partyXPCounter = Global.getVar("party_xp_tracker_counter")
+    if partyXPCounter ~= nil then
+        partyXPCounter.call("add_subtract_call", {
+            playercolor = player.color,
+            alt_click   = tonumber(mouseClick) == -2
+        })
+    end
+end
