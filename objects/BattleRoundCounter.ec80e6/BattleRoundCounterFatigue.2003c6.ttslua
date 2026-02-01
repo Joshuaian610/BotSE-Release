@@ -5,6 +5,8 @@ MAX_VALUE        = 6
 function onload(saved_data)
     val = 6
     Wait.frames(function() create_all() end)
+
+    Global.setVar("battle_round_counter_fatigue", self)
 end -- end function onload()
 
 
@@ -31,6 +33,9 @@ function create_all()
     })
 end -- end function create_all()
 
+function fatigue_or_reset_call(params)
+    fatigue_or_reset(nil, params.playercolor, params.alt_click)
+end
 
 function fatigue_or_reset(_obj, playercolor, alt_click)
     if not alt_click then

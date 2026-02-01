@@ -11,6 +11,9 @@ function onload(saved_data)
         end
     end
     create_all()
+    Global.setVar("party_xp_tracker_counter", self)
+
+    updateTrackerPanel()
 end -- end function onload()
 
 
@@ -47,6 +50,10 @@ function reload_all()
       update_save()
 end -- end function reload_all()
 
+function add_subtract_call(params)
+    add_subtract(self, params.playercolor, params.alt_click)
+end
+
 function add_subtract(_obj, playercolor, alt_click)
     mod = alt_click and -1 or 1
     original_value = val
@@ -55,6 +62,7 @@ function add_subtract(_obj, playercolor, alt_click)
         val = new_value
         update_val()
         update_save()
+        updateTrackerPanel()
     end
     getObjectFromGUID("e16ba6").call('setDialValue', {val=val})
     if not alt_click then
@@ -82,6 +90,7 @@ function subtract()
         val = new_value
         update_val()
         update_save()
+        updateTrackerPanel()
     end
 end -- end function subtract()
 
@@ -96,10 +105,20 @@ function set_val(value)
     val = value
     update_val()
     update_save()
+    updateTrackerPanel()
 end -- send function set_val()
 
 function reset_val()
     val = 0
     update_val()
     update_save()
-end -- end function set_val()
+    updateTrackerPanel()
+end -- end function reset_val()
+
+function updateTrackerPanel()
+    -- Update value displayed
+    Global.UI.setAttribute("party_xp_tracker_counter_value", "text", tostring(val))
+
+    -- Update tooltip
+    Global.UI.setAttribute("party_xp_tracker_button", "tooltip", "Party XP: " .. tostring(val) .. "\nUpdate Party XP")
+end

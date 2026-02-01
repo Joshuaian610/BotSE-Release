@@ -10,6 +10,9 @@ function onload(saved_data)
         end
     end
     Wait.frames(function() create_all() end)
+    Global.setVar("battle_tracker_counter", self)
+
+    updateTrackerPanel()
 end -- end function onload()
 
 
@@ -46,6 +49,10 @@ function reload_all()
       update_save()
 end -- end function reload_all()
 
+function add_subtract_call(params)
+    add_subtract(self, params.playercolor, params.alt_click)
+end
+
 function add_subtract(_obj, playercolor, alt_click)
     mod = alt_click and -1 or 1
     original_value = val
@@ -54,6 +61,7 @@ function add_subtract(_obj, playercolor, alt_click)
         val = new_value
         update_val()
         update_save()
+        updateTrackerPanel()
     end
     -- check if GE Wabbajack Attack clash is active, run effect if so
     if not alt_click then
@@ -107,6 +115,7 @@ function add_subtract(_obj, playercolor, alt_click)
         val = 1
         update_val()
         update_save()
+        updateTrackerPanel(6)
         if Player[playercolor].steam_name ~= nil then
             broadcastToAll("[" .. Color.fromString(playercolor):toHex() .. "]" .. Player[playercolor].steam_name .. "[-] has triggered a Fatigue Round.", "White")
         else
@@ -172,6 +181,7 @@ function subtract()
         val = new_value
         update_val()
         update_save()
+        updateTrackerPanel()
     end
 end -- end function subtract()
 
@@ -186,12 +196,14 @@ function set_val(value)
     val = value
     update_val()
     update_save()
+    updateTrackerPanel()
 end -- send function set_val()
 
 function reset_val()
     val = 0
     update_val()
     update_save()
+    updateTrackerPanel()
 end -- end function set_val()
 
 
@@ -333,3 +345,14 @@ function checkIfUnstable()
   return false
 end
 
+function updateTrackerPanel(forceVal)
+    -- Update value displayed
+    Global.call("updateBattleRoundPanel", forceVal or val)
+
+    -- Update tooltip
+    if(forceVal and forceVal == 6) then
+        Global.UI.setAttribute("battle_round_tracker_button", "tooltip", "Battle Round: Fatigue\nUpdate Battle Counter")
+    else
+        Global.UI.setAttribute("battle_round_tracker_button", "tooltip", "Battle Round " .. tostring(forceVal or val) .. "\nUpdate Battle Counter")
+    end
+end
