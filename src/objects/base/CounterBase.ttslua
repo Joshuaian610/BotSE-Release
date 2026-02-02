@@ -60,6 +60,7 @@ function subtract()
     if val ~= new_value then
         val = new_value
         update_val()
+        update_player_panel()
         update_save()
     end
 end -- end function subtract()
@@ -71,11 +72,13 @@ end -- end function update_val()
 function set_val(value)
     val = value
     update_val()
+    update_player_panel()
     update_save()
 end -- send function set_val()
 
 function reset_val()
     val = 0
     update_val()
+    update_player_panel()
     update_save()
 end -- end function reset_val()
