@@ -14,14 +14,14 @@ function onload(saved_data)
         local loaded_data = JSON.decode(saved_data)
         if loaded_data ~= nil then
             player_panel_order = loaded_data[1]
-            player_race_Red = loaded_data[2]
-            player_race_Orange = loaded_data[3]
-            player_race_Blue = loaded_data[4]
-            player_race_Green = loaded_data[5]
-            player_chip_Red = loaded_data[6]
-            player_chip_Orange = loaded_data[7]
-            player_chip_Blue = loaded_data[8]
-            player_chip_Green = loaded_data[9]
+            player_race_Red = loaded_data[2] or ""
+            player_race_Orange = loaded_data[3] or ""
+            player_race_Blue = loaded_data[4] or ""
+            player_race_Green = loaded_data[5] or ""
+            player_chip_Red = loaded_data[6] or ""
+            player_chip_Orange = loaded_data[7] or ""
+            player_chip_Blue = loaded_data[8] or ""
+            player_chip_Green = loaded_data[9] or ""
         end
         Wait.time(function()
             updatePlayerPanelsWithSavedData()
@@ -59,10 +59,10 @@ function update_save()
         player_race_Orange,
         player_race_Blue,
         player_race_Green,
-        player_chip_Red.guid,
-        player_chip_Orange.guid,
-        player_chip_Blue.guid,
-        player_chip_Green.guid
+        player_chip_Red,
+        player_chip_Orange,
+        player_chip_Blue,
+        player_chip_Green
     }
     saved_data = JSON.encode(data_to_save)
     self.script_state = saved_data
