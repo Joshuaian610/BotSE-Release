@@ -11,9 +11,11 @@ require("TrackerPanel")
 require("XMLUtils")
 require("UtilityButtons")
 
+
 function requireScript(name)
   require(name)
 end
+
 
 function onLoad()
 
@@ -134,6 +136,7 @@ function onLoad()
   end, true)
 end
 
+
 function onObjectSpawn(obj)
   -- set nonInteractables
   if obj.hasTag("non_int") and nonInt then
@@ -217,6 +220,7 @@ function onObjectSpawn(obj)
   end
 end
 
+
 function getObjectbyName(name)
   -- simply search all objects for an object named a particular string
   for _, object in pairs(getObjects()) do
@@ -227,6 +231,7 @@ function getObjectbyName(name)
   log("getObjectbyName() object not found: " .. name)
   return nil
 end
+
 
 function animateButtonsGeneric(obj)
   obj.clearButtons()
@@ -248,6 +253,7 @@ function animateButtonsGeneric(obj)
   pos.y = pos.y + .29
   obj.setPositionSmooth(pos, false, false)
 end
+
 
 posCooldownDice = {
   ["Red"] = {
@@ -512,12 +518,12 @@ function color_to_hex(color)
 end
 
 
-
 function label_die_result_remote(args)
   local die_obj = args.die_obj
   local rot_val = args.rot_val
   label_die_result(die_obj, rot_val)
 end
+
 
 function label_die_result(die_obj, rot_val)
   local name    = die_obj.getName()
@@ -1215,7 +1221,7 @@ function onObjectEnterZone(zone, obj)
       end
     end
     if skill_card == nil then return end
-    skill_card.setRotation(skill_card.getName() == "Combat" and {0, 180, 180} or {0, 180, 0})
+    skill_card.setRotation({0, 180, 0})
     skill_card.setPositionSmooth(handzone.getPosition(), false, true)
     if skill_name ~= "Combat" then
       if Player[color].steam_name ~= nil then
