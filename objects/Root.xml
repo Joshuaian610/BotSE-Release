@@ -15,7 +15,7 @@
     <Panel class="xp_button" width="42" height="42" rectAlignment="LowerRight" offsetXY="-16.2 50" />
 
     <!-- Tracker Panel Defaults -->
-    <Panel class="tracker_panel" width="65" height="65" rectAlignment="UpperRight" />
+    <Panel class="tracker_panel" width="65" height="65" rectAlignment="UpperLeft" />
     <Image class="tracker_image" width="65" height="65" />
     <Text class="tracker_text" font="Fonts/Planewalker Bold.otf" fontSize="28" fontStyle="Bold" outline="#000000" shadow="#000000" color="#FFFFFF"/>
 </Defaults>
@@ -41,21 +41,23 @@
 </Panel>
 
 <!--===================== Trackers =====================-->
-<Panel id="day_tracker" class="tracker_panel" offsetXY="-415 -10">
-    <Image class="tracker_image" image="https://steamusercontent-a.akamaihd.net/ugc/13919892513594424439/8D127CCFF66A3899FCB6807B7C851E93632E36B1/" />
-    <Button id="day_tracker_button" onClick="updateDayTracker" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Day 1&#xA;Update Day Counter" tooltipPosition="Below">
-        <Text class="tracker_text" id="day_tracker_counter_value">0</Text>
-    </Button>
-</Panel>
-<Panel id="battle_round_tracker" class="tracker_panel" offsetXY="-345 -10">
-    <Image id="battle_round_tracker_image" class="tracker_image" image="https://steamusercontent-a.akamaihd.net/ugc/17750762718706963308/561A0A435AB35D9249FFE4E4E801C97D5E9B0C03/" />
-    <Button id="battle_round_tracker_button" onClick="updateBattleRoundTracker" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Battle Round 1&#xA;Update Battle Round" tooltipPosition="Below" />
-</Panel>
-<Panel id="party_xp_tracker" class="tracker_panel" offsetXY="-275 -10">
-    <Image class="tracker_image" image="https://steamusercontent-a.akamaihd.net/ugc/13526004347179001722/EF7DDBCD47977068F22EB50533558B5B3155802C/" />
-    <Button id="party_xp_tracker_button" onClick="updatePartyXPTracker" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Party XP: &#xA;Update Party XP" tooltipPosition="Below">
-        <Text class="tracker_text" id="party_xp_tracker_counter_value">0</Text>
-    </Button>
+<Panel allowDragging="true" width="180" height="80" offsetXY="275 -10" rectAlignment="UpperLeft" returnToOriginalPositionWhenReleased="false">
+    <Panel id="day_tracker" class="tracker_panel" offsetXY="0 0">
+        <Image class="tracker_image" image="https://steamusercontent-a.akamaihd.net/ugc/13919892513594424439/8D127CCFF66A3899FCB6807B7C851E93632E36B1/" />
+        <Button id="day_tracker_button" onClick="updateDayTracker" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Day 1&#xA;Update Day Counter" tooltipPosition="Below">
+            <Text class="tracker_text" id="day_tracker_counter_value">0</Text>
+        </Button>
+    </Panel>
+    <Panel id="battle_round_tracker" class="tracker_panel" offsetXY="70 0">
+        <Image id="battle_round_tracker_image" class="tracker_image" image="https://steamusercontent-a.akamaihd.net/ugc/17750762718706963308/561A0A435AB35D9249FFE4E4E801C97D5E9B0C03/" />
+        <Button id="battle_round_tracker_button" onClick="updateBattleRoundTracker" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Battle Round 1&#xA;Update Battle Round" tooltipPosition="Below" />
+    </Panel>
+    <Panel id="party_xp_tracker" class="tracker_panel" offsetXY="140 0">
+        <Image class="tracker_image" image="https://steamusercontent-a.akamaihd.net/ugc/13526004347179001722/EF7DDBCD47977068F22EB50533558B5B3155802C/" />
+        <Button id="party_xp_tracker_button" onClick="updatePartyXPTracker" color="#FFFFFF00" textShadow="#000000" textOutline="#000000" tooltip="Party XP: &#xA;Update Party XP" tooltipPosition="Below">
+            <Text class="tracker_text" id="party_xp_tracker_counter_value">0</Text>
+        </Button>
+    </Panel>
 </Panel>
 
 <!--===================== Player Panels =====================-->
