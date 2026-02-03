@@ -237,6 +237,8 @@ function animateButtonsGeneric(obj)
       initButtonSiegeBattle(obj)
     elseif name == "Button Dungeon Map" then
       initButtonDungeonMap(obj)
+    elseif name:find("Button Open Pack") then
+      initButtonOpenPack(obj)
     end
 
   end, 1)

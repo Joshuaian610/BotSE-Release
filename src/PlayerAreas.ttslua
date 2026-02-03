@@ -1,4 +1,3 @@
-local SearchLib = require("util/SearchLib")
 
 
 function initButtonCooldownAction(obj)
@@ -31,6 +30,7 @@ function initButtonCooldownCollapse(obj)
     tooltip        = "Click this button to collapse the Cooldown track and clean up any gaps."
   })
 end
+
 
 function initButtonFatigue(obj)
   obj.createButton({
@@ -146,12 +146,14 @@ function animateButtonsPlayerArea(obj)
   obj.setPositionSmooth(pos, false, false)
 end
 
+
 -- this function handles the button click of the player area cooldown buttons
 function cooldownAction(button, _, _)
   local playerColor = button.getGMNotes()
 
   doCooldownAction(playerColor)
 end
+
 
 function doCooldownAction(playerColor)
   local pegZones = {
@@ -765,6 +767,7 @@ function addFatigue(button, _, _)
   doAddFatigue(button.getGMNotes())
 end
 
+
 function doAddFatigue(playerColor)
   local targetDie = nil
   local targetBag = nil
@@ -809,6 +812,7 @@ function addOverfatigue(button, _, _)
   doAddOverfatigue(button.getGMNotes())
 end
 
+
 function doAddOverfatigue(playerColor)
   local overfatigueDie = nil
   local bagOverfatigueDice = getObjectbyName("Overfatigue Dice Bag")
@@ -826,21 +830,21 @@ function doAddOverfatigue(playerColor)
 end
 
 
-function openPack(button, _, _)
+function openPack(button, clickerColor, _)
 
   -- this function handles the click of the player area Open Pack buttons
-  animateButtonCleanupSession(button)
+  animateButtonsGeneric(button)
 
   local playerColor = button.getGMNotes()
   local pack = nil
   for _, object in pairs(getObjects()) do
-    if object.getName() == "Button Open Pack" and object.getGMNotes() == playerColor then
+    if object.getName() == playerColor .. " Player Pack" then
       pack = object
     end
   end
   if pack == nil then log("openPack(): pack not found") return end
 
-  pack.Container.search(playerColor)
+  pack.Container.search(clickerColor)
 end
 
 
@@ -985,9 +989,6 @@ function onObjectEnterScriptingZone(zone, object)
 
   end, function() return die.resting end)
 end
-
-
-
 
 
 function summonEnemyCombat(playerColor, _, posPointer)
@@ -1164,6 +1165,7 @@ function rollDice(button, _, _)
   startLuaCoroutine(self, "coroutineMonitorGroup")
 end
 
+
 function handleTenacityMarkerEntry(zone, object)
   local tenacityValue = string.sub(zone.getName(), -1)
   
@@ -1175,6 +1177,7 @@ function handleTenacityMarkerEntry(zone, object)
 
   object.call('setVal', tonumber(tenacityValue))
 end
+
 
 function handleXPMarkerEntry(zone, object)
   local xpValue = string.sub(zone.getName(), -1)
