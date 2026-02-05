@@ -1,0 +1,143 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -4.882,
+        "y": 1.604,
+        "z": -0.011
+      }
+    },
+    {
+      "Position": {
+        "x": -3.472,
+        "y": 1.604,
+        "z": -0.011
+      }
+    },
+    {
+      "Position": {
+        "x": -2.089,
+        "y": 1.584,
+        "z": -0.066
+      }
+    },
+    {
+      "Position": {
+        "x": -0.652,
+        "y": 1.604,
+        "z": -0.011
+      }
+    },
+    {
+      "Position": {
+        "x": 0.758,
+        "y": 1.604,
+        "z": -0.039
+      }
+    },
+    {
+      "Position": {
+        "x": 2.168,
+        "y": 1.584,
+        "z": -0.066
+      }
+    },
+    {
+      "Position": {
+        "x": 3.523,
+        "y": 1.604,
+        "z": -0.038
+      }
+    },
+    {
+      "Position": {
+        "x": 4.933,
+        "y": 1.604,
+        "z": -0.038
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "ada79aOneHandAndShield-PowerBash.6cce85",
+    "ada79aOneHandAndShield-ShieldCharge.28fb10",
+    "ada79aOneHandAndShield-DefensivePosture.7559b8",
+    "ada79aOneHandAndShield-HeroicSlash.1d9aed",
+    "ada79aOneHandAndShield-HeroicSlash.bb23f0",
+    "ada79aOneHandAndShield-ShieldDiscipline.cf2c61",
+    "ada79aOneHandAndShield-ShieldDiscipline.20070c",
+    "ada79aOneHandAndShield-ShieldDiscipline.8c47fe",
+    "ada79aOneHandAndShield-ShieldDiscipline.d57494",
+    "ada79aOneHandAndShield-ShieldDiscipline.8ce3af",
+    "ada79aOneHandAndShield-ShieldDiscipline.bc7490",
+    "ada79aOneHandAndShield-ShieldDiscipline.0dc5ed"
+  ],
+  "ContainedObjects_path": "BagSkillLineOneHandAndShield.d62345",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/12743977329141852490/0F2271974D34781DCCEF4484E83B6455033CCCBB/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.5,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/18121165104227550342/561A38414F0A6F6605EFBEB62429F5CA43B4CB1E/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/12743977329141852490/0F2271974D34781DCCEF4484E83B6455033CCCBB/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "d62345",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Bag Skill Line One Hand And Shield",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -62.004,
+    "posY": 1.34,
+    "posZ": 5.22,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.55,
+    "scaleY": 0.55,
+    "scaleZ": 0.55
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

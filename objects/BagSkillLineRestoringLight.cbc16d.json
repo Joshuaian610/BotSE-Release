@@ -1,0 +1,139 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -4.914,
+        "y": 1.568,
+        "z": -0.081
+      }
+    },
+    {
+      "Position": {
+        "x": -3.532,
+        "y": 1.596,
+        "z": -0.054
+      }
+    },
+    {
+      "Position": {
+        "x": -2.039,
+        "y": 1.541,
+        "z": -0.109
+      }
+    },
+    {
+      "Position": {
+        "x": -0.657,
+        "y": 1.541,
+        "z": -0.109
+      }
+    },
+    {
+      "Position": {
+        "x": 0.753,
+        "y": 1.541,
+        "z": -0.109
+      }
+    },
+    {
+      "Position": {
+        "x": 2.191,
+        "y": 1.541,
+        "z": -0.109
+      }
+    },
+    {
+      "Position": {
+        "x": 3.545,
+        "y": 1.513,
+        "z": -0.137
+      }
+    },
+    {
+      "Position": {
+        "x": 4.872,
+        "y": 1.513,
+        "z": -0.137
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "bdb9adRestoringLight-MasterRitualist.c0c137",
+    "bdb9adRestoringLight-RiteOfPassage.c2c7ea",
+    "bdb9adRestoringLight-RushedCeremony.40fd35",
+    "bdb9adRestoringLight-HonorTheDead.8ffd8a",
+    "bdb9adRestoringLight-BreathOfLife.70bc56",
+    "bdb9adRestoringLight-BreathOfLife.9bb177",
+    "bdb9adRestoringLight-HastyPrayer.7dbf1a",
+    "bdb9adRestoringLight-Purge.857d8a"
+  ],
+  "ContainedObjects_path": "BagSkillLineRestoringLight.cbc16d",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/18139988587943143835/6E05AC090057016F562D65F5A547C789B1485280/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.5,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/18121165104227550342/561A38414F0A6F6605EFBEB62429F5CA43B4CB1E/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/18139988587943143835/6E05AC090057016F562D65F5A547C789B1485280/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "cbc16d",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Bag Skill Line Restoring Light",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -61.999,
+    "posY": 1.348,
+    "posZ": 10.59,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.55,
+    "scaleY": 0.55,
+    "scaleZ": 0.55
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

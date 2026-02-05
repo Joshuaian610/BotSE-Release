@@ -1,6 +1,7 @@
 -- Elder Scrolls: Betrayal of the Second Era
--- code by Nonprophet, which is why it sucks
--- code currently in conversion from object based to bundled lua based
+-- lua code by Nonprophet, which is why it sucks
+-- lua code is currently in conversion from object based to bundled lua based
+-- XML code by Phire, which is why it rocks
 
 require("SetupProvince")
 require("HandleEnemies")
@@ -10,6 +11,7 @@ require("PlayerPanel")
 require("TrackerPanel")
 require("XMLUtils")
 require("UtilityButtons")
+require("DiceTrays")
 
 
 function requireScript(name)
@@ -19,14 +21,14 @@ end
 
 function onLoad()
 
-  nonInt             = true
+  nonInt             = false
   invis              = true
   showCleanupButton  = false
   showConfirmButtons = false
 
   -- call this for each existing object since TTS doesn't do it
   for _, obj in ipairs(getObjects()) do
-  onObjectSpawn(obj)
+    onObjectSpawn(obj)
   end
 
   -- old onLoad  
@@ -41,10 +43,10 @@ function onLoad()
   local mats = {"a1c5f4", "1fe5f3", "7d559d", "e0a25a", "0e06c1"}
   local gameInProgress = false
   for i = 1, 4 do
-  if getObjectFromGUID(mats[i]).hasTag('race_pulled') then
-    gameInProgress = true
-    break
-  end
+    if getObjectFromGUID(mats[i]).hasTag('race_pulled') then
+      gameInProgress = true
+      break
+    end
   end
 
   if gameInProgress then showCleanupButton = true end
@@ -216,6 +218,9 @@ function onObjectSpawn(obj)
 
   elseif name == "Button Dungeon Map" then
     initButtonDungeonMap(obj)
+
+  elseif name:find("Button Bag") then
+    initButtonsBagDice(obj)
 
   end
 end
@@ -1241,12 +1246,36 @@ function onObjectEnterZone(zone, obj)
 end
 
 
+function onObjectEnterContainer(bag, obj)
+  -- this handles the update of a fatigue or overfatigue dice bag counter on correct dice entering correct bag
+  if bag.getName() == "Bag Dice Fatigue" or bag.getName() == "Bag Dice Overfatigue" then
+    local buttonObj = getObjectbyName("Button Bag " .. obj.getName())
+    if buttonObj then initButtonsBagDice(buttonObj) end
+  end
+
+  -- handles update of player pack counters on item drop into/retrieve from bag
+  if bag.getName():find(" Player Pack") then
+    updatePackCounter(bag)
+  end
+end
+
 function onObjectLeaveContainer(bag, obj)
   -- ensure all dice have 'dice_zone' tag upon entering play from bag
   for _, v in pairs(supply_dice_bags) do
     if bag.getGUID() == v and obj.type == "Dice" then
       obj.addTag('dice_zone')
     end
+  end
+  
+  -- this handles the update of a fatigue or overfatigue dice bag counter on correct dice leaving correct bag
+  if bag.getName() == "Bag Dice Fatigue" or bag.getName() == "Bag Dice Overfatigue" then
+    local buttonObj = getObjectbyName("Button Bag " .. obj.getName())
+    if buttonObj then initButtonsBagDice(buttonObj) end
+  end
+
+  -- handles update of player pack counters on item drop into/retrieve from bag
+  if bag.getName():find(" Player Pack") then
+    updatePackCounter(bag)
   end
 end
 

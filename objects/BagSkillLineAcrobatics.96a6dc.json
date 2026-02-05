@@ -1,0 +1,139 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -4.876,
+        "y": 1.604,
+        "z": -0.013
+      }
+    },
+    {
+      "Position": {
+        "x": -3.439,
+        "y": 1.604,
+        "z": 0.014
+      }
+    },
+    {
+      "Position": {
+        "x": -2.056,
+        "y": 1.604,
+        "z": 0.014
+      }
+    },
+    {
+      "Position": {
+        "x": -0.646,
+        "y": 1.604,
+        "z": 0.014
+      }
+    },
+    {
+      "Position": {
+        "x": 0.708,
+        "y": 1.604,
+        "z": 0.014
+      }
+    },
+    {
+      "Position": {
+        "x": 2.201,
+        "y": 1.604,
+        "z": 0.014
+      }
+    },
+    {
+      "Position": {
+        "x": 3.501,
+        "y": 1.604,
+        "z": -0.041
+      }
+    },
+    {
+      "Position": {
+        "x": 4.91,
+        "y": 1.581,
+        "z": -0.069
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "f8e28dAcrobatics-Defiance.f5063e",
+    "f8e28dAcrobatics-DuelistRebuff.f160a7",
+    "f8e28dAcrobatics-ExpertEvasion.6ea740",
+    "f8e28dAcrobatics-WindWalker.7c985a",
+    "f8e28dAcrobatics-Relentnessness.93cc21",
+    "f8e28dAcrobatics-RapidManuever.80674f",
+    "f8e28dAcrobatics-FleetPhantom.83c634",
+    "f8e28dAcrobatics-FleetPhantom.0fe736"
+  ],
+  "ContainedObjects_path": "BagSkillLineAcrobatics.96a6dc",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/11610973744421612841/322BD27E7383D0DB15AB38CDEE7D59C8FEBA15A4/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.5,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/14023622896302670870/AB7095833E6C42A6CE43CE5844DD57176D57B64D/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/11610973744421612841/322BD27E7383D0DB15AB38CDEE7D59C8FEBA15A4/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "96a6dc",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Bag Skill Line Acrobatics",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -62,
+    "posY": 1.355,
+    "posZ": 21.16,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.55,
+    "scaleY": 0.55,
+    "scaleZ": 0.55
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

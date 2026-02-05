@@ -1,0 +1,67 @@
+
+
+function initButtonsBagDice(obj)
+  obj.clearButtons()
+  local buttonName = string.match(obj.getName(), "^Button Bag (.+)$")
+  -- create open bag button
+  obj.createButton({
+    label          = "",
+    click_function = "openBagDice",
+    function_owner = self,
+    position       = { 0.00, 0.21, 0.00 },
+    height         = 1000,
+    width          = 2600,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = { 1, 1, 1, .6 },
+    tooltip        = "Click to open " .. buttonName .. " Dice Bag."
+  })
+
+  -- check if Overfatigue, if so, create counter on die obj
+  if buttonName == "Overfatigue" or buttonName == "Fatigue" then
+    local bagObj = getObjectbyName("Bag Dice " .. buttonName)
+    local counterObj = getObjectbyName("Button Display " .. buttonName)
+    local color = buttonName == "Overfatigue" and { 0, 0, 0, 1 } or { 128/255, 128/255, 128/255, 255/255 }
+    local rotation = buttonName == "Overfatigue" and { 00, 180, 0 } or { 0, 0, 0 }
+    if bagObj and counterObj then
+      counterObj.clearButtons()
+      local bagCount = #bagObj.getObjects()
+      counterObj.createButton({
+        click_function = "nullFunc",
+        function_owner = self,
+        label          = bagCount,
+        position       = { 0.0, 0.331, 0.0 },
+        rotation       = rotation,
+        width          = 300,
+        height         = 300,
+        font_size      = 250,
+        scale          = { 1, 1, 1 },
+        color          = color,
+        font_color     = { 1, 1, 1, 1 },
+        tooltip        = bagCount .. " " .. buttonName .. " remaining in the supply.",
+      })
+    end
+  end
+end
+
+
+function animateButtonsBagDice(obj)
+  -- will need to check if button has associated dieObj, also move dieObj if so
+  -- do not recreate counter, but do clear button then recreate buttons on click
+
+end
+
+
+function openBagDice(obj, clickerColor, _)
+  -- associate buttons to bags, open bag  
+  local bagType = string.match(obj.getName(), "^Button Bag (.+)$")
+  if bagType == nil then log("openBagDice(): Could not extract bag type from button name: " .. objName) return end
+  local bagObj = nil
+  if bagType ~= "Status Effect" and bagType ~= "Combat" and bagType ~= "Enemy Combat" and
+  bagType ~= "Overfatigue" and bagType ~= "Fatigue" then
+    bagObj = getObjectbyName("Bag Skill Line " .. bagType)
+  else
+    bagObj = getObjectbyName("Bag Dice " .. bagType)
+  end
+  if bagObj ~= nil then bagObj.Container.search(clickerColor) end
+end

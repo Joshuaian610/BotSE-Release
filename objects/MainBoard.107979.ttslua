@@ -43,7 +43,7 @@ function onLoad()
     refresh_race_buttons()
     refresh_class_buttons()
     refresh_clear_playerarea_buttons()
-    create_skill_bag_buttons()
+    -- create_skill_bag_buttons()
 end
 
 
@@ -484,7 +484,7 @@ function confirm_race_token(obj, player_color, alt_click, color)
     for _, o in ipairs(race_objs) do
         if o.getName() ~= "Confirm" and o.getGMNotes():lower() == "enabled" then
             enabled_race = o.getName()
-            enabled_obj = o   -- store the object itself
+            enabled_obj = o
             break
         end
     end
@@ -624,8 +624,8 @@ function deploy_race_items(button_obj, color, race_type)
             local stat_chip = mag_bag.takeObject()
             if stat_chip then stat_chip.setPositionSmooth(mag_locs[color_str][i], false, false) end
         end
+        local combat_die_bag = getObjectFromGUID("ec1bfe")
         for i = 1, combat do
-            local combat_die_bag = getObjectFromGUID("0f834b")
             local die = combat_die_bag.takeObject()
             Wait.frames(function() die.setPositionSmooth(combat_locs[color_str][i], false, false) end)
         end
@@ -641,7 +641,7 @@ function deploy_race_items(button_obj, color, race_type)
 
     -- get button's race tag
     local match_tag = nil
-    for _, t in ipairs(button_obj.getTags()) do
+    for _, t in pairs(button_obj.getTags()) do
         if t:match("_a$") or t:match("_b$") then
             match_tag = t
             break
@@ -978,42 +978,42 @@ end
 
 
 -- ***** SKILL LINE DICE BAGS *****
-function create_skill_bag_buttons()
-    for _, object in pairs(getAllObjects()) do
-        if object.hasTag('round_dice_bag') then
-            object.createButton({
-                label          = "",
-                click_function = 'open_skill_bag',
-                function_owner = self,
-                position       = {0,0.51,0},
-                height         = 500,
-                width          = 500,
-                scale          = {1,1,1},
-                color          = {1,1,1, 0},
-                hover_color    = {1,1,1, 0.4},
-                tooltip        = object.getName()
-            })
-        end
-        -- if object.hasTag('square_dice_bag') then
-        --     object.createButton({
-        --         label          = "",
-        --         click_function = 'open_skill_bag',
-        --         function_owner = self,
-        --         position       = {0,0.50,0},
-        --         height         = 500,
-        --         width          = 500,
-        --         scale          = {1,1,1},
-        --         color          = {1,1,1, 0},
-        --         hover_color    = {1,1,1, 0.4},
-        --         tooltip        = object.getName()
-        --     })
-        -- end
-    end
-end
+-- function create_skill_bag_buttons()
+--     for _, object in pairs(getAllObjects()) do
+--         if object.hasTag('round_dice_bag') then
+--             object.createButton({
+--                 label          = "",
+--                 click_function = 'open_skill_bag',
+--                 function_owner = self,
+--                 position       = {0,0.51,0},
+--                 height         = 500,
+--                 width          = 500,
+--                 scale          = {1,1,1},
+--                 color          = {1,1,1, 0},
+--                 hover_color    = {1,1,1, 0.4},
+--                 tooltip        = object.getName()
+--             })
+--         end
+--         -- if object.hasTag('square_dice_bag') then
+--         --     object.createButton({
+--         --         label          = "",
+--         --         click_function = 'open_skill_bag',
+--         --         function_owner = self,
+--         --         position       = {0,0.50,0},
+--         --         height         = 500,
+--         --         width          = 500,
+--         --         scale          = {1,1,1},
+--         --         color          = {1,1,1, 0},
+--         --         hover_color    = {1,1,1, 0.4},
+--         --         tooltip        = object.getName()
+--         --     })
+--         -- end
+--     end
+-- end
 
-function open_skill_bag(button, color, _)
-    button.Container.search(color)
-end
+-- function open_skill_bag(button, color, _)
+--     button.Container.search(color)
+-- end
 
 
 

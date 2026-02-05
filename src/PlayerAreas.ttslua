@@ -168,7 +168,7 @@ function doCooldownAction(playerColor)
     ["Blue"] = getObjectFromGUID("d6184c"),
     ["Green"] = getObjectFromGUID("0cc81c"),
   }
-  cdZone = cdZones[playerColor]local posPegs = {
+  local cdZone = cdZones[playerColor]local posPegs = {
     ["Red"] = {
       { -59.74, 1.97, -30.86 },
       { -58.89, 1.97, -30.86 },
@@ -194,7 +194,7 @@ function doCooldownAction(playerColor)
       { 16.51, 1.97, -30.89 },
     },
     ["Green"] = {
-      { 16.51, 1.97, -30.89 },
+      { 47.96, 1.97, -30.89 },
       { 48.79, 2.00, -30.91 },
       { 49.64, 1.97, -30.91 },
       { 50.48, 1.97, -30.91 },
@@ -678,24 +678,24 @@ function returnSupplyDie(playerColor, dieObj)
 
   if not dieObj or dieObj.type ~= "Dice" then return end
   local guid = dieObj.getGUID()
-  local bag = getObjectbyName((string.find(dieObj.getName(), "Acrobatics")          and "Acrobatics Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Bow")                 and "Bow Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Daedric Summoning")   and "Daedric Summoning Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Destruction Staff")   and "Destruction Staff Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Heavy Armor")         and "Heavy Armor Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Illusion")            and "Illusion Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Legerdemain")         and "Legerdemain Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Light Armor")         and "Light Armor Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "One Hand And Shield") and "One Hand And Shield Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Restoring Light")     and "Restoring Light Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Shadow")              and "Shadow Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Speech")              and "Speech Skill Line Dice Bag") or
-                              (string.find(dieObj.getName(), "Two Handed")          and "Two Handed Skill Line Dice Bag") or
-                              (dieObj.getName() == "Overfatigue"                    and "Overfatigue Dice Bag") or
-                              (dieObj.getName() == "Fatigue"                        and "Fatigue Dice Bag") or
-                              (string.find(dieObj.getName(), "Status")              and "Status Effect Dice Bag") or
-                              (dieObj.getName() == "Combat"                         and "Combat Dice Bag") or
-                              (dieObj.getName() == "Enemy Combat"                   and "Enemy Combat Dice Bag"))  
+  local bag = getObjectbyName((string.find(dieObj.getName(), "Acrobatics")          and "Bag Acrobatics Skill Line") or
+                              (string.find(dieObj.getName(), "Bow")                 and "Bag Bow Skill Line") or
+                              (string.find(dieObj.getName(), "Daedric Summoning")   and "Bag Daedric Summoning Skill Line") or
+                              (string.find(dieObj.getName(), "Destruction Staff")   and "Bag Destruction Staff Skill Line") or
+                              (string.find(dieObj.getName(), "Heavy Armor")         and "Bag Heavy Armor Skill Line") or
+                              (string.find(dieObj.getName(), "Illusion")            and "Bag Illusion Skill Line") or
+                              (string.find(dieObj.getName(), "Legerdemain")         and "Bag Legerdemain Skill Line") or
+                              (string.find(dieObj.getName(), "Light Armor")         and "Bag Light Armor Skill Line") or
+                              (string.find(dieObj.getName(), "One Hand And Shield") and "Bag One Hand And Shield Skill Line") or
+                              (string.find(dieObj.getName(), "Restoring Light")     and "Bag Restoring Light Skill Line") or
+                              (string.find(dieObj.getName(), "Shadow")              and "Bag Shadow Skill Line") or
+                              (string.find(dieObj.getName(), "Speech")              and "Bag Speech Skill Line") or
+                              (string.find(dieObj.getName(), "Two Handed")          and "Bag Two Handed Skill Line") or
+                              (dieObj.getName() == "Overfatigue"                    and "Bag Dice Overfatigue") or
+                              (dieObj.getName() == "Fatigue"                        and "Bag Dice Fatigue") or
+                              (string.find(dieObj.getName(), "Status")              and "Bag Dice Status Effect") or
+                              (dieObj.getName() == "Combat"                         and "Bag Dice Combat") or
+                              (dieObj.getName() == "Enemy Combat"                   and "Bag Dice Enemy Combat"))
    
   dieObj.setGMNotes("")
 
@@ -773,16 +773,16 @@ function doAddFatigue(playerColor)
   local targetBag = nil
   local fatigueDie = nil
   local overfatigueDie = nil
-  local bagFatigueDice = getObjectbyName("Fatigue Dice Bag")
-  local bagOverfatigueDice = getObjectbyName("Overfatigue Dice Bag")
-  if #bagFatigueDice.getObjects() > 0 then    
+  local bagFatigueDice = getObjectbyName("Bag Dice Fatigue")
+  local bagOverfatigueDice = getObjectbyName("Bag Dice Overfatigue")
+  if #bagFatigueDice.getObjects() > 0 then
     targetBag = bagFatigueDice
     fatigueDie = bagFatigueDice.takeObject()
   end
   if fatigueDie ~= nil then
     targetDie = fatigueDie
   else
-    if #bagOverfatigueDice.getObjects() > 0 then      
+    if #bagOverfatigueDice.getObjects() > 0 then
       targetBag = bagOverfatigueDice
       overfatigueDie = bagOverfatigueDice.takeObject()
     end
@@ -815,7 +815,7 @@ end
 
 function doAddOverfatigue(playerColor)
   local overfatigueDie = nil
-  local bagOverfatigueDice = getObjectbyName("Overfatigue Dice Bag")
+  local bagOverfatigueDice = getObjectbyName("Bag Dice Overfatigue")
   if #bagOverfatigueDice.getObjects() > 0 then
     overfatigueDie   = bagOverfatigueDice.takeObject()
   end
@@ -864,22 +864,6 @@ function updatePackCounter(obj)
     if buttons ~= nil then
       obj.clearButtons()
     end
-  end
-end
-
-
-function onObjectEnterContainer(container, _)
-  -- handles update of player pack counters on item drop into/retrieve from bag
-  if container.getName():find(" Player Pack") then
-    updatePackCounter(container)
-  end
-end
-
-
-function onObjectLeaveContainer(container, _)
-  -- handles update of player pack counters on item drop into/retrieve from bag
-  if container.getName():find(" Player Pack") then
-    updatePackCounter(container)
   end
 end
 
@@ -993,7 +977,7 @@ end
 
 function summonEnemyCombat(playerColor, _, posPointer)
   local targetDie = nil
-  bagEnemyCombatDie = getObjectbyName("Enemy Combat Dice Bag")
+  bagEnemyCombatDie = getObjectbyName("Bag Dice Enemy Combat")
   local bagObjects = bagEnemyCombatDie.getObjects()
   if #bagObjects == 0 then
     if Player[playerColor].steam_name ~= nil then
@@ -1014,7 +998,7 @@ end
 
 
 function summonStatusEffect(playerColor, _, posPointer)
-  bagStatusEffectDie = getObjectbyName("Status Effect Dice Bag")
+  bagStatusEffectDie = getObjectbyName("Bag Dice Status Effect")
   local bagObjects = bagEnemyCombatDie.getObjects()
   if #bagObjects == 0 then
     if Player[playerColor].steam_name ~= nil then

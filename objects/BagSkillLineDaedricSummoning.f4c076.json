@@ -1,0 +1,139 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -4.914,
+        "y": 1.604,
+        "z": -0.019
+      }
+    },
+    {
+      "Position": {
+        "x": -3.504,
+        "y": 1.604,
+        "z": -0.019
+      }
+    },
+    {
+      "Position": {
+        "x": -2.011,
+        "y": 1.604,
+        "z": -0.019
+      }
+    },
+    {
+      "Position": {
+        "x": -0.629,
+        "y": 1.604,
+        "z": 0.008
+      }
+    },
+    {
+      "Position": {
+        "x": 0.753,
+        "y": 1.604,
+        "z": -0.019
+      }
+    },
+    {
+      "Position": {
+        "x": 2.108,
+        "y": 1.604,
+        "z": -0.019
+      }
+    },
+    {
+      "Position": {
+        "x": 3.546,
+        "y": 1.604,
+        "z": -0.019
+      }
+    },
+    {
+      "Position": {
+        "x": 4.9,
+        "y": 1.603,
+        "z": -0.047
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "b3d0d5DaedricSummoning-TemperedSoul.10b323",
+    "b3d0d5DaedricSummoning-Summon.daea03",
+    "b3d0d5DaedricSummoning-Summon.7997da",
+    "b3d0d5DaedricSummoning-ExpertSummoner.465cf8",
+    "b3d0d5DaedricSummoning-PowerStone.1c8cb5",
+    "b3d0d5DaedricSummoning-BoundArmaments.e7e97d",
+    "b3d0d5DaedricSummoning-BoundArmaments.ab9201",
+    "b3d0d5DaedricSummoning-DaedricCurse.1b9123"
+  ],
+  "ContainedObjects_path": "BagSkillLineDaedricSummoning.f4c076",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/12743977329141852490/0F2271974D34781DCCEF4484E83B6455033CCCBB/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.5,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/18121165104227550342/561A38414F0A6F6605EFBEB62429F5CA43B4CB1E/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/12743977329141852490/0F2271974D34781DCCEF4484E83B6455033CCCBB/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "f4c076",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Bag Skill Line Daedric Summoning",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -61.999,
+    "posY": 1.342,
+    "posZ": 12.76,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.55,
+    "scaleY": 0.55,
+    "scaleZ": 0.55
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

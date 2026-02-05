@@ -1,0 +1,143 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -4.903,
+        "y": 1.592,
+        "z": 0.011
+      }
+    },
+    {
+      "Position": {
+        "x": -3.466,
+        "y": 1.604,
+        "z": 0.038
+      }
+    },
+    {
+      "Position": {
+        "x": -2.111,
+        "y": 1.564,
+        "z": -0.017
+      }
+    },
+    {
+      "Position": {
+        "x": -0.673,
+        "y": 1.592,
+        "z": 0.011
+      }
+    },
+    {
+      "Position": {
+        "x": 0.681,
+        "y": 1.604,
+        "z": 0.038
+      }
+    },
+    {
+      "Position": {
+        "x": 2.091,
+        "y": 1.604,
+        "z": 0.038
+      }
+    },
+    {
+      "Position": {
+        "x": 3.446,
+        "y": 1.604,
+        "z": 0.066
+      }
+    },
+    {
+      "Position": {
+        "x": 4.883,
+        "y": 1.604,
+        "z": 0.094
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "a099adBow-ScatterShot.97ad90",
+    "a099adBow-RapidFire.a60b9f",
+    "a099adBow-RapidFire.c3d8eb",
+    "a099adBow-ArrowBarrage.096878",
+    "a099adBow-VineduskTraining.51c276",
+    "a099adBow-VineduskTraining.bace2c",
+    "a099adBow-AcidSpray.c7d9c4",
+    "a099adBow-Volley.55a761",
+    "a099adBow-Snipe.7c1ae3",
+    "a099adBow-Snipe.d17527",
+    "a099adBow-Snipe.00de0e",
+    "a099adBow-Snipe.931bb5"
+  ],
+  "ContainedObjects_path": "BagSkillLineBow.043620",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/11908951625684923339/AEEA2187703C28EE90CB22AA387DDC25462F0974/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.5,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/18121165104227550342/561A38414F0A6F6605EFBEB62429F5CA43B4CB1E/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/11908951625684923339/AEEA2187703C28EE90CB22AA387DDC25462F0974/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "043620",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Bag Skill Line Bow",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -61.999,
+    "posY": 1.371,
+    "posZ": 9.42,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.55,
+    "scaleY": 0.55,
+    "scaleZ": 0.55
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
