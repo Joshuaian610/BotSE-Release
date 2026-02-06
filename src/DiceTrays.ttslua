@@ -48,11 +48,34 @@ end
 function animateButtonsBagDice(obj)
   -- will need to check if button has associated dieObj, also move dieObj if so
   -- do not recreate counter, but do clear button then recreate buttons on click
+  obj.clearButtons()
+  local buttonName = string.match(obj.getName(), "^Button Bag (.+)$")
+  Wait.time(function()
 
+    initButtonsBagDice(obj)
+
+  end, 1)
+  local pos = obj.getPosition()
+  pos.y = pos.y - .29
+  obj.setPosition(pos)
+  pos.y = pos.y + .29
+  obj.setPositionSmooth(pos, false, false)
+
+
+  if buttonName == "Status Effect" or buttonName == "Combat" or buttonName == "EnemyCombat" or
+  buttonName == "Overfatigue" or buttonName == "Fatigue" then
+    local displayObj = getObjectbyName("Button Display " .. buttonName)
+    local pos = displayObj.getPosition()
+    pos.y = pos.y - .29
+    displayObj.setPosition(pos)
+    pos.y = pos.y + .29
+    displayObj.setPositionSmooth(pos, false, false)
+  end
 end
 
 
 function openBagDice(obj, clickerColor, _)
+  animateButtonsBagDice(obj)
   -- associate buttons to bags, open bag  
   local bagType = string.match(obj.getName(), "^Button Bag (.+)$")
   if bagType == nil then log("openBagDice(): Could not extract bag type from button name: " .. objName) return end
