@@ -12,6 +12,7 @@ require("TrackerPanel")
 require("XMLUtils")
 require("UtilityButtons")
 require("DiceTrays")
+require("SetupPlayer")
 
 
 function requireScript(name)
@@ -21,8 +22,8 @@ end
 
 function onLoad()
 
-  nonInt             = false
-  invis              = true
+  nonInt             = true
+  invis              = false
   showCleanupButton  = false
   showConfirmButtons = false
 
@@ -37,6 +38,12 @@ function onLoad()
 --       if object.hasTag('nonInt') then object.interactable = false end
 --     end
 --   end
+
+  -- init player area setup buttons (found in SetupPlayer)
+  initSkillButtons()
+  initRaceButtons()
+  initClassButtons()
+  initClearPlayerareaButtons()
 
   local invisBags = {"e0d41f", "6d89c2", "db5580", "25be0c", "854dab", "6ccfde", "049614", "13826d", "441f00",
   "3c306d", "10fcd4", "c1c1fa", "c09813", "c8b9dd", "4da6b0", "cdb313", "3a6185", "0e06c1"}
@@ -1139,23 +1146,7 @@ end
 
 
 function onObjectEnterZone(zone, obj)
-  if zone.hasTag('dice_zone') and obj.hasTag('dice_zone') then
-    local die_slot_bags = {
-      ["[f8e28d]Acrobatics[-]"]          = getObjectFromGUID("6d89c2"),
-      ["[a099ad]Bow[-]"]                 = getObjectFromGUID("db5580"),
-      ["Combat"]                         = getObjectFromGUID("441f00"),
-      ["[b3d0d5]Daedric Summoning[-]"]   = getObjectFromGUID("25be0c"),
-      ["[768ccd]Destruction Staff[-]"]   = getObjectFromGUID("3c306d"),
-      ["[df7e7b]Heavy Armor[-]"]         = getObjectFromGUID("10fcd4"),
-      ["[e2b9e5]Illusion[-]"]            = getObjectFromGUID("c09813"),
-      ["[d6d495]Legerdemain[-]"]         = getObjectFromGUID("c8b9dd"),
-      ["[b1d0f0]Light Armor[-]"]         = getObjectFromGUID("e0d41f"),
-      ["[ada79a]One Hand And Shield[-]"] = getObjectFromGUID("c1c1fa"),
-      ["[bdb9ad]Restoring Light[-]"]     = getObjectFromGUID("854dab"),
-      ["[e5edc5]Shadow[-]"]              = getObjectFromGUID("6ccfde"),
-      ["[b6c4be]Speech[-]"]              = getObjectFromGUID("049614"),
-      ["[e6a463]Two Handed[-]"]          = getObjectFromGUID("13826d"),
-    }
+  if zone.hasTag('dice_zone') and obj.hasTag('dice_zone') then    
   
     if string.find(obj.getName(), "atigue") then return end
     pos = nil

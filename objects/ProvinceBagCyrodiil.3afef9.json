@@ -14,7 +14,6 @@
     "r": 1
   },
   "ContainedObjects_order": [
-    "CyrodiilReference2.447222",
     "CyrodiilReference1.a2bbf3",
     "CyrodiilDelves.6365b0",
     "CyrodiilEncountersConflict.69c31b",
@@ -24,6 +23,7 @@
     "Will-O-The-WispImp.e43710",
     "MountainLionBoar.5cd5a4",
     "WormAnchoriteWormWarrior.88c374",
+    "CyrodiilReference2.447222",
     "MinotaurLordMinotaur.87c75f"
   ],
   "ContainedObjects_path": "ProvinceBagCyrodiil.3afef9",

@@ -35,7 +35,7 @@
     "Argonian.98e8e9",
     "Argonian.b04060"
   ],
-  "ContainedObjects_path": "PlayerChipBag.0e06c1",
+  "ContainedObjects_path": "PlayerChipCloneBag.0e06c1",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "",
@@ -68,12 +68,12 @@
   "LayoutGroupSortIndex": 0,
   "Locked": true,
   "LuaScriptState": "",
-  "LuaScript_path": "PlayerChipBag.0e06c1.ttslua",
+  "LuaScript_path": "PlayerChipCloneBag.0e06c1.ttslua",
   "MaterialIndex": -1,
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Bag",
-  "Nickname": "Player Chip Bag",
+  "Nickname": "Player Chip Clone Bag",
   "Snap": true,
   "Sticky": true,
   "Tags": [

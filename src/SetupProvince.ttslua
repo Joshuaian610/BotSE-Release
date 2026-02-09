@@ -33,6 +33,7 @@ function initButtonCleanupSession(obj)
   })
 end
 
+
 function initButtonSelectGuild(obj)
   local provinceName = getObjectbyName("Pad Province Map").getGMNotes()
   local tints       = {
@@ -1136,8 +1137,8 @@ function placeProvinceReferences(provinceName, provinceBag)
   -- Cyrodiil & Valenwood will have 2 reference cards, all others only 1
 
   local rotReference = { 0, 180, 0}
-  local posReference1 = { -59.79, 1.15, 19.04 }
-  local posReference2 = { -64.22, 1.15, 19.04 }
+  local posReference1 = { -58.96, 1.15, -3.28 }
+  local posReference2 = { -63.16, 1.15, -3.28 }
 
   -- .5 second wait to time appearance with province map
   Wait.time(function()

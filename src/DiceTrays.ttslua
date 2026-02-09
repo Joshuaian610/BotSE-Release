@@ -62,7 +62,7 @@ function animateButtonsBagDice(obj)
   obj.setPositionSmooth(pos, false, false)
 
 
-  if buttonName == "Status Effect" or buttonName == "Combat" or buttonName == "EnemyCombat" or
+  if buttonName == "Status Effect" or buttonName == "Combat" or buttonName == "Enemy Combat" or
   buttonName == "Overfatigue" or buttonName == "Fatigue" then
     local displayObj = getObjectbyName("Button Display " .. buttonName)
     local pos = displayObj.getPosition()

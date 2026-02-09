@@ -12,18 +12,18 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674129095/1CC0C9E472121BA0F25376637BA214059F744883/",
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674115076/C1E34AF60E35934D20E95E5DCFEED40211A071B4/",
     "Convex": true,
     "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12585020437749285262/A98622E7F4E03FB9D4DCF1E7D0FEC1B57830049D/",
     "MaterialIndex": 1,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674129095/1CC0C9E472121BA0F25376637BA214059F744883/",
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718674115076/C1E34AF60E35934D20E95E5DCFEED40211A071B4/",
     "NormalURL": "",
     "TypeIndex": 5
   },
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "disabled",
-  "GUID": "b3e5e0",
+  "GUID": "98e8e9",
   "Grid": false,
   "GridProjection": false,
   "Hands": false,
@@ -32,16 +32,16 @@
   "LayoutGroupSortIndex": 0,
   "Locked": false,
   "LuaScriptState": "[5]",
-  "LuaScript_path": "PlayerChipBag.0e06c1/WoodElf.b3e5e0.ttslua",
+  "LuaScript_path": "PlayerChipCloneBag.0e06c1/Argonian.98e8e9.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Model",
-  "Nickname": "Wood Elf",
+  "Nickname": "Argonian",
   "Snap": true,
   "Sticky": true,
   "Tags": [
+    "argonian_b",
     "player_chip",
-    "snap_hex",
-    "w_elf_b"
+    "snap_hex"
   ],
   "Tooltip": true,
   "Transform": {

@@ -571,19 +571,27 @@ function onObjectEnterZone(zone, enter_object)
                 end
             end
         elseif card.getName()  == "Necromancer" then
-            local counter_bag   = getObjectFromGUID((zone.getGUID() == "d3bce7" and "cdeb0f") or (zone.getGUID() == "54f5ff" and "abd7bf") or
-            (zone.getGUID()    == "b3bbf4" and "569512") or (zone.getGUID() == "b8d5f2" and "1d99c4"))
-            local placement_pos = (zone.getGUID() == "d3bce7" and {-46.68, 1.6, -32.00}) or (zone.getGUID() == "54f5ff" and {-10.99, 1.6, -32.00}) or
-            (zone.getGUID()    == "b3bbf4" and {25.36, 1.6, -32.00}) or (zone.getGUID() == "b8d5f2" and {61.00, 1.6, -32.00})
-            if counter_bag == nil then return end
-            local counter       = counter_bag.takeObject()
-            Wait.frames(function()
-            counter.call('set_val', 0)
-            counter.setColorTint("Black")
-            counter.setName("Necrosis Stack")
-            counter.setRotation({0, 180, 0})
-            counter.setPositionSmooth(placement_pos, false, false)
-            end)
+            local necrosis_stack_exists = false
+            for _, object in pairs(zone.getObjects()) do
+                if object.getName() == "Necrosis Stack" then
+                    necrosis_stack_exists = true
+                end
+            end
+            if not necrosis_stack_exists then
+                local counter_bag   = getObjectFromGUID((zone.getGUID() == "d3bce7" and "cdeb0f") or (zone.getGUID() == "54f5ff" and "abd7bf") or
+                (zone.getGUID()    == "b3bbf4" and "569512") or (zone.getGUID() == "b8d5f2" and "1d99c4"))
+                local placement_pos = (zone.getGUID() == "d3bce7" and {-46.68, 1.6, -32.00}) or (zone.getGUID() == "54f5ff" and {-10.99, 1.6, -32.00}) or
+                (zone.getGUID()    == "b3bbf4" and {25.36, 1.6, -32.00}) or (zone.getGUID() == "b8d5f2" and {61.00, 1.6, -32.00})
+                if counter_bag == nil then return end
+                local counter       = counter_bag.takeObject()
+                Wait.frames(function()
+                    counter.call('set_val', 0)
+                    counter.setColorTint("Black")
+                    counter.setName("Necrosis Stack")
+                    counter.setRotation({0, 180, 0})
+                    counter.setPositionSmooth(placement_pos, false, false)
+                end)
+            end
         elseif card.getName()  == "Assassin" then
             local unique_bag    = getObjectFromGUID("bd6c1b")
             for _, bag_object in pairs(unique_bag.getObjects()) do
