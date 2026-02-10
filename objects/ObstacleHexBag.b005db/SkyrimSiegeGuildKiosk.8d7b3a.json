@@ -68,7 +68,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/9862137502968783881/5E9D5E706B8B882BF36D692FFE882975486CDFB9/",
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/13832374850401071354/BE2CA89C19B355F4BC338CF90901FD5B880B4EF3/",
     "MaterialIndex": 0,
     "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/12561450818680118990/13CE965EDB13BA6F8B67F79B4064F15DAAE20088/",
     "NormalURL": "",
@@ -89,7 +89,7 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Custom_Model",
-  "Nickname": "3 Hex",
+  "Nickname": "Skyrim Siege Guild Kiosk",
   "Snap": true,
   "Sticky": true,
   "Tags": [
@@ -97,14 +97,14 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 17.238,
-    "posY": 2.069,
-    "posZ": 28.75,
+    "posX": 88.414,
+    "posY": 3.105,
+    "posZ": 76.805,
     "rotX": 0,
-    "rotY": 300,
-    "rotZ": 359,
+    "rotY": 60,
+    "rotZ": 0,
     "scaleX": 1.25,
-    "scaleY": 1.25,
+    "scaleY": 5,
     "scaleZ": 1.25
   },
   "Value": 0,

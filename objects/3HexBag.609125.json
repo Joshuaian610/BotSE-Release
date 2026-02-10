@@ -89,9 +89,9 @@
     "r": 1
   },
   "ContainedObjects_order": [
+    "3Hex.8d7b3a",
     "3Hex.5ba861",
-    "3Hex.23b040",
-    "3Hex.8d7b3a"
+    "3Hex.23b040"
   ],
   "ContainedObjects_path": "3HexBag.609125",
   "CustomMesh": {

@@ -124,7 +124,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/13553444454438414390/B90AB3E80641458E00F902FE77FD60D0947E4267/",
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/11528465011326107543/10DA4E4D4DB3D97F099034FA4B93FC1A058561D1/",
     "MaterialIndex": 0,
     "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/11817376014850955038/95E8E1044F5961464A62E6948593AFF0B6459A04/",
     "NormalURL": "",
@@ -133,7 +133,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "a4d309",
+  "GUID": "14727c",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -145,19 +145,19 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Custom_Model",
-  "Nickname": "Skyrim Siege Shop",
+  "Nickname": "Skyrim Siege Inn",
   "Snap": true,
   "Sticky": true,
   "Tags": [
-    "hex_obstacle"
+    "hex_7"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 65.434,
-    "posY": 2.827,
-    "posZ": 41.985,
+    "posX": 58.629,
+    "posY": 5.907,
+    "posZ": 30.939,
     "rotX": 0,
-    "rotY": 300,
+    "rotY": 120,
     "rotZ": 0,
     "scaleX": 1.25,
     "scaleY": 5,

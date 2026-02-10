@@ -8599,17 +8599,18 @@ function deploySkyrimTown()
     ["Town Square"] = true,
   }
 
-  local rotHex = { 0, 300, 0 }
+  local rot3Hex = { 0, 60, 0 }
   local pos3Hex = {
-    { 2.05, 2.72, 13.06 },
-    { 2.05, 2.97, 2.41 },
-    { 2.05, 2.72, -8.24 },
+    { 2.05, 2.38, 13.06 },
+    { 2.05, 2.63, 2.41 },
+    { 2.05, 2.38, -8.24 },
   }
   local ttip3Hex = {
     "Trainers",
     "Town Square",
     "Guild Kiosk",
   }
+  local rot7Hex = { 0, 120, 0 }
   local pos7Hex = {
     { 13.32, 1.24, 11.29 },
     { 13.32, 1.24, -6.46 },
@@ -8681,8 +8682,8 @@ function deploySkyrimTown()
         end
       end
       if hex3 ~= nil then
-        hex3.setRotation(rotHex)
-        hex3.setPositionSmooth(pos3Hex[i], false, false)
+        hex3.setRotation(rot3Hex)
+        hex3.setPosition(pos3Hex[i], false, false)
         hex3.setLock(true)
         hex3.setDescription(ttip3Hex[i])
       end
@@ -8701,8 +8702,8 @@ function deploySkyrimTown()
         end
       end
       if hex7 ~= nil then
-        hex7.setRotation(rotHex)
-        hex7.setPositionSmooth(pos7Hex[i], false, false)
+        hex7.setRotation(rot7Hex)
+        hex7.setPosition(pos7Hex[i], false, false)
         hex7.setLock(true)
         hex7.setDescription(ttip7Hex[i])
       end
@@ -8718,509 +8719,304 @@ end
 
 function setupDungeonMap(button, _, _)
 
-    -- this function sets up a base dungeon map for current province
-    animateButtonsGeneric(button)
+  -- this function sets up a base dungeon map for current province
+  animateButtonsGeneric(button)
 
-    local playerCount = getObjectbyName("Button Player Count").getVar('val')
+  local playerCount = getObjectbyName("Button Player Count").getVar('val')
 
-    -- detect current province
-    -- get and find province map, provinceMapName (especially important for eastern/western skyrim)
-    local zone = getObjectFromGUID("64c0a4")
-    local provinceName = nil
-    for _, obj in ipairs(zone.getObjects()) do
-      local name = obj.getName()
-      local match = string.match(name, "^(.-) Overland Map$")
-      if match and posEncounters[match] then
-        provinceName = match
-        break
-      end
+  -- detect current province
+  -- get and find province map, provinceMapName (especially important for eastern/western skyrim)
+  local zone = getObjectFromGUID("64c0a4")
+  local provinceName = nil
+  for _, obj in ipairs(zone.getObjects()) do
+    local name = obj.getName()
+    local match = string.match(name, "^(.-) Overland Map$")
+    if match and posEncounters[match] then
+      provinceName = match
+      break
     end
-    if provinceName:find("Eastern") or provinceName:find("Western") then provinceName = "Skyrim" end
-    if not provinceName then
-      broadcastToAll("No Province Map Found, unable to determine dungeon to set up!.", "Orange")
+  end
+  if provinceName:find("Eastern") or provinceName:find("Western") then provinceName = "Skyrim" end
+  if not provinceName then
+    broadcastToAll("No Province Map Found, unable to determine dungeon to set up!.", "Orange")
+    return
+  end
+  
+  -- detect if battle area is clear
+  local checkZoneBattle = getObjectFromGUID("b5dd6d")
+  for _, object in pairs(checkZoneBattle.getObjects()) do
+    if object.getName() == "Clash Mat" or object.getName():find("Gazetteer") then
+      broadcastToAll("Clear previous encounter before using this button.", "Orange")
       return
     end
+  end
+
+  -- if clear, lay out dungeon
+  local bagEntrance = getObjectbyName("Entrance Tile Bag")
+  local bagClash = getObjectbyName("Clash Mat Bag")    
+  local bag3Hex = getObjectbyName("3 Hex Bag")
+  local bag6Hex = getObjectbyName("6 Hex Bag")
+  local bag7Hex = getObjectbyName("7 Hex Bag")
+  local bag19Hex = getObjectbyName("19 Hex Bag")
+  local bagObstacle = getObjectbyName("Obstacle Hex Bag")
+  local bagCaches = getObjectbyName("Cache Chip Bag")
+  rotDungeon = {
+    ["Black Marsh"] = {
+      ["Clash"]     = { 0, 300, 0 },
+      ["Entrance"]  = { 0, 180, 0 },
+      ["7Hex"]      = { 0, 60, 0 },
+      ["6Hex"]      = { { 0, 120, 0 }, { 0, 0, 0 }, { 0, 0, 0 } },
+      ["3Hex"]      = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 60, 0 } },
+      ["Caches"]    = { 0, 180, 0 }
+    },
+    ["Cyrodiil"]    = {
+      ["Entrance"]  = { 0, 180, 0 },
+      ["19Hex"]     = { 0, 60, 0 },
+      ["7Hex"]      = { 0, 60, 0 },
+      ["6Hex"]      = { { 0, 60, 0 }, { 0, 180, 0 }, { 0, 180, 0 } },
+      ["3Hex"]      = { 0, 0, 0 },
+      ["Caches"]    = { 0, 180, 0 }
+    },
+    ["High Rock"]   = {
+      ["Entrance"]  = { 0, 120, 0 },
+      ["19Hex"]     = { 0, 60, 0 },
+      ["7Hex"]      = { 0, 60, 0 },
+      ["6Hex"]      = { { 0, 180, 0 }, { 0, 120, 0 } },
+      ["3Hex"]      = { { 0, 0, 0 }, { 0, 300, 0 }, { 0, 300, 0 } },
+      ["Caches"]    = { { 0, 180, 0}, { 0, 180, 0}, { 0, 180, 0}, { 0, 180, 0}, { 0, 180, 180} }
+    },
+    ["Morrowind"]   = {
+      ["Entrance"]  = { 0, 180, 0 },
+      ["19Hex"]     = { 0, 60, 0 },
+      ["6Hex"]      = { { 0, 180, 0 }, { 0, 120, 0 }, { 0, 120, 0 } },
+      ["3Hex"]      = { { 0, 0, 0 }, { 0, 300, 0 } },
+      ["Caches"]    = { 0, 180, 0 }
+    },
+    ["Skyrim"]      = {
+      ["Entrance"]  = { 0, 0, 0 },
+      ["19Hex"]     = { 0, 60, 0 },
+      ["6Hex"]      = { 0, 120, 0 },
+      ["3Hex"]      = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 60, 0} },
+      ["Caches"]    = { { 0, 180, 0 }, { 0, 180, 180} },
+      ["Counters"]  = { 0, 180, 0 },
+      ["Vampire"]    = { 0, 180, 0 }
+    },
+    ["Valenwood"]   = {
+      ["Entrance"]  = { 0, 300, 0 },
+      ["19Hex"]     = { 0, 60, 0 },
+      ["7Hex"]      = { 0, 60, 0 },
+      ["6Hex"]      = { { 0, 60, 0 }, { 0, 0, 0 }, { 0, 120, 0 } },
+      ["3Hex"]      = { 0, 0, 0 },
+      ["19Obs"]     = { 0, 60, 0 },
+      ["6Obs"]      = { 0, 300, 0 },
+      ["3Obs"]      = { 0, 0, 0 },
+    }
+  }
+  posDungeon = {
+    ["Black Marsh"] = {
+      ["Clash"]     = { 12.30, 1.37, 5.97 },
+      ["Entrance"]  = { 18.45, 1.53, -4.69 },
+      ["7Hex"]      = { -17.43, 1.24, 11.29 },
+      ["6Hex"]      = { { -1.03, 1.24, 7.74 }, { -7.18, 1.24, 4.19 }, { 2.10, 1.24, -4.74 } },
+      ["3Hex"]      = { { -3.08, 1.53, 14.84 }, { -15.38, 1.53, 0.64 }, { -7.18, 1.53, -6.46 } },
+      ["Caches"]    = { { 13.33, 1.83, 14.86 }, { -2.10, 1.53, 6.04 }, { 4.12, 1.53, -8.22 } }
+    },
+    ["Cyrodiil"]    = {
+      ["Entrance"]  = { -4.10, 1.53, 13.06 },
+      ["19Hex"]     = { 0.00, 1.53, -1.14 },
+      ["7Hex"]      = { { -12.30, 1.24, 13.06 }, { 15.37, 1.24, 7.74 }, { 0.00, 1.53, -1.14 } },
+      ["6Hex"]      = { { -19.48, 1.24, -2.91 }, { -13.33, 1.24, 0.64 }, { 11.27, 1.24, -2.91 } },
+      ["3Hex"]      = { { 2.05, 1.53, 9.51 }, { 17.42, 1.53, 0.64 } },
+      ["Caches"]    = { { 0.04, 1.53, 5.82 }, { 6.09, 1.53, -1.18 }, { 0.06, 1.53, -8.13 }, { -6.07, 1.53, -1.25 } }
+    },
+    ["High Rock"]   = {
+      ["Entrance"]  = { 4.10, 1.53, 13.06 },
+      ["19Hex"]     = { -6.15, 1.53, -1.14 },
+      ["7Hex"]      = { { -12.30, 1.24, 13.06 }, { 16.40, 1.24, -1.14 } },
+      ["6Hex"]      = { { -4.10, 1.24, 13.06 }, { 14.35, 1.24, 5.96 } },
+      ["3Hex"]      = { { -16.40, 1.53, -1.14 }, { 4.10, 1.53, -1.14 }, { 14.35, 1.53, 13.06 } },
+      ["Caches"]    =  { { -6.09, 1.53, -8.13 }, { -6.11, 1.53, 5.82 }, { 13.46, 1.53, -2.92 }, { 19.34, 1.53, -2.87 }, { 16.40, 2.37, -1.20 } }
+    },
+    ["Morrowind"]   = {
+      ["Entrance"]  = { 14.35, 1.53, -4.69 },
+      ["19Hex"]     = { 0.00, 1.53, 5.96 },
+      ["6Hex"]      = { { -13.33, 1.24, 11.29 }, { -11.28, 1.24, -2.91 }, { 10.25, 1.24, 13.06 } },
+      ["3Hex"]      = { { 8.20, 1.53, -1.14 }, { 13.32, 1.53, 0.64 } },
+      ["Caches"]    = { { -15.35, 1.53, -2.96 }, { -15.35, 1.53, 14.77 }, { 15.17, 1.53, 14.82 } }
+    },
+    ["Skyrim"]      = {
+      ["Entrance"]  = { 16.40, 1.53, 5.96 },
+      ["19Hex"]     = { -9.23, 1.53, 4.19 },
+      ["6Hex"]      = { { 1.04, 1.24, 11.33 }, { 10.25, 1.24, -1.14 } },
+      ["3Hex"]      = { { -1.03, 1.53, -2.91 }, { 8.20, 1.53, 9.51 }, { 4.10, 1.53, -4.69 } },
+      ["Caches"]    = { { 2.98, 1.53, 14.78 }, { 3.05, 2.37, -6.41 } },
+      ["Counters"]  = { { -15.38, 1.53, 7.74 }, { -3.08, 1.53, 7.74 }, { -15.38, 1.53, 0.64 }, { -3.08, 1.53, 0.64 } },
+      ["Vampire"]    = { -9.13, 2.00, 4.13 }
+    },
+    ["Valenwood"]   = {
+      ["Entrance"]  = { -14.35, 1.53, 2.41 },
+      ["19Hex"]     = { 17.42, 1.53, 4.19 },
+      ["7Hex"]      = { -7.18, 1.24, 4.19 },
+      ["6Hex"]      = { { -11.28, 1.24, 11.29 }, { -6.15, 1.24, -4.69 }, { 3.07, 1.24, 4.19 } },
+      ["3Hex"]      = { { 1.02, 1.53, -6.46 }, { -5.13, 1.53, 14.84 }, { 7.17, 1.53, 0.64 } },
+      ["19Obs"]     = { 17.41, 3.00, 4.16 },
+      ["6Obs"]      = { 4.10, 1.53, 5.96 },
+      ["3Obs"]      = { 7.17, 3.00, 0.64 },
+    }
+  }    
+
+  if provinceName == "Black Marsh" then
     
-    -- detect if battle area is clear
-    local checkZoneBattle = getObjectFromGUID("b5dd6d")
-    for _, object in pairs(checkZoneBattle.getObjects()) do
-      if object.getName() == "Clash Mat" or object.getName():find("Gazetteer") then
-        broadcastToAll("Clear previous encounter before using this button.", "Orange")
-        return
+    -- clash mat
+    for _, object in pairs(bagClash.getObjects()) do
+      if object.gm_notes == "B" then
+        local clashMat = bagClash.takeObject({guid=object.guid})
+        Wait.frames(function()
+          clashMat.setRotation(rotDungeon[provinceName]["Clash"])
+          clashMat.setPosition(posDungeon[provinceName]["Clash"])
+          clashMat.setLock(true)
+        end)
       end
     end
 
-    -- if clear, lay out dungeon
-    local bagEntrance = getObjectbyName("Entrance Tile Bag")
-    local bagClash = getObjectbyName("Clash Mat Bag")    
-    local bag3Hex = getObjectbyName("3 Hex Bag")
-    local bag6Hex = getObjectbyName("6 Hex Bag")
-    local bag7Hex = getObjectbyName("7 Hex Bag")
-    local bag19Hex = getObjectbyName("19 Hex Bag")
-    local bagObstacle = getObjectbyName("Obstacle Hex Bag")
-    local bagCaches = getObjectbyName("Cache Chip Bag")
-    rotDungeon = {
-      ["Black Marsh"] = {
-        ["Clash"]     = { 0, 300, 0 },
-        ["Entrance"]  = { 0, 180, 0 },
-        ["7Hex"]      = { 0, 60, 0 },
-        ["6Hex"]      = { { 0, 120, 0 }, { 0, 0, 0 }, { 0, 0, 0 } },
-        ["3Hex"]      = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 60, 0 } },
-        ["Caches"]    = { 0, 180, 0 }
-      },
-      ["Cyrodiil"]    = {
-        ["Entrance"]  = { 0, 180, 0 },
-        ["19Hex"]     = { 0, 60, 0 },
-        ["7Hex"]      = { 0, 60, 0 },
-        ["6Hex"]      = { { 0, 60, 0 }, { 0, 180, 0 }, { 0, 180, 0 } },
-        ["3Hex"]      = { 0, 0, 0 },
-        ["Caches"]    = { 0, 180, 0 }
-      },
-      ["High Rock"]   = {
-        ["Entrance"]  = { 0, 120, 0 },
-        ["19Hex"]     = { 0, 60, 0 },
-        ["7Hex"]      = { 0, 60, 0 },
-        ["6Hex"]      = { { 0, 180, 0 }, { 0, 120, 0 } },
-        ["3Hex"]      = { { 0, 0, 0 }, { 0, 300, 0 }, { 0, 300, 0 } },
-        ["Caches"]    = { { 0, 180, 0}, { 0, 180, 0}, { 0, 180, 0}, { 0, 180, 0}, { 0, 180, 180} }
-      },
-      ["Morrowind"]   = {
-        ["Entrance"]  = { 0, 180, 0 },
-        ["19Hex"]     = { 0, 60, 0 },
-        ["6Hex"]      = { { 0, 180, 0 }, { 0, 120, 0 }, { 0, 120, 0 } },
-        ["3Hex"]      = { { 0, 0, 0 }, { 0, 300, 0 } },
-        ["Caches"]    = { 0, 180, 0 }
-      },
-      ["Skyrim"]      = {
-        ["Entrance"]  = { 0, 0, 0 },
-        ["19Hex"]     = { 0, 60, 0 },
-        ["6Hex"]      = { 0, 120, 0 },
-        ["3Hex"]      = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 60, 0} },
-        ["Caches"]    = { { 0, 180, 0 }, { 0, 180, 180} },
-        ["Counters"]  = { 0, 180, 0 },
-        ["Vampire"]    = { 0, 180, 0 }
-      },
-      ["Valenwood"]   = {
-        ["Entrance"]  = { 0, 300, 0 },
-        ["19Hex"]     = { 0, 60, 0 },
-        ["7Hex"]      = { 0, 60, 0 },
-        ["6Hex"]      = { { 0, 60, 0 }, { 0, 0, 0 }, { 0, 120, 0 } },
-        ["3Hex"]      = { 0, 0, 0 },
-        ["19Obs"]     = { 0, 60, 0 },
-        ["6Obs"]      = { 0, 300, 0 },
-        ["3Obs"]      = { 0, 0, 0 },
-      }
-    }
-    posDungeon = {
-      ["Black Marsh"] = {
-        ["Clash"]     = { 12.30, 1.37, 5.97 },
-        ["Entrance"]  = { 18.45, 1.53, -4.69 },
-        ["7Hex"]      = { -17.43, 1.24, 11.29 },
-        ["6Hex"]      = { { -1.03, 1.24, 7.74 }, { -7.18, 1.24, 4.19 }, { 2.10, 1.24, -4.74 } },
-        ["3Hex"]      = { { -3.08, 1.53, 14.84 }, { -15.38, 1.53, 0.64 }, { -7.18, 1.53, -6.46 } },
-        ["Caches"]    = { { 13.33, 1.83, 14.86 }, { -2.10, 1.53, 6.04 }, { 4.12, 1.53, -8.22 } }
-      },
-      ["Cyrodiil"]    = {
-        ["Entrance"]  = { -4.10, 1.53, 13.06 },
-        ["19Hex"]     = { 0.00, 1.53, -1.14 },
-        ["7Hex"]      = { { -12.30, 1.24, 13.06 }, { 15.37, 1.24, 7.74 }, { 0.00, 1.53, -1.14 } },
-        ["6Hex"]      = { { -19.48, 1.24, -2.91 }, { -13.33, 1.24, 0.64 }, { 11.27, 1.24, -2.91 } },
-        ["3Hex"]      = { { 2.05, 1.53, 9.51 }, { 17.42, 1.53, 0.64 } },
-        ["Caches"]    = { { 0.04, 1.53, 5.82 }, { 6.09, 1.53, -1.18 }, { 0.06, 1.53, -8.13 }, { -6.07, 1.53, -1.25 } }
-      },
-      ["High Rock"]   = {
-        ["Entrance"]  = { 4.10, 1.53, 13.06 },
-        ["19Hex"]     = { -6.15, 1.53, -1.14 },
-        ["7Hex"]      = { { -12.30, 1.24, 13.06 }, { 16.40, 1.24, -1.14 } },
-        ["6Hex"]      = { { -4.10, 1.24, 13.06 }, { 14.35, 1.24, 5.96 } },
-        ["3Hex"]      = { { -16.40, 1.53, -1.14 }, { 4.10, 1.53, -1.14 }, { 14.35, 1.53, 13.06 } },
-        ["Caches"]    =  { { -6.09, 1.53, -8.13 }, { -6.11, 1.53, 5.82 }, { 13.46, 1.53, -2.92 }, { 19.34, 1.53, -2.87 }, { 16.40, 2.37, -1.20 } }
-      },
-      ["Morrowind"]   = {
-        ["Entrance"]  = { 14.35, 1.53, -4.69 },
-        ["19Hex"]     = { 0.00, 1.53, 5.96 },
-        ["6Hex"]      = { { -13.33, 1.24, 11.29 }, { -11.28, 1.24, -2.91 }, { 10.25, 1.24, 13.06 } },
-        ["3Hex"]      = { { 8.20, 1.53, -1.14 }, { 13.32, 1.53, 0.64 } },
-        ["Caches"]    = { { -15.35, 1.53, -2.96 }, { -15.35, 1.53, 14.77 }, { 15.17, 1.53, 14.82 } }
-      },
-      ["Skyrim"]      = {
-        ["Entrance"]  = { 16.40, 1.53, 5.96 },
-        ["19Hex"]     = { -9.23, 1.53, 4.19 },
-        ["6Hex"]      = { { 1.04, 1.24, 11.33 }, { 10.25, 1.24, -1.14 } },
-        ["3Hex"]      = { { -1.03, 1.53, -2.91 }, { 8.20, 1.53, 9.51 }, { 4.10, 1.53, -4.69 } },
-        ["Caches"]    = { { 2.98, 1.53, 14.78 }, { 3.05, 2.37, -6.41 } },
-        ["Counters"]  = { { -15.38, 1.53, 7.74 }, { -3.08, 1.53, 7.74 }, { -15.38, 1.53, 0.64 }, { -3.08, 1.53, 0.64 } },
-        ["Vampire"]    = { -9.13, 2.00, 4.13 }
-      },
-      ["Valenwood"]   = {
-        ["Entrance"]  = { -14.35, 1.53, 2.41 },
-        ["19Hex"]     = { 17.42, 1.53, 4.19 },
-        ["7Hex"]      = { -7.18, 1.24, 4.19 },
-        ["6Hex"]      = { { -11.28, 1.24, 11.29 }, { -6.15, 1.24, -4.69 }, { 3.07, 1.24, 4.19 } },
-        ["3Hex"]      = { { 1.02, 1.53, -6.46 }, { -5.13, 1.53, 14.84 }, { 7.17, 1.53, 0.64 } },
-        ["19Obs"]     = { 17.41, 3.00, 4.16 },
-        ["6Obs"]      = { 4.10, 1.53, 5.96 },
-        ["3Obs"]      = { 7.17, 3.00, 0.64 },
-      }
-    }    
+    -- Entrance
+    local entranceTile = bagEntrance.takeObject()
+    Wait.frames(function()
+      entranceTile.setRotation(rotDungeon[provinceName]["Entrance"])
+      entranceTile.setPosition(posDungeon[provinceName]["Entrance"])
+      entranceTile.setLock(true)
+      entranceTile.highlightOn("Green")
+    end)
 
-    if provinceName == "Black Marsh" then
-      
-      -- clash mat
-      for _, object in pairs(bagClash.getObjects()) do
-        if object.gm_notes == "B" then
-          local clashMat = bagClash.takeObject({guid=object.guid})
-          Wait.frames(function()
-            clashMat.setRotation(rotDungeon[provinceName]["Clash"])
-            clashMat.setPosition(posDungeon[provinceName]["Clash"])
-            clashMat.setLock(true)
-          end)
-        end
+    -- 7 Hex
+    local tile7Hex = bag7Hex.takeObject()
+    Wait.frames(function()
+      tile7Hex.setRotation(rotDungeon[provinceName]["7Hex"])
+      tile7Hex.setPosition(posDungeon[provinceName]["7Hex"])
+      tile7Hex.setLock(true)
+      tile7Hex.highlightOn("Pink")
+    end)
+
+    -- 6 Hex X3
+    for i = 1, 3 do
+      local tile6Hex = bag6Hex.takeObject()
+      Wait.frames(function()
+        tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setLock(true)          
+      end)
+    end
+
+    -- 3 Hex X3
+    for i = 1, 3 do
+      local tile3Hex = bag3Hex.takeObject()
+      Wait.frames(function()
+        tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setLock(true)
+        tile3Hex.highlightOn("Pink")
+      end)
+    end
+
+    -- caches
+    Wait.time(function()
+    
+      for i = 1, 3 do
+        local cache = bagCaches.takeObject()
+        Wait.frames(function()
+          cache.setRotation(rotDungeon[provinceName]["Caches"])
+          cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
+        end)        
       end
 
-      -- Entrance
-      local entranceTile = bagEntrance.takeObject()
-      Wait.frames(function()
-        entranceTile.setRotation(rotDungeon[provinceName]["Entrance"])
-        entranceTile.setPosition(posDungeon[provinceName]["Entrance"])
-        entranceTile.setLock(true)
-        entranceTile.highlightOn("Green")
-      end)
+    end, 1)
+    
+  elseif provinceName == "Cyrodiil" then
+    -- Entrance
+    local tileEntrance = bagEntrance.takeObject()
+    Wait.frames(function()
+      if tileEntrance then
+        tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
+        tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
+        tileEntrance.setLock(true)
+        tileEntrance.highlightOn("Green")
+      end
+    end)
 
-      -- 7 Hex
+    -- 19 Hex
+    for _, object in pairs(bag19Hex.getObjects()) do        
+      local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
+      Wait.frames(function()
+        if tile19Hex then
+          tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
+          tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
+          tile19Hex.setLock(true)
+          tile19Hex.highlightOn("Brown")
+        end
+      end)     
+    end
+
+    -- 7 Hex X3
+    for i = 1, 3 do
       local tile7Hex = bag7Hex.takeObject()
       Wait.frames(function()
         tile7Hex.setRotation(rotDungeon[provinceName]["7Hex"])
-        tile7Hex.setPosition(posDungeon[provinceName]["7Hex"])
+        tile7Hex.setPosition(posDungeon[provinceName]["7Hex"][i])
         tile7Hex.setLock(true)
-        tile7Hex.highlightOn("Pink")
+        tile7Hex.highlightOn(i == 3 and "Brown" or "Green")
       end)
+    end
 
-      -- 6 Hex X3
-      for i = 1, 3 do
-        local tile6Hex = bag6Hex.takeObject()
-        Wait.frames(function()
-          tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setLock(true)          
-        end)
-      end
-
-      -- 3 Hex X3
-      for i = 1, 3 do
-        local tile3Hex = bag3Hex.takeObject()
-        Wait.frames(function()
-          tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setLock(true)
-          tile3Hex.highlightOn("Pink")
-        end)
-      end
-
-      -- caches
-      Wait.time(function()
-      
-        for i = 1, 3 do
-          local cache = bagCaches.takeObject()
-          Wait.frames(function()
-            cache.setRotation(rotDungeon[provinceName]["Caches"])
-            cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
-          end)        
-        end
-
-      end, 1)
-      
-    elseif provinceName == "Cyrodiil" then
-      -- Entrance
-      local tileEntrance = bagEntrance.takeObject()
+    -- 6 Hex X3
+    for i = 1, 3 do
+      local tile6Hex = bag6Hex.takeObject()
       Wait.frames(function()
-        if tileEntrance then
-          tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
-          tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
-          tileEntrance.setLock(true)
-          tileEntrance.highlightOn("Green")
-        end
+        tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setLock(true)
+        tile6Hex.highlightOn(i == 3 and "Green" or "Yellow")
       end)
+    end
 
-      -- 19 Hex
-      for _, object in pairs(bag19Hex.getObjects()) do        
-        local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
-        Wait.frames(function()
-          if tile19Hex then
-            tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
-            tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
-            tile19Hex.setLock(true)
-            tile19Hex.highlightOn("Brown")
-          end
-        end)     
-      end
-
-      -- 7 Hex X3
-      for i = 1, 3 do
-        local tile7Hex = bag7Hex.takeObject()
-        Wait.frames(function()
-          tile7Hex.setRotation(rotDungeon[provinceName]["7Hex"])
-          tile7Hex.setPosition(posDungeon[provinceName]["7Hex"][i])
-          tile7Hex.setLock(true)
-          tile7Hex.highlightOn(i == 3 and "Brown" or "Green")
-        end)
-      end
-
-      -- 6 Hex X3
-      for i = 1, 3 do
-        local tile6Hex = bag6Hex.takeObject()
-        Wait.frames(function()
-          tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setLock(true)
-          tile6Hex.highlightOn(i == 3 and "Green" or "Yellow")
-        end)
-      end
-
-      -- 3 Hex X2
-      for i = 1, 2 do
-        local tile3Hex = bag3Hex.takeObject()
-        Wait.frames(function()
-          tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"])
-          tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setLock(true)
-          tile3Hex.highlightOn("Green")
-        end)
-      end
-
-      -- caches
-      Wait.time(function()
-      
-        for i = 1, 4 do
-          local cache = bagCaches.takeObject()
-          Wait.frames(function()
-            cache.setRotation(rotDungeon[provinceName]["Caches"])
-            cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
-          end)        
-        end
-
-      end, 1)
-
-    elseif provinceName == "High Rock" then
-      -- Entrance
-      local tileEntrance = bagEntrance.takeObject()
+    -- 3 Hex X2
+    for i = 1, 2 do
+      local tile3Hex = bag3Hex.takeObject()
       Wait.frames(function()
-        if tileEntrance then
-          tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
-          tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
-          tileEntrance.setLock(true)
-          tileEntrance.highlightOn("Green")
-        end
+        tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"])
+        tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setLock(true)
+        tile3Hex.highlightOn("Green")
       end)
+    end
 
-      -- 19 Hex
-      for _, object in pairs(bag19Hex.getObjects()) do        
-        local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
-        Wait.frames(function()
-          if tile19Hex then
-            tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
-            tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
-            tile19Hex.setLock(true)
-            tile19Hex.highlightOn("Teal")
-          end
-        end)     
-      end
-
-      -- 7 Hex X2
-      for i = 1, 2 do
-        local tile7Hex = bag7Hex.takeObject()
-        Wait.frames(function()
-          tile7Hex.setRotation(rotDungeon[provinceName]["7Hex"])
-          tile7Hex.setPosition(posDungeon[provinceName]["7Hex"][i])
-          tile7Hex.setLock(true)
-          tile7Hex.highlightOn(i == 1 and "Green" or "Pink")
-        end)
-      end
-
-      -- 6 Hex X2
-      for i = 1, 2 do
-        local tile6Hex = bag6Hex.takeObject()
-        Wait.frames(function()
-          tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setLock(true)
-          tile6Hex.highlightOn(i == 1 and "Green" or "Pink")
-        end)
-      end
-
-      -- 3 Hex X3
-      for i = 1, 3 do
-        local tile3Hex = bag3Hex.takeObject()
-        Wait.frames(function()
-          tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setLock(true)
-          tile3Hex.highlightOn(i == 3 and "Pink" or "Teal")
-        end)
-      end
-
-      -- caches
-      Wait.time(function()
-      
-        for i = 1, 5 do
-          local cache = bagCaches.takeObject()
-          Wait.frames(function()
-            cache.setRotation(rotDungeon[provinceName]["Caches"][i])
-            cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
-          end)        
-        end
-
-      end, 1)
-
-    elseif provinceName == "Morrowind" then
-      -- Entrance
-      local tileEntrance = bagEntrance.takeObject()
-      Wait.frames(function()
-        if tileEntrance then
-          tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
-          tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
-          tileEntrance.setLock(true)
-          tileEntrance.highlightOn("Green")
-        end
-      end)
-
-      -- 19 Hex
-      for _, object in pairs(bag19Hex.getObjects()) do        
-        local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
-        Wait.frames(function()
-          if tile19Hex then
-            tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
-            tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
-            tile19Hex.setLock(true)           
-          end
-        end)     
-      end
-
-      -- 6 Hex X3
-      for i = 1, 3 do
-        local tile6Hex = bag6Hex.takeObject()
-        Wait.frames(function()
-          tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setLock(true)
-        end)
-      end
-
-      -- 3 Hex X2
-      for i = 1, 2 do
-        local tile3Hex = bag3Hex.takeObject()
-        Wait.frames(function()
-          tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setLock(true)
-        end)
-      end
-
-      -- caches
-      Wait.time(function()
-      
-        for i = 1, 3 do
-          local cache = bagCaches.takeObject()
-          Wait.frames(function()
-            cache.setRotation(rotDungeon[provinceName]["Caches"])
-            cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
-            cache.highlightOn("Green")
-          end)        
-        end
-
-      end, 1)
-
-    elseif provinceName == "Skyrim" then
-      -- Entrance
-      local tileEntrance = bagEntrance.takeObject()
-      Wait.frames(function()
-        if tileEntrance then
-          tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
-          tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
-          tileEntrance.setLock(true)
-          tileEntrance.highlightOn("Green")
-        end
-      end)
-
-      -- 19 Hex
-      for _, object in pairs(bag19Hex.getObjects()) do        
-        local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
-        Wait.frames(function()
-          if tile19Hex then
-            tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
-            tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
-            tile19Hex.setLock(true)           
-          end
-        end)     
-      end
-
-      -- 6 Hex X2
-      for i = 1, 2 do
-        local tile6Hex = bag6Hex.takeObject()
-        Wait.frames(function()
-          tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"])
-          tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setLock(true)
-        end)
-      end
-
-      -- 3 Hex X3
-      for i = 1, 3 do
-        local tile3Hex = bag3Hex.takeObject()
-        Wait.frames(function()
-          tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setLock(true)
-        end)
-      end
-
-      -- caches
-      Wait.time(function()
-      
-        for i = 1, 2 do
-          local cache = bagCaches.takeObject()
-          Wait.frames(function()
-            cache.setRotation(rotDungeon[provinceName]["Caches"][i])
-            cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
-            cache.highlightOn("Green")
-          end)        
-        end
-
-      end, 1)
-
-      -- additional items (lvl 20 vampire, 4X counters set to playerCount)
-      local vampire = nil
-      local bagHigh = getObjectbyName("Level 10 / 20 Enemies")
-      for _, object in pairs(bagHigh.getObjects()) do
-        if object.name:find("Vampire") then
-          vampire = bagHigh.takeObject({guid=object.guid, rotation=rotDungeon[provinceName]["Vampire"]})
-        end
-      end
-      if vampire ~= nil then
-        vampire.setPositionSmooth(posDungeon[provinceName]["Vampire"], false, true)
-      end
+    -- caches
+    Wait.time(function()
+    
       for i = 1, 4 do
-        local counter = getObjectbyName("Generic Counter Bag").takeObject()
+        local cache = bagCaches.takeObject()
         Wait.frames(function()
-          counter.call('set_val', playerCount)
-          counter.setRotation(rotDungeon[provinceName]["Counters"])
-          counter.setPosition(posDungeon[provinceName]["Counters"][i])
-        end)
+          cache.setRotation(rotDungeon[provinceName]["Caches"])
+          cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
+        end)        
       end
 
-    elseif provinceName == "Valenwood" then
-      -- Entrance
-      local tileEntrance = bagEntrance.takeObject()
-      Wait.frames(function()
-        if tileEntrance then
-          tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
-          tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
-          tileEntrance.setLock(true)
-        end
-      end)
+    end, 1)
 
-      -- 19 Hex
-      local tile19Hex = bag19Hex.takeObject()
+  elseif provinceName == "High Rock" then
+    -- Entrance
+    local tileEntrance = bagEntrance.takeObject()
+    Wait.frames(function()
+      if tileEntrance then
+        tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
+        tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
+        tileEntrance.setLock(true)
+        tileEntrance.highlightOn("Green")
+      end
+    end)
+
+    -- 19 Hex
+    for _, object in pairs(bag19Hex.getObjects()) do        
+      local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
       Wait.frames(function()
         if tile19Hex then
           tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
@@ -9228,147 +9024,351 @@ function setupDungeonMap(button, _, _)
           tile19Hex.setLock(true)
           tile19Hex.highlightOn("Teal")
         end
-      end)
+      end)     
+    end
 
-      -- 7 Hex
-      for _, object in pairs(bag7Hex.getObjects()) do        
-        local tile7Hex = bag7Hex.takeObject({guid=object.guid})
+    -- 7 Hex X2
+    for i = 1, 2 do
+      local tile7Hex = bag7Hex.takeObject()
+      Wait.frames(function()
+        tile7Hex.setRotation(rotDungeon[provinceName]["7Hex"])
+        tile7Hex.setPosition(posDungeon[provinceName]["7Hex"][i])
+        tile7Hex.setLock(true)
+        tile7Hex.highlightOn(i == 1 and "Green" or "Pink")
+      end)
+    end
+
+    -- 6 Hex X2
+    for i = 1, 2 do
+      local tile6Hex = bag6Hex.takeObject()
+      Wait.frames(function()
+        tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setLock(true)
+        tile6Hex.highlightOn(i == 1 and "Green" or "Pink")
+      end)
+    end
+
+    -- 3 Hex X3
+    for i = 1, 3 do
+      local tile3Hex = bag3Hex.takeObject()
+      Wait.frames(function()
+        tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setLock(true)
+        tile3Hex.highlightOn(i == 3 and "Pink" or "Teal")
+      end)
+    end
+
+    -- caches
+    Wait.time(function()
+    
+      for i = 1, 5 do
+        local cache = bagCaches.takeObject()
         Wait.frames(function()
-          if tile7Hex then
-            tile7Hex.setRotation(rotDungeon[provinceName]["7Hex"])
-            tile7Hex.setPosition(posDungeon[provinceName]["7Hex"])
-            tile7Hex.setLock(true)
-            tile7Hex.highlightOn("Pink")
-          end          
-        end)
+          cache.setRotation(rotDungeon[provinceName]["Caches"][i])
+          cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
+        end)        
+      end
+
+    end, 1)
+
+  elseif provinceName == "Morrowind" then
+    -- Entrance
+    local tileEntrance = bagEntrance.takeObject()
+    Wait.frames(function()
+      if tileEntrance then
+        tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
+        tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
+        tileEntrance.setLock(true)
+        tileEntrance.highlightOn("Green")
+      end
+    end)
+
+    -- 19 Hex
+    for _, object in pairs(bag19Hex.getObjects()) do        
+      local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
+      Wait.frames(function()
+        if tile19Hex then
+          tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
+          tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
+          tile19Hex.setLock(true)           
+        end
+      end)     
+    end
+
+    -- 6 Hex X3
+    for i = 1, 3 do
+      local tile6Hex = bag6Hex.takeObject()
+      Wait.frames(function()
+        tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setLock(true)
+      end)
+    end
+
+    -- 3 Hex X2
+    for i = 1, 2 do
+      local tile3Hex = bag3Hex.takeObject()
+      Wait.frames(function()
+        tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setLock(true)
+      end)
+    end
+
+    -- caches
+    Wait.time(function()
+    
+      for i = 1, 3 do
+        local cache = bagCaches.takeObject()
+        Wait.frames(function()
+          cache.setRotation(rotDungeon[provinceName]["Caches"])
+          cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
+          cache.highlightOn("Green")
+        end)        
+      end
+
+    end, 1)
+
+  elseif provinceName == "Skyrim" then
+    -- Entrance
+    local tileEntrance = bagEntrance.takeObject()
+    Wait.frames(function()
+      if tileEntrance then
+        tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
+        tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
+        tileEntrance.setLock(true)
+        tileEntrance.highlightOn("Green")
+      end
+    end)
+
+    -- 19 Hex
+    for _, object in pairs(bag19Hex.getObjects()) do        
+      local tile19Hex = bag19Hex.takeObject({guid=object.guid})        
+      Wait.frames(function()
+        if tile19Hex then
+          tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
+          tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
+          tile19Hex.setLock(true)           
+        end
+      end)     
+    end
+
+    -- 6 Hex X2
+    for i = 1, 2 do
+      local tile6Hex = bag6Hex.takeObject()
+      Wait.frames(function()
+        tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"])
+        tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setLock(true)
+      end)
+    end
+
+    -- 3 Hex X3
+    for i = 1, 3 do
+      local tile3Hex = bag3Hex.takeObject()
+      Wait.frames(function()
+        tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setLock(true)
+      end)
+    end
+
+    -- caches
+    Wait.time(function()
+    
+      for i = 1, 2 do
+        local cache = bagCaches.takeObject()
+        Wait.frames(function()
+          cache.setRotation(rotDungeon[provinceName]["Caches"][i])
+          cache.setPositionSmooth(posDungeon[provinceName]["Caches"][i], false, true)
+          cache.highlightOn("Green")
+        end)        
+      end
+
+    end, 1)
+
+    -- additional items (lvl 20 vampire, 4X counters set to playerCount)
+    local vampire = nil
+    local bagHigh = getObjectbyName("Level 10 / 20 Enemies")
+    for _, object in pairs(bagHigh.getObjects()) do
+      if object.name:find("Vampire") then
+        vampire = bagHigh.takeObject({guid=object.guid, rotation=rotDungeon[provinceName]["Vampire"]})
+      end
+    end
+    if vampire ~= nil then
+      vampire.setPositionSmooth(posDungeon[provinceName]["Vampire"], false, true)
+    end
+    for i = 1, 4 do
+      local counter = getObjectbyName("Generic Counter Bag").takeObject()
+      Wait.frames(function()
+        counter.call('set_val', playerCount)
+        counter.setRotation(rotDungeon[provinceName]["Counters"])
+        counter.setPosition(posDungeon[provinceName]["Counters"][i])
+      end)
+    end
+
+  elseif provinceName == "Valenwood" then
+    -- Entrance
+    local tileEntrance = bagEntrance.takeObject()
+    Wait.frames(function()
+      if tileEntrance then
+        tileEntrance.setRotation(rotDungeon[provinceName]["Entrance"])
+        tileEntrance.setPosition(posDungeon[provinceName]["Entrance"])
+        tileEntrance.setLock(true)
+      end
+    end)
+
+    -- 19 Hex
+    local tile19Hex = bag19Hex.takeObject()
+    Wait.frames(function()
+      if tile19Hex then
+        tile19Hex.setRotation(rotDungeon[provinceName]["19Hex"])
+        tile19Hex.setPosition(posDungeon[provinceName]["19Hex"])
+        tile19Hex.setLock(true)
+        tile19Hex.highlightOn("Teal")
+      end
+    end)
+
+    -- 7 Hex
+    for _, object in pairs(bag7Hex.getObjects()) do        
+      local tile7Hex = bag7Hex.takeObject({guid=object.guid})
+      Wait.frames(function()
+        if tile7Hex then
+          tile7Hex.setRotation(rotDungeon[provinceName]["7Hex"])
+          tile7Hex.setPosition(posDungeon[provinceName]["7Hex"])
+          tile7Hex.setLock(true)
+          tile7Hex.highlightOn("Pink")
+        end          
+      end)
+      break
+    end
+
+    -- 6 Hex X3
+    for i = 1, 3 do
+      local tile6Hex = bag6Hex.takeObject()
+      Wait.frames(function()
+        tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
+        tile6Hex.setLock(true)
+        tile6Hex.highlightOn(i == 3 and "Yellow" or "Pink")
+      end)
+    end
+
+    -- 3 Hex X3
+    for i = 1, 3 do
+      local tile3Hex = bag3Hex.takeObject()
+      Wait.frames(function()
+        tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"])
+        tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
+        tile3Hex.setLock(true)
+        tile3Hex.highlightOn(i == 3 and "Yellow" or "Pink")
+      end)
+    end
+
+    -- 19 Hex obstacle
+    local tile19Obs = nil
+    for _, object in pairs(bagObstacle.getObjects()) do
+      if object.name == "19 Hex Obstacle" then
+        tile19Obs = bagObstacle.takeObject({guid=object.guid}) 
         break
       end
-
-      -- 6 Hex X3
-      for i = 1, 3 do
-        local tile6Hex = bag6Hex.takeObject()
-        Wait.frames(function()
-          tile6Hex.setRotation(rotDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setPosition(posDungeon[provinceName]["6Hex"][i])
-          tile6Hex.setLock(true)
-          tile6Hex.highlightOn(i == 3 and "Yellow" or "Pink")
-        end)
-      end
-
-      -- 3 Hex X3
-      for i = 1, 3 do
-        local tile3Hex = bag3Hex.takeObject()
-        Wait.frames(function()
-          tile3Hex.setRotation(rotDungeon[provinceName]["3Hex"])
-          tile3Hex.setPosition(posDungeon[provinceName]["3Hex"][i])
-          tile3Hex.setLock(true)
-          tile3Hex.highlightOn(i == 3 and "Yellow" or "Pink")
-        end)
-      end
-
-      -- 19 Hex obstacle
-      local tile19Obs = nil
-      for _, object in pairs(bagObstacle.getObjects()) do
-        if object.name == "19 Hex Obstacle" then
-          tile19Obs = bagObstacle.takeObject({guid=object.guid}) 
-          break
-        end
-      end
-      Wait.frames(function()
-        if tile19Obs then
-          tile19Obs.setRotation(rotDungeon[provinceName]["19Obs"])
-          tile19Obs.setPosition(posDungeon[provinceName]["19Obs"])          
-          tile19Obs.highlightOn("Teal")
-          tile19Obs.addContextMenuItem("Open Inner Sanctum", returnObstacle)
-          tile19Obs.setDescription("Use the right click context menu to return Inner Sanctum obstacle to it's bag.")
-        end
-      end)
-
-      -- 6 Hex obstacle
-      local tile6Obs = nil
-      for _, object in pairs(bagObstacle.getObjects()) do
-        if object.name == "6 Hex Obstacle" then
-          tile6Obs = bagObstacle.takeObject({guid=object.guid}) 
-          break
-        end
-      end
-      Wait.frames(function()
-        if tile6Obs then
-          tile6Obs.setRotation(rotDungeon[provinceName]["6Obs"])
-          tile6Obs.setPosition(posDungeon[provinceName]["6Obs"])          
-          tile6Obs.highlightOn("Yellow")
-          tile6Obs.addContextMenuItem("Open Antechamber", returnObstacle)
-          tile6Obs.setDescription("Use the right click context menu to return Antechamber obstacles to their bag.")
-        end
-      end)
-
-      -- 3 Hex obstacle
-      local tile3Obs = nil
-      for _, object in pairs(bagObstacle.getObjects()) do
-        if object.name == "3 Hex Obstacle" then
-          tile3Obs = bagObstacle.takeObject({guid=object.guid})
-          break
-        end
-      end
-      Wait.frames(function()
-        if tile3Obs then
-          tile3Obs.setRotation(rotDungeon[provinceName]["3Obs"])
-          tile3Obs.setPosition(posDungeon[provinceName]["3Obs"])          
-          tile3Obs.highlightOn("Yellow")
-          tile3Obs.addContextMenuItem("Open Antechamber", returnObstacle)
-          tile3Obs.setDescription("Use the right click context menu to return Antechamber obstacles to their bag.")
-        end
-      end)
-      
     end
+    Wait.frames(function()
+      if tile19Obs then
+        tile19Obs.setRotation(rotDungeon[provinceName]["19Obs"])
+        tile19Obs.setPosition(posDungeon[provinceName]["19Obs"])          
+        tile19Obs.highlightOn("Teal")
+        tile19Obs.addContextMenuItem("Open Inner Sanctum", returnObstacle)
+        tile19Obs.setDescription("Use the right click context menu to return Inner Sanctum obstacle to it's bag.")
+      end
+    end)
 
-    broadcastToAll("[" .. Color.fromString("Green"):toHex() .. "]" .. provinceName .. "[-] Dungeon battle started!", "White")    
-    Wait.time(function()
+    -- 6 Hex obstacle
+    local tile6Obs = nil
+    for _, object in pairs(bagObstacle.getObjects()) do
+      if object.name == "6 Hex Obstacle" then
+        tile6Obs = bagObstacle.takeObject({guid=object.guid}) 
+        break
+      end
+    end
+    Wait.frames(function()
+      if tile6Obs then
+        tile6Obs.setRotation(rotDungeon[provinceName]["6Obs"])
+        tile6Obs.setPosition(posDungeon[provinceName]["6Obs"])          
+        tile6Obs.highlightOn("Yellow")
+        tile6Obs.addContextMenuItem("Open Antechamber", returnObstacle)
+        tile6Obs.setDescription("Use the right click context menu to return Antechamber obstacles to their bag.")
+      end
+    end)
 
-      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the Deploy Enemies buttons to pull enemies per the rules of your encounter.", "White")
-
-    end, 2)
-    Wait.time(function()
-
-      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the Clear Battle button to clean up once the dungeon encounter is completed.", "White")
-
-    end, 4)
-    Wait.time(function()
+    -- 3 Hex obstacle
+    local tile3Obs = nil
+    for _, object in pairs(bagObstacle.getObjects()) do
+      if object.name == "3 Hex Obstacle" then
+        tile3Obs = bagObstacle.takeObject({guid=object.guid})
+        break
+      end
+    end
+    Wait.frames(function()
+      if tile3Obs then
+        tile3Obs.setRotation(rotDungeon[provinceName]["3Obs"])
+        tile3Obs.setPosition(posDungeon[provinceName]["3Obs"])          
+        tile3Obs.highlightOn("Yellow")
+        tile3Obs.addContextMenuItem("Open Antechamber", returnObstacle)
+        tile3Obs.setDescription("Use the right click context menu to return Antechamber obstacles to their bag.")
+      end
+    end)
     
-      if provinceName == "Black Marsh" then
-        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the right click context menu on an enemy chip to set it to 0 HP without sending it to the defeated monster bag.", "White")
-      elseif provinceName == "Valenwood" then
-        broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the right click context menu on an obstacle tile to open up dungeon sections.", "White")
-      end
+  end
 
-    end, 6)
+  broadcastToAll("[" .. Color.fromString("Green"):toHex() .. "]" .. provinceName .. "[-] Dungeon battle started!", "White")    
+  Wait.time(function()
 
-    -- open main gazetteer PDF to dungeon page
-    local gazetteer = nil
-    local posGaz = { -9.14, 12.47, 54.30 }
-    local tolerance = 0.50
-    -- get current gazetteer
-    for _, object in pairs(getObjects()) do
-      if object.getName() == provinceName .. " Gazetteer" then
-        local objPos = object.getPosition()
-        if math.abs(objPos[1] - posGaz[1]) <= tolerance and math.abs(objPos[2] - posGaz[2]) <= tolerance and math.abs(objPos[3] - posGaz[3]) <= tolerance then
-          gazetteer = object
-          break
-        end
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the Deploy Enemies buttons to pull enemies per the rules of your encounter.", "White")
+
+  end, 2)
+  Wait.time(function()
+
+    broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the Clear Battle button to clean up once the dungeon encounter is completed.", "White")
+
+  end, 4)
+  Wait.time(function()
+  
+    if provinceName == "Black Marsh" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the right click context menu on an enemy chip to set it to 0 HP without sending it to the defeated monster bag.", "White")
+    elseif provinceName == "Valenwood" then
+      broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder:[-] You may use the right click context menu on an obstacle tile to open up dungeon sections.", "White")
+    end
+
+  end, 6)
+
+  -- open main gazetteer PDF to dungeon page
+  local gazetteer = nil
+  local posGaz = { -9.14, 12.47, 54.30 }
+  local tolerance = 0.50
+  -- get current gazetteer
+  for _, object in pairs(getObjects()) do
+    if object.getName() == provinceName .. " Gazetteer" then
+      local objPos = object.getPosition()
+      if math.abs(objPos[1] - posGaz[1]) <= tolerance and math.abs(objPos[2] - posGaz[2]) <= tolerance and math.abs(objPos[3] - posGaz[3]) <= tolerance then
+        gazetteer = object
+        break
       end
     end
-    local pdfPage     = {
-      ["Black Marsh"] = 43,
-      ["Cyrodiil"]    = 46,
-      ["High Rock"]   = 44,
-      ["Morrowind"]   = 42,
-      ["Skyrim"]      = 54,
-      ["Valenwood"]   = 45,
-    }
-    if gazetteer ~= nil then
-      gazetteer.Book.setPage(pdfPage[provinceName])
-    end
-    
+  end
+  local pdfPage     = {
+    ["Black Marsh"] = 43,
+    ["Cyrodiil"]    = 46,
+    ["High Rock"]   = 44,
+    ["Morrowind"]   = 42,
+    ["Skyrim"]      = 54,
+    ["Valenwood"]   = 45,
+  }
+  if gazetteer ~= nil then
+    gazetteer.Book.setPage(pdfPage[provinceName])
+  end    
 end
 
 
