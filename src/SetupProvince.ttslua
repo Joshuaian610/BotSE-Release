@@ -303,9 +303,6 @@ function cleanupProvince(button, _, _)
 
   end, 3)
 
-
-
-
   -- run battle, encounter clean up  
   getObjectFromGUID("072a57").call('clear_battle')
   cleanupEncounter(getObjectbyName("Button Cleanup Encounter"), _, _)
@@ -422,7 +419,6 @@ function cleanupProvince(button, _, _)
   Wait.time(function()
 
     if encPeacefulDeck then
-      log("running peaceful deck stuff")
       for _, object in pairs(encPeacefulDeck.getObjects()) do
         local tags = object.tags
         if tags then
@@ -1570,9 +1566,9 @@ function moveLockpickDice(action)
     { 59.60, 1.60, -13.82 },
     { 61.11, 1.60, -13.82 },
   } or action == "Cleanup" and {
-    {-59.50, 1.60, -5.00},
-    {-58.50, 1.60, -5.00},
-    {-57.50, 1.60, -5.00},
+    { -56.32, 1.60, 1.19 },
+    { -56.32, 1.60, 1.99 },
+    { -56.32, 1.60, 2.75 },
   }
   
   -- get dice, move dice  

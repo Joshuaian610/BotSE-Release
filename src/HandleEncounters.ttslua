@@ -628,7 +628,7 @@ function getEncounterLocation(button, _, _)
       else
 
         local dieScale = { 1, 1, 1 }
-        local posDieHome = { -56.50, 1.75, -5.00 }
+        local posDieHome = { -56.32, 1.60, 0.41 }
         local rotValue = die.getRotationValue()
         
         animateButtonsEncounter(getObjectbyName("Button Setup Encounter"))
