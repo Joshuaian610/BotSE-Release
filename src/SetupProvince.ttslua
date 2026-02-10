@@ -1865,6 +1865,9 @@ function setProvinceAmbiance(provinceName)
     "Chip Tray Player Unique",
     "Chip Tray HP Cache",
     "Chip Tray AdvMat Overland",
+    "Dice Tray A",
+    "Dice Tray B",
+    "Dice Tray C",
   }
   for i = 1, #tintTargets do
     local item = getObjectbyName(tintTargets[i])

@@ -4,64 +4,6 @@
     "y": 0,
     "z": 0
   },
-  "AttachedSnapPoints": [
-    {
-      "Position": {
-        "x": -4.882,
-        "y": 1.6,
-        "z": -0.05
-      }
-    },
-    {
-      "Position": {
-        "x": -3.444,
-        "y": 1.6,
-        "z": -0.05
-      }
-    },
-    {
-      "Position": {
-        "x": -2.062,
-        "y": 1.604,
-        "z": -0.023
-      }
-    },
-    {
-      "Position": {
-        "x": -0.624,
-        "y": 1.6,
-        "z": -0.05
-      }
-    },
-    {
-      "Position": {
-        "x": 0.703,
-        "y": 1.572,
-        "z": -0.078
-      }
-    },
-    {
-      "Position": {
-        "x": 2.113,
-        "y": 1.6,
-        "z": -0.05
-      }
-    },
-    {
-      "Position": {
-        "x": 3.55,
-        "y": 1.604,
-        "z": -0.023
-      }
-    },
-    {
-      "Position": {
-        "x": 4.905,
-        "y": 1.604,
-        "z": -0.023
-      }
-    }
-  ],
   "Autoraise": true,
   "Bag": {
     "Order": 0
@@ -82,7 +24,7 @@
   "ContainedObjects_path": "BagDiceStatusEffect.801edf",
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/17104442224782313516/6D5AA2A5516565956081B3E197F3405EC72964CD/",
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/15977368164119094323/ADB5411740B7DB6F5AE2F0E5A816D8514BD9C02C/",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0.4,
@@ -91,12 +33,12 @@
         "g": 1,
         "r": 1
       },
-      "SpecularIntensity": 0.5,
+      "SpecularIntensity": 0.2,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/14023622896302670870/AB7095833E6C42A6CE43CE5844DD57176D57B64D/",
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/9655177832792845086/19646ABB6A9D8276851BD5DA24647750C9BD481B/",
     "MaterialIndex": 0,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/17104442224782313516/6D5AA2A5516565956081B3E197F3405EC72964CD/",
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/15977368164119094323/ADB5411740B7DB6F5AE2F0E5A816D8514BD9C02C/",
     "NormalURL": "",
     "TypeIndex": 6
   },
@@ -122,11 +64,11 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -68.85,
-    "posY": 2.555,
-    "posZ": 2.16,
+    "posX": -63.521,
+    "posY": 1.38,
+    "posZ": 1.94,
     "rotX": 0,
-    "rotY": 0,
+    "rotY": 180,
     "rotZ": 0,
     "scaleX": 0.55,
     "scaleY": 0.55,

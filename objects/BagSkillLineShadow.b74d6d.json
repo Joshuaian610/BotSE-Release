@@ -84,7 +84,7 @@
   "ContainedObjects_path": "BagSkillLineShadow.b74d6d",
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/11908951625684923339/AEEA2187703C28EE90CB22AA387DDC25462F0974/",
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/14303732130819764951/E7F62AA35F1B971995DC0DBF23B3544A251B5C3F/",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0.4,
@@ -93,12 +93,12 @@
         "g": 1,
         "r": 1
       },
-      "SpecularIntensity": 0.5,
+      "SpecularIntensity": 0.2,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/18121165104227550342/561A38414F0A6F6605EFBEB62429F5CA43B4CB1E/",
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/15322698610019647502/8C54F655ABFD58DB591BF0215747AF87B8768150/",
     "MaterialIndex": 0,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/11908951625684923339/AEEA2187703C28EE90CB22AA387DDC25462F0974/",
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/14303732130819764951/E7F62AA35F1B971995DC0DBF23B3544A251B5C3F/",
     "NormalURL": "",
     "TypeIndex": 6
   },
@@ -125,10 +125,10 @@
   "Tooltip": true,
   "Transform": {
     "posX": -62,
-    "posY": 1.4,
-    "posZ": 16.681,
+    "posY": 1.355,
+    "posZ": 16.771,
     "rotX": 0,
-    "rotY": 0,
+    "rotY": 180,
     "rotZ": 0,
     "scaleX": 0.55,
     "scaleY": 0.55,
