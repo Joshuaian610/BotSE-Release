@@ -33,7 +33,7 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": true,
-  "LuaScriptState": "",
+  "LuaScriptState": "[2]",
   "LuaScript_path": "ButtonPlayerCount.6a40e3.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",

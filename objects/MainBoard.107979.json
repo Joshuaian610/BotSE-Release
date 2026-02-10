@@ -39,15 +39,15 @@
   ],
   "Tooltip": false,
   "Transform": {
-    "posX": 0.348,
-    "posY": 0.994,
+    "posX": 0.939,
+    "posY": 0.65,
     "posZ": 2.406,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
-    "scaleX": 1.84,
+    "scaleX": 1.91,
     "scaleY": 1,
-    "scaleZ": 2.16
+    "scaleZ": 2.25
   },
   "Value": 0,
   "XmlUI": ""

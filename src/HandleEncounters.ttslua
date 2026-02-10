@@ -78,7 +78,7 @@ posEncounters                     = {
       ["Abbey Of The Eight"]           = { -48.14, 1.64, 6.27 },
       ["Hackdirt"]                     = { -50.78, 1.64, 12.28 },
       ["Ice-Heart Home"]               = { -48.15, 1.64, 18.25 },
-      ["Lunar Fang Docks"]             = { -41.71, 1.64, 8.53 },
+      ["Lunar Fang Docks"]             = { -41.37, 1.64, 8.53 },
       ["Riverwatch"]                   = { -43.00, 1.64, 9.35 },
       ["Temple Of The Ancestor Moths"] = { -39.11, 1.64, 17.47 },
       ["Thalara's Winery"]             = { -46.85, 1.64, 7.06 },
@@ -242,7 +242,7 @@ posEncounters                     = {
       ["Hroldan Ring"]             = { -47.62, 1.64, 6.54 },
       ["Hunter's House"]           = { -43.77, 1.64, 13.23 },
       ["Morthal Market"]           = { -39.84, 1.64, 12.56 },
-      ["North Markarth Outskirts"] = { -51.59, 1.64, 7.27 },
+      ["North Markarth Outskirts"] = { -51.24, 1.64, 7.27 },
       ["Solitude Docks"]           = { -42.44, 1.64, 17.03 },
       ["Southern Watch"]           = { -45.07, 1.64, 9.52 },
       ["Stillwaters Retreat"]      = { -35.99, 1.64, 16.20 },
@@ -702,6 +702,7 @@ end
 
 function setupEncounter(provinceMapName, encounterName, encounterType)
 
+  log("RUNNING setupEncounter("..provinceMapName..", "..encounterName..", "..encounterType..")")
   -- this function handles the setup of all non town encounters
 
   -- get drawn encounter card, type set by zone selected via checkZone declaration
@@ -734,9 +735,9 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
     card.setRotation(rotFaceUp)
     card.setPositionSmooth(posActiveEncounter)
     if encounterName ~= "Unstable" then
-      broadcastToAll(encounterName .. " - " .. type .. " Encounter Drawn: " .. card.getName(), "White")
+      broadcastToAll(encounterName .. " - " .. encounterType .. " Encounter Drawn: " .. card.getName(), "White")
     else
-      broadcastToAll("Unstable - " .. type .. " Encounter Drawn: " .. card.getName(), "White")
+      broadcastToAll("Unstable - " .. encounterType .. " Encounter Drawn: " .. card.getName(), "White")
     end
   end
 
@@ -787,7 +788,7 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
 
       -- add a day indicator to peDisplay
       local currentDayNumber = getObjectbyName("Day Tracker Counter").getVar('val')
-      if currentDayNumber and type == "Peaceful" then
+      if currentDayNumber and encounterType == "Peaceful" then
         peDisplay.createButton({
           click_function = "nullFunc",
           function_owner = self,
@@ -1944,7 +1945,7 @@ function setupTownEncounter(provinceMapName, townName)
   Wait.frames(function()
     local scaleTownDisplay = { 5.25, 1.00, 5.25 }
     local rotTownDisplay = { 0, 180, 0 }
-    local posTownDisplay = { -20.31, 1.59, 8.52 }
+    local posTownDisplay = { -20.31, 1.24, 8.52 }
     townDisplay.setScale(scaleTownDisplay)
     townDisplay.setRotation(rotTownDisplay)
     townDisplay.setPosition(posTownDisplay)
@@ -1957,7 +1958,7 @@ function setupTownEncounter(provinceMapName, townName)
     local buttonInn = getObjectbyName("Bag Button Inn").takeObject()
     Wait.frames(function()
       local rotButtonInn = { 0, 180, 0 }
-      local posButtonInn = { -9.50, 1.59, 0.00 }
+      local posButtonInn = { -9.50, 1.24, 0.00 }
       buttonInn.setLock(true)
       buttonInn.interactable = false
       buttonInn.setRotation(rotButtonInn)
@@ -1968,7 +1969,7 @@ function setupTownEncounter(provinceMapName, townName)
     local buttonQuest = getObjectbyName("Bag Button Side Quest").takeObject()
     Wait.frames(function()
       local rotButtonQuest = { 0, 180, 0 }
-      local posButtonQuest = { -9.50, 1.59, 5.00 }
+      local posButtonQuest = { -9.50, 1.24, 5.00 }
       buttonQuest.setLock(true)
       buttonQuest.interactable = false
       buttonQuest.setRotation(rotButtonQuest)
@@ -3107,7 +3108,7 @@ function deployClash(cardName, optionNumber)
   -- pull selected mat from bag, place (if clash mat required, most conflict encounters will require clash mat)
   if cardName ~= "Keep Ayleid on It" and cardName ~= "Pit Stop" and cardName ~= "Yours for the Taking" and not (cardName == "Good Finds are Hard to Help" and optionNumber == 2) then 
     local rotClashMat = { 0, 0, 0 }
-    local posClashMat = { 2.05, 1.71, 2.41 }
+    local posClashMat = { 2.05, 1.37, 2.41 }
     local clashMat = nil
     for _, object in pairs(bagClashMat.getObjects()) do
       if object.name == "Clash Mat" and object.gm_notes == selectedMat then
@@ -3124,10 +3125,10 @@ function deployClash(cardName, optionNumber)
   elseif cardName == "Keep Ayleid on It" then
     local bag19Hex = getObjectbyName("19 Hex Bag")
     local rot19Hex = { 0, 60, 0 }
-    local pos19Hex = { -2.05, 1.87, 2.41 }
+    local pos19Hex = { -2.05, 1.53, 2.41 }
     local bag3Hex = getObjectbyName("3 Hex Bag")
     local rot3Hex = { 0, 240, 0 }
-    local pos3Hex = {{ 6.15, 1.87, 9.51 }, { 6.15, 1.87, -4.69 }}
+    local pos3Hex = {{ 6.15, 1.53, 9.51 }, { 6.15, 1.53, -4.69 }}
 
     local tile19Hex = bag19Hex.takeObject()
     Wait.frames(function()
@@ -3147,7 +3148,7 @@ function deployClash(cardName, optionNumber)
   elseif cardName == "Pit Stop" then
     local bag19Hex = getObjectbyName("19 Hex Bag")
     local rot19Hex = { 0, 60, 0 }
-    local pos19Hex = { 4.10, 1.87, 2.41 }
+    local pos19Hex = { 4.10, 1.53, 2.41 }
     local tile19Hex = bag19Hex.takeObject()
     Wait.frames(function()
       tile19Hex.setRotation(rot19Hex)
@@ -3158,10 +3159,10 @@ function deployClash(cardName, optionNumber)
   elseif cardName == "Yours for the Taking" then
     local bag7Hex = getObjectbyName("7 Hex Bag")
     local rot7Hex = { 0, 60, 0 }
-    local pos7Hex = { 4.10, 1.59, 2.41 }
+    local pos7Hex = { 4.10, 1.24, 2.41 }
     local bag3Hex = getObjectbyName("3 Hex Bag")
     local rot3Hex = { 0, 0, 0 }
-    local pos3Hex = { { -3.07, 1.87, 7.74 }, { -3.08, 1.87, -2.91 } }
+    local pos3Hex = { { -3.07, 1.53, 7.74 }, { -3.08, 1.53, -2.91 } }
 
     local tile7Hex = bag7Hex.takeObject()
     Wait.frames(function()
@@ -3187,9 +3188,9 @@ function deployClash(cardName, optionNumber)
     if cardName == "No Unrest for the Wicked" then
       local rot3HexObstacle = { 0, 0, 0 }
       local pos3HexObstacle = {
-        { -6.15, 2.97, -1.14 },
-        { -3.08, 2.97, 7.74 },
-        { 6.15, 2.97, 2.41 },
+        { -6.15, 2.63, -1.14 },
+        { -3.08, 2.63, 7.74 },
+        { 6.15, 2.63, 2.41 },
       }
       for i = 1, 3 do
         local obstacle3Hex = nil
@@ -3208,7 +3209,7 @@ function deployClash(cardName, optionNumber)
 
     elseif cardName == "Not Mushroom to Move" then
       local rot7HexObstacle = { 0, 300, 0 }
-      local pos7HexObstacle = { 1.02, 1.84, 4.19 }
+      local pos7HexObstacle = { 1.02, 1.53, 4.19 }
       local obstacle7Hex = nil
       for _, object in pairs(bagObstacle.getObjects()) do
         if object.name == "7 Hex Obstacle" then
@@ -3227,7 +3228,7 @@ function deployClash(cardName, optionNumber)
 
     elseif cardName == "An Enemy In Need" then
       local rot3HexObstacle = { { 0, 300, 0 }, { 0, 0, 0 }, { 0, 300, 0 } }
-      local pos3HexObstacle = { { -1.02, 2.97, -2.91 }, { 0.00, 2.97, 2.41 }, { 8.20, 2.97, 5.96 } }
+      local pos3HexObstacle = { { -1.02, 2.63, -2.91 }, { 0.00, 2.63, 2.41 }, { 8.20, 2.63, 5.96 } }
       for i = 1, 3 do
         local obstacle3Hex = nil
         for _, object in pairs(bagObstacle.getObjects()) do
@@ -3260,7 +3261,7 @@ function deployClash(cardName, optionNumber)
   -- GENERAL ENCOUNTERS
   if cardName == "Wabbajack Attack" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3282,7 +3283,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "The Wacky Box of Wonders" then
     rotEntranceTile = { 0, 180, 0 }
-    posEntranceTile = {9.22, 1.87, -6.46}
+    posEntranceTile = {9.22, 1.53, -6.46}
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3306,7 +3307,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Highwaymen" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3330,7 +3331,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Captured!" then
     rotEntranceTile = { 0, 120, 0}
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3356,7 +3357,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Unsullied Pool" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -3378,7 +3379,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Black Market Economics" then
     rotEntranceTile = { 0, 0, 0 }
-    posEntranceTile = { 2.05, 1.87, 13.06 }
+    posEntranceTile = { 2.05, 1.53, 13.06 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3406,7 +3407,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Keep Away" then
     rotEntranceTile = { 0, 240, 0 }
-    posEntranceTile = { -7.18, 1.87, -6.46 }
+    posEntranceTile = { -7.18, 1.53, -6.46 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3433,7 +3434,7 @@ function deployClash(cardName, optionNumber)
   -- BLACK MARSH CONFLICT ENCOUNTERS
   elseif cardName == "Captives of House Telvanni" then
     rotEntranceTile = { 0, 180, 0 }
-    posEntranceTile = { 9.22, 1.87, -6.46 }
+    posEntranceTile = { 9.22, 1.53, -6.46 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3455,7 +3456,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Corrupted Communion" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3477,7 +3478,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Deal or Die" then
     rotEntranceTile = { 0, 240, 0 }
-    posEntranceTile = { -7.18, 1.87, -6.46 }
+    posEntranceTile = { -7.18, 1.53, -6.46 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3501,7 +3502,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "Keep Ayleid on It" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3525,7 +3526,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Origin of the Species" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3547,7 +3548,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Captive Audience" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3573,7 +3574,7 @@ function deployClash(cardName, optionNumber)
  
   elseif cardName == "Heroes for Hire" then
     rotEntranceTile = { 0, 240, 0 }
-    posEntranceTile = { -7.18, 1.87, -6.46 }
+    posEntranceTile = { -7.18, 1.53, -6.46 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3595,7 +3596,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Champion of the Downtrodden" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3617,7 +3618,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "Cast Your Lot!" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -3639,7 +3640,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Predictive Diplomacy" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
     }
@@ -3659,7 +3660,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Traders to the Cause" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3683,7 +3684,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Anchors, Away!" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3706,7 +3707,7 @@ function deployClash(cardName, optionNumber)
   -- HIGH ROCK CONFLICT ENCOUNTERS
   elseif cardName == "Supine and Supernal" then
     rotEntranceTile = { 0, 240, 0 }
-    posEntranceTile = { -7.18, 1.87, -6.46 }
+    posEntranceTile = { -7.18, 1.53, -6.46 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3728,7 +3729,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Border Battle" then
     rotEntranceTile = { 0, 180, 0 }
-    posEntranceTile = { 0.00, 1.87, -8.24 }
+    posEntranceTile = { 0.00, 1.53, -8.24 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3752,7 +3753,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Pit Stop" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3778,7 +3779,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Rooks to the Left, Midnight to the Right" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = {-12.30, 1.87, 2.41}
+    posEntranceTile = {-12.30, 1.53, 2.41}
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3802,7 +3803,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "No Unrest for the Wicked" then
     rotEntranceTile = { 0, 180, 0 }
-    posEntranceTile = { 9.22, 1.87, -6.46 }
+    posEntranceTile = { 9.22, 1.53, -6.46 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3824,7 +3825,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Rumormonger" then
     rotEntranceTile = { 0, 240, 0 }
-    posEntranceTile = { 2.05, 1.87, -8.24 }
+    posEntranceTile = { 2.05, 1.53, -8.24 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3849,7 +3850,7 @@ function deployClash(cardName, optionNumber)
   -- MORROWIND CONFLICT ENCOUNTERS
   elseif cardName == "Wrong Side of the Law" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3871,7 +3872,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Not Mushroom to Move" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3893,7 +3894,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Egg Mine? No, Eggs Mine!" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 5.96 }
+    posEntranceTile = { -12.30, 1.53, 5.96 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3923,7 +3924,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "Deals in Dwemer" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.4 }
+    posEntranceTile = { -12.30, 1.53, 2.4 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -3949,7 +3950,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "Augmented Arms" then
     rotEntranceTile = { 0, 180, 0 }
-    posEntranceTile = { 9.22, 1.87, -6.46 }
+    posEntranceTile = { 9.22, 1.53, -6.46 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -3960,12 +3961,12 @@ function deployClash(cardName, optionNumber)
     }
     spacesCaches = {
       -- positioned off clash mat since players have choice where to place
-      { 13.32, 1.59, -2.91 },
-      { 13.32, 1.59, 0.64 },
-      { 13.32, 1.59, 4.19 },
-      { 17.42, 1.59, 4.19 },
-      { 17.42, 1.59, 0.64 },
-      { 17.42, 1.59, -2.91 },
+      { 13.32, 1.24, -2.91 },
+      { 13.32, 1.24, 0.64 },
+      { 13.32, 1.24, 4.19 },
+      { 17.42, 1.24, 4.19 },
+      { 17.42, 1.24, 0.64 },
+      { 17.42, 1.24, -2.91 },
     }
     spacesEnemies = {
       posClashSpaces["column5"][4],
@@ -3980,7 +3981,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Yours for the Taking" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -6.15, 1.87, 2.41 }
+    posEntranceTile = { -6.15, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
     }
@@ -4001,7 +4002,7 @@ function deployClash(cardName, optionNumber)
   -- SKYRIM CONFLICT ENCOUNTERS
   elseif cardName == "Cold Discomfort" then
     rotEntranceTile = { 0, 0, 0 }
-    posEntranceTile = { -7.18, 1.87, 11.29 }
+    posEntranceTile = { -7.18, 1.53, 11.29 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -4023,7 +4024,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "A Storm of Fists" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -4045,7 +4046,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Mudcrab Crossing" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -4067,7 +4068,7 @@ function deployClash(cardName, optionNumber)
     
   elseif cardName == "Compass of Cruelty" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -4091,7 +4092,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Maniacal Monolith" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
       rotLegendaryCaches,
@@ -4113,7 +4114,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Good Finds are Hard to Help" then
     rotEntranceTile = { 0, 240, 0 }
-    posEntranceTile = { -7.18, 1.87, -6.46 }
+    posEntranceTile = { -7.18, 1.53, -6.46 }
     rotCaches = {}
     spacesCaches = {}
     spacesEnemies = {
@@ -4129,7 +4130,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "SK Siege Encounter" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.30, 1.87, 2.41 }
+    posEntranceTile = { -12.30, 1.53, 2.41 }
     rotCaches = {}
     spacesCaches = {}
     spacesEnemies = {
@@ -4146,7 +4147,7 @@ function deployClash(cardName, optionNumber)
   -- VALENWOOD CONFLICT ENCOUNTERS
   elseif cardName == "Forest Fatalities" then
     rotEntranceTile = { 0, 240, 0 }
-    posEntranceTile = { -7.18, 1.87, -6.46 }
+    posEntranceTile = { -7.18, 1.53, -6.46 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -4170,7 +4171,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Altar Your Destiny" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -4194,7 +4195,7 @@ function deployClash(cardName, optionNumber)
 
   elseif cardName == "Heeding the Call" then
     rotEntranceTile = { 0, 180, 0 }
-    posEntranceTile = { 9.22, 1.87, -6.46 }
+    posEntranceTile = { 9.22, 1.53, -6.46 }
     rotCaches = {
       rotLegendaryCaches,
       rotCommonCaches,
@@ -4220,7 +4221,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "An Enemy In Need" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -4244,7 +4245,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "Vine Snared" then
     rotEntranceTile = { 0, 120, 0 }
-    posEntranceTile = { 14.35, 1.87, 2.41 }
+    posEntranceTile = { 14.35, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotCommonCaches,
@@ -4270,7 +4271,7 @@ function deployClash(cardName, optionNumber)
   
   elseif cardName == "Parting the Veiled" then
     rotEntranceTile = { 0, 300, 0 }
-    posEntranceTile = { -12.32, 1.87, 2.41 }
+    posEntranceTile = { -12.32, 1.53, 2.41 }
     rotCaches = {
       rotCommonCaches,
       rotLegendaryCaches,
@@ -4385,7 +4386,7 @@ function deployDelve(cardName, optionNumber)
   -- currently will only pull, place, and lock an entrance tile
   local bagEntranceTiles = getObjectbyName("Entrance Tile Bag")
   local rotEntranceTile = { 0, 300, 0 }
-  local posEntranceTile = { -25.63, 1.87, 14.84 }
+  local posEntranceTile = { -25.63, 1.53, 14.84 }
 
   local entranceTile = bagEntranceTiles.takeObject()
 
@@ -7997,7 +7998,7 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
     if optionNumber == 1 then
       broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder[-]: Increase influence tracks by a collective total of ".. playerCount .. ".", "White")
       local bagQuestChip = getObjectbyName("Quest Unit / Companion Chip Bag")
-      local posArvan = { -11.28, 1.59, -2.91 }
+      local posArvan = { -11.28, 1.24, -2.91 }
       local chipArvan = nil
       for _, object in pairs(bagQuestChip.getObjects()) do
         if object.name:find("Arvan") then
@@ -8610,8 +8611,8 @@ function deploySkyrimTown()
     "Guild Kiosk",
   }
   local pos7Hex = {
-    { 13.32, 1.59, 11.29 },
-    { 13.32, 1.59, -6.46 },
+    { 13.32, 1.24, 11.29 },
+    { 13.32, 1.24, -6.46 },
   }
   local ttip7Hex = {
     "Shop",
@@ -8812,53 +8813,53 @@ function setupDungeonMap(button, _, _)
     }
     posDungeon = {
       ["Black Marsh"] = {
-        ["Clash"]     = { 12.30, 1.71, 5.97 },
-        ["Entrance"]  = { 18.45, 1.87, -4.69 },
-        ["7Hex"]      = { -17.43, 1.59, 11.29 },
-        ["6Hex"]      = { { -1.03, 1.59, 7.74 }, { -7.18, 1.59, 4.19 }, { 2.10, 1.59, -4.74 } },
-        ["3Hex"]      = { { -3.08, 1.87, 14.84 }, { -15.38, 1.87, 0.64 }, { -7.18, 1.87, -6.46 } },
-        ["Caches"]    = { { 13.33, 1.83, 14.86 }, { -2.10, 1.87, 6.04 }, { 4.12, 1.87, -8.22 } }
+        ["Clash"]     = { 12.30, 1.37, 5.97 },
+        ["Entrance"]  = { 18.45, 1.53, -4.69 },
+        ["7Hex"]      = { -17.43, 1.24, 11.29 },
+        ["6Hex"]      = { { -1.03, 1.24, 7.74 }, { -7.18, 1.24, 4.19 }, { 2.10, 1.24, -4.74 } },
+        ["3Hex"]      = { { -3.08, 1.53, 14.84 }, { -15.38, 1.53, 0.64 }, { -7.18, 1.53, -6.46 } },
+        ["Caches"]    = { { 13.33, 1.83, 14.86 }, { -2.10, 1.53, 6.04 }, { 4.12, 1.53, -8.22 } }
       },
       ["Cyrodiil"]    = {
-        ["Entrance"]  = { -4.10, 1.87, 13.06 },
-        ["19Hex"]     = { 0.00, 1.87, -1.14 },
-        ["7Hex"]      = { { -12.30, 1.59, 13.06 }, { 15.37, 1.59, 7.74 }, { 0.00, 1.87, -1.14 } },
-        ["6Hex"]      = { { -19.48, 1.59, -2.91 }, { -13.33, 1.59, 0.64 }, { 11.27, 1.59, -2.91 } },
-        ["3Hex"]      = { { 2.05, 1.87, 9.51 }, { 17.42, 1.87, 0.64 } },
-        ["Caches"]    = { { 0.04, 1.87, 5.82 }, { 6.09, 1.87, -1.18 }, { 0.06, 1.87, -8.13 }, { -6.07, 1.87, -1.25 } }
+        ["Entrance"]  = { -4.10, 1.53, 13.06 },
+        ["19Hex"]     = { 0.00, 1.53, -1.14 },
+        ["7Hex"]      = { { -12.30, 1.24, 13.06 }, { 15.37, 1.24, 7.74 }, { 0.00, 1.53, -1.14 } },
+        ["6Hex"]      = { { -19.48, 1.24, -2.91 }, { -13.33, 1.24, 0.64 }, { 11.27, 1.24, -2.91 } },
+        ["3Hex"]      = { { 2.05, 1.53, 9.51 }, { 17.42, 1.53, 0.64 } },
+        ["Caches"]    = { { 0.04, 1.53, 5.82 }, { 6.09, 1.53, -1.18 }, { 0.06, 1.53, -8.13 }, { -6.07, 1.53, -1.25 } }
       },
       ["High Rock"]   = {
-        ["Entrance"]  = { 4.10, 1.87, 13.06 },
-        ["19Hex"]     = { -6.15, 1.87, -1.14 },
-        ["7Hex"]      = { { -12.30, 1.59, 13.06 }, { 16.40, 1.59, -1.14 } },
-        ["6Hex"]      = { { -4.10, 1.59, 13.06 }, { 14.35, 1.59, 5.96 } },
-        ["3Hex"]      = { { -16.40, 1.87, -1.14 }, { 4.10, 1.87, -1.14 }, { 14.35, 1.87, 13.06 } },
-        ["Caches"]    =  { { -6.09, 1.87, -8.13 }, { -6.11, 1.87, 5.82 }, { 13.46, 1.87, -2.92 }, { 19.34, 1.87, -2.87 }, { 16.40, 2.37, -1.20 } }
+        ["Entrance"]  = { 4.10, 1.53, 13.06 },
+        ["19Hex"]     = { -6.15, 1.53, -1.14 },
+        ["7Hex"]      = { { -12.30, 1.24, 13.06 }, { 16.40, 1.24, -1.14 } },
+        ["6Hex"]      = { { -4.10, 1.24, 13.06 }, { 14.35, 1.24, 5.96 } },
+        ["3Hex"]      = { { -16.40, 1.53, -1.14 }, { 4.10, 1.53, -1.14 }, { 14.35, 1.53, 13.06 } },
+        ["Caches"]    =  { { -6.09, 1.53, -8.13 }, { -6.11, 1.53, 5.82 }, { 13.46, 1.53, -2.92 }, { 19.34, 1.53, -2.87 }, { 16.40, 2.37, -1.20 } }
       },
       ["Morrowind"]   = {
-        ["Entrance"]  = { 14.35, 1.87, -4.69 },
-        ["19Hex"]     = { 0.00, 1.87, 5.96 },
-        ["6Hex"]      = { { -13.33, 1.59, 11.29 }, { -11.28, 1.59, -2.91 }, { 10.25, 1.59, 13.06 } },
-        ["3Hex"]      = { { 8.20, 1.87, -1.14 }, { 13.32, 1.87, 0.64 } },
-        ["Caches"]    = { { -15.35, 1.87, -2.96 }, { -15.35, 1.87, 14.77 }, { 15.17, 1.87, 14.82 } }
+        ["Entrance"]  = { 14.35, 1.53, -4.69 },
+        ["19Hex"]     = { 0.00, 1.53, 5.96 },
+        ["6Hex"]      = { { -13.33, 1.24, 11.29 }, { -11.28, 1.24, -2.91 }, { 10.25, 1.24, 13.06 } },
+        ["3Hex"]      = { { 8.20, 1.53, -1.14 }, { 13.32, 1.53, 0.64 } },
+        ["Caches"]    = { { -15.35, 1.53, -2.96 }, { -15.35, 1.53, 14.77 }, { 15.17, 1.53, 14.82 } }
       },
       ["Skyrim"]      = {
-        ["Entrance"]  = { 16.40, 1.87, 5.96 },
-        ["19Hex"]     = { -9.23, 1.87, 4.19 },
-        ["6Hex"]      = { { 1.04, 1.59, 11.33 }, { 10.25, 1.59, -1.14 } },
-        ["3Hex"]      = { { -1.03, 1.87, -2.91 }, { 8.20, 1.87, 9.51 }, { 4.10, 1.87, -4.69 } },
-        ["Caches"]    = { { 2.98, 1.87, 14.78 }, { 3.05, 2.37, -6.41 } },
-        ["Counters"]  = { { -15.38, 1.87, 7.74 }, { -3.08, 1.87, 7.74 }, { -15.38, 1.87, 0.64 }, { -3.08, 1.87, 0.64 } },
+        ["Entrance"]  = { 16.40, 1.53, 5.96 },
+        ["19Hex"]     = { -9.23, 1.53, 4.19 },
+        ["6Hex"]      = { { 1.04, 1.24, 11.33 }, { 10.25, 1.24, -1.14 } },
+        ["3Hex"]      = { { -1.03, 1.53, -2.91 }, { 8.20, 1.53, 9.51 }, { 4.10, 1.53, -4.69 } },
+        ["Caches"]    = { { 2.98, 1.53, 14.78 }, { 3.05, 2.37, -6.41 } },
+        ["Counters"]  = { { -15.38, 1.53, 7.74 }, { -3.08, 1.53, 7.74 }, { -15.38, 1.53, 0.64 }, { -3.08, 1.53, 0.64 } },
         ["Vampire"]    = { -9.13, 2.00, 4.13 }
       },
       ["Valenwood"]   = {
-        ["Entrance"]  = { -14.35, 1.87, 2.41 },
-        ["19Hex"]     = { 17.42, 1.87, 4.19 },
-        ["7Hex"]      = { -7.18, 1.59, 4.19 },
-        ["6Hex"]      = { { -11.28, 1.59, 11.29 }, { -6.15, 1.59, -4.69 }, { 3.07, 1.59, 4.19 } },
-        ["3Hex"]      = { { 1.02, 1.87, -6.46 }, { -5.13, 1.87, 14.84 }, { 7.17, 1.87, 0.64 } },
+        ["Entrance"]  = { -14.35, 1.53, 2.41 },
+        ["19Hex"]     = { 17.42, 1.53, 4.19 },
+        ["7Hex"]      = { -7.18, 1.24, 4.19 },
+        ["6Hex"]      = { { -11.28, 1.24, 11.29 }, { -6.15, 1.24, -4.69 }, { 3.07, 1.24, 4.19 } },
+        ["3Hex"]      = { { 1.02, 1.53, -6.46 }, { -5.13, 1.53, 14.84 }, { 7.17, 1.53, 0.64 } },
         ["19Obs"]     = { 17.41, 3.00, 4.16 },
-        ["6Obs"]      = { 4.10, 1.87, 5.96 },
+        ["6Obs"]      = { 4.10, 1.53, 5.96 },
         ["3Obs"]      = { 7.17, 3.00, 0.64 },
       }
     }    
@@ -9385,8 +9386,8 @@ function returnObstacle(_, _, object)
     -- place caches
     
     local posCaches = {
-      { 11.30, 1.87, 7.65 },
-      { 11.29, 1.87, 0.69 },
+      { 11.30, 1.53, 7.65 },
+      { 11.29, 1.53, 0.69 },
       { 23.46, 2.37, 7.63 },
       { 23.55, 2.37, 0.63 }
     }
