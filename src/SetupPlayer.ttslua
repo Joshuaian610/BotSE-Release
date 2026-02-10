@@ -228,14 +228,24 @@ end
 
 function pullSkillDice(skillName, playerColor)
   playerColor = playerColor:gsub("^%l", string.upper)
+  local bagSkill = getObjectbyName("Bag Skill Line " .. skillName)
   if skillName == "Light Armor" or skillName == "Heavy Armor" then
     broadcastToAll("Armor skill selected for Starting Skill Line - choose and pull starting dice manually.", playerColor)
+    if Player[playerColor].steam_name then
+      bagSkill.Container.search(playerColor)
+    end
     return
   elseif skillName == "Illusion" then
     broadcastToAll("Line with odd starting dice selected for Starting Skill Line - choose and pull starting dice manually to avoid clashing with other players..", playerColor)
+    if Player[playerColor].steam_name then
+      bagSkill.Container.search(playerColor)
+    end
     return
   elseif skillName == "Acrobatics" or skillName == "Legerdemain" or skillName == "Speech" or skillName == "Restoring Light" or skillName == "Daedric Summoning" then
     broadcastToAll("Nonstandard line selected for Starting Skill Line - choose and pull starting dice manually.", playerColor)
+    if Player[playerColor].steam_name then
+      bagSkill.Container.search(playerColor)
+    end
     return
   else
     local posDice = (playerColor == "Red" and {{ -49.73, 1.77, -20.40 }, { -49.74, 1.77, -21.40 }}) or (playerColor == "Orange" and {{ -14.08, 1.77, -20.40 }, { -14.09, 1.77, -21.40 }}) or
