@@ -320,8 +320,6 @@ end
 
 function getTrackSlots(playerColor, trackType) -- trackTypes = "Cooldown", "Drain", "Roll"
 
-  log("getTrackSlots(" .. playerColor .. ", " .. trackType .. ") RUNNING")
-
   -- this function simply checks the dice in a single zone track for a playerColor, returns boolean table of occupied slots (trackSlots), and, nextAvailableSlot
 
   -- get dice in trackSlots
@@ -380,8 +378,6 @@ end
 
 
 function placeDieToTrack(playerColor, dieObj, trackType) -- trackTypes = "Cooldown", "Drain", "Roll"
-
-  log("placeDieToTrack(" .. playerColor .. ", " .. dieObj.getName() .. ", " .. trackType .. ") RUNNING")
   
   -- this function handles the placement of a die into next available single zone track slot
 
@@ -625,8 +621,6 @@ end
 
 
 function compressTrack(playerColor, trackType)
-
-  log("compressTrack(" .. playerColor .. ", " .. trackType .. ") RUNNING")
 
   -- this function will compress the dice in the "Cooldown" track to the left, or "Drain" track centrally, and also return the nextAvailableSlot
 
@@ -1019,8 +1013,7 @@ end
 
 
 function placeActiveDie(playerColor, dieObj)
-
-  log("placeActiveDie(" .. playerColor .. ", " .. dieObj.getName() .. ") RUNNING")
+  
   -- this function handles the placement of a die object into an active slot in the player's adventurer mat
   if not dieObj or dieObj.type ~= "Dice" then return end
 

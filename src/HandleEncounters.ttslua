@@ -701,8 +701,7 @@ end
 
 
 function setupEncounter(provinceMapName, encounterName, encounterType)
-
-  log("RUNNING setupEncounter("..provinceMapName..", "..encounterName..", "..encounterType..")")
+  
   -- this function handles the setup of all non town encounters
 
   -- get drawn encounter card, type set by zone selected via checkZone declaration
@@ -2733,7 +2732,6 @@ function setupConflict1(card, _, _)
   card.addTag('conflict_selected')
 
   if conflictType == "Clash" then
-    log("setUpConflict1() deploying: " .. cardName)
     deployClash(cardName, 1)
   elseif conflictType == "Delve" then
     deployDelve(cardName, 1)
@@ -3015,8 +3013,6 @@ end
 
 
 function deployClash(cardName, optionNumber)
-
-  log("deployClash(" .. cardName .. ", " .. optionNumber .. ") RUNNING")
 
   -- this function handles the setup of clash conflict encounters
   local playerCount = getObjectbyName("Button Player Count").getVar('val')
@@ -8075,7 +8071,9 @@ end
 
 
 function deployEnemyType(enemyLevel, enemyType, position)
-  log("running deployEnemyType for enemyLevel: " .. enemyLevel .. ", enemyType: " .. enemyType)
+  
+  -- this function handles the deployment of Clash battle enemies
+  
   local chipFound = false
 
   -- this function handles a clash enemy draw that is required to be of a special type

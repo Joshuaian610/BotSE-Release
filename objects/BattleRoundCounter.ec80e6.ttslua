@@ -295,11 +295,10 @@ end
 function getObjectbyName(name)
   -- simply search all objects for an object named a particular string
   for _, object in pairs(getObjects()) do
-  if object.getName() == name then
-    return object
+    if object.getName() == name then
+        return object
+    end
   end
-  end
-  log("getObjectbyName() object not found: " .. name)
   return nil
 end
 

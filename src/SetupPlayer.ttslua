@@ -505,10 +505,6 @@ end
 
 
 function deployRaceItems(buttonObj, playerColor, _)
-  if type(buttonObj) ~= "userdata" or not buttonObj.hasTag then
-    log("deployRaceItems expected a button object, got something else.", playerColor:gsub("^%l", string.upper))
-    return
-  end
 
   local rotButtonObj = buttonObj.getRotation()
 
@@ -639,11 +635,7 @@ function deployRaceItems(buttonObj, playerColor, _)
     end
   end
 
-  log("matchTag: " .. matchTag)
-
   local raceDeck = getObjectbyName("Races")
-
-  log(raceDeck)
 
   if raceDeck ~= nil and matchTag then
     for _, deckObj in pairs(raceDeck.getObjects()) do

@@ -425,7 +425,6 @@ function cleanupProvince(button, _, _)
           for _, tag in pairs(tags) do
             if tag == provinceTag then
               local replaceTarget = encPeacefulDeck.takeObject({guid = object.guid})
-              log("peaceful replace target: " .. replaceTarget.getName())
               if replaceTarget then
                 Wait.frames(function() replaceTarget.setPosition(posPeacefulDiscard) end)
               end
@@ -756,7 +755,6 @@ function cleanupProvince(button, _, _)
   local gazName = provinceName .. " Gazetteer"
   local provinceGazetteer = getObjectbyName(gazName)
   if provinceGazetteer == nil then
-    log("cleanupProvince(): Gazetteer not found: " .. gazName)
     return
   end
   Wait.time(function()
@@ -1911,7 +1909,6 @@ function setSkillTokenBagForSolo()
     if not tokenHasBeenRemoved then
       table.insert(removedTokens, object.name)
       local removeTarget = bagSkillTokens.takeObject({guid = object.guid})
-      log("removing skill token: " .. removeTarget.getName())
       Wait.frames(function() bagUnusedObjects.putObject(removeTarget) end)
     end
   end
