@@ -10,48 +10,15 @@
       "r": 0.5
     }
   },
-  "3": {
-    "body": "",
-    "color": "Red",
-    "id": 3,
-    "title": "Red",
+  "8": {
+    "body": "Sitting at a seated color will display the Cooldown, Collapse CD Row, + Fatigue, and + Overfatigue buttons for that color's player area. If multi handed play is desired, TTS's Hotseat mode is recommended to easily control those buttons for each player area.\n\nSelecting a Race will cause the Player panel to appear for that selected Adventurer.\n\nAll players should be able to see the Day/Round/XP counter display at any given time.",
+    "color": "Grey",
+    "id": 8,
+    "title": "XML Control Tips",
     "visibleColor": {
-      "b": 0.094,
-      "g": 0.1,
-      "r": 0.856
-    }
-  },
-  "4": {
-    "body": "",
-    "color": "Orange",
-    "id": 4,
-    "title": "Orange",
-    "visibleColor": {
-      "b": 0.113,
-      "g": 0.392,
-      "r": 0.956
-    }
-  },
-  "6": {
-    "body": "",
-    "color": "Green",
-    "id": 6,
-    "title": "Green",
-    "visibleColor": {
-      "b": 0.168,
-      "g": 0.701,
-      "r": 0.192
-    }
-  },
-  "7": {
-    "body": "",
-    "color": "Blue",
-    "id": 7,
-    "title": "Blue",
-    "visibleColor": {
-      "b": 1,
-      "g": 0.53,
-      "r": 0.118
+      "b": 0.5,
+      "g": 0.5,
+      "r": 0.5
     }
   }
 }
