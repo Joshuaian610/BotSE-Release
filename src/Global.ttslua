@@ -186,9 +186,11 @@ function onObjectSpawn(obj)
 
   elseif name == "Button Cleanup Encounter" then
     -- only create button if button object is visible, determined by button position
-    local pos = obj.getPosition()
-    if pos.y > 1.10 then
-      initButtonCleanupEncounter(obj)
+    if obj then
+      local pos = obj.getPosition()
+      if pos.y > 1.10 then
+        initButtonCleanupEncounter(obj)
+      end
     end
   
   elseif obj.hasTag("enc_conflict") then
