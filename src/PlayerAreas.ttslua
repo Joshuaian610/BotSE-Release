@@ -114,6 +114,11 @@ function initButtonPackCounter(obj, bagCount)
 end
 
 
+function initButtonMatSkill(obj)
+  log(obj.getName() .. " Button added")
+end
+
+
 function animateButtonsPlayerArea(obj)
   obj.clearButtons()
   local name = obj.getName()

@@ -231,6 +231,13 @@ function onObjectSpawn(obj)
   elseif name:find("Button Bag") then
     initButtonsBagDice(obj)
 
+  elseif name == "4 HP" or name == "5 HP" or name:find("Skill Line Token") or name:find("Stat Token") then
+    -- check if token is in a mat slot. create button if so (will add/remove button in onObject Enter/Leave), this is for onLoad and rewinds
+    for _, zone in pairs(obj.getZones()) do
+      if zone.getName():find("Zone Player Skill Slot") then
+        initButtonMatSkill(obj)
+      end
+    end
   end
 end
 
@@ -1235,6 +1242,21 @@ function onObjectEnterZone(zone, obj)
   end
   if (zone.hasTag('xp_marker') and obj.hasTag('xp_marker')) then
     handleXPMarkerEntry(zone, obj)
+  end
+
+  -- create skill token bag buttons on mat slot drop
+  if zone.getName():find("Zone Player Skill Slot") and
+  (obj.getName() == "4 HP" or obj.getName() == "5 HP" or obj.getName():find("Skill Line Token") or obj.getName():find("Stat Token")) then
+    initButtonMatSkill(obj)
+  end
+end
+
+
+function onObjectLeaveZone(zone, obj)
+  -- remove skill token bag buttons on mat slot removal
+  if zone.getName():find("Zone Player Skill Slot") and
+  (obj.getName() == "4 HP" or obj.getName() == "5 HP" or obj.getName():find("Skill Line Token") or obj.getName():find("Stat Token")) then
+    obj.clearButtons()
   end
 end
 

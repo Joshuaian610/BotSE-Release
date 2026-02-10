@@ -47,14 +47,14 @@
   "Tooltip": true,
   "Transform": {
     "posX": -17.28,
-    "posY": 1.453,
-    "posZ": -23.156,
+    "posY": 1.452,
+    "posZ": -23.157,
     "rotX": 7,
     "rotY": 181,
     "rotZ": 0,
-    "scaleX": 0.24,
+    "scaleX": 0.23,
     "scaleY": 1,
-    "scaleZ": 0.24
+    "scaleZ": 0.23
   },
   "Value": 0,
   "XmlUI": ""

@@ -45,15 +45,15 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 23.524,
-    "posY": 2.699,
-    "posZ": 17.015,
+    "posX": -60.405,
+    "posY": 2.655,
+    "posZ": -12.232,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 0,
-    "scaleX": 0.24,
+    "rotZ": 358,
+    "scaleX": 0.23,
     "scaleY": 1,
-    "scaleZ": 0.24
+    "scaleZ": 0.23
   },
   "Value": 0,
   "XmlUI": ""

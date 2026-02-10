@@ -12,7 +12,7 @@
     "r": 0.71324
   },
   "CustomDeck": {
-    "93": {
+    "150": {
       "BackIsHidden": false,
       "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13644123701056149276/E55FFC9F13651C24187FF163CA54CE4CCD9F53BC/",
       "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16357913486892803706/FF34DE2457BB50E3C790EB64EBD3C66AD637713C/",
@@ -43,12 +43,12 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -14.001,
-    "posY": 1.6,
-    "posZ": 7.219,
+    "posX": 45.871,
+    "posY": 1.691,
+    "posZ": 5.372,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 0,
+    "rotZ": 180,
     "scaleX": 3.38,
     "scaleY": 1,
     "scaleZ": 3.38
