@@ -1915,4 +1915,10 @@ function setSkillTokenBagForSolo()
       Wait.frames(function() bagUnusedObjects.putObject(removeTarget) end)
     end
   end
+  -- also set player count button to 1
+  getObjectbyName("Button Player Count").call('set_val', 1)
+  local baseXP = getObjectbyName("XP Tracker Counter").getVar('val')  
+  getObjectbyName("Button Calculated EP").clearButtons()
+  getObjectbyName("Button Calculated EP").setVar('val', baseXP)
+  getObjectbyName("Button Calculated EP").call('create_all')
 end

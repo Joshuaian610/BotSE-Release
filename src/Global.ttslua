@@ -23,7 +23,7 @@ end
 function onLoad()
 
   nonInt             = true
-  invis              = false
+  invis              = true
   showCleanupButton  = false
   showConfirmButtons = false
 
