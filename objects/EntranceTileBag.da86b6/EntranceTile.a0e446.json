@@ -123,11 +123,11 @@
   "Tags": [
     "hex_entrance"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
     "posX": -22.947,
     "posY": 2.2,
-    "posZ": 26.71,
+    "posZ": 28.217,
     "rotX": 0,
     "rotY": 30,
     "rotZ": 0,

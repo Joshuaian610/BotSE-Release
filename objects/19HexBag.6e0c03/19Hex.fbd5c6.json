@@ -319,11 +319,11 @@
   "Tags": [
     "hex_19"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
-    "posX": -3.075,
-    "posY": 2.027,
-    "posZ": 25.492,
+    "posX": -3.342,
+    "posY": 2.041,
+    "posZ": 28.467,
     "rotX": 0,
     "rotY": 60,
     "rotZ": 0,

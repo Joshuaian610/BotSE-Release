@@ -86,9 +86,9 @@
     "r": 1
   },
   "ContainedObjects_order": [
+    "6Hex.182d37",
     "6Hex.fd4966",
-    "6Hex.ac870f",
-    "6Hex.182d37"
+    "6Hex.ac870f"
   ],
   "ContainedObjects_path": "6HexBag.655ebe",
   "CustomMesh": {

@@ -137,11 +137,11 @@
   "Tags": [
     "hex_6"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
     "posX": 11.128,
-    "posY": 1.759,
-    "posZ": 27.016,
+    "posY": 1.749,
+    "posZ": 28.518,
     "rotX": 0,
     "rotY": 120,
     "rotZ": 0,

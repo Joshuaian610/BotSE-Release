@@ -445,11 +445,11 @@
   "Tags": [
     "hex_clash"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
-    "posX": 86.354,
-    "posY": 2.832,
-    "posZ": 48.289,
+    "posX": -11.275,
+    "posY": 1.953,
+    "posZ": 25.491,
     "rotX": 0,
     "rotY": 0,
     "rotZ": 0,

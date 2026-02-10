@@ -151,11 +151,11 @@
   "Tags": [
     "hex_7"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
-    "posX": 58.629,
-    "posY": 5.907,
-    "posZ": 30.939,
+    "posX": 22.55,
+    "posY": 1.769,
+    "posZ": 27.267,
     "rotX": 0,
     "rotY": 120,
     "rotZ": 0,

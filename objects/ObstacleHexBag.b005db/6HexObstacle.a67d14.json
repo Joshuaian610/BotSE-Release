@@ -51,11 +51,11 @@
   "Tags": [
     "hex_obstacle"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
-    "posX": 35.056,
-    "posY": 5.903,
-    "posZ": 21.717,
+    "posX": 57.573,
+    "posY": 1.971,
+    "posZ": 55.67,
     "rotX": 0,
     "rotY": 240,
     "rotZ": 0,

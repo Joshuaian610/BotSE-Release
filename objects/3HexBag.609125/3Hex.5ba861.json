@@ -95,10 +95,10 @@
   "Tags": [
     "hex_3"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
     "posX": 17.238,
-    "posY": 2.026,
+    "posY": 2.041,
     "posZ": 28.751,
     "rotX": 0,
     "rotY": 300,

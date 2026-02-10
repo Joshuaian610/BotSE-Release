@@ -89,10 +89,10 @@
     "r": 1
   },
   "ContainedObjects_order": [
+    "ClashMat.8adee1",
     "ClashMat.ea1382",
     "ClashMat.dce074",
-    "ClashMat.a626df",
-    "ClashMat.8adee1"
+    "ClashMat.a626df"
   ],
   "ContainedObjects_path": "ClashMatBag.ac6ade",
   "CustomMesh": {
