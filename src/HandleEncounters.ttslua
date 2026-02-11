@@ -8721,23 +8721,24 @@ function setupDungeonMap(button, _, _)
   animateButtonsGeneric(button)
 
   local playerCount = getObjectbyName("Button Player Count").getVar('val')
-
+  
   -- detect current province
   -- get and find province map, provinceMapName (especially important for eastern/western skyrim)
   local zone = getObjectFromGUID("64c0a4")
   local provinceName = nil
   for _, obj in ipairs(zone.getObjects()) do
-    local name = obj.getName()
+    local name = obj.getName()    
     local match = string.match(name, "^(.-) Overland Map$")
     if match and posEncounters[match] then
       provinceName = match
       break
     end
   end
-  if provinceName:find("Eastern") or provinceName:find("Western") then provinceName = "Skyrim" end
-  if not provinceName then
+  if provinceName == nil then
     broadcastToAll("No Province Map Found, unable to determine dungeon to set up!.", "Orange")
     return
+  else
+    if provinceName:find("Eastern") or provinceName:find("Western") then provinceName = "Skyrim" end
   end
   
   -- detect if battle area is clear

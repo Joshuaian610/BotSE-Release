@@ -1259,7 +1259,7 @@ function onObjectLeaveZone(zone, obj)
   -- remove skill token bag buttons on mat slot removal
   if zone.getName():find("Zone Player Skill Slot") and (obj.hasTag('stat_token') or obj.hasTag('skill_token_warrior') or
   obj.hasTag('skill_token_rogue') or obj.hasTag('skill_token_mage') or obj.hasTag('skill_token_combat')) then
-    obj.clearButtons()
+    if obj then obj.clearButtons() end
   end
 end
 
@@ -1273,7 +1273,7 @@ function onObjectEnterContainer(bag, obj)
 
   -- handles update of player pack counters on item drop into/retrieve from bag
   if bag.getName():find(" Player Pack") then
-    updatePackCounter(bag)
+    if bag then updatePackCounter(bag) end
   end
 end
 
@@ -1281,7 +1281,7 @@ function onObjectLeaveContainer(bag, obj)
   -- ensure all dice have 'dice_zone' tag upon entering play from bag
   for _, v in pairs(supply_dice_bags) do
     if bag.getGUID() == v and obj.type == "Dice" then
-      obj.addTag('dice_zone')
+      if obj then obj.addTag('dice_zone') end
     end
   end
   
