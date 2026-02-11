@@ -615,7 +615,10 @@ function deployRaceItems(buttonObj, playerColor, _)
     local bagCombat = getObjectbyName("Bag Dice Combat")
     for i = 1, combat do
       local die = bagCombat.takeObject()
-      Wait.frames(function() die.setPositionSmooth(posCombat[colorStr][i], false, false) end)
+      Wait.frames(function()
+        die.setRotation({ 0, 0, 270 })
+        die.setPositionSmooth(posCombat[colorStr][i], false, false)
+      end)
     end
     if val == 5 and hpToken then
       hpToken.setState(1)
