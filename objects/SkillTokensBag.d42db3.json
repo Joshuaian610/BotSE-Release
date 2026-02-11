@@ -14,7 +14,6 @@
     "r": 1
   },
   "ContainedObjects_order": [
-    "TwoHandedSkillLineToken.84186b",
     "TwoHandedSkillLineToken.d74058",
     "SpeechSkillLineToken.f71ceb",
     "SpeechSkillLineToken.41f9a9",
@@ -39,6 +38,7 @@
     "BowSkillLineToken.5b8fbd",
     "BowSkillLineToken.19ae33",
     "AcrobaticsSkillLineToken.6af88a",
+    "TwoHandedSkillLineToken.84186b",
     "AcrobaticsSkillLineToken.745193"
   ],
   "ContainedObjects_path": "SkillTokensBag.d42db3",

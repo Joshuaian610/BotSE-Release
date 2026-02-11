@@ -41,11 +41,12 @@
   "Snap": true,
   "Sticky": true,
   "Tags": [
-    "player_green"
+    "player_green",
+    "stat_token"
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 53.26,
+    "posX": 53.316,
     "posY": 1.453,
     "posZ": -23.162,
     "rotX": 4,

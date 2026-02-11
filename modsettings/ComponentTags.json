@@ -391,6 +391,10 @@
     {
       "displayed": "xp_marker",
       "normalized": "xp_marker"
+    },
+    {
+      "displayed": "stat_token",
+      "normalized": "stat_token"
     }
   ]
 }

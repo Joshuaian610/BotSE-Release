@@ -45,7 +45,8 @@
   },
   "Sticky": true,
   "Tags": [
-    "player_blue"
+    "player_blue",
+    "stat_token"
   ],
   "Tooltip": true,
   "Transform": {

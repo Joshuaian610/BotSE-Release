@@ -632,9 +632,6 @@
     "ImperialD.91e3b2",
     "OrcD.dacb18",
     "HighElfD.9b3d5f",
-    "4HP.d8630c",
-    "4HP.566482",
-    "4HP.e1638b",
     "AcrobaticsSkillLineToken.48c994",
     "BowSkillLineToken.977c17",
     "DaedricSummoningSkillLineToken.d80e4c",
@@ -768,7 +765,6 @@
     "Confirm.78b9dd",
     "Confirm.ec1dcb",
     "PlayerChipCloneBag.0e06c1",
-    "4HP.c8eee5",
     "Banner.cd4765",
     "Acrobat.1493f8",
     "Arcanist.5efc0e",
@@ -909,7 +905,11 @@
     "BagDiceFatigue.e06df7",
     "BagDiceStatusEffect.801edf",
     "BagDiceCombat.ec1bfe",
-    "BagDiceEnemyCombat.7ac300"
+    "BagDiceEnemyCombat.7ac300",
+    "4HP.d8630c",
+    "4HP.566482",
+    "4HP.e1638b",
+    "4HP.c8eee5"
   ],
   "PlayArea": 0.5,
   "PlayerCounts": [

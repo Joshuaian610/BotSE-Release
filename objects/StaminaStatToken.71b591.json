@@ -41,7 +41,8 @@
   "Snap": true,
   "Sticky": true,
   "Tags": [
-    "player_orange"
+    "player_orange",
+    "stat_token"
   ],
   "Tooltip": true,
   "Transform": {

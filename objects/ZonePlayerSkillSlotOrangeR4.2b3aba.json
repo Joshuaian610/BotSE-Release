@@ -34,7 +34,8 @@
     "skill_token_combat",
     "skill_token_mage",
     "skill_token_rogue",
-    "skill_token_warrior"
+    "skill_token_warrior",
+    "stat_token"
   ],
   "Tooltip": true,
   "Transform": {

@@ -45,13 +45,14 @@
   },
   "Sticky": true,
   "Tags": [
-    "player_red"
+    "player_red",
+    "stat_token"
   ],
   "Tooltip": true,
   "Transform": {
     "posX": -56.967,
-    "posY": 1.451,
-    "posZ": -23.161,
+    "posY": 1.45,
+    "posZ": -23.165,
     "rotX": 7,
     "rotY": 180,
     "rotZ": 0,

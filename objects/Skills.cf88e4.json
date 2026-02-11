@@ -11,8 +11,8 @@
     "r": 0.71324
   },
   "ContainedObjects_order": [
-    "TwoHanded.44f6e5",
     "TwoHanded.545e67",
+    "TwoHanded.44f6e5",
     "Speech.3892b1",
     "Speech.e04df9",
     "Shadow.edb1f4",
@@ -23,8 +23,8 @@
     "OneHandAndShield.ba02e6",
     "LightArmor.1ec273",
     "LightArmor.39ac00",
-    "legerdemain.9feca9",
-    "legerdemain.ecb0e7",
+    "Legerdemain.9feca9",
+    "Legerdemain.ecb0e7",
     "Illusion.a41ad8",
     "Illusion.8bb756",
     "HeavyArmor.933624",

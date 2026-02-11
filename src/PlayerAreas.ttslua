@@ -115,7 +115,44 @@ end
 
 
 function initButtonMatSkill(obj)
-  log(obj.getName() .. " Button added")
+  -- first need to get hover_color, via detecting what player zone button is in
+  local zoneSlot = nil
+  local playerColor = nil
+  local hoverColor = nil
+  local hoverColors = {
+    ["Red"]         = { 0.856, 0.1, 0.094, .6 },
+    ["Orange"]      = { 0.956, 0.392, 0.113, .6 },
+    ["Blue"]        = { 0.118, 0.53, 1, .6 },
+    ["Green"]       = { 0.192, 0.701, 0.168, .6 }
+  }
+  for _, zone in pairs(obj.getZones()) do
+    if zone.getName():find("Zone Player Skill Slot") then
+      -- zone name format will be "Zone Player Skill Slot " .. <playerColor> .. <a 2 digit code ie: L1, R3, etc>
+      local match = string.match(zone.getName(), "Zone Player Skill Slot (%a+) %a%d+")
+      if match then
+        playerColor = match
+      end
+    end
+  end
+  hoverColor = hoverColors[playerColor]
+  if hoverColor == nil then log("initButtonMatSkill() unable to determine hoverColor") return end
+
+  local bagType = obj.hasTag('stat_token') and "Stat Chip" or "Skill Line Dice"
+  local rotation = obj.getName() == "Magicka Stat Token" and { 0, 330, 0 } or { 0, 0, 0 } -- FIX IT DAN (lol)
+
+  obj.createButton({
+    label          = "",
+    click_function = "openSkillBag",
+    function_owner = self,
+    rotation       = rotation,
+    position       = { 0.00, 0.12, 0.00 },
+    height         = 1300,
+    width          = 1300,
+    scale          = { x=1.00, y=1.00, z=1.00 },
+    color          = { 1, 1, 1, 0 },
+    hover_color    = hoverColor,
+    tooltip        = "Click this button to search the associated " .. bagType .. " Bag."
+  })
 end
 
 
@@ -844,6 +881,32 @@ function openPack(button, clickerColor, _)
   if pack == nil then log("openPack(): pack not found") return end
 
   pack.Container.search(clickerColor)
+end
+
+
+function openSkillBag(button, clickerColor, _)
+
+  -- this function is called via stat or skill tokens dropped into adventurer mat slots, it simply opens the associated bag
+
+  local buttonName = button.getName()
+  local bag = nil
+  if buttonName:find("HP") then
+    bag = getObjectbyName("HP Stat Token Bag")
+  elseif buttonName == "Stamina Stat Token" then
+    bag = getObjectbyName("Stamina Stat Token Bag")
+  elseif buttonName == "Magicka Stat Token" then
+    bag = getObjectbyName("Magicka Stat Token Bag")
+  elseif buttonName == "Combat Skill Line Token" then
+    bag = getObjectbyName("Bag Dice Combat")
+  elseif buttonName:find("Skill Line Token") and buttonName ~= "Combat Skill Line Token" then
+    local skillName = nil
+    skillName = buttonName:match("(.+) Skill Line Token")
+    if skillName == nil then log("openSkillBag(): skillName not found") return end
+    bag = getObjectbyName("Bag Skill Line " .. skillName)
+  end
+  if bag == nil then log("openSkillBag(): bag not found") return end
+
+  bag.Container.search(clickerColor)
 end
 
 

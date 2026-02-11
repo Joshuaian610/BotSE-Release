@@ -1169,6 +1169,14 @@ function onObjectEnterZone(zone, obj)
       obj.setGMNotes(string.format("%.2f", pos.x) .. ", " .. string.format("%.2f", pos.y) .. ", " .. string.format("%.2f", pos.z))
     end
   end
+
+  -- create skill token bag buttons on mat slot drop  
+  if zone.getName():find("Zone Player Skill Slot") and (obj.hasTag('stat_token') or obj.hasTag('skill_token_warrior') or
+  obj.hasTag('skill_token_rogue') or obj.hasTag('skill_token_mage') or obj.hasTag('skill_token_combat')) then
+    initButtonMatSkill(obj)
+  end
+
+  -- pull skill card on token drop into slot
   if (zone.hasTag('skill_token_warrior') or zone.hasTag('skill_token_rogue') or zone.hasTag('skill_token_mage') or zone.hasTag('skill_token_combat')) and
   (obj.hasTag('skill_token_warrior') or obj.hasTag('skill_token_rogue') or obj.hasTag('skill_token_mage') or obj.hasTag('skill_token_combat')) then
     local skill_name    = string.match(obj.getName(), "^(.-) Skill Line Token$")
@@ -1196,6 +1204,7 @@ function onObjectEnterZone(zone, obj)
       tablezone = getObjectFromGUID("60d097")
       color     = "Green"
     end
+    
     if handzone == nil or tablezone == nil or color == nil then return end
     local hand_objects = Player[color].getHandObjects()
     for _, hand_object in pairs(hand_objects) do
@@ -1216,7 +1225,7 @@ function onObjectEnterZone(zone, obj)
         skill_deck = object
       end
     end
-    if skill_deck == nil then return end
+    if skill_deck == nil then log("skill deck is nil") return end
     local skill_card   = nil
     local deck_objects = skill_deck.getObjects()
     for _, deck_object in pairs(deck_objects) do
@@ -1243,19 +1252,13 @@ function onObjectEnterZone(zone, obj)
   if (zone.hasTag('xp_marker') and obj.hasTag('xp_marker')) then
     handleXPMarkerEntry(zone, obj)
   end
-
-  -- create skill token bag buttons on mat slot drop
-  if zone.getName():find("Zone Player Skill Slot") and
-  (obj.getName() == "4 HP" or obj.getName() == "5 HP" or obj.getName():find("Skill Line Token") or obj.getName():find("Stat Token")) then
-    initButtonMatSkill(obj)
-  end
 end
 
 
 function onObjectLeaveZone(zone, obj)
   -- remove skill token bag buttons on mat slot removal
-  if zone.getName():find("Zone Player Skill Slot") and
-  (obj.getName() == "4 HP" or obj.getName() == "5 HP" or obj.getName():find("Skill Line Token") or obj.getName():find("Stat Token")) then
+  if zone.getName():find("Zone Player Skill Slot") and (obj.hasTag('stat_token') or obj.hasTag('skill_token_warrior') or
+  obj.hasTag('skill_token_rogue') or obj.hasTag('skill_token_mage') or obj.hasTag('skill_token_combat')) then
     obj.clearButtons()
   end
 end
