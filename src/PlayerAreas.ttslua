@@ -714,19 +714,19 @@ function returnSupplyDie(playerColor, dieObj)
 
   if not dieObj or dieObj.type ~= "Dice" then return end
   local guid = dieObj.getGUID()
-  local bag = getObjectbyName((string.find(dieObj.getName(), "Acrobatics")          and "Bag Acrobatics Skill Line") or
-                              (string.find(dieObj.getName(), "Bow")                 and "Bag Bow Skill Line") or
-                              (string.find(dieObj.getName(), "Daedric Summoning")   and "Bag Daedric Summoning Skill Line") or
-                              (string.find(dieObj.getName(), "Destruction Staff")   and "Bag Destruction Staff Skill Line") or
-                              (string.find(dieObj.getName(), "Heavy Armor")         and "Bag Heavy Armor Skill Line") or
-                              (string.find(dieObj.getName(), "Illusion")            and "Bag Illusion Skill Line") or
-                              (string.find(dieObj.getName(), "Legerdemain")         and "Bag Legerdemain Skill Line") or
-                              (string.find(dieObj.getName(), "Light Armor")         and "Bag Light Armor Skill Line") or
-                              (string.find(dieObj.getName(), "One Hand And Shield") and "Bag One Hand And Shield Skill Line") or
-                              (string.find(dieObj.getName(), "Restoring Light")     and "Bag Restoring Light Skill Line") or
-                              (string.find(dieObj.getName(), "Shadow")              and "Bag Shadow Skill Line") or
-                              (string.find(dieObj.getName(), "Speech")              and "Bag Speech Skill Line") or
-                              (string.find(dieObj.getName(), "Two Handed")          and "Bag Two Handed Skill Line") or
+  local bag = getObjectbyName((string.find(dieObj.getName(), "Acrobatics")          and "Bag Skill Line Acrobatics") or
+                              (string.find(dieObj.getName(), "Bow")                 and "Bag Skill Line Bow") or
+                              (string.find(dieObj.getName(), "Daedric Summoning")   and "Bag Skill Line Daedric Summoning") or
+                              (string.find(dieObj.getName(), "Destruction Staff")   and "Bag Skill Line Destruction Staff") or
+                              (string.find(dieObj.getName(), "Heavy Armor")         and "Bag Skill Line Heavy Armor") or
+                              (string.find(dieObj.getName(), "Illusion")            and "Bag Skill Line Illusion") or
+                              (string.find(dieObj.getName(), "Legerdemain")         and "Bag Skill Line Legerdemain") or
+                              (string.find(dieObj.getName(), "Light Armor")         and "Bag Skill Line Light Armor") or
+                              (string.find(dieObj.getName(), "One Hand And Shield") and "Bag Skill Line One Hand And Shield") or
+                              (string.find(dieObj.getName(), "Restoring Light")     and "Bag Skill Line Restoring Light") or
+                              (string.find(dieObj.getName(), "Shadow")              and "Bag Skill Line Shadow") or
+                              (string.find(dieObj.getName(), "Speech")              and "Bag Skill Line Speech") or
+                              (string.find(dieObj.getName(), "Two Handed")          and "Bag Skill Line Two Handed") or
                               (dieObj.getName() == "Overfatigue"                    and "Bag Dice Overfatigue") or
                               (dieObj.getName() == "Fatigue"                        and "Bag Dice Fatigue") or
                               (string.find(dieObj.getName(), "Status")              and "Bag Dice Status Effect") or
