@@ -33,7 +33,7 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": true,
-  "LuaScriptState": "[2]",
+  "LuaScriptState": "[1]",
   "LuaScript_path": "DayTrackerCounter.2b0c66.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",

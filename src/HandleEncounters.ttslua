@@ -8122,7 +8122,6 @@ function deployEnemyType(enemyLevel, enemyType, position)
               guid = object.guid,
               position = position
             })
-            log("chip: " .. chip.getName())
             return chip
           end
         end
