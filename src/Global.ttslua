@@ -188,7 +188,7 @@ function onObjectSpawn(obj)
     -- only create button if button object is visible, determined by button position
     if obj then
       local pos = obj.getPosition()
-      if pos.y > 1.10 then
+      if pos.y > 1.10 and obj then
         initButtonCleanupEncounter(obj)
       end
     end
@@ -1179,76 +1179,83 @@ function onObjectEnterZone(zone, obj)
   -- pull skill card on token drop into slot
   if (zone.hasTag('skill_token_warrior') or zone.hasTag('skill_token_rogue') or zone.hasTag('skill_token_mage') or zone.hasTag('skill_token_combat')) and
   (obj.hasTag('skill_token_warrior') or obj.hasTag('skill_token_rogue') or obj.hasTag('skill_token_mage') or obj.hasTag('skill_token_combat')) then
-    local skill_name    = string.match(obj.getName(), "^(.-) Skill Line Token$")
-    local skill_trained = false
-    local handzone      = nil
-    local tablezone     = nil
-    local color         = nil
-    if zone.hasTag('area_red') then
-      handzone  = getObjectFromGUID("d809c7")
-      tablezone = getObjectFromGUID("941163")
-      color     = "Red"
-    end
-    if zone.hasTag('area_orange') then
-      handzone  = getObjectFromGUID("ca36a0")
-      tablezone = getObjectFromGUID("c371f5")
-      color     = "Orange"
-    end
-    if zone.hasTag('area_blue') then
-      handzone  = getObjectFromGUID("ccdf9e")
-      tablezone = getObjectFromGUID("d1ec24")
-      color     = "Blue"
-    end
-    if zone.hasTag('area_green') then
-      handzone  = getObjectFromGUID("6e73a1")
-      tablezone = getObjectFromGUID("60d097")
-      color     = "Green"
-    end
-    
-    if handzone == nil or tablezone == nil or color == nil then return end
-    local hand_objects = Player[color].getHandObjects()
-    for _, hand_object in pairs(hand_objects) do
-      if string.find(hand_object.getName(), skill_name) then
-        return
+    -- wait needed to avoid token jiggle double pulling card
+    Wait.time(function()
+
+      local skill_name    = string.match(obj.getName(), "^(.-) Skill Line Token$")
+      local skill_trained = false
+      local handzone      = nil
+      local tablezone     = nil
+      local color         = nil
+      if zone.hasTag('area_red') then
+        handzone  = getObjectFromGUID("d809c7")
+        tablezone = getObjectFromGUID("941163")
+        color     = "Red"
       end
-    end
-    local table_objects = tablezone.getObjects()
-    for _, table_object in pairs(table_objects) do
-      if string.find(table_object.getName(), skill_name) and table_object.type == "Card" then
-        return
+      if zone.hasTag('area_orange') then
+        handzone  = getObjectFromGUID("ca36a0")
+        tablezone = getObjectFromGUID("c371f5")
+        color     = "Orange"
       end
-    end
-    if skill_trained then return end
-    local skill_deck = nil
-    for _, object in pairs(getObjectFromGUID("6c3979").getObjects()) do
-      if object.type == "Deck" then
-        skill_deck = object
+      if zone.hasTag('area_blue') then
+        handzone  = getObjectFromGUID("ccdf9e")
+        tablezone = getObjectFromGUID("d1ec24")
+        color     = "Blue"
       end
-    end
-    if skill_deck == nil then log("skill deck is nil") return end
-    local skill_card   = nil
-    local deck_objects = skill_deck.getObjects()
-    for _, deck_object in pairs(deck_objects) do
-      if deck_object.name == skill_name then
-        skill_card = skill_deck.takeObject({guid=deck_object.guid})
-        break
+      if zone.hasTag('area_green') then
+        handzone  = getObjectFromGUID("6e73a1")
+        tablezone = getObjectFromGUID("60d097")
+        color     = "Green"
       end
-    end
-    if skill_card == nil then return end
-    skill_card.setRotation({0, 180, 0})
-    skill_card.setPositionSmooth(handzone.getPosition(), false, true)
-    if skill_name ~= "Combat" then
-      if Player[color].steam_name ~= nil then
-        broadcastToAll("[" .. Color.fromString(color):toHex() .. "]" .. Player[color].steam_name .. "[-] has trained a new skill: " .. skill_name, "White")
-      else
-        broadcastToAll("[" .. Color.fromString(color):toHex() .. "]" .. color .. " Player[-] has trained a new skill: " .. skill_name, "White")
+      
+      if handzone == nil or tablezone == nil or color == nil then return end
+      local hand_objects = Player[color].getHandObjects()
+      for _, hand_object in pairs(hand_objects) do
+        if string.find(hand_object.getName(), skill_name) then
+          return
+        end
       end
-    end
+      local table_objects = tablezone.getObjects()
+      for _, table_object in pairs(table_objects) do
+        if string.find(table_object.getName(), skill_name) and table_object.type == "Card" then
+          return
+        end
+      end
+      if skill_trained then return end
+      local skill_deck = nil
+      for _, object in pairs(getObjectFromGUID("6c3979").getObjects()) do
+        if object.type == "Deck" then
+          skill_deck = object
+        end
+      end
+      if skill_deck == nil then log("skill deck is nil") return end
+      local skill_card   = nil
+      local deck_objects = skill_deck.getObjects()
+      for _, deck_object in pairs(deck_objects) do
+        if deck_object.name == skill_name then
+          skill_card = skill_deck.takeObject({guid=deck_object.guid})
+          break
+        end
+      end
+      if skill_card == nil then return end
+      skill_card.setRotation({0, 180, 0})
+      skill_card.setPositionSmooth(handzone.getPosition(), false, true)
+      if skill_name ~= "Combat" then
+        if Player[color].steam_name ~= nil then
+          broadcastToAll("[" .. Color.fromString(color):toHex() .. "]" .. Player[color].steam_name .. "[-] has trained a new skill: " .. skill_name, "White")
+        else
+          broadcastToAll("[" .. Color.fromString(color):toHex() .. "]" .. color .. " Player[-] has trained a new skill: " .. skill_name, "White")
+        end
+      end
+
+    end, 1)
   end
+
   if (zone.hasTag('tenacity_marker') and obj.hasTag('tenacity_marker')) then
     
     handleTenacityMarkerEntry(zone, obj)
   end
+  
   if (zone.hasTag('xp_marker') and obj.hasTag('xp_marker')) then
     handleXPMarkerEntry(zone, obj)
   end

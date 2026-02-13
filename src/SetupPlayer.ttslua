@@ -203,14 +203,21 @@ end
 function deploySkillItems(skillName, playerColor)
   local baseDeck  = getObjectbyName("Skills")
   local skillBag  = getObjectbyName("Skill Tokens Bag")
+  local combatCard = nil
   local skillCard = nil
   for _, deckObj in pairs(baseDeck.getObjects()) do
-    if string.find(deckObj.name, skillName) then skillCard = baseDeck.takeObject({ guid = deckObj.guid }) end
+    if string.find(deckObj.name, skillName) then skillCard = baseDeck.takeObject({ guid = deckObj.guid }) break end
+  end
+  for _, deckObj in pairs(baseDeck.getObjects()) do
+    if string.find(deckObj.name, "Combat") then combatCard = baseDeck.takeObject({ guid = deckObj.guid }) break end
   end
   if not skillCard then broadcastToAll("No skill card found for " .. playerColor .. " " .. skillName, "Orange") return end
-  skillCard.setRotation({ 0, 180, 0 })  
+  if not combatCard then broadcastToAll("No skill card found for " .. playerColor .. " Combat", "Orange") return end
+  combatCard.setRotation({ 0, 180, 0 })
+  skillCard.setRotation({ 0, 180, 0 })
   local pos = (playerColor == "red" and { -54.97,5.2,-42 }) or (playerColor == "orange" and { -19.29,5.2,-42 }) or (playerColor == "blue" and { 17.07,5.2,-42 }) or { 52.71,5.2,-42 }
-  skillCard.setPosition(pos)
+  combatCard.setPosition(pos)
+  Wait.time(function() skillCard.setPosition(pos) end, .1)
   local skillToken = nil
   for _, bagObj in pairs(skillBag.getObjects()) do
     if string.find(bagObj.name, skillName) then
