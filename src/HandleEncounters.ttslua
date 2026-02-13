@@ -707,6 +707,7 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
   -- get drawn encounter card, type set by zone selected via checkZone declaration
   local card = nil
   local posActiveEncounter = { -38.89, 1.40, -2.53 }
+  local rotFaceDown = { 0, 180, 0 }
   local rotFaceUp = { 0, 180, 180 }
   local posDeckPeaceful = { 44.98, 1.40 -2.83 }
   local posDeckConflict = { 49.14, 1.40, -2.85 }
@@ -731,7 +732,7 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
   end  
   if card ~= nil then
     card.addTag(type == "Peaceful" and "peaceful_encounter" or "conflict_encounter")
-    card.setRotation(rotFaceUp)
+    card.setRotation(rotFaceDown)
     card.setPositionSmooth(posActiveEncounter)
     if encounterName ~= "Unstable" then
       broadcastToAll(encounterName .. " - " .. encounterType .. " Encounter Drawn: " .. card.getName(), "White")
