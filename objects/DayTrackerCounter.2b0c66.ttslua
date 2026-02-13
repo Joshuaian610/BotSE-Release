@@ -99,7 +99,7 @@ function add_subtract(_obj, playercolor, alt_click)
         if button_cleanup_encounter then        
             local pos = button_cleanup_encounter.getPosition()
             if pos.y > 1 then
-                button_cleanup_encounter.call('cleanup_town_encounter')
+                Global.call('cleanupEncounter', button_cleanup_encounter)
             end
         end
     end
