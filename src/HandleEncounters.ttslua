@@ -5332,7 +5332,7 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
                   broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
                 end
 
-              end, 1)
+              end, 3)
             end
 
           end
@@ -5365,7 +5365,7 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
                   broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
                 end
 
-              end, 1)
+              end, 3)
             end
           end
         end
@@ -5397,7 +5397,7 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
                   broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
                 end
 
-              end, 1)
+              end, 3)
             end
           end
         end
@@ -5429,7 +5429,7 @@ function deployClashEnemies(cardName, spacesEnemies, optionNumber)
                   broadcastToAll("[" .. Color.fromString("Orange"):toHex() .. "]Reminder 3+ Players[-]: New species gains quest unit skill: Vindictive.", "White")
                 end
 
-              end, 1)
+              end, 3)
             end
           end
         end
@@ -8073,59 +8073,66 @@ end
 
 function deployEnemyType(enemyLevel, enemyType, position)
   
-  -- this function handles the deployment of Clash battle enemies
-  
-  local chipFound = false
-
-  -- this function handles a clash enemy draw that is required to be of a special type
   local enemyChipSide = (enemyLevel == 1 or enemyLevel == 10) and "Low" or "High"
-  local rotDrawnEnemy  = enemyChipSide == "Low" and { 0, 180, 180 } or { 0, 180, 0 }
-  local validTags      = { enemyHuman = true, enemyBeast = true, enemyDaedra = true }
-  local bagEnemyDraw = (enemyLevel == 1 or enemyLevel == 5) and getObjectbyName("Level 1 / 5 Enemies") or getObjectbyName("Level 10 / 20 Enemies")
+  local rotDrawnEnemy = enemyChipSide == "Low" and {0,180,180} or {0,180,0}
+
+  -- valid enemy tags
+  local validTags = {
+    enemyHuman = true,
+    enemyBeast = true,
+    enemyDaedra = true
+  }
+
+  local bagEnemyDraw = (enemyLevel == 1 or enemyLevel == 5) 
+    and getObjectbyName("Level 1 / 5 Enemies") 
+    or getObjectbyName("Level 10 / 20 Enemies")
   bagEnemyDraw.shuffle()
 
-  local chip = nil
-
   for _, object in pairs(bagEnemyDraw.getObjects()) do
-    local objTags = object.tags
+    for _, tag in ipairs(object.tags) do
+      -- skip non-valid tags
+      if validTags[tag] then
+        -- single-side tag (same on both sides)
+        local activeTag = tag
 
-    for _, tag in ipairs(objTags) do
-      local tagLeft, tagRight = tag:match("([^_]+)_([^_]+)")
-      local primaryTag
+        if (activeTag == "enemyHuman"  and enemyType == "Human")
+        or (activeTag == "enemyBeast"  and enemyType == "Beast")
+        or (activeTag == "enemyDaedra" and enemyType == "Daedra") then
 
-      if tagLeft and tagRight then
-        if validTags[tagLeft] and validTags[tagRight] then
-          primaryTag = (enemyChipSide == "Low") and tagLeft or tagRight
-        else
-          primaryTag = nil
+          local chip = bagEnemyDraw.takeObject({
+            rotation = rotDrawnEnemy,
+            guid = object.guid,
+            position = position
+          })
+          return chip
         end
+
       else
-        primaryTag = validTags[tag] and tag or nil
-      end
+        -- two-sided tag (low_high)
+        local tagLeft, tagRight = tag:match("([^_]+)_([^_]+)")
+        if tagLeft and tagRight and validTags[tagLeft] and validTags[tagRight] then
+          local activeTag = (enemyChipSide == "Low") and tagLeft or tagRight
 
-      if primaryTag
-      and ((primaryTag == "enemyHuman"  and enemyType == "Human")
-      or (primaryTag == "enemyBeast"  and enemyType == "Beast")
-      or (primaryTag == "enemyDaedra" and enemyType == "Daedra")) then
+          if (activeTag == "enemyHuman"  and enemyType == "Human")
+          or (activeTag == "enemyBeast"  and enemyType == "Beast")
+          or (activeTag == "enemyDaedra" and enemyType == "Daedra") then
 
-        chip = bagEnemyDraw.takeObject({ rotation = rotDrawnEnemy, guid = object.guid })
-        Wait.time(function()
-
-          chip.clearButtons()
-          chip.setVar('just_flipped', true)
-
-        end, 2)
-        -- Wait.frames(function() chip.setPositionSmooth(position, false, true) end)
-        chipFound = true
-        break
-
+            local chip = bagEnemyDraw.takeObject({
+              rotation = rotDrawnEnemy,
+              guid = object.guid,
+              position = position
+            })
+            log("chip: " .. chip.getName())
+            return chip
+          end
+        end
       end
     end
-
-    if chip then break end
   end
-  return chip
+
+  return nil -- no matching chip found
 end
+
 
 
 function checkWeather()
