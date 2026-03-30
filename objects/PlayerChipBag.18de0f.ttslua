@@ -211,9 +211,12 @@ function update_tile_stack(chip_obj, val)
     local whiteBagGUID = "e1cb0c"
     local chipHeight = 0.1
     local pos = chip_obj.getPosition()
+    local val = chip_obj.getVar('val') or val
     if val < 0 then val = 0 end
     if val > maxHP then val = maxHP end
+
     clear_old_chips(chip_obj)
+
     local lift_height = .75
     local cast_origin = {pos[1], pos[2] + 0.6, pos[3]}
     local cast_size = {0.9, 1.25, 0.9}
@@ -225,6 +228,7 @@ function update_tile_stack(chip_obj, val)
         max_distance = 0,
         debug = false,
     })
+
     local lifted = {}
     for _, hit in ipairs(hits) do
         if hit.hit_object and hit.hit_object ~= self then
@@ -234,6 +238,7 @@ function update_tile_stack(chip_obj, val)
             table.insert(lifted, {obj = obj, pos = orig_pos})
         end
     end
+
     local whiteCount = math.floor(val / 5)
     local redCount = val % 5
     local totalChips = whiteCount + redCount
@@ -241,51 +246,36 @@ function update_tile_stack(chip_obj, val)
     local baseY = pos.y - chipHeight / 2
     local y = baseY
     local spawnedChips = {}
+
     for i = 1, whiteCount do
         local chip = spawn_chip(whiteBagGUID, {pos[1], y, pos[3]})
-        if chip then
-            table.insert(spawnedChips, chip)
-        end
+        if chip then table.insert(spawnedChips, chip) end
         y = y + chipHeight
     end
+
     for i = 1, redCount do
         local chip = spawn_chip(redBagGUID, {pos[1], y, pos[3]})
-        if chip then
-            table.insert(spawnedChips, chip)
-        end
+        if chip then table.insert(spawnedChips, chip) end
         y = y + chipHeight
     end
+
     chip_obj.setPosition({pos[1], baseY + stackHeight + chipHeight / 2 + 0.001, pos[3]})
     chip_obj.setLock(true)
+
     if #spawnedChips == 1 then
         local chip = spawnedChips[1]
         local p = chip.getPosition()
         chip.setPosition({p[1], p[2] - 0.02, p[3]})
     end
+
     Wait.frames(function()
-    if #spawnedChips > 0 then
-        local topChip = spawnedChips[#spawnedChips]
-        topChip.interactable = false
-        topChip.jointTo(chip_obj, {
-            type = "Fixed",
-            collision = true,
-            break_force = 50000.0,
-            break_torque = 50000.0,
-        })
-        for i = #spawnedChips - 1, 1, -1 do
-            local chip = spawnedChips[i]
-            local belowChip = spawnedChips[i + 1]
-            chip.interactable = false
-            belowChip.interactable = false
-            chip.jointTo(belowChip, {
-                type = "Fixed",
-                collision = true,
-                break_force = 50000.0,
-                break_torque = 50000.0,
-            })
+        for _, chip in ipairs(spawnedChips) do
+            if chip and chip.getName() == "HP Chip" then
+                chip_obj.addAttachment(chip)
+            end
         end
-    end
     end, 5)
+
     chip_obj.setLock(false)
 end
 
@@ -297,21 +287,9 @@ end
 
 
 function clear_old_chips(chip_obj)
-    local modelPos = chip_obj.getPosition()
-    local hitList = Physics.cast({
-        origin       = modelPos,
-        direction    = {0, -1, 0},
-        type         = 2,
-        size         = {0.5, 0.5, 0.5},
-        max_distance = 5,
-        debug        = false,
-    })
-    for _, hit in ipairs(hitList) do
-        local hitObject = hit.hit_object
-        if hitObject and string.find(hitObject.getName(), "HP Chip") and hitObject ~= chip_obj then
-            hitObject.jointTo()
-            hitObject.destruct()
-        end
+    local removeChips = chip_obj.removeAttachments()
+    for _, removeChip in pairs(removeChips) do
+        if removeChip then removeChip.destruct() end
     end
 end
 

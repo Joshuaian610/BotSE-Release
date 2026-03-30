@@ -318,7 +318,7 @@ function cleanupProvince(button, _, _)
         for _, tag in pairs(tags) do
           if tag == provinceTag then
             local replaceTarget = enemyBags[i].takeObject({guid = object.guid})
-            Wait.frames(function()              
+            Wait.frames(function()
               if replaceTarget then provinceBag.putObject(replaceTarget) end
             end)
           end
@@ -329,7 +329,7 @@ function cleanupProvince(button, _, _)
 
   -- remove overland map, return map tokens / day markers
   for _, object in pairs(getObjects()) do
-    if object.getName():find(" Overland Map") then
+    if object.getName():find(" Overland Map") and object.getName() ~= "Zone Overland Map" then
       if object then provinceBag.putObject(object) end
     end
   end
@@ -774,6 +774,13 @@ function cleanupProvince(button, _, _)
 
   -- tint non player area pads to default white
   setProvinceAmbiance("Default")
+
+  -- check for Skyrim Siege Encounter button, return to bag if existing in world
+  local buttonSkyrimSiege = getObjectbyName("Button Siege Battle")
+  local bagSkyrim = getObjectbyName("Province Bag Skyrim")
+  if buttonSkyrimSiege and bagSkyrim then
+    bagSkyrim.putObject(buttonSkyrimSiege)
+  end
 
 end
 

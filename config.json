@@ -920,7 +920,7 @@
     90,
     120
   ],
-  "SaveName": "ESO:BotSE",
+  "SaveName": "ESO BotSE",
   "Sky": "Sky_Museum",
   "SkyURL": "https://steamusercontent-a.akamaihd.net/ugc/9596878021277190969/A14278158CF59AEC9C4D4FD8A28B4565380317D2/",
   "SnapPoints_path": "SnapPoints.json",
@@ -938,6 +938,6 @@
     "English"
   ],
   "Turns_path": "Turns.json",
-  "VersionNumber": "v14.1.8",
+  "VersionNumber": "v14.2.1",
   "XmlUI_path": "Root.xml"
 }

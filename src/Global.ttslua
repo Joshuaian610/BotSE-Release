@@ -1155,7 +1155,7 @@ end
 
 
 function onObjectEnterZone(zone, obj)
-  if zone.hasTag('dice_zone') and obj.hasTag('dice_zone') then    
+  if zone.hasTag('dice_zone') and obj.hasTag('dice_zone') then
   
     if string.find(obj.getName(), "atigue") then return end
     pos = nil
@@ -1258,6 +1258,15 @@ function onObjectEnterZone(zone, obj)
   
   if (zone.hasTag('xp_marker') and obj.hasTag('xp_marker')) then
     handleXPMarkerEntry(zone, obj)
+  end
+
+  -- handle removal of HP chipstacks when required
+  local objAttachments = obj.getAttachments()
+  local bagPlayerChips = getObjectbyName("Player Chip Bag")
+  if (zone.getName() == "Zone Province Boxes Left" or zone.getName() == "Zone Province Boxes Right" or zone.getName() == "Zone Defeated Monsters" or
+  zone.getName() == "Zone Monster Bags" or zone.getName() == "Zone Player/Quest Chips") and #objAttachments > 0 then
+    bagPlayerChips.call('clear_old_chips', obj)
+    obj.clearButtons()
   end
 end
 

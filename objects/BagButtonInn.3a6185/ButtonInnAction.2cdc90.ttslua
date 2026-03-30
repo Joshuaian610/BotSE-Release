@@ -191,9 +191,9 @@ function inn_action(button, playercolor, _)
     for _, object in pairs(cd_zone.getObjects()) do
         if object.type == "Dice" then
             if string.find(object.getName(), "atigue") or string.find(object.getName(), "Status") then
-                Global.call('return_supply_die_remote', {die_obj=object, color=playercolor})
+                Global.call('doReturnSupplyDie', {dieObj=object, playerColor=playercolor})
             else
-                Global.call('return_home_die_remote', {die_obj=object, color=playercolor})
+                Global.call('doReturnHomeDie', {dieObj=object, playerColor=playercolor})
             end
         end
     end

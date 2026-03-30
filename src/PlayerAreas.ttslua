@@ -708,6 +708,18 @@ function compressTrack(playerColor, trackType)
 end
 
 
+function doReturnSupplyDie(args)
+  local dieObj = args.dieObj
+  local playerColor = args.playerColor
+  returnSupplyDie(playerColor, dieObj)
+end
+
+function doReturnHomeDie(args)
+  local dieObj = args.dieObj
+  local playerColor = args.playerColor
+  returnHomeDie(playerColor, dieObj)
+end
+
 function returnSupplyDie(playerColor, dieObj)  
 
   -- this function handles the return of die objects to the supply bag
