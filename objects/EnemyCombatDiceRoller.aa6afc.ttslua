@@ -70,6 +70,8 @@ function rollThisDieType(dieOnPad, rollerColor)
             local pos = findGlobalPosWithLocalDirection(self, distanceFromTool*self.getScale().x, angle*(i-1))
             --Makes a duplicate of the die on the pad
             local die = dieOnPad.clone({position=pos})
+            die.addTag("rolled_enemy_die")
+            die.removeTag("non_int")
             die.setLock(false)
             table.insert(diceBeingRolled, die)
             --Gives it a random rotation and waits 1 frame for it to happen
@@ -170,6 +172,9 @@ function buttonClick_clear(_, rollerColor)
             if die ~= nil then
                 destroyObject(die)
             end
+        end
+        for _, object in pairs(getObjects()) do
+            if object.hasTag("rolled_enemy_die") then object.destruct() end
         end
     else
         broadcastToColor("Please do not hit clear until dice come to a complete stop.", rollerColor, {1,1,1})
