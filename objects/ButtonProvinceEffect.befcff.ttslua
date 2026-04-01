@@ -20,7 +20,7 @@ function create_all()
 end
 
 
-function animate_button()    
+function animate_button()
     self.clearButtons()
     local pos = self.getPosition()
     pos.y = pos.y - .29
@@ -50,17 +50,18 @@ function activate_province_effect()
         return
     end
 
-    local pe_display = get_pe_display()     
+    local pe_display = get_pe_display()
     if pe_display ~= nil then
-        local previously_drawn_pe = pe_display.hasTag('day_locked') and true or false                
+        local previously_drawn_pe = pe_display.hasTag('day_locked') and true or false
+        log("previously_drawn_pe: " .. tostring(previously_drawn_pe))
 
         -- handle previously drawn (via peaceful encounter) PE        
         if previously_drawn_pe then
-            local symbols = get_symbol_count()            
+            local symbols = get_symbol_count()
             run_effect(province, symbols)
 
         -- handle no previous PE
-        else            
+        else
             -- ensure cleanup encounter doesn't need to happen first - broadcast warn
             local pos_button_cleanup = getObjectFromGUID("9ae015").getPosition()
             if pos_button_cleanup.y > 0.5 then
@@ -97,7 +98,7 @@ function activate_province_effect()
                 -- update PE, get symbol count
                 update_pe_display(card)
                 Wait.frames(function() 
-                    local symbols = get_symbol_count() 
+                    local symbols = get_symbol_count()
                     run_effect(province, symbols)
                 end, 5)
 
@@ -133,11 +134,11 @@ function get_symbol_count()
         ["symbol1"] = 0,
         ["symbol2"] = 0,
         ["symbol3"] = 0,
-    }    
+    }
     -- check state, add to symbol count accordingly
-    local pe_display = get_pe_display()    
+    local pe_display = get_pe_display()
     if pe_display ~= nil then
-        local current_display_state = pe_display.getStateId()        
+        local current_display_state = pe_display.getStateId()
         if current_display_state == 1 then
             symbols["symbol0"] = 1
         elseif current_display_state == 2 then
@@ -180,11 +181,11 @@ function get_province_map(province)
     return nil
 end
 
-function run_effect(province, symbols)      
+function run_effect(province, symbols)
     
     -- BM - weather
     if province == "Black Marsh" then
-       handle_black_marsh(symbols)
+        handle_black_marsh(symbols)
 
     -- CY - alliance stuff
     elseif province == "Cyrodiil" then
@@ -243,7 +244,7 @@ function handle_black_marsh(symbols)
         book_token.setPositionSmooth({weather_x[weather], weather_y, weather_z}, false, false)
     end
     
-    local day_number = getObjectFromGUID("2b0c66").getVar('val')        
+    local day_number = getObjectFromGUID("2b0c66").getVar('val')
     Wait.time(function()
         if weather == "No Change" then
             broadcastToAll("There will be no change in weather in Black Marsh at the end of day " .. tostring(day_number) .. ".", "White")

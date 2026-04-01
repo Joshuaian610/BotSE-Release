@@ -815,7 +815,7 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
       end
 
       -- add tag to detect if set for current day or not
-      peDisplay.addTag('day_locked')
+      if encounterType == "Peaceful" then peDisplay.addTag('day_locked') end
     end)
   end
 end
