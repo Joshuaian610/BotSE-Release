@@ -596,8 +596,6 @@ function getEncounterLocation(button, _, _)
 
   -- this function handles the detection of the party token, and launching the appropriate encounter type
 
-  animateButtonsEncounter(button)
-
   -- get and find province map, provinceMapName (especially important for eastern/western skyrim)
   local zone = getObjectFromGUID("64c0a4")
   local provinceMapName = nil
@@ -630,15 +628,16 @@ function getEncounterLocation(button, _, _)
         local dieScale = { 1, 1, 1 }
         local posDieHome = { -56.32, 1.60, 0.41 }
         local rotValue = die.getRotationValue()
-        
-        animateButtonsEncounter(getObjectbyName("Button Setup Encounter"))
 
         if rotValue < 4 then          
           setupEncounter(provinceMapName, "Unstable", "Conflict")
+          animateButtonsEncounter(button)
         elseif rotValue > 3 and rotValue ~= 6 then
           setupEncounter(provinceMapName, "Unstable", "Peaceful")
+          animateButtonsEncounter(button)
         elseif rotValue == 6 then          
           setupTownEncounter(provinceMapName, "Traveling Caravan")
+          animateButtonsEncounter(button)
         end
 
         die.setScale(dieScale)
@@ -665,11 +664,14 @@ function getEncounterLocation(button, _, _)
       for name, coords in pairs(entries) do
         if math.abs(coords[1] - x) <= tol and math.abs(coords[3] - y) <= tol then
           if category == "Town" then
-            setupTownEncounter(provinceMapName, name)
+            setupTownEncounter(provinceMapName, name)            
+            animateButtonsEncounter(button)
           elseif category == "Peaceful" then
             setupEncounter(provinceMapName, name, "Peaceful")
+            animateButtonsEncounter(button)
           elseif category == "Conflict" then
             setupEncounter(provinceMapName, name, "Conflict")
+            animateButtonsEncounter(button)
           end
           return category, name
         end
@@ -678,12 +680,13 @@ function getEncounterLocation(button, _, _)
     elseif category == "Unstable" then
       for _, coords in ipairs(entries) do
         if math.abs(coords[1] - x) <= tol and math.abs(coords[3] - y) <= tol then
-          setupUnstableEncounter(provinceMapName)
+          setupUnstableEncounter()
           return "Unstable"
         end
       end
 
     elseif category == "Dig Site" then
+      animateButtonsEncounter(button)
       for _, coords in ipairs(entries) do
         if math.abs(coords[1] - x) <= tol and math.abs(coords[3] - y) <= tol then
           -- dig site stuff
@@ -738,6 +741,13 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
       broadcastToAll(encounterName .. " - " .. encounterType .. " Encounter Drawn: " .. card.getName(), "White")
     else
       broadcastToAll("Unstable - " .. encounterType .. " Encounter Drawn: " .. card.getName(), "White")
+    end
+    if encounterType == "Conflict" then
+      Wait.time(function()
+        
+        broadcastToAll("Tip: Conflict encounters may be set up via button selection on back of Conflict Encounter Card.", "White")
+
+      end, 2)
     end
   end
 

@@ -47,7 +47,7 @@ function onLoad()
 
   local invisBags = {"e0d41f", "6d89c2", "db5580", "25be0c", "854dab", "6ccfde", "049614", "13826d", "441f00",
   "3c306d", "10fcd4", "c1c1fa", "c09813", "c8b9dd", "4da6b0", "cdb313", "3a6185", "0e06c1"}
-  local mats = {"a1c5f4", "1fe5f3", "7d559d", "e0a25a", "0e06c1"}
+  local mats = {"a1c5f4", "1fe5f3", "7d559d", "e0a25a"}
   local gameInProgress = false
   for i = 1, 4 do
     if getObjectFromGUID(mats[i]).hasTag('race_pulled') then
@@ -62,7 +62,7 @@ function onLoad()
   local posCleanupButton = { -65.55, 1.73, 41.31 }
   local buttonCleanup = getObjectbyName("Button Cleanup Session")
 
-  if showCleanupButton then    
+  if showCleanupButton then
     buttonCleanup.setRotation(rotCleanupButton)
     buttonCleanup.setPosition(posCleanupButton)
   else
@@ -361,24 +361,24 @@ active_dice_pos = {
 }
 
 supply_dice_bags = {
-  ["Acrobatics"]          = "26821c",
-  ["Bow"]                 = "01087e",
-  ["Daedric Summoning"]   = "4d7d97",
-  ["Destruction Staff"]   = "653f69",
-  ["Heavy Armor"]         = "a50b59",
-  ["Illusion"]            = "139763",
-  ["Legerdemain"]         = "c18430",
-  ["Light Armor"]         = "abb3f2",
-  ["One Hand And Shield"] = "2f6965",
-  ["Restoring Light"]     = "0f6e28",
-  ["Shadow"]              = "c49e77",
-  ["Speech"]              = "749ea0",
-  ["Two Handed"]          = "0d4d33",
-  ["Overfatigue"]         = "1e81c4",
-  ["Fatigue"]             = "058b91",
-  ["Status"]              = "97bfab",
-  ["Combat"]              = "0f834b",
-  ["Enemy Combat"]        = "3154b3",
+  ["Acrobatics"]          = "96a6dc",
+  ["Bow"]                 = "043620",
+  ["Daedric Summoning"]   = "f4c076",
+  ["Destruction Staff"]   = "2336a5",
+  ["Heavy Armor"]         = "cf0526",
+  ["Illusion"]            = "7e4f40",
+  ["Legerdemain"]         = "9b1c8d",
+  ["Light Armor"]         = "cd4f83",
+  ["One Hand And Shield"] = "d62345",
+  ["Restoring Light"]     = "cbc16d",
+  ["Shadow"]              = "b74d6d",
+  ["Speech"]              = "7da486",
+  ["Two Handed"]          = "614161",
+  ["Overfatigue"]         = "c04334",
+  ["Fatigue"]             = "e06df7",
+  ["Status"]              = "801edf",
+  ["Combat"]              = "ec1bfe",
+  ["Enemy Combat"]        = "7ac300",
 }
 
 guildPDFpages                   = {

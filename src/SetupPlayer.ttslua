@@ -716,11 +716,16 @@ function deployRaceItems(buttonObj, playerColor, _)
       
       initializePlayerPanel({
         playerChip = cloneChip,
-        color      = playerColor,
+        color      = playerColor,4
       })
       
     end, 0.2)
   end, 1)
+
+  -- if this function is running, need to destruct clear player area button
+  for _, object in pairs(getObjects()) do
+    if object.getName() == "Button Clear Playerarea" and object.getGMNotes() == playerColor:gsub("^%l", string.upper) then object.destruct() end
+  end
 end
 
 

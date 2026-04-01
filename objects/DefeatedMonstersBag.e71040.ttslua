@@ -164,7 +164,7 @@ function chip_onload(args)
     Wait.time(function()
     if not chip_obj.getVar('fresh_out_of_bag') then
         chip_obj.clearButtons()
-        create_counter(position, rotation, chip_obj)
+        create_counter(chip_obj)
         clear_old_chips(chip_obj)
         update_tile_stack(chip_obj, val)
         update_skill_keywords(chip_obj, skill_keywords)
@@ -179,8 +179,7 @@ function mark_player_companion(player_color, object)
     object.clearButtons()
     local player_tag = "player_" .. string.lower(player_color)
     object.addTag(player_tag)
-    local position, rotation = get_position_rotation(object)
-    getObjectFromGUID("18de0f").call('create_counter_remote', {position=position, rotation=rotation, chip_obj=object})
+    create_color_counter(object)
 end
 
 
@@ -191,21 +190,19 @@ function mark_party_companion(object)
         if object.hasTag(tag) then object.removeTag(tag) end
     end
     object.addTag('party_companion')
-    local position, rotation = get_position_rotation(object)
-    getObjectFromGUID("18de0f").call('create_counter_remote', {position=position, rotation=rotation, chip_obj=object})
+    create_color_counter(object)
 end
 
-function mark_enemy(_, object)    
+function mark_enemy(_, object)
     object.clearButtons()
     for _,tag in ipairs({'player_red','player_orange','player_blue','player_green','party_companion'}) do
         if object.hasTag(tag) then object.removeTag(tag) end
     end
-    local position, rotation = get_position_rotation(object)
-    getObjectFromGUID("18de0f").call('create_counter_remote', {position=position, rotation=rotation, chip_obj=object})
+    create_counter(object)
 end
 
 function set_hp_0(_, object)
-    getObjectFromGUID("18de0f").call('set_val_remote', {chip_obj=object, val=0})
+    set_val(object, 0)
 end
 
 
@@ -239,82 +236,205 @@ end
 
 
 function create_counter_remote(args)
-    local position = args.position
-    local rotation = args.rotation
     local chip_obj = args.chip_obj
-    Wait.time(function() create_counter(position, rotation, chip_obj) end, .50)
+    Wait.time(function() create_counter(chip_obj) end, .50)
 end
 
 
-function create_counter(position, rotation, chip_obj)
-    local is_color     = false
+function create_counter(chip_obj)
+    local chip_rotation = chip_obj.getRotation()
+    local rotation
+    local baseX, baseY, baseZ = 0, -140, 0
+    if chip_rotation.z > 330 or chip_rotation.z < 30 then
+        baseZ = -130
+        rotation = "110 180 0"
+    else
+        baseZ = 130
+        rotation = "110 0 0"
+    end
+
     if chip_obj.hasTag('player_red') or chip_obj.hasTag('player_orange') or
-    chip_obj.hasTag('player_blue') or chip_obj.hasTag('player_green') or chip_obj.hasTag('party_companion') then
-        create_color_counter(position, rotation, chip_obj)
+       chip_obj.hasTag('player_blue') or chip_obj.hasTag('player_green') or
+       chip_obj.hasTag('party_companion') then
+        create_color_counter(chip_obj)
         return
     end
-    local h_color      = {116/255, 39/255, 26/255, .4}
-    local f_color      = {1, 1, 1, 255}
-    local val          = chip_obj.getVar('val')
-    chip_obj.createButton({
-        label          = tostring(val),
-        click_function = "add_subtract",
-        function_owner = chip_obj,
-        position       = position,
-        rotation       = rotation,
-        height         = 600,
-        width          = 400,
-        font_size      = 350,
-        scale          = {x=1, y=1, z=1},
-        font_color     = f_color,
-        hover_color    = h_color,
-        color          = {116/255, 39/255, 26/255, 255}
-    })
+
+    local val = chip_obj.getVar('val')
+    local chip_guid = chip_obj.getGUID()
+    local chipName = chip_obj.getName()
+    local bgHex = "#74271AFF"
+    local textHex = "#FFFFFFFF"
+    local outline = "#000000FF"
+    local shadow = "#000000FF"
+    local fontSize = (val >= 10) and "70" or "90"
+    local direction = (chip_rotation.z > 330 or chip_rotation.z < 30) and -1 or 1
+
+    local xmlTable = {
+        {
+            tag = "Panel",
+            attributes = {
+                id = "counterPanel_" .. chip_guid,
+                width = "90",
+                height = "120",
+                rotation = rotation,
+                position = string.format("%d %d %d", baseX, baseY + 10, baseZ),
+                scale = "1 1 1",
+                color = bgHex,
+                guid = chip_guid,
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        id = "counterButton_" .. chip_guid,
+                        text = tostring(val),
+                        font = "Fonts/font_univers67",
+                        fontSize = fontSize,
+                        fontStyle = "Bold",
+                        outline = outline,
+                        shadow  = shadow,
+                        color = bgHex,
+                        textColor = textHex,
+                        onClick = "e71040/doAddSubtract",
+                        rectAlignment = "MiddleCenter",
+                    }
+                }
+            }
+        },
+        {
+            tag = "Text",
+            attributes = {
+                id = "counterLabel_" .. chip_guid,
+                text = string.upper(chipName),
+                font = "Fonts/font_univers67",
+                fontSize = "20",
+                fontStyle = "Bold",
+                color = "#FFFFFFFF",
+                shadow = "#000000FF",
+                outline = "#00000000",
+                position = string.format("%d %d %d", baseX, baseY + 40, baseZ - 80 * direction),
+                rotation = rotation,
+                raycastTarget = "false",
+            }
+        }
+    }
+    local fontBundle = {
+        name = "font_univers67",
+        type = "1",
+        url = "https://steamusercontent-a.akamaihd.net/ugc/17744680892379368636/BF47966114E58BE65EB49D76D7437BE1320BE254/"
+    }
+
+    chip_obj.UI.setCustomAssets(fontBundle)
+    chip_obj.UI.setXmlTable(xmlTable)
     chip_obj.setVar('just_flipped', false)
-    chip_obj.setVar('fresh_out_of_bag',false)
+    chip_obj.setVar('fresh_out_of_bag', false)
     update_save(chip_obj, val)
 end
 
 
-function create_color_counter(position, rotation, chip_obj)
-    local val          = chip_obj.getVar('val')
-    local color        = nil
-    local hover_color  = nil
+function create_color_counter(chip_obj)
+    local bgHex
     if chip_obj.hasTag('player_red') then
-        color          = {219/255, 26/255, 24/255, 255}
-        hover_color    = {255/255, 77/255, 77/255, 255}
+        bgHex = "#DB1A18FF"      -- rgba(219,26,24,255)
     elseif chip_obj.hasTag('player_orange') then
-        color          = {244/255, 100/255, 29/255, 255}
-        hover_color    = {255/255, 140/255, 85/255, 255}
+        bgHex = "#F4641DFF"      -- rgba(244,100,29,255)
     elseif chip_obj.hasTag('player_blue') then
-        color          = {31/255, 136/255, 255/255, 255}
-        hover_color    = {100/255, 170/255, 255/255, 255}
+        bgHex = "#1F88FFFF"      -- rgba(31,136,255,255)
     elseif chip_obj.hasTag('player_green') then
-        color          = {49/255, 179/255, 43/255, 255}
-        hover_color    = {110/255, 205/255, 105/255, 255}
+        bgHex = "#31B32BFF"      -- rgba(49,179,43,255)
     elseif chip_obj.hasTag('party_companion') then
-        color          = {33/255, 177/255, 155/255, 255}
-        hover_color    = {90/255, 210/255, 190/255, 255}
+        bgHex = "#21B19BFF"      -- rgba(33,177,155,255)
     end
-    chip_obj.createButton({
-        label          = tostring(val),
-        click_function = "add_subtract",
-        function_owner = chip_obj,
-        position       = position,
-        rotation       = rotation,
-        height         = 600,
-        width          = 400,
-        font_size      = 350,
-        scale          = {x=1, y=1, z=1},
-        font_color     = "White",
-        hover_color    = hover_color,
-        color          = color
-    })
+
+    local chip_rotation = chip_obj.getRotation()
+    local rotation
+    local baseX, baseY, baseZ = 0, -140, 0
+    if chip_rotation.z > 330 or chip_rotation.z < 30 then
+        baseZ = -130
+        rotation = "110 180 0"
+    else
+        baseZ = 130
+        rotation = "110 0 0"
+    end
+
+    local val = chip_obj.getVar('val')
+    local chip_guid = chip_obj.getGUID()
+    local chipName = chip_obj.getName()
+    local textHex = "#FFFFFFFF"
+    local outline = "#000000FF"
+    local shadow = "#000000FF"
+    local fontSize = (val >= 10) and "70" or "90"
+    local direction = (chip_rotation.z > 330 or chip_rotation.z < 30) and -1 or 1
+
+    local xmlTable = {
+        {
+            tag = "Panel",
+            attributes = {
+                id = "counterPanel_" .. chip_guid,
+                width = "90",
+                height = "120",
+                rotation = rotation,
+                position = string.format("%d %d %d", baseX, baseY + 10, baseZ),
+                scale = "1 1 1",
+                color = bgHex,
+                guid = chip_guid,
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        id = "counterButton_" .. chip_guid,
+                        text = tostring(val),
+                        font = "Fonts/font_univers67",
+                        fontSize = fontSize,
+                        fontStyle = "Bold",
+                        outline = outline,
+                        shadow  = shadow,
+                        color = bgHex,
+                        textColor = textHex,
+                        onClick = "e71040/doAddSubtract",
+                        rectAlignment = "MiddleCenter",
+                    }
+                }
+            }
+        },
+        {
+            tag = "Text",
+            attributes = {
+                id = "counterLabel_" .. chip_guid,
+                text = string.upper(chipName),
+                font = "Fonts/font_univers67",
+                fontSize = "20",
+                fontStyle = "Bold",
+                color = "#FFFFFFFF",
+                shadow = "#000000FF",
+                outline = "#00000000",
+                position = string.format("%d %d %d", baseX, baseY + 40, baseZ - 80 * direction),
+                rotation = rotation,
+                raycastTarget = "false",
+            }
+        }
+    }
+    local fontBundle = {
+        name = "font_univers67",
+        type = "1",
+        url = "https://steamusercontent-a.akamaihd.net/ugc/17744680892379368636/BF47966114E58BE65EB49D76D7437BE1320BE254/"
+    }
+
+    chip_obj.UI.setCustomAssets(fontBundle)
+    chip_obj.UI.setXmlTable(xmlTable)
     chip_obj.setVar('just_flipped', false)
-    chip_obj.setVar('fresh_out_of_bag',false)
+    chip_obj.setVar('fresh_out_of_bag', false)
     update_save(chip_obj, val)
 end
 
+
+function doAddSubtract(player, value, id)
+    local altClick = value == "-2" and true or false
+    local chip_guid = string.match(id, "counterButton_(.+)")
+    add_subtract({chip_obj = getObjectFromGUID(chip_guid), alt_click = altClick})
+end
 
 function add_subtract(args)
     local chip_obj  = args.chip_obj
@@ -330,36 +450,43 @@ function add_subtract(args)
         update_val(chip_obj, val)
         update_save(chip_obj, val)
     end
+    if chip_obj.hasTag('player_chip') then refresh_counter(chip_obj, val) end
     if val == 0 then
-        local bag_obj = getObjectFromGUID(chip_obj.getGMNotes())
-        local bag_pos = bag_obj.getPosition()
-        bag_pos.y = bag_pos.y + 5
-        -- clear any status dice or arrow tokens on chip
-        local chip_pos = chip_obj.getPosition()
-        local tolerance = 1
-        for _, object in pairs(getObjects()) do
-            if object.getGMNotes() == "Cloned Token" then                
-                local obj_pos = object.getPosition()
-                if math.abs(obj_pos.x - chip_pos.x) <= tolerance
-                and math.abs(obj_pos.y - chip_pos.y) <= tolerance
-                and math.abs(obj_pos.z - chip_pos.z) <= tolerance then
-                    object.destroy()
+        if not chip_obj.hasTag('player_chip') then
+            local bag_obj = getObjectFromGUID(chip_obj.getGMNotes())
+            local bag_pos = bag_obj.getPosition()
+            bag_pos.y = bag_pos.y + 5
+            -- clear any status dice or arrow tokens on chip
+            local chip_pos = chip_obj.getPosition()
+            local tolerance = 1
+            for _, object in pairs(getObjects()) do
+                if object.getGMNotes() == "Cloned Token" then
+                    local obj_pos = object.getPosition()
+                    if math.abs(obj_pos.x - chip_pos.x) <= tolerance
+                    and math.abs(obj_pos.y - chip_pos.y) <= tolerance
+                    and math.abs(obj_pos.z - chip_pos.z) <= tolerance then
+                        object.destroy()
+                    end
+                end
+                if object.getName() == "Status Effect" then
+                    local obj_pos = object.getPosition()
+                    if math.abs(obj_pos.x - chip_pos.x) <= tolerance
+                    and math.abs(obj_pos.y - chip_pos.y) <= tolerance
+                    and math.abs(obj_pos.z - chip_pos.z) <= tolerance then
+                        getObjectFromGUID("801edf").putObject(object)
+                    end
                 end
             end
-            if object.getName() == "Status Effect" then
-                local obj_pos = object.getPosition()
-                if math.abs(obj_pos.x - chip_pos.x) <= tolerance
-                and math.abs(obj_pos.y - chip_pos.y) <= tolerance
-                and math.abs(obj_pos.z - chip_pos.z) <= tolerance then
-                    getObjectFromGUID("97bfab").putObject(object)
-                end
-            end
+            
+            clear_old_chips(chip_obj)
+            chip_obj.setPosition(bag_pos)
+            broadcastToAll(chip_obj.getName() .. " has been defeated, and returned to the 'Defeated Monsters' bag!", "White")
+            bag_obj.putObject(chip_obj)
+        else
+            broadcastToAll(chip_obj.getName() .. " has been defeated!", "White")
+            clear_old_chips(chip_obj)
         end
-
-        clear_old_chips(chip_obj)
-        chip_obj.setPosition(bag_pos)
-        broadcastToAll(chip_obj.getName() .. " has been defeated, and returned to the 'Defeated Monsters' bag!", "White")
-        bag_obj.putObject(chip_obj)
+        
     else
         clear_old_chips(chip_obj)
         update_tile_stack(chip_obj, val)
@@ -368,10 +495,11 @@ end
 
 
 function update_val(chip_obj, val)
-    chip_obj.editButton({
-        index = 0,
-        label = tostring(val),
-    })
+    local fontSize = (val >= 10) and "70" or "90"
+    local textHex = "#FFFFFFFF"
+    chip_obj.UI.setAttribute("counterButton_"..chip_obj.getGUID(), "text", tostring(val))
+    chip_obj.UI.setAttribute("counterButton_"..chip_obj.getGUID(), "fontSize", fontSize)
+    chip_obj.UI.setAttribute("counterButton_"..chip_obj.getGUID(), "textColor", textHex)
 end
 
 
@@ -413,7 +541,7 @@ function update_tile_stack(chip_obj, val)
 
     clear_old_chips(chip_obj)
 
-    local lift_height = .75
+    local lift_height = 0.75
     local cast_origin = {pos[1], pos[2] + 0.6, pos[3]}
     local cast_size = {0.9, 1.25, 0.9}
     local hits = Physics.cast({
@@ -443,21 +571,25 @@ function update_tile_stack(chip_obj, val)
     local y = baseY
     local spawnedChips = {}
 
-    for i = 1, whiteCount do
-        local chip = spawn_chip(whiteBagGUID, {pos[1], y, pos[3]})
-        if chip then table.insert(spawnedChips, chip) end
-        y = y + chipHeight
-    end
-
+    -- Spawn red chips first (they go at the bottom)
     for i = 1, redCount do
         local chip = spawn_chip(redBagGUID, {pos[1], y, pos[3]})
         if chip then table.insert(spawnedChips, chip) end
         y = y + chipHeight
     end
 
+    -- Spawn white chips on top
+    for i = 1, whiteCount do
+        local chip = spawn_chip(whiteBagGUID, {pos[1], y, pos[3]})
+        if chip then table.insert(spawnedChips, chip) end
+        y = y + chipHeight
+    end
+
+    -- Position the main object at the top of the stack
     chip_obj.setPosition({pos[1], baseY + stackHeight + chipHeight / 2 + 0.001, pos[3]})
     chip_obj.setLock(true)
 
+    -- Slight adjustment if only one chip spawned
     if #spawnedChips == 1 then
         local chip = spawnedChips[1]
         local p = chip.getPosition()
@@ -626,4 +758,11 @@ function spawn_chip(bagGUID, position)
         smooth = false,
     })
     return chip
+end
+
+
+function refresh_counter(chip_obj, val)
+    local counter = (chip_obj.hasTag('player_red') and getObjectFromGUID("12870c")) or (chip_obj.hasTag('player_orange') and getObjectFromGUID("a6b220")) or
+    (chip_obj.hasTag('player_blue') and getObjectFromGUID("68b5c6")) or (chip_obj.hasTag('player_green') and getObjectFromGUID("a8ecfa"))
+    if counter then counter.call('set_val', val) end
 end
