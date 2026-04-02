@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.32941,
+    "r": 0
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/15871090870028231593/E832C952CF8EEC77F61A0B604EEEA0D1042EBFF0/",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/12563240224728460392/4B26CB8BA92577AE03B1CA4E6EC34FFA6D653D67/",
+    "WidthScale": 0
+  },
+  "Description": "Town Action is [b]Available[/b].\n\nFlip to signal Town Action spent, if desired.\n\nThese tokens are only for tracking purposes and do not control any other scripting.",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "18e910",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "Town Action Tracker: ACTION AVAILABLE",
+  "Snap": false,
+  "Sticky": true,
+  "Tags": [
+    "town_action_tracker"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -15.549,
+    "posY": 2.467,
+    "posZ": -3.766,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 0.6,
+    "scaleY": 1,
+    "scaleZ": 0.6
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

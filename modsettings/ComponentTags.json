@@ -395,6 +395,10 @@
     {
       "displayed": "stat_token",
       "normalized": "stat_token"
+    },
+    {
+      "displayed": "town_action_tracker",
+      "normalized": "town_action_tracker"
     }
   ]
 }

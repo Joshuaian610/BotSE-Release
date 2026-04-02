@@ -1722,7 +1722,7 @@ function selectGuild(button, _, _)
   end, .5)
 
   -- clone mini gazatteer, place, open to page 
-  Wait.time(function()    
+  Wait.time(function()
 
     local gazetteer = getObjectbyName(provinceName .. " Gazetteer")
     if not gazetteer then log("guildSelect(): gazetteer not found") end
@@ -1743,16 +1743,16 @@ function selectGuild(button, _, _)
     end)
 
     -- set main gazatteer to overland mechanics page
-    gazetteer.Book.setPage(overland_mechanic_pages[provinceName])   
+    gazetteer.Book.setPage(overland_mechanic_pages[provinceName])
     
   end, 1)
 
   Wait.time(function()
 
-    broadcastToAll(guildName .. " Quest has begun. Good luck, have fun!", "White")    
+    broadcastToAll(guildName .. " Quest has begun. Good luck, have fun!", "White")
     getEncounterLocation(getObjectbyName("Button Setup Encounter"))
 
-  end, 5)
+  end, 3)
 
   -- disable spawning of guild select button on guild cards
   getObjectbyName("Guilds").setGMNotes("")

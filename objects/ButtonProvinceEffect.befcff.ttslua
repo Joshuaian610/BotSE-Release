@@ -53,7 +53,6 @@ function activate_province_effect()
     local pe_display = get_pe_display()
     if pe_display ~= nil then
         local previously_drawn_pe = pe_display.hasTag('day_locked') and true or false
-        log("previously_drawn_pe: " .. tostring(previously_drawn_pe))
 
         -- handle previously drawn (via peaceful encounter) PE        
         if previously_drawn_pe then

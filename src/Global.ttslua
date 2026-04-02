@@ -46,7 +46,7 @@ function onLoad()
   initClearPlayerareaButtons()
 
   local invisBags = {"e0d41f", "6d89c2", "db5580", "25be0c", "854dab", "6ccfde", "049614", "13826d", "441f00",
-  "3c306d", "10fcd4", "c1c1fa", "c09813", "c8b9dd", "4da6b0", "cdb313", "3a6185", "0e06c1"}
+  "3c306d", "10fcd4", "c1c1fa", "c09813", "c8b9dd", "4da6b0", "cdb313", "3a6185", "0e06c1", "3b2213"}
   local mats = {"a1c5f4", "1fe5f3", "7d559d", "e0a25a"}
   local gameInProgress = false
   for i = 1, 4 do
@@ -85,7 +85,7 @@ function onLoad()
   end
 
   if invis then
-    for i = 1, 18 do
+    for i = 1, #invisBags do
       getObjectFromGUID(invisBags[i]).setInvisibleTo({"Red", "Orange", "Blue", "Green", "White", "Grey"})
     end
   end
@@ -383,15 +383,15 @@ supply_dice_bags = {
 
 guildPDFpages                   = {
   ["Black Marsh"]             = {
-    ["Circle Of Champions"] = 21,
-    ["Dark Brotherhood"]    = 18,
-    ["Eyes Of The Queen"]   = 20,
-    ["Fighters Guild"]      = 17,
-    ["Mages Guild"]         = 16,
-    ["Outer Watch"]         = 19,
-    ["Psijic Order"]        = 20,
-    ["Thieves Guild"]       = 17,
-    ["Undaunted"]           = 18,
+    ["Circle Of Champions"] = 23,
+    ["Dark Brotherhood"]    = 20,
+    ["Eyes Of The Queen"]   = 22,
+    ["Fighters Guild"]      = 19,
+    ["Mages Guild"]         = 18,
+    ["Outer Watch"]         = 21,
+    ["Psijic Order"]        = 22,
+    ["Thieves Guild"]       = 19,
+    ["Undaunted"]           = 20,
   },
   ["Cyrodiil"] = {
     ["Circle Of Champions"] = 24,
@@ -438,15 +438,15 @@ guildPDFpages                   = {
     ["Undaunted"]           = 32,
   },
   ["Valenwood"]               = {
-    ["Circle Of Champions"] = 22,
-    ["Dark Brotherhood"]    = 18,
-    ["Eyes Of The Queen"]   = 21,
-    ["Fighters Guild"]      = 17,
-    ["Mages Guild"]         = 16,
-    ["Outer Watch"]         = 19,
-    ["Psijic Order"]        = 21,
-    ["Thieves Guild"]       = 16,
-    ["Undaunted"]           = 19,
+    ["Circle Of Champions"] = 24,
+    ["Dark Brotherhood"]    = 20,
+    ["Eyes Of The Queen"]   = 23,
+    ["Fighters Guild"]      = 19,
+    ["Mages Guild"]         = 18,
+    ["Outer Watch"]         = 21,
+    ["Psijic Order"]        = 23,
+    ["Thieves Guild"]       = 18,
+    ["Undaunted"]           = 21,
   },
 }
 
@@ -1293,6 +1293,7 @@ function onObjectEnterContainer(bag, obj)
   end
 end
 
+
 function onObjectLeaveContainer(bag, obj)
   -- ensure all dice have 'dice_zone' tag upon entering play from bag
   for _, v in pairs(supply_dice_bags) do
@@ -1310,6 +1311,46 @@ function onObjectLeaveContainer(bag, obj)
   -- handles update of player pack counters on item drop into/retrieve from bag
   if bag.getName():find(" Player Pack") then
     updatePackCounter(bag)
+  end
+end
+
+
+function onObjectRotate(object, _, flip, _, _, _)
+  -- handle rotation actions for Town Encounter Action Tracker tokens
+  if object.getName():find("Town Action Tracker: ") then
+    if flip == 0 then -- ready
+      object.setColorTint({0/255, 84/255, 0/255})
+      object.setName("Town Action Tracker: ACTION AVAILABLE")
+      object.setDescription("Town Action is [b]Available[/b].\n\nFlip to signal Town Action spent, if desired.\n\nThese tokens are only for tracking purposes and do not control any other scripting.")
+    elseif flip == 180 then -- exhausted
+      object.setColorTint({223/255, 69/255, 24/255})
+      object.setName("Town Action Tracker: ACTION SPENT")
+      object.setDescription("Town Action is [b]Not Available[/b].\n\nFlip to signal Town Action recovered and available, if desired.\n\nThese tokens are only for tracking purposes and do not control any other scripting.")
+      -- when exhausting, check if all trackers for playerColor are exhausted and broadcast if so
+      Wait.time(function()
+      
+        local allExhausted = true
+        local playerColor = (
+          (object.hasTag('player_red')    and "Red")    or
+          (object.hasTag('player_orange') and "Orange") or
+          (object.hasTag('player_blue')   and "Blue")   or
+          (object.hasTag('player_green')  and "Green")
+        )
+        for _, obj in pairs(getObjects()) do
+          if obj.getName():find("Town Action Tracker: ") and obj.hasTag('player_' .. playerColor) then
+            if not obj.is_face_down then allExhausted = false end
+          end
+        end
+        if allExhausted then
+          if Player[playerColor].steam_name ~= nil then
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. Player[playerColor].steam_name .. "[-] has exhausted all of their Town Actions for this encounter!", "White")
+          else
+            broadcastToAll("[" .. Color.fromString(playerColor):toHex() .. "]" .. playerColor .. " Player[-] has exhausted all of their Town Actions for this encounter!", "White")
+          end
+        end
+
+      end, .50)
+    end
   end
 end
 

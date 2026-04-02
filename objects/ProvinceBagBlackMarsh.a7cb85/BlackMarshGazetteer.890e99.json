@@ -12,7 +12,7 @@
   },
   "CustomPDF": {
     "PDFPage": 0,
-    "PDFPageOffset": 0,
+    "PDFPageOffset": 1,
     "PDFPassword": "",
     "PDFUrl": "https://steamusercontent-a.akamaihd.net/ugc/28818234565109195/5E48B204FB6BBB695C7B13A23DEAEBD8D7D03D93/"
   },
@@ -36,9 +36,9 @@
   "Sticky": true,
   "Tooltip": false,
   "Transform": {
-    "posX": 100.034,
-    "posY": 18.3,
-    "posZ": 71.519,
+    "posX": 23.811,
+    "posY": 19.383,
+    "posZ": 44.541,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

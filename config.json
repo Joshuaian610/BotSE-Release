@@ -1,4 +1,5 @@
 {
+  "CameraStates": [],
   "ComponentTags_path": "ComponentTags.json",
   "CustomUIAssets": [
     {
@@ -8,6 +9,7 @@
     }
   ],
   "DecalPallet_path": "DecalPallet.json",
+  "Decals": [],
   "GameComplexity": "Medium Complexity",
   "GameMode": "The Elder Scrolls: BotSE",
   "GameType": "Game",
@@ -21,6 +23,7 @@
   "Lighting_path": "Lighting.json",
   "LuaScript": "require(\"Global\")",
   "LuaScriptState": "",
+  "MusicPlayer": {},
   "Note": "",
   "ObjectStates_order": [
     "TheKrakenTable.0b2ed0",
@@ -909,7 +912,8 @@
     "4HP.d8630c",
     "4HP.566482",
     "4HP.e1638b",
-    "4HP.c8eee5"
+    "4HP.c8eee5",
+    "TownActionBagSupply.3b2213"
   ],
   "PlayArea": 0.5,
   "PlayerCounts": [

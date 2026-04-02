@@ -289,7 +289,7 @@ function create_counter(chip_obj)
                     attributes = {
                         id = "counterButton_" .. chip_guid,
                         text = tostring(val),
-                        font = "Fonts/font_univers67",
+                        font = "font_univers67",
                         fontSize = fontSize,
                         fontStyle = "Bold",
                         outline = outline,
@@ -307,8 +307,9 @@ function create_counter(chip_obj)
             attributes = {
                 id = "counterLabel_" .. chip_guid,
                 text = string.upper(chipName),
-                font = "Fonts/font_univers67",
-                fontSize = "20",
+                font = "font_univers67",
+                fontSize = "100",
+                scale = "0.2 0.2 1",
                 fontStyle = "Bold",
                 color = "#FFFFFFFF",
                 shadow = "#000000FF",
@@ -321,11 +322,11 @@ function create_counter(chip_obj)
     }
     local fontBundle = {
         name = "font_univers67",
-        type = "1",
+        type = 1,
         url = "https://steamusercontent-a.akamaihd.net/ugc/17744680892379368636/BF47966114E58BE65EB49D76D7437BE1320BE254/"
     }
-
-    chip_obj.UI.setCustomAssets(fontBundle)
+        
+    chip_obj.UI.setCustomAssets( { fontBundle } )
     chip_obj.UI.setXmlTable(xmlTable)
     chip_obj.setVar('just_flipped', false)
     chip_obj.setVar('fresh_out_of_bag', false)
@@ -386,7 +387,7 @@ function create_color_counter(chip_obj)
                     attributes = {
                         id = "counterButton_" .. chip_guid,
                         text = tostring(val),
-                        font = "Fonts/font_univers67",
+                        font = "font_univers67",
                         fontSize = fontSize,
                         fontStyle = "Bold",
                         outline = outline,
@@ -404,7 +405,7 @@ function create_color_counter(chip_obj)
             attributes = {
                 id = "counterLabel_" .. chip_guid,
                 text = string.upper(chipName),
-                font = "Fonts/font_univers67",
+                font = "font_univers67",
                 fontSize = "20",
                 fontStyle = "Bold",
                 color = "#FFFFFFFF",
@@ -418,11 +419,11 @@ function create_color_counter(chip_obj)
     }
     local fontBundle = {
         name = "font_univers67",
-        type = "1",
+        type = 1,
         url = "https://steamusercontent-a.akamaihd.net/ugc/17744680892379368636/BF47966114E58BE65EB49D76D7437BE1320BE254/"
     }
 
-    chip_obj.UI.setCustomAssets(fontBundle)
+    chip_obj.UI.setCustomAssets( { fontBundle } )
     chip_obj.UI.setXmlTable(xmlTable)
     chip_obj.setVar('just_flipped', false)
     chip_obj.setVar('fresh_out_of_bag', false)
