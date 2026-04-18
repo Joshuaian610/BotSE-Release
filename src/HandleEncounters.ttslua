@@ -867,7 +867,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 5
+          pdfPage         = 3
       elseif townName    == "Alten Corimont" then
           buttonInn       = true
           buttonQuest     = true
@@ -878,7 +878,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 6
+          pdfPage         = 4
       elseif townName    == "Bright-Throat Village" then
           buttonInn       = false
           buttonQuest     = true
@@ -889,7 +889,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 7
+          pdfPage         = 5
       elseif townName    == "Dead-Water Village" then
           buttonInn       = false
           buttonQuest     = true
@@ -900,7 +900,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 8
+          pdfPage         = 6
       elseif townName    == "Fort Redmane" then
           buttonInn       = false
           buttonQuest     = true
@@ -911,7 +911,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = false
           trainerRogue    = false
-          pdfPage         = 9
+          pdfPage         = 7
       elseif townName    == "Gideon" then
           buttonInn       = true
           buttonQuest     = true
@@ -922,7 +922,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 10
+          pdfPage         = 8
       elseif townName    == "Hissmir" then
           buttonInn       = false
           buttonQuest     = false
@@ -933,7 +933,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 11
+          pdfPage         = 9
       elseif townName    == "Leyawiin" then
           buttonInn       = true
           buttonQuest     = true
@@ -944,7 +944,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 12
+          pdfPage         = 10
       elseif townName    == "Lilmoth" then
           buttonInn       = true
           buttonQuest     = true
@@ -955,7 +955,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 13
+          pdfPage         = 11
       elseif townName    == "Percolating Mire" then
           buttonInn       = false
           buttonQuest     = true
@@ -966,7 +966,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 14
+          pdfPage         = 12
       elseif townName    == "Root-Whisper Village" then
           buttonInn       = true
           buttonQuest     = true
@@ -977,7 +977,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 15
+          pdfPage         = 13
       elseif townName    == "Stonewastes" then
           buttonInn       = false
           buttonQuest     = false
@@ -988,7 +988,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 16
+          pdfPage         = 14
       elseif townName    == "Stormhold" then
           buttonInn       = true
           buttonQuest     = true
@@ -999,7 +999,7 @@ function setupTownEncounter(provinceMapName, townName)
           trainerWarrior  = true
           trainerMage     = true
           trainerRogue    = true
-          pdfPage         = 17
+          pdfPage         = 15
       end
 
   elseif currentProvince == "Cyrodiil" then

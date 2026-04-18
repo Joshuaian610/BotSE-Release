@@ -1441,8 +1441,8 @@ function setupBackdrop(provinceName, provinceBag)
   if bagUnusedObjects == nil then log("setupBackdrop(): bagUnusedObjects not found") end
 
   -- resposition Rulebook, Tutorial Guide (always on table)
-  local posRuleBook = { -29.48, 12.47, 54.30 }
-  local posTutorialBook = { -50.08, 12.47, 54.30 }
+  local posRuleBook = { -40.75, 12.47, 54.30 }
+  local posTutorialBook = { -61.50, 12.47, 54.30 }
   ruleBook.setPositionSmooth(posRuleBook, false, true)
   tutorialBook.setPositionSmooth(posTutorialBook, false, true)
 
@@ -1451,6 +1451,7 @@ function setupBackdrop(provinceName, provinceBag)
   local referenceLeft = getObjectbyName("Reference Left")
   local referenceRight = getObjectbyName("Reference Right")
   local provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+  local arvansAugments = getObjectbyName("Arvan's Adventurous Achievements")
 
   -- one by one, if not already existing, pull these from their respective bags
   if not campaignJournal then
@@ -1481,79 +1482,118 @@ function setupBackdrop(provinceName, provinceBag)
       end
     end
   end
+  if not arvansAugments then
+    for _, object in pairs(bagUnusedObjects.getObjects()) do
+      if object.name == "Arvan's Adventurous Achievements" then
+        arvansAugments = bagUnusedObjects.takeObject({guid = object.guid})
+      end
+    end
+  end
   
   local extraBackdropItems = {
     campaignJournal,
     referenceLeft,
     referenceRight,
     provinceGazetteer,
+    arvansAugments
   }
   local rotBackdrop = { 60, 180, 0 }
-  local posCampaignJournal = { 10.96, 12.47, 54.30 }
-  local posReferenceLeft = { 31.86, 12.47, 54.30 }
+  local posCampaignJournal = { -0.50, 12.47, 54.30 }
+  local posReferenceLeft = { 20.00, 12.47, 54.30 }
   local rotReferenceRight = { 60, 180, 180 }
-  local posReferenceRight = { 53.00, 12.47, 54.30 }
-  local posProvinceGazetteer = { -9.14, 12.47, 54.30 }
+  local posReferenceRight = {41.00, 12.47, 54.30}
+  local posProvinceGazetteer = { -20.50, 12.47, 54.30 }
+  local posArvansAugments = { 62.00, 12.47, 54.30 }
   local posBackdropItems = {
     posCampaignJournal,
     posReferenceLeft,
     posReferenceRight,
     posProvinceGazetteer,
+    posArvansAugments
   }
 
   -- frame Wait to allow objects to spawn after being pulled from bag, then position by repositioning and locking gaz
   Wait.frames(function()
-
-    for i = 1, 4 do
+    for i = 1, 5 do
       extraBackdropItems[i].setLock(true)
       if extraBackdropItems[i].getName() == "Reference Right" then rotBackdrop = rotReferenceRight end
-      extraBackdropItems[i].setRotation(rotBackdrop)
+      local rotBackdropFinal = extraBackdropItems[i].getName() == "Reference Right" and rotReferenceRight or { 60, 180, 0 }
+      extraBackdropItems[i].setRotation(rotBackdropFinal)
       extraBackdropItems[i].setPositionSmooth(posBackdropItems[i], false, true)
     end
-
-    -- handle stupid gazetteers taking longer to load
-    Wait.time(function()
-      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
-      if provinceGazetteer then          
-        provinceGazetteer.setRotation(rotBackdrop)
-        provinceGazetteer.setPosition( posProvinceGazetteer)
-        Wait.frames(function() provinceGazetteer.lock() end, 5)
-      end
-    end, 1)
-    Wait.time(function()
-      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
-      if provinceGazetteer then          
-        provinceGazetteer.setRotation(rotBackdrop)
-        provinceGazetteer.setPosition( posProvinceGazetteer)
-        Wait.frames(function() provinceGazetteer.lock() end, 5)
-      end
-    end, 5)
-    Wait.time(function()
-      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
-      if provinceGazetteer then          
-        provinceGazetteer.setRotation(rotBackdrop)
-        provinceGazetteer.setPosition(posProvinceGazetteer)
-        Wait.frames(function() provinceGazetteer.lock() end, 5)
-      end
-    end, 10)
-    Wait.time(function()
-      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
-      if provinceGazetteer then          
-        provinceGazetteer.setRotation(rotBackdrop)
-        provinceGazetteer.setPosition(posProvinceGazetteer)
-        Wait.frames(function() provinceGazetteer.lock() end, 5)
-      end
-    end, 15)
-    Wait.time(function()
-      provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
-      if provinceGazetteer then          
-        provinceGazetteer.setRotation(rotBackdrop)
-        provinceGazetteer.setPosition(posProvinceGazetteer)
-        Wait.frames(function() provinceGazetteer.lock() end, 5)
-      end
-    end, 20)
-    
   end)
+
+  -- handle stupid gazetteers taking longer to load
+  Wait.time(function()
+    provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+    if provinceGazetteer then
+      provinceGazetteer.setRotation(rotBackdrop)
+      provinceGazetteer.setPosition(posProvinceGazetteer)
+      Wait.frames(function() provinceGazetteer.lock() end, 5)
+    end
+    arvansAugments = getObjectbyName("Arvan's Adventurous Achievements")
+    if arvansAugments then
+      arvansAugments.setRotation(rotBackdrop)
+      arvansAugments.setPosition(posArvansAugments)
+      Wait.frames(function() arvansAugments.lock() end, 5)
+    end
+  end, 1)
+  Wait.time(function()
+    provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+    if provinceGazetteer then
+      provinceGazetteer.setRotation(rotBackdrop)
+      provinceGazetteer.setPosition(posProvinceGazetteer)
+      Wait.frames(function() provinceGazetteer.lock() end, 5)
+    end
+    arvansAugments = getObjectbyName("Arvan's Adventurous Achievements")
+    if arvansAugments then
+      arvansAugments.setRotation(rotBackdrop)
+      arvansAugments.setPosition(posArvansAugments)
+      Wait.frames(function() arvansAugments.lock() end, 5)
+    end
+  end, 5)
+  Wait.time(function()
+    provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+    if provinceGazetteer then          
+      provinceGazetteer.setRotation(rotBackdrop)
+      provinceGazetteer.setPosition(posProvinceGazetteer)
+      Wait.frames(function() provinceGazetteer.lock() end, 5)
+    end
+    arvansAugments = getObjectbyName("Arvan's Adventurous Achievements")
+    if arvansAugments then
+      arvansAugments.setRotation(rotBackdrop)
+      arvansAugments.setPosition(posArvansAugments)
+      Wait.frames(function() arvansAugments.lock() end, 5)
+    end
+  end, 10)
+  Wait.time(function()
+    provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+    if provinceGazetteer then          
+      provinceGazetteer.setRotation(rotBackdrop)
+      provinceGazetteer.setPosition(posProvinceGazetteer)
+      Wait.frames(function() provinceGazetteer.lock() end, 5)
+    end
+    arvansAugments = getObjectbyName("Arvan's Adventurous Achievements")
+    if arvansAugments then
+      arvansAugments.setRotation(rotBackdrop)
+      arvansAugments.setPosition(posArvansAugments)
+      Wait.frames(function() arvansAugments.lock() end, 5)
+    end
+  end, 15)
+  Wait.time(function()
+    provinceGazetteer = getObjectbyName(provinceName .. " Gazetteer")
+    if provinceGazetteer then          
+      provinceGazetteer.setRotation(rotBackdrop)
+      provinceGazetteer.setPosition(posProvinceGazetteer)
+      Wait.frames(function() provinceGazetteer.lock() end, 5)
+    end
+    arvansAugments = getObjectbyName("Arvan's Adventurous Achievements")
+    if arvansAugments then
+      arvansAugments.setRotation(rotBackdrop)
+      arvansAugments.setPosition(posArvansAugments)
+      Wait.frames(function() arvansAugments.lock() end, 5)
+    end
+  end, 20)
 end
 
 
