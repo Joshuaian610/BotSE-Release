@@ -1171,7 +1171,7 @@ function placeActiveDie(playerColor, dieObj)
       local rotDieObj = dieObj.getRotationValue()
       dieObj.setRotation((rotDieObj == 1 and {270,0,0}) or (rotDieObj == 2 and {0,0,0}) or
       (rotDieObj == 3 and {0,0,270}) or (rotDieObj == 4 and {0,0,90}) or
-      (rotDieObj == 5 and {0,0,180}) or (rotDieObj == 6 and {0,0,90}))
+      (rotDieObj == 5 and {0,0,180}) or (rotDieObj == 6 and {90,0,0}))
       dieObj.setPosition({posSlot[1], dieObj.getPosition().y, posSlot[3]})
       -- broadcast
       if Player[playerColor].steam_name ~= nil then

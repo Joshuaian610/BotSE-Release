@@ -751,6 +751,9 @@ function setupEncounter(provinceMapName, encounterName, encounterType)
     end
   end
 
+  -- if conflict encounter, initialize setup buttons on card
+  if encounterType == "Conflict" then initButtonsConflictSelect(card) end
+
   -- if peaceful encounter, update province effect
   local peDisplay = nil
   for _, object in ipairs(getObjects()) do
@@ -2152,19 +2155,22 @@ function cleanupEncounter(button, _, _)
 end
 
 
-function onObjectRotate(object, spin, flip, playerColor, oldSpin, oldFlip)
+-- function onObjectRotate(object, spin, flip, playerColor, oldSpin, oldFlip)
 
-  -- this function checks rotated objects to see if they're active conflict cards,
-  -- inits conflict setup buttons on card
-  local rotTolerance = 5
-  if (math.abs(object.getRotation().z) < rotTolerance) or (math.abs(object.getRotation().z - 360) < rotTolerance) then
-    local pos = object.getPosition()
-    local tolerance = 0.50
-    if (math.abs(pos.x + 38.88) < tolerance) and (math.abs(pos.z + 2.53) < tolerance) then
-      initButtonsConflictSelect(object)
-    end
-  end
-end
+--   -- this function checks rotated objects to see if they're active conflict cards,
+--   -- inits conflict setup buttons on card
+--   local rotTolerance = 5
+--   -- if (math.abs(object.getRotation().z) < rotTolerance) or (math.abs(object.getRotation().z - 360) < rotTolerance) then
+--   if oldFlip == 0 and flip == 180 then
+--     log("should start runnin")
+--     local pos = object.getPosition()
+--     local tolerance = 0.50
+--     if (math.abs(pos.x + 38.88) < tolerance) and (math.abs(pos.z + 2.53) < tolerance) then
+--       log("WTF YO")
+--       initButtonsConflictSelect(object)
+--     end
+--   end
+-- end
 
 
 function getConflictButtonDetails(cardName)

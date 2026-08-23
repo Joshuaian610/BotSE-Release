@@ -283,6 +283,8 @@ function deployEnemy(button, _, _)
  local bagObjects = bagEnemyDraw.getObjects()
   if #bagObjects == 0 or bagObjects == nil then broadcastToAll("Draw bag is empty!", "Orange") return end
 
+  bagEnemyDraw.shuffle()
+
   function isNear(pos, slot, tol)
     return math.abs(pos.x - slot[1]) <= tol and math.abs(pos.z - slot[3]) <= tol
   end
