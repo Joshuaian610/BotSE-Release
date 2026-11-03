@@ -549,7 +549,7 @@ function cleanupProvince(button, _, _)
       object.getName() == "Void Centurion Left Arm / Paradax Verus" or object.getName() == "Void Centurion Left Arm" or object.getName() == "Paradax Verus" or
       object.getName() == "Zirik / Zazita-Do" or object.getName() == "Zirik" or object.getName() == "Zazita-Do" then
         local bagDefeatedMonsters = getObjectbyName("Defeated Monsters Bag")
-        bagDefeatedMonsters.call('clear_old_chips_remote', {chip_obj = object})
+        bagDefeatedMonsters.call('clearOldChips_remote', {chip_obj = object})
         local bagUniqueChips = getObjectbyName("Quest Unit / Companion Chip Bag")
         local posBagUniqueChips = bagUniqueChips.getPosition()
         posBagUniqueChips.y = 2.25

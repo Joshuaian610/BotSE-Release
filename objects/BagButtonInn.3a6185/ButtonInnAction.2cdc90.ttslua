@@ -168,7 +168,7 @@ function inn_action(button, playercolor, _)
     if max_health_val ~= nil then total_max_health = max_health_val + extra_max_health end
     if (total_max_health ~= nil and total_max_health ~= 0) and counter ~= nil then
         local chip_bag = getObjectFromGUID("18de0f")
-        chip_bag.call('clear_old_chips_remote', {chip_obj=chip})
+        chip_bag.call('clearOldChips_remote', {chip_obj=chip})
         Wait.time(function()
         chip_bag.call('update_tile_stack_remote', {chip_obj=chip, val=total_max_health})
         end, .5)

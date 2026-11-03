@@ -35,7 +35,7 @@ function chip_onload(args)
     if not chip_obj.getVar('fresh_out_of_bag') then
         chip_obj.clearButtons()
         create_counter(chip_obj)
-        clear_old_chips(chip_obj)
+        clearOldChips(chip_obj)
         update_tile_stack(chip_obj, val)
     end
     end, .5)
@@ -53,7 +53,7 @@ function chip_rotate(args)
     local chip_obj = args.chip_obj
     local flip     = args.flip
     chip_obj.clearButtons()
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
     local val = chip_obj.getVar('max_health_val')
     chip_obj.setVar('val', val)
     update_save(chip_obj, val)
@@ -279,10 +279,10 @@ function add_subtract(args)
         update_save(chip_obj, val)
     end
     if val == 0 then
-        clear_old_chips(chip_obj)
+        clearOldChips(chip_obj)
         broadcastToAll(chipName .. " has been defeated!", "White")
     else
-        clear_old_chips(chip_obj)
+        clearOldChips(chip_obj)
         update_tile_stack(chip_obj, val)
     end
     refresh_counter(chip_obj, val)
@@ -309,7 +309,7 @@ function set_val(chip_obj, value)
     val = value
     update_val(chip_obj, val)
     update_save(chip_obj, val)
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
     update_tile_stack(chip_obj, val)
     chip_obj.setVar('val', val)
 end
@@ -332,7 +332,7 @@ function update_tile_stack(chip_obj, val)
     if val < 0 then val = 0 end
     if val > maxHP then val = maxHP end
 
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
 
     local lift_height = 0.75
     local cast_origin = {pos[1], pos[2] + 0.6, pos[3]}
@@ -401,13 +401,13 @@ function update_tile_stack(chip_obj, val)
 end
 
 
-function clear_old_chips_remote(args)
+function clearOldChips_remote(args)
     local chip_obj = args.chip_obj
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
 end
 
 
-function clear_old_chips(chip_obj)
+function clearOldChips(chip_obj)
     local removeChips = chip_obj.removeAttachments()
     for _, removeChip in pairs(removeChips) do
         if removeChip then removeChip.destruct() end
@@ -447,7 +447,7 @@ function onObjectEnterZone(zone, enter_object)
     zone == getObjectFromGUID("aebe2d") or zone == getObjectFromGUID("9708d1")) then
     --     for _, obj in pairs(zone.getObjects()) do
     --         if obj.hasTag('player_chip') then
-    --             clear_old_chips(obj)
+    --             clearOldChips(obj)
     --             obj.destruct()
     --         end
     --     end
@@ -606,7 +606,7 @@ function onObjectEnterZone(zone, enter_object)
     --     local pos = race_card.getPosition()
     --     pos.y = pos.y + 2
     --     pos.z = pos.z + 3
-    --     clear_old_chips(clone_chip)
+    --     clearOldChips(clone_chip)
     --     clone_chip.setRotation(rotation)
     --     if clone_chip.hasTag('argonian_b') or clone_chip.hasTag('d_elf_a') or clone_chip.hasTag('d_elf_b') or clone_chip.hasTag('nord_b') or
     --     clone_chip.hasTag('orc_b') or clone_chip.hasTag('redguard_a') or clone_chip.hasTag('w_elf_b') then

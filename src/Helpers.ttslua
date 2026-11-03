@@ -1,0 +1,63 @@
+
+
+
+function getObjectbyName(name)
+  -- simply search all objects for an object named a particular string
+  for _, object in pairs(getObjects()) do
+    if object.getName() == name then
+      return object
+    end
+  end
+  log("getObjectbyName() object not found: " .. name)
+  return nil
+end
+
+
+function getPlayerStr(playerColor)
+  -- handles the creation of playerStr for broadcasts
+
+  if playerColor == nil then return "Player" end
+
+  local playerStr = (Player[playerColor].steam_name ~= nil) and
+                    string.format(
+                      "[%s]%s[-]",
+                      Color.fromString(playerColor):toHex(),
+                      Player[playerColor].steam_name
+                    ) or
+                    string.format(
+                      "[%s]%s[-]",
+                      Color.fromString(playerColor):toHex(),
+                      playerColor .. " Player"
+                    )
+  return playerStr
+end
+
+
+function animateButtonsGeneric(obj)
+  obj.clearButtons()
+  local name = obj.getName()
+  Wait.time(function()
+
+    if name == "Button Siege Battle" then
+      initButtonSiegeBattle(obj)
+    elseif name == "Button Dungeon Map" then
+      initButtonDungeonMap(obj)
+    elseif name:find("Button Open Pack") then
+      initButtonOpenPack(obj)
+    end
+
+  end, 1)
+  local pos = obj.getPosition()
+  pos.y = pos.y - .29
+  obj.setPosition(pos)
+  pos.y = pos.y + .29
+  obj.setPositionSmooth(pos, false, false)
+end
+
+
+function color_to_hex(color)
+  local r = math.floor(color[1] * 255)
+  local g = math.floor(color[2] * 255)
+  local b = math.floor(color[3] * 255)
+  return string.format("#%02X%02X%02X", r, g, b)
+end

@@ -258,7 +258,7 @@ function wabbajackChangePlaces()
               position = posChip,
               bag      = returnBag,
             }
-            getObjectbyName("Defeated Monsters Bag").call('clear_old_chips', object)
+            getObjectbyName("Defeated Monsters Bag").call('clearOldChips', object)
             returnBag.putObject(object)
             break
           end

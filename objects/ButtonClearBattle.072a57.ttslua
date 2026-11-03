@@ -116,7 +116,7 @@ function clear_battle()
                 local pos = race_card.getPosition()
                 pos.y     = pos.y + 2
                 pos.z     = pos.z + 3
-                getObjectFromGUID("e71040").call('clear_old_chips_remote', {chip_obj=obj})
+                getObjectFromGUID("e71040").call('clearOldChips_remote', {chip_obj=obj})
                 obj.setPosition(pos, false, false)
                 Wait.frames(function() getObjectFromGUID("e71040").call('update_tile_stack_remote', {chip_obj=obj, val=obj.getVar('val')}) end)
             else
@@ -448,7 +448,7 @@ function return_enemy(args)
         end
     end
     if obj ~= nil and return_bag ~= nil then
-        getObjectFromGUID("e71040").call('clear_old_chips_remote', {chip_obj=obj})
+        getObjectFromGUID("e71040").call('clearOldChips_remote', {chip_obj=obj})
         obj.setRotation({0, 180, 0})
         return_bag.putObject(obj)
     end

@@ -1,0 +1,139 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomMesh": {
+        "CastShadows": true,
+        "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/15996229974638834447/F4B7DFDC78921BBF3A3A1E7AA480B8548845C96C/",
+        "Convex": true,
+        "CustomShader": {
+          "FresnelStrength": 0,
+          "SpecularColor": {
+            "b": 1,
+            "g": 1,
+            "r": 1
+          },
+          "SpecularIntensity": 0,
+          "SpecularSharpness": 6.99949
+        },
+        "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718671422447/838E14987CC4AF22D46B21C5177FB0427A04665A/",
+        "MaterialIndex": 0,
+        "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/15996229974638834447/F4B7DFDC78921BBF3A3A1E7AA480B8548845C96C/",
+        "NormalURL": "",
+        "TypeIndex": 0
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "eb053c",
+      "Grid": false,
+      "GridProjection": false,
+      "Hands": false,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Model",
+      "Nickname": "HP Chip",
+      "Snap": true,
+      "Sticky": true,
+      "Tags": [
+        "hp_chip",
+        "snap_hex"
+      ],
+      "Tooltip": false,
+      "Transform": {
+        "posX": -0.00228263973,
+        "posY": -0.189601734,
+        "posZ": -0.0000394147,
+        "rotX": 0.003610204,
+        "rotY": 90.00149,
+        "rotZ": 0.00172136654,
+        "scaleX": 1.05357122,
+        "scaleY": 1.78571415,
+        "scaleZ": 1.05357122
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673445207/8B10E972EE56DA86C7279098124BA486F8797965/",
+    "Convex": true,
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17837604351387680391/C87E01558DB7A4F3DFA3E1F6362E3A28F64E2DC9/",
+    "MaterialIndex": 1,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/25441718673445207/8B10E972EE56DA86C7279098124BA486F8797965/",
+    "NormalURL": "",
+    "TypeIndex": 5
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "font_univers67",
+      "Type": 1,
+      "URL": "https://steamusercontent-a.akamaihd.net/ugc/17744680892379368636/BF47966114E58BE65EB49D76D7437BE1320BE254/"
+    }
+  ],
+  "Description": "Divert:\nThis unit cannot lose its last HP unless it is already at 1 HP prior to taking damage.\n\nEnfeeble 2:\nAfter this unit’s engage, its target gains 2 light fatigue.",
+  "DragSelectable": true,
+  "GMNotes": "e71040",
+  "GUID": "630171",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "[5]",
+  "LuaScript_path": "ArgonianMarauder.630171.ttslua",
+  "MeasureMovement": false,
+  "Name": "Custom_Model",
+  "Nickname": "Argonian Marauder",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enemy_chip",
+    "enemyHuman",
+    "enemyLow",
+    "snap_hex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -29.43,
+    "posY": 1.294,
+    "posZ": -4.379,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.12,
+    "scaleY": 0.56,
+    "scaleZ": 1.12
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

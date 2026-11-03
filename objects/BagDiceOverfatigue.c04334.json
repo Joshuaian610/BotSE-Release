@@ -4,6 +4,29 @@
     "y": 0,
     "z": 0
   },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -1.434,
+        "y": 1.572,
+        "z": -0.078
+      }
+    },
+    {
+      "Position": {
+        "x": 0.029,
+        "y": 1.599,
+        "z": -0.051
+      }
+    },
+    {
+      "Position": {
+        "x": 1.357,
+        "y": 1.55,
+        "z": -0.1
+      }
+    }
+  ],
   "Autoraise": true,
   "Bag": {
     "Order": 0
@@ -70,7 +93,7 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -63.91,
+    "posX": -60.19,
     "posY": 1.36,
     "posZ": 3.02,
     "rotX": 0,

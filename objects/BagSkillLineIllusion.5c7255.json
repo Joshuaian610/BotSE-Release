@@ -1,0 +1,139 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 4.872,
+        "y": 1.604,
+        "z": -0.037
+      }
+    },
+    {
+      "Position": {
+        "x": 3.545,
+        "y": 1.604,
+        "z": 0.018
+      }
+    },
+    {
+      "Position": {
+        "x": 2.136,
+        "y": 1.604,
+        "z": 0.018
+      }
+    },
+    {
+      "Position": {
+        "x": 0.698,
+        "y": 1.604,
+        "z": -0.037
+      }
+    },
+    {
+      "Position": {
+        "x": -0.657,
+        "y": 1.585,
+        "z": -0.065
+      }
+    },
+    {
+      "Position": {
+        "x": -2.067,
+        "y": 1.585,
+        "z": -0.065
+      }
+    },
+    {
+      "Position": {
+        "x": -3.449,
+        "y": 1.604,
+        "z": -0.037
+      }
+    },
+    {
+      "Position": {
+        "x": -4.887,
+        "y": 1.604,
+        "z": -0.01
+      }
+    }
+  ],
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "e2b9e5Illusion-VoiceOfRapture.53bb43",
+    "e2b9e5Illusion-Mayhem.26c631",
+    "e2b9e5Illusion-Mayhem.ffa6b2",
+    "e2b9e5Illusion-Pacify.461a1e",
+    "e2b9e5Illusion-MesmerizingGrasp.cc559a",
+    "e2b9e5Illusion-MesmerizingGrasp.23a9d8",
+    "e2b9e5Illusion-CalmAndFury.a88742",
+    "e2b9e5Illusion-CalmAndFury.e44580"
+  ],
+  "ContainedObjects_path": "BagSkillLineIllusion.5c7255",
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/16882781621572218535/6EDF903B6B4B9E86846854AB93AB01D84E53EF29/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0.4,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0.05,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17727831232341633923/D94D642A4317A26BE5DF21620FDEACB56A2AD4B7/",
+    "MaterialIndex": 0,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/16882781621572218535/6EDF903B6B4B9E86846854AB93AB01D84E53EF29/",
+    "NormalURL": "",
+    "TypeIndex": 6
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "5c7255",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Custom_Model_Bag",
+  "Nickname": "Bag Skill Line Illusion",
+  "Snap": false,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -65.57,
+    "posY": 1.39,
+    "posZ": 11.69,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.55,
+    "scaleY": 0.55,
+    "scaleZ": 0.55
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

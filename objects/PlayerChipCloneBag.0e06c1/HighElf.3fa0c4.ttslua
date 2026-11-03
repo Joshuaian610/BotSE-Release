@@ -32,7 +32,7 @@ end
 function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
     if object == self then
         just_flipped = true
-        chip_bag.call('clear_old_chips_remote', {chip_obj=self})
+        chip_bag.call('clearOldChips_remote', {chip_obj=self})
         chip_bag.call('chip_rotate', {chip_obj=self, flip=flip})
     end
 end

@@ -53,7 +53,7 @@ function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
             position = {0.00, -1.00, -1.20}
             rotation = {290.00, 0.00, 180.00}
         end
-        chip_bag.call('clear_old_chips_remote', {chip_obj=self})
+        chip_bag.call('clearOldChips_remote', {chip_obj=self})
         chip_bag.call('chip_rotate', {chip_obj=self, flip=flip})
     end
 end

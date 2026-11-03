@@ -1,0 +1,83 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "WyrdWorld.c7ac16",
+    "Rookslide.bdae5a",
+    "CommunityAid.fd189b",
+    "LionorLyin.84e802",
+    "ReachingOut.f54f14",
+    "HiredBands.a36bf9",
+    "UndeadNoHangover.65f4cf",
+    "DiabolicalDialectics.6d8e38"
+  ],
+  "ContainedObjects_path": "HighRockEncountersPeaceful.af9e1f",
+  "CustomDeck": {
+    "109": {
+      "BackIsHidden": true,
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12500676703668836315/6F5527938F4789C05FB2EE04DA47B10B3030BF38/",
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/15355676036581618610/BD7346BEA063F22ABB5763CE095EDACA8B1C714E/",
+      "NumHeight": 4,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    10915,
+    10914,
+    10913,
+    10912,
+    10911,
+    10910,
+    10909,
+    10908
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "af9e1f",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "High Rock Encounters Peaceful",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "enc_peaceful",
+    "obj_hr",
+    "symbol0"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 45.705,
+    "posY": 2.762,
+    "posZ": 34.978,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

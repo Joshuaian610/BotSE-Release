@@ -4,6 +4,43 @@
     "y": 0,
     "z": 0
   },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -2.862,
+        "y": 1.593,
+        "z": -0.058
+      }
+    },
+    {
+      "Position": {
+        "x": -1.382,
+        "y": 1.58,
+        "z": -0.068
+      }
+    },
+    {
+      "Position": {
+        "x": 0.02,
+        "y": 1.57,
+        "z": -0.079
+      }
+    },
+    {
+      "Position": {
+        "x": 1.414,
+        "y": 1.569,
+        "z": -0.082
+      }
+    },
+    {
+      "Position": {
+        "x": 2.834,
+        "y": 1.588,
+        "z": -0.063
+      }
+    }
+  ],
   "Autoraise": true,
   "Bag": {
     "Order": 0
@@ -78,7 +115,7 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -60.829,
+    "posX": -57.124,
     "posY": 1.36,
     "posZ": 3.02,
     "rotX": 0,

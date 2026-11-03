@@ -4,20 +4,6 @@
     "y": 0,
     "z": 0
   },
-  "AttachedSnapPoints": [
-    {
-      "Position": {
-        "x": 0,
-        "y": 0.2,
-        "z": 0
-      },
-      "Rotation": {
-        "x": 0,
-        "y": 0,
-        "z": 180
-      }
-    }
-  ],
   "Autoraise": true,
   "ColorDiffuse": {
     "b": 1,
@@ -59,7 +45,7 @@
   ],
   "Tooltip": false,
   "Transform": {
-    "posX": 59.617,
+    "posX": 63.482,
     "posY": 1.138,
     "posZ": 3.315,
     "rotX": 0,

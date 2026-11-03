@@ -517,7 +517,7 @@ function deployRaceItems(buttonObj, playerColor, _)
 
   for _, obj in pairs(getObjects()) do
     if obj.hasTag('player_chip') and obj.hasTag('player_' .. playerColor) and obj ~= buttonObj then
-      clear_old_chips(obj)
+      clearOldChips(obj)
       obj.destruct()
     end
   end

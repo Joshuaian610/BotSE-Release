@@ -165,7 +165,7 @@ function chip_onload(args)
     if not chip_obj.getVar('fresh_out_of_bag') then
         chip_obj.clearButtons()
         create_counter(chip_obj)
-        clear_old_chips(chip_obj)
+        clearOldChips(chip_obj)
         update_tile_stack(chip_obj, val)
         update_skill_keywords(chip_obj, skill_keywords)
         update_name(chip_obj)
@@ -230,7 +230,7 @@ end
 function chip_rotate(args)
     local chip_obj = args.chip_obj
     chip_obj.clearButtons()
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
     update_save(chip_obj, val)
 end
 
@@ -479,17 +479,17 @@ function add_subtract(args)
                 end
             end
             
-            clear_old_chips(chip_obj)
+            clearOldChips(chip_obj)
             chip_obj.setPosition(bag_pos)
             broadcastToAll(chip_obj.getName() .. " has been defeated, and returned to the 'Defeated Monsters' bag!", "White")
             bag_obj.putObject(chip_obj)
         else
             broadcastToAll(chip_obj.getName() .. " has been defeated!", "White")
-            clear_old_chips(chip_obj)
+            clearOldChips(chip_obj)
         end
         
     else
-        clear_old_chips(chip_obj)
+        clearOldChips(chip_obj)
         update_tile_stack(chip_obj, val)
     end
 end
@@ -517,7 +517,7 @@ function set_val(chip_obj, value)
     val = value
     update_val(chip_obj, val)
     update_save(chip_obj, val)
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
     update_tile_stack(chip_obj, val)
     chip_obj.setVar('val', val)
 end
@@ -540,7 +540,7 @@ function update_tile_stack(chip_obj, val)
     if val < 0 then val = 0 end
     if val > maxHP then val = maxHP end
 
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
 
     local lift_height = 0.75
     local cast_origin = {pos[1], pos[2] + 0.6, pos[3]}
@@ -735,13 +735,13 @@ function update_name(chipObj)
 end
 
 
-function clear_old_chips_remote(args)
+function clearOldChips_remote(args)
     local chip_obj = args.chip_obj
-    clear_old_chips(chip_obj)
+    clearOldChips(chip_obj)
 end
 
 
-function clear_old_chips(chip_obj)
+function clearOldChips(chip_obj)
     local removeChips = chip_obj.removeAttachments()
     for _, removeChip in pairs(removeChips) do
         if removeChip then removeChip.destruct() end
