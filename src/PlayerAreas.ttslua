@@ -1924,14 +1924,6 @@ function handleSkillCardPull(zone, obj)
 end
 
 
-function handleZoneHPStackRemoval(zone, obj)
-  local objAttachments = obj.getAttachments()
-  local bagPlayerChips = getObjectbyName("Player Chip Bag")
-  bagPlayerChips.call('clearOldChips', obj)
-  obj.clearButtons()
-end
-
-
 function handleTownEncounterTrackerActions(object, flip)
 
   if object.getName():find("Town Action Tracker: ") then

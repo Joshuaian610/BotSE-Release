@@ -301,7 +301,7 @@ function onObjectEnterZone(zone, obj)
 
   -- handle removal of HP chipstacks when required
   if (zone.getName() == "Zone Province Boxes Left" or zone.getName() == "Zone Province Boxes Right" or zone.getName() == "Zone Defeated Monsters" or
-  zone.getName() == "Zone Monster Bags" or zone.getName() == "Zone Player/Quest Chips") and #objAttachments > 0 then
+  zone.getName() == "Zone Monster Bags" or zone.getName() == "Zone Player/Quest Chips") and #obj.getAttachments() > 0 then
     handleZoneHPStackRemoval(zone, obj)
   end
 end
